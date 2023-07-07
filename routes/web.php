@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Rutas Jetstream
 
 Route::middleware([
     'auth:sanctum',
@@ -26,3 +26,9 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+// Mis Rutas
+
+Route::view('/home', ['home', HomeController::class])->name('home');
+Route::resource('users', UserController::class);
+Route::resource('products', ProductController::class);
