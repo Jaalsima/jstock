@@ -29,6 +29,6 @@ Route::middleware([
 
 // Mis Rutas
 
-Route::view('/home', ['home', HomeController::class])->name('home');
+Route::view('/', ['home', HomeController::class])->name('home');
 Route::resource('users', UserController::class);
 Route::resource('products', ProductController::class);
