@@ -17,18 +17,18 @@
 
 <body class="antialiased">
     <div
-        class="relative sm:flex sm:justify-around sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-200 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+        class=" min-h-screen bg-dots-darker bg-center bg-gray-200 dark:bg-dots-lighter dark:bg-gray-700 selection:bg-indigo-500 selection:text-white">
         @if (Route::has('login'))
-            <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
+            <div class="text-2xl sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                 @auth
                     <a href="{{ url('/dashboard') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Inicio</a>
+                        class="text-gray-600 hover:text-gray-900 dark:text-gray-200 dark:hover:text-whitefocus:bg-gray-50 hover:bg-gray-200 hover:rounded hover:p-1">Inicio</a>
                 @else
                     <a href="{{ route('login') }}"
-                        class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Ingresar</a>
+                        class="text-gray-600 hover:text-gray-900 dark:text-gray-200 dark:hover:text-whitefocus:bg-gray-50 hover:bg-gray-200 hover:rounded hover:p-1">Ingresar</a>
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}"
-                            class="ml-4 font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Registrarse</a>
+                            class="ml-4 mr-4 text-gray-600 hover:text-gray-900 dark:text-gray-200 dark:hover:text-whitefocus:bg-gray-50 hover:bg-gray-200 hover:rounded hover:p-1">Registrarse</a>
                     @endif
                 @endauth
             </div>
@@ -36,16 +36,14 @@
         <div class="mx-auto p-6 lg:p-8">
 
             <a href="{{ route('home') }}" class="flex justify-center">
-                <img class="rounded" width="80" src="{{ asset('images/images.png') }}" alt="Logo JStock">
+                <img class="mt-10 rounded-full shadow-xl dark:shadow-gray-400" width="150"
+                    src="{{ asset('images/jstock.png') }}" alt="Logo JStock">
 
             </a>
-            <h1
-                class="text-center text-2xl mt-3 font-semibold text-gray-600 hover:text-gray-400 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                JStock</h1>
 
+            <div class="mt-10">
 
-
-            <div class="mt-52">
+                <x-welcome-title />
                 <x-my-welcome />
             </div>
 

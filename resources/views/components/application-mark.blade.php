@@ -1,1 +1,1 @@
-<img class="rounded" width="50" src="{{ asset('images/images.png') }}" alt="">
+<img class="rounded-full" width="150" src="{{ asset('images/jstock.png') }}" alt="Logo JStock">

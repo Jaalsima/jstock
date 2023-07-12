@@ -1,3 +1,3 @@
-<a href="/">
-    <img class="rounded" width="50" src="{{ asset('images/images.png') }}" alt="">
+<a href="{{ route('home') }}">
+    <img class="rounded-full" width="100" src="{{ asset('images/jstock.png') }}" alt="Logo JStock">
 </a>
