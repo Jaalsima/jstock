@@ -14,7 +14,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Gabriola', 'Pristina', 'Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Tw Cen MT', 'Fira Code', 'Gabriola', 'Pristina', 'Figtree', ...defaultTheme.fontFamily.sans],
             },
         },
     },
