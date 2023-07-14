@@ -1,16 +1,11 @@
 <x-home-layout>
-
     <x-slot name="title">
         Home
     </x-slot>
-
-    <x-nav-link>
-        <x-application-logo />
-        <x-login-register />
-    </x-nav-link>
-    <x-welcome-title />
-
+    <div class="flex flex-col justify-between min-h-screen">
+        <x-home-navbar />
+        <x-home-content />
+        {{-- <livewire:user-datatable /> --}}
+        <x-my-footer />
     </div>
-
-    <x-my-welcome />
 </x-home-layout>

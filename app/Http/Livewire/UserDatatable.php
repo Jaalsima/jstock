@@ -10,6 +10,10 @@ class UserDatatable extends DataTableComponent
 {
     protected $model = User::class;
 
+    public ?bool $searchFilterLazy = true;
+
+
+
     public function configure(): void
     {
         $this->setPrimaryKey('id');

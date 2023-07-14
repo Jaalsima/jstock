@@ -1,4 +1,9 @@
-<a href="{{ route('home') }}">
-    <img class="mb-10 rounded-full shadow-xl brightness-90 hover:brightness-150 transition duration-700 ease-in-out"
-        width="100" src="{{ asset('images/jstock.png') }}" alt="Logo JStock">
-</a>
+<div class="flex justify-between mb-4">
+    <div class="bg-red-700 rounded-full">
+        <a href="{{ route('home') }}" class="flex items-center">
+            <img src="{{ asset('images/jstock.svg') }}" width="80"
+                class="rounded-full shadow-white-2xl brightness-90 hover:brightness-150 transition duration-700 ease-in-out"
+                alt="Logo JStock">
+        </a>
+    </div>
+</div>

@@ -1,4 +1,4 @@
-<div class="container mx-auto w-1/2">
+<div class="container mt-20 mx-auto w-1/2">
     <!-- component -->
 
     <head>

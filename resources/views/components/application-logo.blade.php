@@ -1,4 +1,11 @@
-<a href="{{ route('home') }}">
-    <img class="m-4 rounded-full shadow-xl brightness-90 hover:brightness-150 transition duration-700 ease-in-out"
-        width="100" src="{{ asset('images/jstock.png') }}" alt="Logo JStock">
-</a>
+ <div class="flex justify-between">
+     <div class="bg-red-700 rounded-full">
+         <a href="{{ route('home') }}" class="flex items-center">
+             <img src="{{ asset('images/jstock.svg') }}" width="50"
+                 class="rounded-full shadow-white-2xl brightness-90 hover:brightness-150 transition duration-700 ease-in-out"
+                 alt="Logo JStock">
+         </a>
+     </div>
+     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"><span
+             class="ml-4 text-red-700">JS</span>tock</span>
+ </div>
