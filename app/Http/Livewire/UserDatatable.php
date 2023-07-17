@@ -35,6 +35,8 @@ class UserDatatable extends DataTableComponent
                 ->sortable(),
             Column::make("Updated at", "updated_at")
                 ->sortable(),
+            Column::make("Acciones")
+                ->label(fn ($row) => view('action_buttons', compact('row')))
         ];
     }
 }
