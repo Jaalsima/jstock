@@ -9,12 +9,21 @@ use Illuminate\View\View;
 
 class UserController extends Controller
 {
+    public function __construct(){
+        $this->middleware('can:users.index')->only('index');
+        $this->middleware('can:users.create')->only('create');
+        $this->middleware('can:users.store')->only('store');
+        $this->middleware('can:users.show')->only('show');
+        $this->middleware('can:users.edit')->only('edit');
+        $this->middleware('can:users.update')->only('update');
+        $this->middleware('can:users.destroy')->only('destroy');
+    }
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        $users = User::lastest()->paginate();
+        $users = User::paginate();
         return view('users.index', compact('users'));
     }
 

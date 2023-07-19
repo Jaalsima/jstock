@@ -1,9 +1,10 @@
 <x-home-layout>
     <x-slot name="title">
-        Home
+        Inicio
     </x-slot>
     <div class="flex flex-col justify-between min-h-screen">
-        <x-home-content />
+        <x-home-navbar/>
+        <x-home-title />
         <x-my-footer />
     </div>
 </x-home-layout>
