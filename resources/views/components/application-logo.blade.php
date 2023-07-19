@@ -6,6 +6,6 @@
                  alt="Logo JStock">
          </a>
      </div>
-     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white"><span
+     <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-gray-300"><span
              class="ml-4 text-red-700">JS</span>tock</span>
  </div>
