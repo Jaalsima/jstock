@@ -8,6 +8,7 @@
                     <a href="{{ route('dashboard') }}">
                         <x-application-logo
                          class="block h-9 w-auto" />
+
                     </a>
                 </div>
 
@@ -35,6 +36,7 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
                         {{ __('Contáctanos') }}
+
                     </x-nav-link>
                 </div>
             </div>
