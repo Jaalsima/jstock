@@ -6,15 +6,15 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo
-                         class="block h-9 w-auto" />
+                        <x-application-logo class="block h-9 w-auto" />
 
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ">
-                    <x-nav-link class="dark:text-red-600 dark:hover:text-red-500" href="{{ route('home') }}" :active="request()->routeIs('home')">
+                    <x-nav-link class="dark:text-red-600 dark:hover:text-red-500" href="{{ route('home') }}"
+                        :active="request()->routeIs('home')">
                         {{ __('Inicio') }}
                     </x-nav-link>
                 </div>

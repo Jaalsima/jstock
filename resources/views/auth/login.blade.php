@@ -46,16 +46,25 @@
                                     class="ml-2 text-sm text-gray-200 dark:text-gray-400 dark:hover:text-gray-100">{{ __('Recuérdame') }}</span>
                             </label>
                         </div>
-                        <div class="flex items-center justify-end mt-4">
+                        <div class="flex justify-around items-center mt-4">
                             @if (Route::has('password.request'))
-                                <a class="underline text-sm text-gray-200 dark:text-gray-400 hover:text-white dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
-                                    href="{{ route('password.request') }}">
-                                    {{ __('¿Olvidaste tu contraseña?') }}
-                                </a>
+                                <div class="flex flex-col text-center">
+                                    <a class="underline text-sm text-gray-200 dark:text-gray-400 hover:text-white dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                                        href="{{ route('password.request') }}">
+                                        {{ __('¿Olvidaste tu contraseña?') }}
+                                    </a>
+
+                                    <a class="underline text-sm text-gray-200 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                                        href="{{ route('register') }}">
+                                        {{ __('¿Aún no tienes una cuenta?') }}
+                                    </a>
+                                </div>
                             @endif
-                            <x-button class="ml-4">
-                                {{ __('Acceder') }}
-                            </x-button>
+                            <div>
+                                <x-button class="ml-4">
+                                    {{ __('Acceder') }}
+                                </x-button>
+                            </div>
                         </div>
 
                     </form>

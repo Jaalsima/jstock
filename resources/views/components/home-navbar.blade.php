@@ -14,8 +14,6 @@
             </ul>
         </div>
         <div class="order-2 md:order-3">
-
-
             <x-login-register />
         </div>
     </div>

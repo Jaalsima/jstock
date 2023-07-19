@@ -18,18 +18,18 @@ use App\Http\Controllers\UserController;
 
 // Rutas Jetstream
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified'
+// ])->group(function () {
+//     Route::get('/', function () {
+//         return view('home');
+//     })->name('home');
+// });
 
 // Mis Rutas
 
-Route::view('/', ['home', HomeController::class])->name('home');
+Route::get('/', ['home', HomeController::class])->name('home');
 Route::resource('users', UserController::class);
 Route::resource('products', ProductController::class);

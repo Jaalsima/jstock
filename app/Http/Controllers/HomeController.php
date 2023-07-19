@@ -7,10 +7,6 @@ use Illuminate\View\View;
 
 class HomeController extends Controller
 {
-    public function __construct(){
-        
-        $this->middleware('can:home');
-    }
     /**
      * Handle the incoming request.
      */

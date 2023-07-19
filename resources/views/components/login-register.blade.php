@@ -1,18 +1,19 @@
 <!-- I begin to speak only when I am certain what I will say is not better left unsaid. - Cato the Younger -->
 <div>
     @if (Route::has('login'))
-        <div class="sm:fixed sm:top-0 sm:right-0 p-4 text-right z-10">
+        <div class="lg:fixed lg:top-0 lg:right-0 p-4 text-right z-10">
             @auth
                 <a href="{{ url('/dashboard') }}"
-                    class="font-semibold text-gray-700 hover:text-red-700 dark:text-gray-500 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Inicio</a>
+                    class="text-lg text-gray-700 hover:text-red-700 dark:text-gray-300 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-gray-500"></a>
             @else
                 <div class="flex gap-10 pr-4 text-lg">
                     <a href="{{ route('login') }}"
-                        class="font-semibold text-gray-700 hover:text-red-700 dark:text-gray-500 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Ingresar
+                        class='inline-flex items-center px-2 pt-2 leading-5 text-lg text-gray-700 hover:text-red-700 dark:text-gray-300 hover:shadow-lg hover:shadow-red-300 hover:p-1 hover:rounded'>Ingresar
                     </a>
                     @if (Route::has('register'))
                         <a href="{{ route('register') }}"
-                            class="font-semibold text-gray-700 hover:text-red-700 dark:text-gray-500 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Registro</a>
+                            class='inline-flex items-center px-2 pt-2 leading-5 text-lg text-gray-700 hover:text-red-700 dark:text-gray-300 hover:shadow-lg hover:shadow-red-300 hover:p-1 hover:rounded'>Registro</a>
+
 
                 </div>
         @endif
