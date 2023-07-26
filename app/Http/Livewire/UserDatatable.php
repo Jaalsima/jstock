@@ -19,6 +19,15 @@ class UserDatatable extends DataTableComponent
         $this->setPrimaryKey('id');
     }
 
+    public function deleteUser($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
+            $this->emit('userDeleted'); // Emitir un evento de Livewire para mostrar un mensaje de éxito.
+        }
+    }
+
     public function columns(): array
     {
         return [
