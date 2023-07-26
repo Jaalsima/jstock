@@ -1,5 +1,11 @@
 <div>
-    @can('users.show')<x-show_button />@endcan
-    @can('users.edit')<x-edit_button />@endcan
-    @can('users.destroy')<x-delete_button />@endcan
+    @can('users.show')
+        <x-show-button />
+    @endcan
+    @can('users.edit')
+        <x-edit-button />
+    @endcan
+    @can('users.destroy')
+        <x-delete-button />
+    @endcan
 </div>
