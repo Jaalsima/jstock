@@ -1,35 +1,27 @@
 <?php
 
+use App\Http\Livewire\ProductTable;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get('/',         [HomeController::class, 'home'])    ->name('home');
+Route::get('/about',    [HomeController::class, 'about'])   ->name('about');
+Route::get('/blog',     [HomeController::class, 'blog'])    ->name('blog');
+Route::get('/contact',  [HomeController::class, 'contact']) ->name('contact');
+Route::get('/policies', [HomeController::class, 'policies'])->name('policies');
+Route::get('/services', [HomeController::class, 'services'])->name('services');
+Route::get('/terms',    [HomeController::class, 'terms'])   ->name('terms');
 
-// Rutas Jetstream
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
+    Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');
+    Route::resource('users', UserController::class);
+    Route::resource('products', ProductController::class);
+    Route::get('/product-table', ProductTable::class)->name('product-table');
+    Route::resource('suppliers', ProductController::class);
+    Route::resource('purchases', ProductController::class);
+    Route::resource('sales', ProductController::class);
+});
 
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified'
-// ])->group(function () {
-//     Route::get('/', function () {
-//         return view('home');
-//     })->name('home');
-// });
 
-// Mis Rutas
-
-Route::get('/', ['home', HomeController::class])->name('home');
-Route::resource('users', UserController::class);
-Route::resource('products', ProductController::class);
