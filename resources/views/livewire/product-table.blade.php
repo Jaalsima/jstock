@@ -8,7 +8,7 @@
                     d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
             </svg>
         </div>
-        <input type="text" wire:model="search" class="w-full bg-white border-none rounded-lg focus:ring-gray-300"
+        <input type="text" wire:model="search" class="w-full bg-white border-none rounded-lg focus:ring-gray-400"
             placeholder="Buscar...">
     </div>
     <div class="relative mt-4 overflow-x-auto shadow-md sm:rounded-lg">
@@ -39,10 +39,10 @@
                         Categoría
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Pricio de Compra
+                        Precio de Compra
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Pricio de Venta
+                        Precio de Venta
                     </th>
                     <th scope="col" class="px-6 py-3">
                         Creado en
@@ -61,7 +61,7 @@
             <tbody>
                 @forelse ($products as $product)
                     <tr
-                        class="text-lg bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        class="bg-white border-b text-md dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
 
                         <td class="w-4 py-4 pl-8 pr-4">
                             <div class="flex items-center">
@@ -75,7 +75,7 @@
                             {{ $product->id }}
                         </th>
 
-                        <td class="px-6 py-4">
+                        <td class="px-6 py-4 text-lg hover:text-blue-400">
                             <a href="{{ route('products.show', $product) }}">{{ $product->name }}</a>
                         </td>
 
@@ -136,63 +136,21 @@
                                 </svg>
                                 <div
                                     class="absolute z-10 px-3 py-2 mb-2 text-center text-white bg-gray-700 rounded-lg opacity-0 pointer-events-none text-md group-hover:opacity-80 bottom-full -left-8">
+
                                     Eliminar
                                     <svg class="absolute left-0 w-full h-2 text-black top-full" x="0px"
                                         y="0px" viewBox="0 0 255 255" xml:space="preserve">
                                         <polygon class="fill-current" points="0,0 127.5,127.5 255,0" />
+
                                     </svg>
                                 </div>
                             </div>
                         </td>
                     </tr>
-
-                @empty
-                    <h1>No hay productos disponibles</h1>
-                @endforelse
-
             </tbody>
+        @empty
+            <h1>No hay productos disponibles</h1>
+            @endforelse
         </table>
-        {{-- {{ $products->links() }} --}}
-        {{-- <nav class="flex items-center justify-between pt-4" aria-label="Table navigation">
-            <span class="ml-4 text-sm font-normal text-gray-500 dark:text-gray-400">Showing <span
-                    class="font-semibold text-gray-900 dark:text-white">1-10</span> of <span
-                    class="font-semibold text-gray-900 dark:text-white">1000</span></span>
-            <ul class="inline-flex h-8 mb-2 -space-x-px text-sm">
-                <li>
-                    <a href="#"
-                        class="flex items-center justify-center h-8 px-3 ml-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center justify-center h-8 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center justify-center h-8 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
-                </li>
-                <li>
-                    <a href="#" aria-current="page"
-                        class="flex items-center justify-center h-8 px-3 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center justify-center h-8 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center justify-center h-8 px-3 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center justify-center h-8 px-3 mr-4 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
-                </li>
-            </ul>
-        </nav> --}}
     </div>
 </div>
-
-{{-- <form action="{{ route('products.destroy', $product) }}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <input type="submit" value="Eliminar">
-                        </form> --}}
