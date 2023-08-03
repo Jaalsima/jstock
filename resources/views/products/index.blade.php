@@ -1,3 +1,3 @@
 <x-app-layout>
-    <livewire:product-table/>
+    <livewire:product-table />
 </x-app-layout>
