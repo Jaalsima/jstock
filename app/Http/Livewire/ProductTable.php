@@ -20,6 +20,15 @@ class ProductTable extends Component
         return view('livewire.product-table', compact('products'));
     }
     public function order($sort){
-        $this->sort = $sort;
+        if($this->sort == $sort){
+            if($this->direction == "desc"){
+                $this->direction = "asc";
+            }else{
+                $this->direction = "desc";
+            }
+        }else{
+            $this->sort = $sort;
+            $this->direction = "asc";
+        }
     }
 }
