@@ -17,9 +17,10 @@
 </head>
 
 <body>
-    <div class="font-sans text-gray-700 bg-gray-100 dark:text-gray-100 dark:bg-gray-700 antialiased">
+    <div class="font-sans antialiased text-gray-700 bg-gray-100 dark:text-gray-100 dark:bg-gray-700">
         {{ $slot }}
     </div>
+    <script src="sweetalert2.all.min.js"></script>
 </body>
 
 </html>

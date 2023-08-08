@@ -14,7 +14,7 @@ class BrandSeeder extends Seeder
     public function run(): void
     {
         Brand::create([
-            'name' => 'Marca 1',
+            'name' => 'Holita',
             'description' => 'Descripción 1',
             'status' => 'Estado 1',
         ]);

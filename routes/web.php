@@ -23,5 +23,3 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::resource('purchases', ProductController::class);
     Route::resource('sales', ProductController::class);
 });
-
-

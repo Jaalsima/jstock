@@ -1,4 +1,4 @@
-<div>
+<div class="my-auto">
     <x-secondary-button wire:click="$set('open', true)">
         Nuevo
     </x-secondary-button>
@@ -11,19 +11,48 @@
         <div class="w-1">
             <x-slot name="content">
                 <x-label value="Nombre" class="text-gray-700" />
-                <x-input class="w-full" />
+                <x-input class="w-full" wire:model.defer="name" />
                 <x-label value="Descripción" class="text-gray-700" />
-                <x-input class="w-full" />
+                <x-input class="w-full" wire:model.defer="description" />
+
+                <!-- Dropdown para Marca -->
                 <x-label value="Marca" class="text-gray-700" />
-                <x-input class="w-full" />
+                <select
+                    class="w-full bg-gray-200 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-300 dark:text-gray-700 focus:border-blue-300 dark:focus:border-blue-400 focus:ring-blue-300 dark:focus:ring-blue-400"
+                    wire:model.defer="brand_id">
+                    <option value="">Selecciona una marca</option>
+                    @foreach ($brands as $brand)
+                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                    @endforeach
+                </select>
+
+                <!-- Dropdown para Categoría -->
                 <x-label value="Categoría" class="text-gray-700" />
-                <x-input class="w-full" />
+                <select
+                    class="w-full bg-gray-200 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-300 dark:text-gray-700 focus:border-blue-300 dark:focus:border-blue-400 focus:ring-blue-300 dark:focus:ring-blue-400"
+                    wire:model.defer="category_id">
+                    <option value="">Selecciona una categoría</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+
+                <!-- Dropdown para Categoría -->
                 <x-label value="Precio de Compra" class="text-gray-700" />
-                <x-input class="w-full" />
+                <x-input class="w-full" wire:model.defer="purchase_price" />
                 <x-label value="Precio de Venta" class="text-gray-700" />
-                <x-input class="w-full" />
+                <x-input class="w-full" wire:model.defer="selling_price" />
+
+                <!-- Dropdown para Estado -->
                 <x-label value="Estado" class="text-gray-700" />
-                <x-input class="w-full" />
+                <select
+                    class="w-full bg-gray-200 border-gray-300 rounded-md shadow-sm dark:border-gray-700 dark:bg-gray-300 dark:text-gray-700 focus:border-blue-300 dark:focus:border-blue-400 focus:ring-blue-300 dark:focus:ring-blue-400"
+                    wire:model.defer="status">
+                    <option value="">Selecciona un estado</option>
+                    <option value="Disponible">Disponible</option>
+                    <option value="No Disponible">No Disponible</option>
+                    <option value="En Espera">En Espera</option>
+                </select>
             </x-slot>
         </div>
 
@@ -33,7 +62,8 @@
                     class="mr-4 text-red-500 border border-red-500 shadow-lg hover:shadow-red-400">
                     Cancelar
                 </x-secondary-button>
-                <x-secondary-button class="text-green-500 border border-green-500 shadow-xl hover:shadow-green-400">
+                <x-secondary-button class="text-green-500 border border-green-500 shadow-xl hover:shadow-green-400"
+                    wire:click='add'>
                     Agregar
                 </x-secondary-button>
             </div>

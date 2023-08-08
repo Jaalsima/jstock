@@ -12,7 +12,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        // $categories = Category::get(['id', 'name']);
+        // return view('livewire.create-product', compact('categories'));
     }
 
     /**

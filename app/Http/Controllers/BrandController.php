@@ -12,7 +12,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        // $brands = Brand::get(['id', 'name']);
+        // return view('livewire.create-product', compact('brands'));
     }
 
     /**
