@@ -34,8 +34,8 @@ class CreateProduct extends Component
 
     public function mount()
     {
-        $this->brands = Brand::get(['id', 'name']); // Cambia el método de obtención según tu base de datos y modelo
-        $this->categories = Category::get(['id', 'name']); // Cambia el método de obtención según tu base de datos y modelo
+        $this->brands = Brand::get(['id', 'name']);
+        $this->categories = Category::get(['id', 'name']); 
     }
 
     public function render()

@@ -36,8 +36,7 @@
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
-
-                <!-- Dropdown para Categoría -->
+                
                 <x-label value="Precio de Compra" class="text-gray-700" />
                 <x-input class="w-full" wire:model.defer="purchase_price" />
                 <x-label value="Precio de Venta" class="text-gray-700" />
