@@ -1,10 +1,9 @@
 <div>
     <div>
         <div class="w-1/4 mt-4 rounded-lg">
-
             <div class="float-right mr-8">
                 <svg xmlns="http://www.w3.org/2000/svg" height="1em" class="absolute my-3 cursor-pointer"
-                    viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    viewBox="0 0 512 512">
                     <path
                         d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
                 </svg>
@@ -113,44 +112,21 @@
                             {{ $product->id }}
                         </th>
 
-                        <td class="px-6 py-4 text-lg hover:text-blue-400">
-                            <a href="{{ route('products.show', $product) }}">{{ $product->name }}</a>
-                        </td>
-                        <td class="px-6 py-4">{{ $product->description }}</td>
-                        <td class="px-6 py-4"> {{ $product->brand->name }}</td>
-                        <td class="px-6 py-4">
-                            {{ $product->category->name }}</td>
-                        <td class="px-6 py-4">
-                            {{ $product->purchase_price }}</td>
-                        <td class="px-6 py-4">
-                            {{ $product->selling_price }} </td>
-                        <td class="px-6 py-4">
-                            {{ $product->created_at }}</td>
-                        <td class="px-6 py-4">
-                            {{ $product->updated_at }}</td>
-                        <td class="px-6 py-4">
-                            {{ $product->status }}</td>
-                        <td class="flex justify-around py-4 pl-2 pr-8">
 
-                            @livewire('show-product', ['product' => $product], key($product->id) )
-                            @livewire('edit-product', ['product' => $product], key($product->id) )
-                            
-                            <div class="relative inline-block text-center cursor-pointer group">
-                                <i class="fa-solid fa-trash"></i>
-                                <div class="absolute z-10 px-3 py-2 mb-2 text-center text-white bg-gray-700 rounded-lg opacity-0 pointer-events-none text-md group-hover:opacity-80 bottom-full -left-8">
-                                    Eliminar
-                                    <svg class="absolute left-0 w-full h-2 text-black top-full" x="0px"
-                                        y="0px" viewBox="0 0 255 255" xml:space="preserve">
-                                        <polygon class="fill-current" points="0,0 127.5,127.5 255,0" />
-                                    </svg>    
-                                </div>
-                                <!-- Formulario oculto para eliminar el producto -->
-                                <form action="{{ route('products.destroy', $product) }}" method="POST"
-                                    style="display: none;">
-                                    @csrf
-                                    @method('DELETE')
-                                </form>
-                            </div>
+                        <td class="px-6 py-4 text-lg hover:text-blue-400">{{ $product->name }}</td>
+                        <td class="px-6 py-4 text-lg hover:text-blue-400">{{ $product->description }}</td>
+                        <td class="px-6 py-4 text-lg hover:text-blue-400">{{ $product->brand->name }}</td>
+                        <td class="px-6 py-4 text-lg hover:text-blue-400">{{ $product->category->name }}</td>
+                        <td class="px-6 py-4 text-md hover:text-blue-400">{{ $product->purchase_price }}</td>
+                        <td class="px-6 py-4 text-md hover:text-blue-400">{{ $product->selling_price }} </td>
+                        <td class="px-6 py-4 text-md hover:text-blue-400">{{ $product->created_at }}</td>
+                        <td class="px-6 py-4 text-md hover:text-blue-400">{{ $product->updated_at }}</td>
+                        <td class="px-6 py-4 text-lg hover:text-blue-400">{{ $product->status }}</td>
+
+                        <td class="flex justify-around py-4 pl-2 pr-8">
+                            @livewire('show-product', ['product' => $product], key(time() . $product->id))
+                            @livewire('edit-product', ['product' => $product], key(time() . $product->id))
+                            {{-- Espacio para la eliminación de los productos --}}
                         </td>
                     </tr>
             </tbody>
@@ -158,7 +134,8 @@
             <h1>No hay productos disponibles</h1>
             @endforelse
         </table>
-        {{ $products->links() }}
+
+        <div class="px-3 py-1">{{ $products->links() }}</div>
+
     </div>
-</div>
 </div>
