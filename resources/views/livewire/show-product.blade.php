@@ -1,7 +1,7 @@
 {{-- If you look to others for fulfillment, you will never truly be fulfilled. --}}
 <div class="relative inline-block text-center cursor-pointer group">
     <a href="#" wire:click="$set('open', true)">
-        <i class="fa-solid fa-eye"></i>
+        <i class="p-1 text-green-400 rounded hover:text-white hover:bg-green-500 fa-solid fa-eye"></i>
         <div
             class="absolute z-10 px-3 py-2 mb-2 text-center text-white bg-gray-700 rounded-lg opacity-0 pointer-events-none text-md group-hover:opacity-80 bottom-full -left-3">
             Ver
@@ -15,24 +15,32 @@
 
     <x-dialog-modal wire:model="open">
         <x-slot name="title">
-            <h2 class="mt-3 text-2xl text-center">Detalles del Producto</h2>
-            <span class="text-2xl text-red-400">{{$product->name}}</span>
         </x-slot>
         <x-slot name="content">
             <div>
-                <p><strong>Nombre:</strong> {{ $product->name }}</p>
-                <p><strong>Descripción:</strong> {{ $product->description }}</p>
-                <p><strong>Categoría:</strong> {{ $product->category->name }}</p>
-                <p><strong>Marca:</strong> {{ $product->brand->name }}</p>
-                <p><strong>Precio de Compra:</strong> {{ $product->purchase_price }}</p>
-                <p><strong>Precio de Venta:</strong> {{ $product->selling_price }}</p>
-                <p><strong>Estado:</strong> {{ $product->status }}</p>
+                <div class="mx-auto my-2 rounded-full w-52">
+                    <img class="object-cover rounded-full" src="{{ asset('images/jstock.png') }}" alt="product image" />
+                </div>
+                <div class="px-5 pb-5">
+                    <div class="mx-6">
+                        <h5
+                            class="mb-4 text-3xl font-semibold tracking-tight text-center text-gray-900 dark:text-white">
+                            {{ $product->name }}</h5>
+                        <div class="text-lg text-start">
+                            <p><strong>Categoría:</strong> {{ $product->category->name }}</p>
+                            <p><strong>Marca:</strong> {{ $product->brand->name }}</p>
+                            <p><strong>Precio:</strong> {{ $product->selling_price }}</p>
+                            <p><strong>Estado:</strong> {{ $product->status }}</p>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </x-slot>
         <x-slot name="footer">
             <div class="mx-auto">
                 <x-secondary-button wire:click="$set('open', false)"
-                    class="mr-4 text-red-500 border border-red-500 shadow-lg hover:shadow-red-400">
+                    class="mr-4 text-gray-500 border border-gray-500 shadow-lg hover:shadow-gray-400">
                     Salir
                 </x-secondary-button>
             </div>

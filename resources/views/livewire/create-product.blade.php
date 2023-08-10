@@ -1,5 +1,6 @@
 <div class="my-auto">
-    <x-secondary-button wire:click="$set('open', true)">
+    <x-secondary-button wire:click="$set('open', true)"
+        class="text-blue-500 border border-blue-500 shadow-lg hover:shadow-blue-400">
         Nuevo
     </x-secondary-button>
 
@@ -61,7 +62,7 @@
                     class="mr-4 text-gray-500 border border-gray-500 shadow-lg hover:shadow-gray-400">
                     Cancelar
                 </x-secondary-button>
-                <x-secondary-button class="text-green-500 border border-green-500 shadow-lg hover:shadow-green-400"
+                <x-secondary-button class="text-blue-500 border border-blue-500 shadow-lg hover:shadow-blue-400"
                     wire:click='add'>
                     Agregar
                 </x-secondary-button>
