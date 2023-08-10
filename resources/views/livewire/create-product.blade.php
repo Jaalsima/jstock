@@ -36,7 +36,7 @@
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
-                
+
                 <x-label value="Precio de Compra" class="text-gray-700" />
                 <x-input class="w-full" wire:model.defer="purchase_price" />
                 <x-label value="Precio de Venta" class="text-gray-700" />
@@ -58,10 +58,10 @@
         <x-slot name="footer">
             <div class="mx-auto">
                 <x-secondary-button wire:click="$set('open', false)"
-                    class="mr-4 text-red-500 border border-red-500 shadow-lg hover:shadow-red-400">
+                    class="mr-4 text-gray-500 border border-gray-500 shadow-lg hover:shadow-gray-400">
                     Cancelar
                 </x-secondary-button>
-                <x-secondary-button class="text-green-500 border border-green-500 shadow-xl hover:shadow-green-400"
+                <x-secondary-button class="text-green-500 border border-green-500 shadow-lg hover:shadow-green-400"
                     wire:click='add'>
                     Agregar
                 </x-secondary-button>

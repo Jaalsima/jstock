@@ -112,7 +112,6 @@
                             {{ $product->id }}
                         </th>
 
-
                         <td class="px-6 py-4 text-lg hover:text-blue-400">{{ $product->name }}</td>
                         <td class="px-6 py-4 text-lg hover:text-blue-400">{{ $product->description }}</td>
                         <td class="px-6 py-4 text-lg hover:text-blue-400">{{ $product->brand->name }}</td>
@@ -126,9 +125,52 @@
                         <td class="flex justify-around py-4 pl-2 pr-8">
                             @livewire('show-product', ['product' => $product], key(time() . $product->id))
                             @livewire('edit-product', ['product' => $product], key(time() . $product->id))
-                            {{-- Espacio para la eliminación de los productos --}}
+
+                            <div class="relative inline-block text-center cursor-pointer group">
+                                <a href="#" wire:click="confirmDelete({{ $product->id }})">
+                                    <i class="fa-solid fa-trash"></i>
+                                    <div
+                                        class="absolute z-10 px-3 py-2 mb-2 text-center text-white bg-gray-700 rounded-lg opacity-0 pointer-events-none text-md group-hover:opacity-80 bottom-full -left-3">
+                                        Eliminar
+                                        <svg class="absolute left-0 w-full h-2 text-black top-full" x="0px"
+                                            y="0px" viewBox="0 0 255 255" xml:space="preserve">
+                                            <polygon class="fill-current" points="0,0 127.5,127.5 255,0" />
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
                         </td>
                     </tr>
+
+                    @if ($open)
+                        <div class="fixed inset-0 flex items-center justify-center">
+                            <div class="absolute inset-0 bg-gray-500 opacity-75 modal-overlay"></div>
+
+                            <div
+                                class="z-50 w-11/12 mx-auto overflow-y-auto bg-white border border-red-500 rounded-xl modal-container md:max-w-md">
+                                <!-- Content of the modal -->
+                                <div class="flex gap-3 py-2 bg-red-500 border border-red-500">
+                                    <h3 class="w-full text-2xl text-center text-gray-100 ">Eliminar</h3>
+
+                                </div>
+                                <div class="px-6 py-4 text-left modal-content">
+
+                                    <p class="text-xl text-gray-500">¿Estás seguro de que deseas eliminar este producto?
+                                    </p>
+                                    <div class="mt-4 text-center">
+                                        <x-secondary-button wire:click="$set('open', false)"
+                                            class="mr-4 text-gray-500 border border-gray-500 shadow-lg hover:shadow-gray-400">
+                                            Cancelar
+                                        </x-secondary-button>
+                                        <x-secondary-button wire:click="deleteConfirmed"
+                                            class="mr-4 text-red-500 border border-red-500 shadow-lg hover:shadow-red-400">
+                                            Eliminar
+                                        </x-secondary-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
             </tbody>
         @empty
             <h1>No hay productos disponibles</h1>
