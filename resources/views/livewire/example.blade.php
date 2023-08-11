@@ -179,21 +179,19 @@
                                 </div>
                             </div>
                         @endif
-
                     @empty
                         <!-- No products message -->
                         <tr>
                             <td colspan="12" class="text-3xl text-center dark:text-gray-200">No hay productos
-                                Disponibles</td>
+                                disponibles</td>
                         </tr>
                     @endforelse
-                @else
-                    <!-- No products message -->
-                    <h1 class="text-3xl text-center dark:text-gray-200">No hay productos disponibles</h1>
+                </tbody>
+            </table>
+        @else
+            <!-- No products message -->
+            <h1 class="text-3xl text-center dark:text-gray-200">No hay productos disponibles</h1>
         @endif
-        </tbody>
-        </table>
-
 
         <div class="px-3 py-1">{{ $products->links() }}</div>
 

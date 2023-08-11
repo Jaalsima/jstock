@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Administrador')
+@section('title', 'Bienvenido') {{ $user->hasRole('admin') }}
 
 @section('content_header')
     <h1>Panel Administrativo</h1>
