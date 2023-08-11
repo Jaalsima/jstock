@@ -1,5 +1,7 @@
 @extends('adminlte::page')
-
+@foreach ($users as $user)
+    {{ $user->name }}
+@endforeach
 @section('title', 'Administrador')
 
 @section('content_header')

@@ -39,9 +39,9 @@
                 </select>
 
                 <x-label value="Precio de Compra" class="text-gray-700" />
-                <x-input class="w-full" wire:model.defer="purchase_price" />
+                <x-input class="w-full" type="number" min=0 wire:model.defer="purchase_price" />
                 <x-label value="Precio de Venta" class="text-gray-700" />
-                <x-input class="w-full" wire:model.defer="selling_price" />
+                <x-input class="w-full" type="number" min=0 wire:model.defer="selling_price" />
 
                 <!-- Dropdown para Estado -->
                 <x-label value="Estado" class="text-gray-700" />
