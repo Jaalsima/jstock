@@ -123,9 +123,13 @@
                             <td class="px-6 py-4 ">{{ $product->created_at }}</td>
                             <td class="px-6 py-4 ">{{ $product->updated_at }}</td>
                             @if ($product->status == 'Disponible')
-                                <td class="px-6 py-4 text-green-500">{{ $product->status }}</td>
+                                <td class="px-6 py-4 text-green-600">{{ $product->status }}</td>
                             @else
-                                <td class="px-6 py-4 text-red-500">{{ $product->status }}</td>
+                                @if($product->status == 'No Disponible')
+                                    <td class="px-6 py-4 text-red-600">{{ $product->status }}</td>
+                                @else
+                                    <td class="px-6 py-4 text-blue-600">{{ $product->status }}</td>
+                                @endif
                             @endif
 
 
@@ -151,7 +155,7 @@
                         </tr>
                         @if ($open)
                             <div class="fixed inset-0 flex items-center justify-center">
-                                <div class="absolute inset-0 bg-gray-500 opacity-75 modal-overlay"></div>
+                                <div class="absolute inset-0 bg-gray-300 opacity-100 modal-overlay"></div>
 
                                 <div
                                     class="z-50 w-11/12 mx-auto overflow-y-auto bg-white border border-red-500 rounded-xl modal-container md:max-w-md">

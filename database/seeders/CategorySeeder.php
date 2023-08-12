@@ -14,20 +14,32 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::create([
-            'name' => 'Categoría 1',
-            'description' => 'Descripción 1',
+            'name' => 'Deportes',
+            'description' => 'Descripción Deportes',
             'status' => 'Estado 1',
         ]);
 
         Category::create([
-            'name' => 'Categoría 2',
-            'description' => 'Descripción 2',
+            'name' => 'Hogar',
+            'description' => 'Descripción Hogar',
             'status' => 'Estado 2',
         ]);
 
         Category::create([
-            'name' => 'Categoría 3',
-            'description' => 'Descripción 3',
+            'name' => 'Tecnología',
+            'description' => 'Descripción Tecnología',
+            'status' => 'Estado 3',
+        ]);
+
+        Category::create([
+            'name' => 'Joyería',
+            'description' => 'Descripción Joyería',
+            'status' => 'Estado 3',
+        ]);
+
+        Category::create([
+            'name' => 'Otros',
+            'description' => 'Descripción Otros',
             'status' => 'Estado 3',
         ]);
     }

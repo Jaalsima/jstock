@@ -1,1 +1,11 @@
-<h1>Services</h1>
+<x-home-layout>
+    <x-slot name="title">
+        Servicios
+    </x-slot>
+
+    <div class="flex flex-col justify-between min-h-screen">
+        <livewire:home-navbar />
+        <x-home-title />
+        <x-my-footer />
+    </div>
+</x-home-layout>

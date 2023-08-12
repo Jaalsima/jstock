@@ -1,41 +1,40 @@
 <nav x-data="{ open: false }"
-    class="bg-white border-b border-gray-100 shadow-lg shadow-gray-400 dark:bg-gray-800 dark:border-gray-700">
+class="bg-white border-b shadow-lg dark:bg-gray-800 shadow-gray-400 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
-    <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
-                <!-- Logo -->
-                <div class="flex items-center shrink-0">
-                    <a href="{{ route('home') }}">
-                        <x-application-logo class="block w-auto h-9" />
+    <div class="px-4 mx-auto sm:px-6 lg:px-8">
 
-                    </a>
-                </div>
+        <div class="flex h-16">
+            <!-- Logo -->
+            <div class="flex items-center shrink-0">
+                <a href="{{ route('home') }}">
+                    <x-application-logo class="block w-auto h-9" />
 
+                </a>
+            </div>
+            <div class="flex justify-center mx-auto my-4 text-lg">
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex ">
-                    <x-nav-link class="dark:text-red-600 dark:hover:text-red-500" href="{{ route('product-table') }}"
-                        :active="request()->routeIs('product-table')">
+                <div class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                    <x-nav-link class="px-3" href="{{ route('product-table') }}" :active="request()->routeIs('product-table')">
                         {{ __('Productos') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('products.create') }}" :active="request()->routeIs('products.create')">
+                <div class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                    <x-nav-link class="px-3" href="{{ route('products.create') }}" :active="request()->routeIs('products.create')">
                         {{ __('Crear Producto') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
+                <div class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                    <x-nav-link class="px-3" href="{{ route('blog') }}" :active="request()->routeIs('blog')">
                         {{ __('Blog') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
+                <div class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                    <x-nav-link class="px-3" href="{{ route('about') }}" :active="request()->routeIs('about')">
                         {{ __('Nosotros') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
+                <div class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                    <x-nav-link class="px-3" href="{{ route('contact') }}" :active="request()->routeIs('contact')">
                         {{ __('Contáctanos') }}
 
                     </x-nav-link>
@@ -103,11 +102,16 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                                <button
-                                    class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
-                                    <img class="object-cover w-8 h-8 rounded-full"
-                                        src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
-                                </button>
+                            <div class="flex">
+                                    <div class="my-auto mr-3">
+                                        {{ Auth::user()->name }}
+                                    </div>
+                                    <button
+                                        class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
+                                        <img class="object-cover w-8 h-8 rounded-full"
+                                            src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                    </button>
+                                </div>
                             @else
                                 <span class="inline-flex rounded-md">
                                     <button type="button"
