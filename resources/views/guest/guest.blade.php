@@ -1,13 +1,13 @@
 @extends('adminlte::page')
 
-@section('title', 'Bienvenido') {{ $user->hasRole('admin') }}
+@section('title', 'Bienvenido')
 
 @section('content_header')
     <h1>Panel Administrativo</h1>
 @stop
 
 @section('content')
-    <p>Bienvenido al panel administrativo JStock.</p>
+    <p>Bienvenido al panel administrativo Holita <span class="text-red-800">JS</span>tock.</p>
 @stop
 
 @section('css')

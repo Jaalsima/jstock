@@ -59,7 +59,7 @@
                             @endif
 
                         </th>
-                       
+
                         <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('description')">
                             Descripción
                             @if ($sort == 'description')
@@ -76,7 +76,7 @@
                         <th scope="col" class="px-6 py-3">
                             Marca
                         </th>
-                      
+
                         <th scope="col" class="px-6 py-3">
                             Categoría
                         </th>
@@ -128,7 +128,7 @@
                             @if ($product->status == 'Disponible')
                                 <td class="px-6 py-4 text-green-600">{{ $product->status }}</td>
                             @else
-                                @if($product->status == 'No Disponible')
+                                @if ($product->status == 'No Disponible')
                                     <td class="px-6 py-4 text-red-600">{{ $product->status }}</td>
                                 @else
                                     <td class="px-6 py-4 text-blue-600">{{ $product->status }}</td>
@@ -137,28 +137,32 @@
 
 
                             <td class="flex justify-around py-4 pl-2 pr-8">
-                                @livewire('show-product', ['product' => $product], key(time() . $product->id))
-                                @livewire('edit-product', ['product' => $product], key(time() . $product->id))
-
-                                <div class="relative inline-block text-center cursor-pointer group">
-                                    <a href="#" wire:click="confirmDelete({{ $product->id }})">
-                                        <i
-                                            class="p-1 text-red-400 rounded hover:text-white hover:bg-red-400 fa-solid fa-trash"></i>
-                                        <div
-                                            class="absolute z-10 px-3 py-2 mb-2 text-center text-white bg-gray-700 rounded-lg opacity-0 pointer-events-none text-md group-hover:opacity-80 bottom-full -left-3">
-                                            Eliminar
-                                            <svg class="absolute left-0 w-full h-2 text-black top-full" x="0px"
-                                                y="0px" viewBox="0 0 255 255" xml:space="preserve">
-                                                <polygon class="fill-current" points="0,0 127.5,127.5 255,0" />
-                                            </svg>
-                                        </div>
-                                    </a>
+                                <div
+                                    @if ($open) class="flex pointer-events-none opacity-20" @else class="flex" @endif>
+                                    @livewire('show-product', ['product' => $product], key(time() . $product->id))
+                                    @livewire('edit-product', ['product' => $product], key(time() . $product->id))
+                                    <div class="relative inline-block text-center cursor-pointer">
+                                        <a href="#" wire:click="confirmDelete({{ $product->id }})">
+                                            <i
+                                                class="p-1 text-red-400 rounded hover:text-white hover:bg-red-400 fa-solid fa-trash"></i>
+                                            <div
+                                                class="absolute z-10 px-3 py-2 mb-2 text-center text-white bg-gray-700 rounded-lg opacity-0 pointer-events-none text-md group-hover:opacity-80 bottom-full -left-3">
+                                                Eliminar
+                                                <svg class="absolute left-0 w-full h-2 text-black top-full"
+                                                    x="0px" y="0px" viewBox="0 0 255 255"
+                                                    xml:space="preserve">
+                                                    <polygon class="fill-current" points="0,0 127.5,127.5 255,0" />
+                                                </svg>
+                                            </div>
+                                        </a>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
                         @if ($open)
-                            <div class="fixed inset-0 flex items-center justify-center">
-                                <div class="absolute inset-0 bg-black opacity-10 modal-overlay"></div>
+                            <div class="fixed inset-0 flex items-center justify-center"
+                                wire:click="$set('open', false)">
+                                <div class="absolute inset-0 z-40 bg-black opacity-10 modal-overlay"></div>
 
                                 <div
                                     class="z-50 w-11/12 mx-auto overflow-y-auto bg-white border border-red-500 rounded-xl modal-container md:max-w-md">

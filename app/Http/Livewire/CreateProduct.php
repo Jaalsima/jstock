@@ -12,15 +12,15 @@ class CreateProduct extends Component
 {
     use WithFileUploads;
 
-    public$brands, $categories, $product, $unique_input_identifier; 
+    public$brands, $categories, $product, $unique_input_identifier;
     public  $brand_id, $category_id, $name, $description, $purchase_price, $selling_price, $status, $image;
     public $open =false;
 
     protected $rules = [
         'brand_id'       => 'required|exists:brands,id',
         'category_id'    => 'required|exists:categories,id',
-        'name'           => 'required|string|max:255',
-        'description'    => 'nullable|string',
+        'name'           => 'required|string|max:50',
+        'description'    => 'nullable|string|max:500',
         'purchase_price' => 'required|numeric|min:0',
         'selling_price'  => 'required|numeric|min:0',
         'status'         => 'required|in:Disponible,No Disponible,En Espera',
@@ -34,17 +34,17 @@ class CreateProduct extends Component
         $this->product = Product::all();
         $this->unique_input_identifier = rand();
     }
-    // public function updated($propertyName){
-    //     $this->validateOnly($propertyName);
-    // }
+    public function updated($propertyName){
+        $this->validateOnly($propertyName);
+    }
 
     public function add(){
 
         $this->validate();
 
         $image_url = $this->image->store('products');
-        
-        Product::create([            
+
+        Product::create([
             'brand_id'       => $this->brand_id,
             'category_id'    => $this->category_id,
             'name'           => $this->name,

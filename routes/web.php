@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Menu\MenuController;
 
 Route::get('/',         [HomeController::class, 'home'])    ->name('home');
 Route::get('/about',    [HomeController::class, 'about'])   ->name('about');
@@ -15,11 +16,11 @@ Route::get('/services', [HomeController::class, 'services'])->name('services');
 Route::get('/terms',    [HomeController::class, 'terms'])   ->name('terms');
 
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])->group(function () {
-    //Menú Administrador
+    //Menú para rol administrador
     Route::get('/admin', [MenuController::class, 'admin'])->name('admin');
-    //Menú Vendedor
+    //Menú para rol vendedor
     Route::get('/seller', [MenuController::class, 'seller'])->name('seller');
-    //Menú Invitado
+    //Menú para rol invitado
     Route::get('/guest', [MenuController::class, 'guest'])->name('guest');
 
     Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');
