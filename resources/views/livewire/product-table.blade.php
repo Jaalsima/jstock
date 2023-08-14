@@ -11,7 +11,8 @@
         </div>
 
         <div class="flex ml-4">
-            <input type="text" wire:model="search"
+            <!-- Este input de búsqueda puede tener otros modificadores como 'debounce.1s' o 'defer' -->
+            <input type="text" wire:model.lazy="search"
                 class="w-1/4 mr-4 bg-white border-none rounded-lg focus:ring-gray-400" placeholder="Buscar...">
             <livewire:create-product />
         </div>
@@ -58,6 +59,7 @@
                             @endif
 
                         </th>
+                       
                         <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('description')">
                             Descripción
                             @if ($sort == 'description')
@@ -74,6 +76,7 @@
                         <th scope="col" class="px-6 py-3">
                             Marca
                         </th>
+                      
                         <th scope="col" class="px-6 py-3">
                             Categoría
                         </th>
@@ -155,7 +158,7 @@
                         </tr>
                         @if ($open)
                             <div class="fixed inset-0 flex items-center justify-center">
-                                <div class="absolute inset-0 bg-gray-300 opacity-100 modal-overlay"></div>
+                                <div class="absolute inset-0 bg-black opacity-10 modal-overlay"></div>
 
                                 <div
                                     class="z-50 w-11/12 mx-auto overflow-y-auto bg-white border border-red-500 rounded-xl modal-container md:max-w-md">
