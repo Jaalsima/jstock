@@ -1,5 +1,3 @@
 <x-app-layout>
-    @can('admin')
-        <div class="text-white">Hola</div>
-    @endcan
+    <livewire:admin-panel />
 </x-app-layout>

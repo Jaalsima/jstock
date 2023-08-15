@@ -76,7 +76,6 @@
                         <th scope="col" class="px-6 py-3">
                             Marca
                         </th>
-
                         <th scope="col" class="px-6 py-3">
                             Categoría
                         </th>
@@ -98,6 +97,7 @@
                         <th scope="col" class="px-6 py-3">
                             Acciones
                         </th>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -116,7 +116,6 @@
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $product->id }}
                             </th>
-
                             <td class="px-6 py-4 dark:text-lg">{{ $product->name }}</td>
                             <td class="px-6 py-4 dark:text-lg">{{ $product->description }}</td>
                             <td class="px-6 py-4 dark:text-lg">{{ $product->brand->name }}</td>

@@ -16,11 +16,16 @@ return new class extends Migration
 
             $table->unsignedBigInteger('brand_id');
             $table->unsignedBigInteger('category_id');
-            
-            $table->string('name');            
+
+            $table->string('name', 50);
             $table->text('description')->nullable();
+            $table->integer('quantity')->default(0);
+            $table->string('measurement unit')->default('unidad');
             $table->decimal('purchase_price', 8, 2);
             $table->decimal('selling_price', 8, 2);
+            $table->string('slug');
+            $table->date('expiration');
+            $table->text('observations');
             $table->string('status');
             $table->string('image')->nullable();
             $table->timestamps();

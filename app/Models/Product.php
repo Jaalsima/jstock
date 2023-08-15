@@ -16,6 +16,9 @@ class Product extends Model
         'description',
         'purchase_price',
         'selling_price',
+        'slug',
+        'expiration',
+        'observations',
         'status',
         'image',
     ];

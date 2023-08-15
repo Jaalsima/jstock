@@ -39,6 +39,7 @@
                 </div>
                 <x-input-error for="image" />
 
+
                 <x-label value="Nombre" class="text-gray-700" />
                 <x-input class="w-full" wire:model.debounce="name" />
                 <x-input-error for="name" />

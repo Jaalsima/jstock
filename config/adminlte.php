@@ -321,15 +321,34 @@ return [
         // ],
 
         ['header' => 'Opciones'],
+
         [
-            'text' => 'Perfil',
+            'text' => 'Inicio',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fas fa-home',
         ],
         [
             'text' => 'Usuarios',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-users',
+        ],
+
+        [
+            'text' => 'Productos',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-shopping-bag',
+            'submenu' => [
+                [
+                    'text' => 'Categorías',
+                    'url'  => 'admin/settings',
+                    'icon' => 'fas fa-list-ul'
+                ],
+                [
+                    'text' => 'Marcas',
+                    'url'  => 'admin/settings',
+                    'icon' => 'fas fa-tags'
+                ]
+            ]
         ],
 
         [
@@ -339,9 +358,15 @@ return [
         ],
 
         [
+            'text' => 'Clientes',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-handshake',
+        ],
+
+        [
             'text' => 'Movimientos',
             'url'  => 'admin/settings',
-            'icon' => 'fas fa-comment-dollar',
+            'icon' => 'fas fa-exchange-alt',
             'submenu' => [
                 [
                     'text' => 'Compras',
