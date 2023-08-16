@@ -1,3 +1,3 @@
 <x-app-layout>
-    <livewire:admin-panel />
+    Dashboard
 </x-app-layout>

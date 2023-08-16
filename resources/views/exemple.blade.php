@@ -1,7 +1,5 @@
-<div class="h-screen p-4 overflow-auto" style="width:196vh; height: 92vh">
-    {{-- Success is as dangerous as failure. --}}
+{{-- <div class="h-screen p-4 overflow-auto" style="width:196vh; height: 92vh">
 
-    {{-- Alertas puntos críticos del inventario --}}
 
     <div class="flex justify-around w-full p-4 mx-auto h-1/5">
         <div class="w-full h-full p-4 mx-2 bg-green-300 rounded-lg">Item</div>
@@ -9,8 +7,6 @@
         <div class="w-full h-full p-4 mx-2 bg-orange-300 rounded-lg">Item</div>
         <div class="w-full h-full p-4 mx-2 bg-red-300 rounded-lg">Item</div>
     </div>
-
-    {{-- Tabla de especificación de puntos críticos del inventario --}}
 
     <div class="my-6 bg-yellow-100">
         <table class="mx-auto bg-red-500">
@@ -39,10 +35,9 @@
         </table>
     </div>
 
-    {{-- Información de ventas en rangos de fecha por usuario --}}
 
     <div class="flex bg-gray-300">
         <div></div>
         <div></div>
     </div>
-</div>
+</div> --}}

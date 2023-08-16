@@ -1,5 +1,6 @@
-<nav x-data="{ open: false }" class="bg-white border-b shadow-lg dark:bg-gray-800 shadow-gray-400 dark:border-gray-700 mb-4">
-<!-- Primary Navigation Menu -->
+<nav x-data="{ open: false }"
+    class="bg-white border-b shadow-lg dark:bg-gray-800 shadow-gray-400 dark:border-gray-700 mb-4">
+    <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto sm:px-6 lg:px-8">
 
 
@@ -14,38 +15,34 @@
 
             <div class="flex justify-center mx-auto my-4 text-lg">
                 <!-- Navigation Links -->
-                <div class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
-                    <x-nav-link
-                    class="px-3"
-                     href="{{ route('home') }}" :active="request()->routeIs('home')">
+                <div
+                    class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                    <x-nav-link class="px-3" href="{{ route('home') }}" :active="request()->routeIs('home')">
                         {{ __('Inicio') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
-                <x-nav-link
-                class="px-3"
-                        href="{{ route('services') }}" :active="request()->routeIs('services')">
+                <div
+                    class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                    <x-nav-link class="px-3" href="{{ route('services') }}" :active="request()->routeIs('services')">
                         {{ __('Servicios') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
-                    
-                <x-nav-link
-                class="px-3"
-                        href="{{ route('blog') }}" :active="request()->routeIs('blog')">
+                <div
+                    class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+
+                    <x-nav-link class="px-3" href="{{ route('blog') }}" :active="request()->routeIs('blog')">
                         {{ __('Blog') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">                    <x-nav-link
-                class="px-3"
-                        href="{{ route('about') }}" :active="request()->routeIs('about')">
+                <div
+                    class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                    <x-nav-link class="px-3" href="{{ route('about') }}" :active="request()->routeIs('about')">
                         {{ __('Nosotros') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
-                    <x-nav-link
-                    class="px-3"
-                        href="{{ route('contact') }}" :active="request()->routeIs('contact')">
+                <div
+                    class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                    <x-nav-link class="px-3" href="{{ route('contact') }}" :active="request()->routeIs('contact')">
                         {{ __('Contáctanos') }}
 
                     </x-nav-link>
@@ -80,22 +77,22 @@
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-        <x-responsive-nav-link class="text-gray-500" href="{{ route('services') }}" :active="request()->routeIs('services')">
+            <x-responsive-nav-link class="text-gray-500" href="{{ route('services') }}" :active="request()->routeIs('services')">
                 {{ __('Servicios') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-        <x-responsive-nav-link href="{{ route('blog') }}" :active="request()->routeIs('blog')">
+            <x-responsive-nav-link href="{{ route('blog') }}" :active="request()->routeIs('blog')">
                 {{ __('Blog') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-        <x-responsive-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">
+            <x-responsive-nav-link href="{{ route('about') }}" :active="request()->routeIs('about')">
                 {{ __('Nosotros') }}
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-        <x-responsive-nav-link href="{{ route('contact') }}" :active="request()->routeIs('contact')">
+            <x-responsive-nav-link href="{{ route('contact') }}" :active="request()->routeIs('contact')">
                 {{ __('Contáctanos') }}
             </x-responsive-nav-link>
         </div>

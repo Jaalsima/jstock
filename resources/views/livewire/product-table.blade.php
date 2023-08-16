@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <div class="flex ml-4">
+        <div class="flex">
             <!-- Este input de búsqueda puede tener otros modificadores como 'debounce.1s' o 'defer' -->
             <input type="text" wire:model.lazy="search"
                 class="w-1/4 mr-4 bg-white border-none rounded-lg focus:ring-gray-400" placeholder="Buscar...">

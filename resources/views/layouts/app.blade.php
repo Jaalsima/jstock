@@ -9,13 +9,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="
-https://cdn.jsdelivr.net/npm/sweetalert2@11.7.22/dist/sweetalert2.min.css
-" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.22/dist/sweetalert2.min.css" rel="stylesheet">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         crossorigin="anonymous">
-
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -27,29 +24,31 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.22/dist/sweetalert2.min.css
 <body class="font-sans antialiased">
     <x-banner />
 
-    <div class="min-h-screen bg-gray-100 dark:bg-gray-700">
-        @livewire('navigation-menu')
+    <div class="h-screen overflow-hidden bg-gray-100 dark:bg-gray-700">
+        <livewire:navigation-menu />
 
-        <!-- Page Heading -->
-        @if (isset($header))
-            <header class="bg-white shadow-md dark:bg-gray-800 shadow-gray-400 dark:shadow-gray-600">
-                <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-        @endif
+        <div class="flex dark:bg-gray-700 " style="height: 93vh;">
+            <x-sidebar />
+            @if (isset($header))
+                <header class="bg-white shadow-md dark:bg-gray-800 shadow-gray-400 dark:shadow-gray-600">
+                    <div class="px-4 py-6">
+                        {{ $header }}
+                    </div>
+                </header>
+            @endif
 
-        <!-- Page Content -->
-        <main class="mx-4">
-            {{ $slot }}
-        </main>
+            <main class="p-2 overflow-y-scroll lg:w-full">
+                {{ $slot }}
+            </main>
+
+        </div>
+    </div>
     </div>
 
     @stack('modals')
 
     @livewireScripts
-    <script src="
-            https://cdn.jsdelivr.net/npm/sweetalert2@11.7.22/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.22/dist/sweetalert2.all.min.js"></script>
     <script>
         Livewire.on('alert', function(message) {
             Swal.fire(
@@ -60,5 +59,3 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.22/dist/sweetalert2.min.css
         });
     </script>
 </body>
-
-</html>

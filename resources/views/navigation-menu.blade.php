@@ -1,5 +1,4 @@
-<nav x-data="{ open: false }"
-class="bg-white border-b shadow-lg dark:bg-gray-800 shadow-gray-400 dark:border-gray-700">
+<nav x-data="{ open: false }" class="bg-white border-b shadow-lg dark:bg-gray-800 shadow-gray-400 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto sm:px-6 lg:px-8">
 
@@ -13,27 +12,32 @@ class="bg-white border-b shadow-lg dark:bg-gray-800 shadow-gray-400 dark:border-
             </div>
             <div class="flex justify-center mx-auto my-4 text-lg">
                 <!-- Navigation Links -->
-                <div class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                <div
+                    class="hidden mx-3 border border-white lg:-my-px lg:flex lg:justify-center dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
                     <x-nav-link class="px-3" href="{{ route('product-table') }}" :active="request()->routeIs('product-table')">
                         {{ __('Productos') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                <div
+                    class="hidden mx-3 border border-white lg:-my-px lg:flex lg:justify-center dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
                     <x-nav-link class="px-3" href="{{ route('products.create') }}" :active="request()->routeIs('products.create')">
                         {{ __('Crear Producto') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                <div
+                    class="hidden mx-3 border border-white lg:-my-px lg:flex lg:justify-center dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
                     <x-nav-link class="px-3" href="{{ route('blog') }}" :active="request()->routeIs('blog')">
                         {{ __('Blog') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                <div
+                    class="hidden mx-3 border border-white lg:-my-px lg:flex lg:justify-center dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
                     <x-nav-link class="px-3" href="{{ route('about') }}" :active="request()->routeIs('about')">
                         {{ __('Nosotros') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                <div
+                    class="hidden mx-3 border border-white lg:-my-px lg:flex lg:justify-center dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
                     <x-nav-link class="px-3" href="{{ route('contact') }}" :active="request()->routeIs('contact')">
                         {{ __('Contáctanos') }}
 
@@ -98,18 +102,19 @@ class="bg-white border-b shadow-lg dark:bg-gray-800 shadow-gray-400 dark:border-
                 @endif
 
                 <!-- Settings Dropdown -->
-                <div class="relative ml-3">
+                <div class="relative hidden ml-3">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                             @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
-                            <div class="flex">
+                                <div class="flex">
                                     <div class="my-auto mr-3">
                                         {{ Auth::user()->name }}
                                     </div>
                                     <button
                                         class="flex text-sm transition border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300">
                                         <img class="object-cover w-8 h-8 rounded-full"
-                                            src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" />
+                                            src="{{ Auth::user()->profile_photo_url }}"
+                                            alt="{{ Auth::user()->name }}" />
                                     </button>
                                 </div>
                             @else
@@ -160,7 +165,7 @@ class="bg-white border-b shadow-lg dark:bg-gray-800 shadow-gray-400 dark:border-
             </div>
 
             <!-- Hamburger -->
-            <div class="flex items-center -mr-2 sm:hidden">
+            <div class="flex items-center -mr-2 md:hidden">
                 <button @click="open = ! open"
                     class="inline-flex items-center justify-center p-2 text-gray-400 transition duration-150 ease-in-out rounded-md dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400">
                     <svg class="w-6 h-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
