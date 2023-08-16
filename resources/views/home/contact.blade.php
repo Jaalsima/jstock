@@ -5,7 +5,7 @@
 
     <div class="flex flex-col justify-between min-h-screen">
         <livewire:home-navbar />
-        contaco
+        contacto
         <x-my-footer />
     </div>
 </x-home-layout>

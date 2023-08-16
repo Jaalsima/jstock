@@ -13,7 +13,7 @@
                         <h1 class="text-7xl font-bold"><span class="text-red-800">Qu</span>iénes somos</h1>
                         <p class="text-3xl font-semibold">La solución a todos tus problemas</p>
                     </div>
-                    <div class="flex text-justify w-full ">
+                    <div class="flex text-justify w-full">
                         <div class="relative w-2/3 mr-8 h-64 group">
                             <div class="bg-gray-400 group-hover:shadow-lg group-hover:shadow-red-800 w-full h-48 mt-8 group-hover:-rotate-3 ease-in duration-300 rounded"></div>
                             <div style="margin: 0 5vh 0 6vh;" class="absolute p-8 top-2 w-3/4 bg-gray-200 h-60 rounded shadow-lg shadow-gray-400 group-hover:shadow-gray-600 ease-in duration-300">
@@ -68,15 +68,89 @@
                 </div>
             </div>
 
-            <div class="bg-red-400 w-72 h-auto  group relative text-center rounded-lg">
-                <div class="w-full h-40"><img class="w-full h-full object-cover rounded-t-lg" src="{{ asset('images/inventory/inventory1.png')}}" alt=""></div>
-                <p>holita</p>
-                <div class=" rounded-r-lg group text-white p-10 top-0 group-hover:translate-x-56 absolute group-hover:bg-gray-600 group-hover:w-full h-full ease-in duration-300">
-                    <p class="opacity-0 group-hover:opacity-100">carlos</p>
-                    <p class="opacity-0 group-hover:opacity-100">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellendus, dolorum repellat? Fugiat voluptas dignissimos autem sit delectus rem dolor ducimus, adipisci, aliquam deserunt ad corrupti magni hic odit maiores ratione?</p>
+            <div class="mx-auto w-2/3 grid grid-cols-2 gap-4 my-10">
+                <div class="flex border-2 hover:border-gray-200  border-gray-400 bg-gray-200 p-3 rounded-lg my-3 hover:shadow-lg hover:shadow-gray-600">
+                    <!-- Card Image-->
+                    <div class="flex-shrink-0 hidden md:block mt-2 border-2 border-red-800 w-56 h-36 rounded-lg">
+                        <img class="rounded-lg w-full h-full object-cover" src="{{asset('images/inventory/inventory1.png')}}">
+                    </div>
+                    <!-- Card Body-->
+                    <div class="md:ml-6">
+                        <!--Card Heading -->
+                        <div>
+                           <h3 class="text-2xl text-gray-800 font-semibold">This is a heading of your well written blog post</h3>
+                        </div>
+                        <!--Card Excerpt-->
+                        <div class="text-gray-600 my-2">
+                          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit qui error ad, pariatur accusantium earum sunt commodi sapiente ea autem eligendi iure aliquam explicabo, nobis delectus minus eius perferendis quia...
+                        </div>
+                        <!-- Read More Button-->
+                    </div>
                 </div>
+    
+                <div class="flex border-2 hover:border-gray-200 border-gray-400 bg-gray-200 p-3 rounded-lg my-3 hover:shadow-lg hover:shadow-gray-600">
+                    <!-- Card Image-->
+                    <div class="flex-shrink-0 hidden md:block mt-2 border-2 border-red-800 w-56 h-36 rounded-lg">
+                        <img class="rounded-lg w-full h-full object-cover" src="{{asset('images/inventory/inventory1.png')}}">
+                    </div>
+                    <!-- Card Body-->
+                    <div class="md:ml-6">
+                        <!--Card Heading -->
+                        <div>
+                           <h3 class="text-2xl text-gray-800 font-semibold">This is a heading of your well written blog post</h3>
+                        </div>
+                        <!--Card Excerpt-->
+                        <div class="text-gray-600 my-2">
+                          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit qui error ad, pariatur accusantium earum sunt commodi sapiente ea autem eligendi iure aliquam explicabo, nobis delectus minus eius perferendis quia...
+                        </div>
+                        <!-- Read More Button-->
+                    </div>
+                </div>
+                <div class="flex border-2 hover:border-gray-200 border-gray-400 bg-gray-200 p-3 rounded-lg my-3 hover:shadow-lg hover:shadow-gray-600">
+                    <!-- Card Image-->
+                    <div class="flex-shrink-0 hidden md:block mt-2 border-2 border-red-800 w-56 h-36 rounded-lg">
+                        <img class="rounded-lg w-full h-full object-cover" src="{{asset('images/inventory/inventory1.png')}}">
+                    </div>
+                    <!-- Card Body-->
+                    <div class="md:ml-6">
+                        <!--Card Heading -->
+                        <div>
+                           <h3 class="text-2xl text-gray-800 font-semibold">This is a heading of your well written blog post</h3>
+                        </div>
+                        <!--Card Excerpt-->
+                        <div class="text-gray-600 my-2">
+                          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit qui error ad, pariatur accusantium earum sunt commodi sapiente ea autem eligendi iure aliquam explicabo, nobis delectus minus eius perferendis quia...
+                        </div>
+                        <!-- Read More Button-->
+                        <button class="rounded px-2 py-1.5 border border-red-600 shadow bg-red-800 text-white mr-3 my-2 hover:bg-red-600">Read More</button>
+                    </div>
+                </div>
+    
+                <div class="flex border-2 hover:border-gray-200 border-gray-400 bg-gray-200 p-3 rounded-lg my-3 hover:shadow-lg hover:shadow-gray-600">
+                    <!-- Card Image-->
+                    <div class="flex-shrink-0 hidden md:block mt-2 w-56 h-36 rounded-lg border-2 border-red-800">
+                        <img class="rounded-lg w-full h-full object-cover" src="{{asset('images/inventory/inventory1.png')}}">
+                    </div>
+                    <!-- Card Body-->
+                    <div class="md:ml-6">
+                        <!--Card Heading -->
+                        <div>
+                           <h3 class="text-2xl text-gray-800 font-semibold">This is a heading of your well written blog post</h3>
+                        </div>
+                        <!--Card Excerpt-->
+                        <div class="text-gray-600 my-2">
+                          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit qui error ad, pariatur accusantium earum sunt commodi sapiente ea autem eligendi iure aliquam explicabo, nobis delectus minus eius perferendis quia...
+                        </div>
+                        <!-- Read More Button-->
+                        <button class="rounded px-2 py-1.5 border border-red-600 shadow bg-red-800 text-white mr-3 my-2 hover:bg-red-600">Read More</button>
+                    </div>
+                </div>
+    
             </div>
         </div>
+
+        
+        
 
         <x-my-footer />
     </div>

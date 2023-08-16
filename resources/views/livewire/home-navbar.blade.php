@@ -1,7 +1,6 @@
-<nav x-data="{ open: false }" class="bg-white border-b shadow-lg dark:bg-gray-800 shadow-gray-400 dark:border-gray-700 mb-4">
+<nav x-data="{ open: false }" class="bg-white border-b shadow-lg dark:bg-gray-800 shadow-gray-400 dark:border-gray-700 mb-6">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto sm:px-6 lg:px-8">
-
         <div class="flex h-16">
             <!-- Logo -->
             <div class="flex items-center shrink-0">
@@ -50,8 +49,9 @@
                 </div>
 
             </div>
+
             <div class="hidden lg:-my-px lg:ml-10 lg:flex">
-                <x-login-register />
+                <x-login-register/>
             </div>
 
             <!-- Hamburger -->
