@@ -41,12 +41,20 @@
 
 
                 <x-label value="Nombre" class="text-gray-700" />
-                <x-input class="w-full" wire:model.debounce="name" />
+                <x-input class="w-full" wire:model="name" />
                 <x-input-error for="name" />
 
                 <x-label value="Descripción" class="text-gray-700" />
-                <x-input class="w-full" wire:model.debounce="description" />
+                <x-input class="w-full" wire:model="description" />
                 <x-input-error for="description" />
+
+                <x-label value="Cantidad" class="text-gray-700" />
+                <x-input class="w-full" type="number" min=0 wire:model="quantity" />
+                <x-input-error for="quantity" />
+
+                <x-label value="Unidad de medida" class="text-gray-700" />
+                <x-input class="w-full" type="text" wire:model="measurement_unit" />
+                <x-input-error for="measurement_unit" />
 
                 <!-- Dropdown para Marca -->
                 <x-label value="Marca" class="text-gray-700" />
@@ -82,9 +90,24 @@
                     <option value="">Selecciona un estado</option>
                     <option value="Disponible">Disponible</option>
                     <option value="No Disponible">No Disponible</option>
-                    <option value="En Espera">En Espera</option>
                 </select>
                 <x-input-error for="status" />
+
+                {{-- <x-label value="Caducidad" class="text-gray-700" />
+                <input x-data x-ref="expirationPicker" x-init="flatpickr($refs.expirationPicker, {
+                    enableTime: false,
+                    dateFormat: 'Y-m-d'
+                });" type="text"
+                    class="w-full rounded-md flatpickr-input" wire:model="expiration" autocomplete="off" />
+                <x-input-error for="expiration" /> --}}
+
+                <x-label value="Caducidad" class="text-gray-700" />
+                <x-input class="w-full" type="date" wire:model="expiration" />
+                <x-input-error for="expiration" />
+
+                <x-label value="Observaciones" class="text-gray-700" />
+                <x-input class="w-full" type="text" wire:model="observations" />
+                <x-input-error for="observations" />
 
                 {{-- </form> --}}
             </x-slot>

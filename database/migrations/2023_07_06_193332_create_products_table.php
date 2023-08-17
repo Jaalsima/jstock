@@ -19,14 +19,14 @@ return new class extends Migration
 
             $table->string('name', 50);
             $table->text('description')->nullable();
-            $table->integer('quantity')->default(0);
-            $table->string('measurement unit')->default('unidad');
+            $table->integer('current_stock')->default(0);
+            $table->string('measurement_unit')->default('unidad');
             $table->decimal('purchase_price', 8, 2);
             $table->decimal('selling_price', 8, 2);
             $table->string('slug');
+            $table->string('status');
             $table->date('expiration');
             $table->text('observations');
-            $table->string('status');
             $table->string('image')->nullable();
             $table->timestamps();
 

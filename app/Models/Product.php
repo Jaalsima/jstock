@@ -14,12 +14,14 @@ class Product extends Model
         'category_id',
         'name',
         'description',
+        'current_stock',
+        'measurement_unit',
         'purchase_price',
         'selling_price',
         'slug',
+        'status',
         'expiration',
         'observations',
-        'status',
         'image',
     ];
 

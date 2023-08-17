@@ -5,117 +5,67 @@
         <div class="px-8">
 
             <ul class="mt-12">
-                <li class="relative w-full mb-3 text-xl text-gray-500 rounded-md cursor-pointer group">
-                    <a href="javascript:void(0)"
-                        class="items-center hover:bg-gray-300 p-2flex focus:outline-none focus:ring-2 focus:ring-white">
-                        <i class="fa-solid fa-users"></i>
-                        <span class="text-lg "><a href="{{ route('dashboard') }}">Usuarios</a></span>
-                    </a>
-                    <div class="">
-                        <div
-                            class="absolute top-0 w-full text-center duration-300 ease-in opacity-0 group-hover:opacity-100 group-hover:top-8 group-hover:rounded-md">
-                            hola 1
-                        </div>
-                        <div
-                            class="absolute w-full text-center duration-300 ease-in opacity-0 group-hover:opacity-100 top-10 group-hover:top-14 group-hover:rounded-md">
-                            hola 2
-                        </div>
-                    </div>
-                </li>
-                <li
-                    class="flex items-center justify-between w-full p-2 mb-3 text-gray-600 rounded-lg cursor-pointer hover:bg-gray-300 hover:text-gray-500">
-                    <a href="javascript:void(0)"
-                        class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-puzzle"
-                            width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                            fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z"></path>
-                            <path
-                                d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1">
-                            </path>
-                        </svg>
-                        <span class="ml-2 text-lg">Products</span>
+                <li>
+                    <a href="{{ route('users.index') }}">
+                        <button type="button"
+                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
+                            aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
+                            <i
+                                class="flex-shrink-0 w-5 h-5 text-blue-700 transition duration-75 fa-solid fa-box-open group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>
+                            <span
+                                class="flex-1 ml-3 text-left text-blue-700 whitespace-nowrap group-hover:text-red-700">Usuarios</span>
+
+                        </button>
                     </a>
                 </li>
+
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                        aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
-                        <svg class="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900 dark:text-gray-400 dark:group-hover:text-white"
-                            aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                            viewBox="0 0 18 21">
-                            <path
-                                d="M15 12a1 1 0 0 0 .962-.726l2-7A1 1 0 0 0 17 3H3.77L3.175.745A1 1 0 0 0 2.208 0H1a1 1 0 0 0 0 2h.438l.6 2.255v.019l2 7 .746 2.986A3 3 0 1 0 9 17a2.966 2.966 0 0 0-.184-1h2.368c-.118.32-.18.659-.184 1a3 3 0 1 0 3-3H6.78l-.5-2H15Z" />
-                        </svg>
-                        <span class="flex-1 ml-3 text-left whitespace-nowrap">E-commerce</span>
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 4 4 4-4" />
-                        </svg>
+                        class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
+                        aria-controls="dropdown-products" data-collapse-toggle="dropdown-products">
+                        <i
+                            class="flex-shrink-0 w-5 h-5 text-blue-700 transition duration-75 fa-solid fa-box-open group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>
+                        <span
+                            class="flex-1 ml-3 text-left text-blue-700 whitespace-nowrap group-hover:text-red-700">Productos</span>
+                        <i class="fa-solid fa-angle-down focus:hidden" id="angleDownIcon"></i>
+                        <i class="hidden focus:block fa-solid fa-angle-up" id="angleUpIcon"></i>
                     </button>
-                    <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                    <ul id="dropdown-products" class="hidden py-2 space-y-2">
+
+                        <li>
+                            <a href="{{ route('product-table') }}"
+                                class="flex items-center w-full p-2 text-blue-700 transition duration-75 rounded-lg hover:text-red-700 pl-11 group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
+                                    class="flex-shrink-0 w-5 h-5 text-blue-700 transition duration-75 fa-solid fa-list-ul group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>Lista
+                                de productos</a>
+                        </li>
+
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Products</a>
+                                class="flex items-center w-full p-2 text-blue-700 transition duration-75 rounded-lg hover:text-red-700 pl-11 group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
+                                    class="flex-shrink-0 w-5 h-5 text-blue-700 transition duration-75 fa-solid fa-list-check group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>Categorías</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Billing</a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700">Invoice</a>
+                                class="flex items-center w-full p-2 text-blue-700 transition duration-75 rounded-lg hover:text-red-700 pl-11 group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
+                                    class="flex-shrink-0 w-5 h-5 text-blue-700 transition duration-75 fa-solid fa-tags group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>Marcas</a>
                         </li>
                     </ul>
                 </li>
 
+                <li>
+                    <button type="button"
+                        class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
+                        aria-controls="dropdown-inventory" data-collapse-toggle="dropdown-inventory">
+                        <i
+                            class="flex-shrink-0 w-5 h-5 text-blue-700 transition duration-75 fa-solid fa-layer-group group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>
+                        <span
+                            class="flex-1 ml-3 text-left text-blue-700 whitespace-nowrap group-hover:text-red-700">Inventario</span>
 
-                <li
-                    class="flex items-center justify-between w-full p-2 mb-3 text-gray-600 rounded-lg cursor-pointer hover:bg-gray-300 hover:text-gray-500">
-                    <a href="javascript:void(0)"
-                        class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-code" width="20"
-                            height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z"></path>
-                            <polyline points="7 8 3 12 7 16"></polyline>
-                            <polyline points="17 8 21 12 17 16"></polyline>
-                            <line x1="14" y1="4" x2="10" y2="20"></line>
-                        </svg>
-                        <span class="ml-2 text-lg">Deliverables</span>
-                    </a>
+                    </button>
+
                 </li>
-                <li
-                    class="flex items-center justify-between w-full p-2 mb-3 text-gray-600 rounded-lg cursor-pointer hover:bg-gray-300 hover:text-gray-500">
-                    <a href="javascript:void(0)"
-                        class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-puzzle"
-                            width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                            fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z"></path>
-                            <path
-                                d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1">
-                            </path>
-                        </svg>
-                        <span class="ml-2 text-lg">Invoices</span>
-                    </a>
-                </li>
-                <li
-                    class="flex items-center justify-between w-full p-2 mb-3 text-gray-600 rounded-lg cursor-pointer hover:bg-gray-300 hover:text-gray-500">
-                    <a href="javascript:void(0)"
-                        class="flex items-center focus:outline-none focus:ring-2 focus:ring-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-stack"
-                            width="18" height="18" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <polyline points="12 4 4 8 12 12 20 8 12 4" />
-                            <polyline points="4 12 12 16 20 12" />
-                            <polyline points="4 16 12 20 20 16" />
-                        </svg>
-                        <span class="ml-2 text-lg">Inventory</span>
-                    </a>
-                </li>
+
+
 
             </ul>
 
@@ -148,9 +98,9 @@
         <button aria-label="Close sidebar" id="closeSideBar"
             class="absolute right-0 flex items-center justify-center w-10 h-10 mt-16 -mr-10 text-white bg-gray-800 rounded-tr rounded-br shadow cursor-pointer"
             onclick="sidebarHandler(false)">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="20"
-                height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
-                stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="20" height="20"
+                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
+                stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" />
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
@@ -360,9 +310,18 @@
     <!-- Sidebar ends -->
     <!-- Remove class [ h-64 ] when adding a card block -->
 </div>
-<script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
 
-<script>
+<script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js">
+    const button = document.querySelector('[data-collapse-toggle="dropdown-products"]');
+    const angleDownIcon = document.getElementById('angleDownIcon');
+    const angleUpIcon = document.getElementById('angleUpIcon');
+
+    button.addEventListener('click', () => {
+        angleDownIcon.classList.toggle('hidden');
+        angleUpIcon.classList.toggle('hidden');
+    });
+
+
     var sideBar = document.getElementById("mobile-nav");
     var openSidebar = document.getElementById("openSideBar");
     var closeSidebar = document.getElementById("closeSideBar");
