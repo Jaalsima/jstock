@@ -11,9 +11,9 @@
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
                             <i
-                                class="flex-shrink-0 w-5 h-5 text-blue-700 transition duration-75 fa-solid fa-box-open group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>
+                                class="flex-shrink-0 w-5 h-5 text-gray-700 transition duration-75 fa-solid fa-box-open group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>
                             <span
-                                class="flex-1 ml-3 text-left text-blue-700 whitespace-nowrap group-hover:text-red-700">Usuarios</span>
+                                class="flex-1 ml-3 text-left text-gray-700 whitespace-nowrap group-hover:text-red-700">Usuarios</span>
 
                         </button>
                     </a>
@@ -24,9 +24,9 @@
                         class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
                         aria-controls="dropdown-products" data-collapse-toggle="dropdown-products">
                         <i
-                            class="flex-shrink-0 w-5 h-5 text-blue-700 transition duration-75 fa-solid fa-box-open group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>
+                            class="flex-shrink-0 w-5 h-5 text-gray-700 transition duration-75 fa-solid fa-box-open group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>
                         <span
-                            class="flex-1 ml-3 text-left text-blue-700 whitespace-nowrap group-hover:text-red-700">Productos</span>
+                            class="flex-1 ml-3 text-left text-gray-700 whitespace-nowrap group-hover:text-red-700">Productos</span>
                         <i class="fa-solid fa-angle-down focus:hidden" id="angleDownIcon"></i>
                         <i class="hidden focus:block fa-solid fa-angle-up" id="angleUpIcon"></i>
                     </button>
@@ -34,20 +34,20 @@
 
                         <li>
                             <a href="{{ route('product-table') }}"
-                                class="flex items-center w-full p-2 text-blue-700 transition duration-75 rounded-lg hover:text-red-700 pl-11 group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
-                                    class="flex-shrink-0 w-5 h-5 text-blue-700 transition duration-75 fa-solid fa-list-ul group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>Lista
+                                class="flex items-center w-full p-2 text-gray-700 transition duration-75 rounded-lg hover:text-red-700 pl-11 group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
+                                    class="flex-shrink-0 w-5 h-5 text-gray-700 transition duration-75 fa-solid fa-list-ul group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>Lista
                                 de productos</a>
                         </li>
 
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-2 text-blue-700 transition duration-75 rounded-lg hover:text-red-700 pl-11 group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
-                                    class="flex-shrink-0 w-5 h-5 text-blue-700 transition duration-75 fa-solid fa-list-check group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>Categorías</a>
+                                class="flex items-center w-full p-2 text-gray-700 transition duration-75 rounded-lg hover:text-red-700 pl-11 group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
+                                    class="flex-shrink-0 w-5 h-5 text-gray-700 transition duration-75 fa-solid fa-list-check group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>Categorías</a>
                         </li>
                         <li>
                             <a href="#"
-                                class="flex items-center w-full p-2 text-blue-700 transition duration-75 rounded-lg hover:text-red-700 pl-11 group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
-                                    class="flex-shrink-0 w-5 h-5 text-blue-700 transition duration-75 fa-solid fa-tags group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>Marcas</a>
+                                class="flex items-center w-full p-2 text-gray-700 transition duration-75 rounded-lg hover:text-red-700 pl-11 group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
+                                    class="flex-shrink-0 w-5 h-5 text-gray-700 transition duration-75 fa-solid fa-tags group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>Marcas</a>
                         </li>
                     </ul>
                 </li>
@@ -57,9 +57,9 @@
                         class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
                         aria-controls="dropdown-inventory" data-collapse-toggle="dropdown-inventory">
                         <i
-                            class="flex-shrink-0 w-5 h-5 text-blue-700 transition duration-75 fa-solid fa-layer-group group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>
+                            class="flex-shrink-0 w-5 h-5 text-gray-700 transition duration-75 fa-solid fa-layer-group group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>
                         <span
-                            class="flex-1 ml-3 text-left text-blue-700 whitespace-nowrap group-hover:text-red-700">Inventario</span>
+                            class="flex-1 ml-3 text-left text-gray-700 whitespace-nowrap group-hover:text-red-700">Inventario</span>
 
                     </button>
 
