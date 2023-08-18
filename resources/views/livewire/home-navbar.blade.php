@@ -1,5 +1,5 @@
 <nav x-data="{ open: false }"
-    class="bg-white border-b shadow-lg dark:bg-gray-800 shadow-gray-400 dark:border-gray-700 mb-4">
+    class="mb-4 bg-white border-b shadow-lg dark:bg-gray-800 shadow-gray-400 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto sm:px-6 lg:px-8">
 
@@ -16,32 +16,32 @@
             <div class="flex justify-center mx-auto my-4 text-lg">
                 <!-- Navigation Links -->
                 <div
-                    class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                    class="hidden mx-3 border border-white lg:-my-px lg:flex lg:justify-center dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
                     <x-nav-link class="px-3" href="{{ route('home') }}" :active="request()->routeIs('home')">
                         {{ __('Inicio') }}
                     </x-nav-link>
                 </div>
                 <div
-                    class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                    class="hidden mx-3 border border-white lg:-my-px lg:flex lg:justify-center dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
                     <x-nav-link class="px-3" href="{{ route('services') }}" :active="request()->routeIs('services')">
                         {{ __('Servicios') }}
                     </x-nav-link>
                 </div>
                 <div
-                    class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                    class="hidden mx-3 border border-white lg:-my-px lg:flex lg:justify-center dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
 
                     <x-nav-link class="px-3" href="{{ route('blog') }}" :active="request()->routeIs('blog')">
                         {{ __('Blog') }}
                     </x-nav-link>
                 </div>
                 <div
-                    class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                    class="hidden mx-3 border border-white lg:-my-px lg:flex lg:justify-center dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
                     <x-nav-link class="px-3" href="{{ route('about') }}" :active="request()->routeIs('about')">
                         {{ __('Nosotros') }}
                     </x-nav-link>
                 </div>
                 <div
-                    class="hidden lg:-my-px mx-3 lg:flex lg:justify-center border border-white dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                    class="hidden mx-3 border border-white lg:-my-px lg:flex lg:justify-center dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
                     <x-nav-link class="px-3" href="{{ route('contact') }}" :active="request()->routeIs('contact')">
                         {{ __('Contáctanos') }}
 
@@ -49,6 +49,7 @@
                 </div>
 
             </div>
+            <!--Botones de registro e inicio de sesión-->
             <div class="hidden lg:-my-px lg:ml-10 lg:flex">
                 <x-login-register />
             </div>

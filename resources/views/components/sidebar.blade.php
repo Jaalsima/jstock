@@ -8,12 +8,40 @@
                 <li>
                     <a href="{{ route('users.index') }}">
                         <button type="button"
-                            class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
+                            class="flex items-center w-full p-2 text-lg text-gray-700 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
                             <i
-                                class="flex-shrink-0 w-5 h-5 text-gray-700 transition duration-75 fa-solid fa-box-open group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>
+                                class="z-10 flex-shrink-0 w-5 h-5 mr-3 text-red-800 transition duration-75 group-hover:text-blue-700 fa-solid fa-users dark:text-gray-400 dark:group-hover:text-white"></i>
                             <span
-                                class="flex-1 ml-3 text-left text-gray-700 whitespace-nowrap group-hover:text-red-700">Usuarios</span>
+                                class="flex items-center w-full text-lg text-gray-700 transition duration-75 rounded-lg group hover:text-blue-700 dark:text-white dark:hover:bg-gray-700">Usuarios</span>
+
+                        </button>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <button type="button"
+                            class="flex items-center w-full p-2 text-lg text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
+                            aria-controls="dropdown-clients" data-collapse-toggle="dropdown-clients">
+                            <i
+                                class="z-10 flex-shrink-0 w-5 h-5 mr-3 text-red-800 transition duration-75 group-hover:text-blue-700 fa-solid fa-user-tie dark:text-gray-400 dark:group-hover:text-white"></i>
+                            <span
+                                class="flex items-center w-full text-lg text-gray-700 transition duration-75 rounded-lg group hover:text-blue-700 dark:text-white dark:hover:bg-gray-700">Clientes</span>
+
+                        </button>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <button type="button"
+                            class="flex items-center w-full p-2 text-lg text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
+                            aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
+                            <i
+                                class="z-10 flex-shrink-0 w-5 h-5 mr-3 text-red-800 transition duration-75 group-hover:text-blue-700 fa-solid fa-people-carry-box dark:text-gray-400 dark:group-hover:text-white"></i>
+                            <span
+                                class="flex items-center w-full text-lg text-gray-700 transition duration-75 rounded-lg group hover:text-blue-700 dark:text-white dark:hover:bg-gray-700">Proveedores</span>
 
                         </button>
                     </a>
@@ -21,49 +49,78 @@
 
                 <li>
                     <button type="button"
-                        class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
+                        class="flex items-center w-full p-2 text-lg text-gray-700 transition duration-75 rounded-lg group hover:text-blue-500 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
                         aria-controls="dropdown-products" data-collapse-toggle="dropdown-products">
                         <i
-                            class="flex-shrink-0 w-5 h-5 text-gray-700 transition duration-75 fa-solid fa-box-open group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>
-                        <span
-                            class="flex-1 ml-3 text-left text-gray-700 whitespace-nowrap group-hover:text-red-700">Productos</span>
-                        <i class="fa-solid fa-angle-down focus:hidden" id="angleDownIcon"></i>
-                        <i class="hidden focus:block fa-solid fa-angle-up" id="angleUpIcon"></i>
+                            class="z-10 flex-shrink-0 w-5 h-5 mr-3 text-red-800 transition duration-75 group-hover:text-blue-700 fa-solid fa-cubes dark:text-gray-400 dark:group-hover:text-white"></i>
+                        <span class="flex-1 text-left whitespace-nowrap ">Productos</span>
+                        <i class="fa-solid fa-angle-down focus:hidden " id="angleDownIcon"></i>
+                        <i class="hidden focus:block fa-solid fa-angle-up " id="angleUpIcon"></i>
                     </button>
-                    <ul id="dropdown-products" class="hidden py-2 space-y-2">
+                    <ul id="dropdown-products" class="hidden py-2 space-y-2 text-gray-700">
 
-                        <li>
+                        <li class="group hover:text-blue-700">
                             <a href="{{ route('product-table') }}"
-                                class="flex items-center w-full p-2 text-gray-700 transition duration-75 rounded-lg hover:text-red-700 pl-11 group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
-                                    class="flex-shrink-0 w-5 h-5 text-gray-700 transition duration-75 fa-solid fa-list-ul group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>Lista
-                                de productos</a>
+                                class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
+                                    class="flex-shrink-0 w-5 h-5 mr-3 text-red-700 transition duration-75 group-hover:text-blue-700 fa-solid fa-cubes dark:text-gray-400 dark:group-hover:text-white"></i>Productos</a>
                         </li>
 
-                        <li>
+                        <li class="group hover:text-blue-700">
                             <a href="#"
-                                class="flex items-center w-full p-2 text-gray-700 transition duration-75 rounded-lg hover:text-red-700 pl-11 group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
-                                    class="flex-shrink-0 w-5 h-5 text-gray-700 transition duration-75 fa-solid fa-list-check group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>Categorías</a>
+                                class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
+                                    class="flex-shrink-0 w-5 h-5 mr-3 text-red-700 transition duration-75 group-hover:text-blue-700 fa-solid fa-list-check dark:text-gray-400 dark:group-hover:text-white"></i>Categorías</a>
                         </li>
-                        <li>
+                        <li class="group hover:text-blue-700">
                             <a href="#"
-                                class="flex items-center w-full p-2 text-gray-700 transition duration-75 rounded-lg hover:text-red-700 pl-11 group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
-                                    class="flex-shrink-0 w-5 h-5 text-gray-700 transition duration-75 fa-solid fa-tags group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>Marcas</a>
+                                class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
+                                    class="flex-shrink-0 w-5 h-5 mr-3 text-red-700 transition duration-75 group-hover:text-blue-700 fa-solid fa-tags dark:text-gray-400 dark:group-hover:text-white"></i>Marcas</a>
                         </li>
                     </ul>
                 </li>
 
                 <li>
-                    <button type="button"
-                        class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
-                        aria-controls="dropdown-inventory" data-collapse-toggle="dropdown-inventory">
-                        <i
-                            class="flex-shrink-0 w-5 h-5 text-gray-700 transition duration-75 fa-solid fa-layer-group group-hover:text-red-700 dark:text-gray-400 dark:group-hover:text-white"></i>
-                        <span
-                            class="flex-1 ml-3 text-left text-gray-700 whitespace-nowrap group-hover:text-red-700">Inventario</span>
+                    <a href="#">
+                        <button type="button"
+                            class="flex items-center w-full p-2 text-lg text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
+                            aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
+                            <i
+                                class="z-10 flex-shrink-0 w-5 h-5 mr-3 text-red-800 transition duration-75 group-hover:text-blue-700 fa-solid fa-layer-group dark:text-gray-400 dark:group-hover:text-white"></i>
+                            <span
+                                class="flex items-center w-full text-lg text-gray-700 transition duration-75 rounded-lg group hover:text-blue-700 dark:text-white dark:hover:bg-gray-700">Inventario</span>
 
-                    </button>
+                        </button>
+                    </a>
+                </li>
 
                 </li>
+
+                <li>
+                    <button type="button"
+                        class="flex items-center w-full p-2 text-lg text-gray-700 transition duration-75 rounded-lg group hover:text-blue-700 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
+                        aria-controls="dropdown-movements" data-collapse-toggle="dropdown-movements">
+                        <i
+                            class="z-10 flex-shrink-0 w-5 h-5 mr-3 text-red-800 transition duration-75 group-hover:text-blue-700 fa-solid fa-money-bill-transfer dark:text-gray-400 dark:group-hover:text-white"></i>
+                        <span class="flex-1 text-left whitespace-nowrap ">Movimientos</span>
+                        <i class="fa-solid fa-angle-down focus:hidden " id="angleDownIcon"></i>
+                        <i class="hidden focus:block fa-solid fa-angle-up " id="angleUpIcon"></i>
+                    </button>
+                    <ul id="dropdown-movements" class="hidden py-2 space-y-2 text-gray-700">
+                        <li class="group hover:text-blue-700">
+                            <a href="#"
+                                class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
+                                    class="flex-shrink-0 w-5 h-5 mr-3 text-red-700 transition duration-75 group-hover:text-blue-700 fa-solid fa-cart-shopping dark:text-gray-400 dark:group-hover:text-white"></i>Compras</a>
+                        </li>
+
+
+                        <li class="group hover:text-blue-700">
+                            <a href="#"
+                                class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
+                                    class="flex-shrink-0 w-5 h-5 mr-3 text-red-700 transition duration-75 group-hover:text-blue-700 fa-solid fa-credit-card dark:text-gray-400 dark:group-hover:text-white"></i>Ventas</a>
+                        </li>
+                    </ul>
+                </li>
+
+
 
 
 
@@ -98,9 +155,9 @@
         <button aria-label="Close sidebar" id="closeSideBar"
             class="absolute right-0 flex items-center justify-center w-10 h-10 mt-16 -mr-10 text-white bg-gray-800 rounded-tr rounded-br shadow cursor-pointer"
             onclick="sidebarHandler(false)">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="20" height="20"
-                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" stroke-linecap="round"
-                stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-x" width="20"
+                height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" />
                 <line x1="18" y1="6" x2="6" y2="18" />
                 <line x1="6" y1="6" x2="18" y2="18" />
@@ -226,7 +283,7 @@
                                 d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                             <circle cx="12" cy="12" r="3" />
                         </svg>
-                        <span class="ml-2 text-lg">Settings</span>
+                        <span class="ml-2 text-lg">Configuración</span>
                     </a>
                 </li>
             </ul>
@@ -243,7 +300,7 @@
                     </div>
                     <input
                         class="w-full py-2 pl-10 text-lg text-gray-500 placeholder-gray-400 bg-gray-700 rounded dark:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-100"
-                        type="text" placeholder="Search" />
+                        type="text" placeholder="Buscar" />
                 </div>
             </div>
         </div>
@@ -311,7 +368,8 @@
     <!-- Remove class [ h-64 ] when adding a card block -->
 </div>
 
-<script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js">
+<script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+<script>
     const button = document.querySelector('[data-collapse-toggle="dropdown-products"]');
     const angleDownIcon = document.getElementById('angleDownIcon');
     const angleUpIcon = document.getElementById('angleUpIcon');

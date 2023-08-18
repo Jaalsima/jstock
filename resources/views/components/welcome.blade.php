@@ -1,12 +1,12 @@
 <div
-    class="p-6 lg:p-8 bg-white dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent border-b border-gray-200 dark:border-gray-700">
-    <x-application-logo class="block h-12 w-auto" />
+    class="p-6 bg-white border-b border-gray-200 lg:p-8 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent dark:border-gray-700">
+    <x-application-logo class="block w-auto h-12" />
 
     <h1 class="mt-8 text-2xl font-medium text-gray-900 dark:text-white">
         Welcome to your Jetstream application!
     </h1>
 
-    <p class="mt-6 text-gray-500 dark:text-gray-400 leading-relaxed">
+    <p class="mt-6 leading-relaxed text-gray-500 dark:text-gray-400">
         Laravel Jetstream provides a beautiful, robust starting point for your next Laravel application. Laravel is
         designed
         to help you build your application using a development environment that is simple, powerful, and enjoyable. We
@@ -17,7 +17,7 @@
     </p>
 </div>
 
-<div class="bg-gray-200 dark:bg-gray-800 bg-opacity-25 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 p-6 lg:p-8">
+<div class="grid grid-cols-1 gap-6 p-6 bg-gray-200 bg-opacity-25 dark:bg-gray-800 md:grid-cols-2 lg:gap-8 lg:p-8">
     <div>
         <div class="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -30,7 +30,7 @@
             </h2>
         </div>
 
-        <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+        <p class="mt-4 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
             Laravel has wonderful documentation covering every aspect of the framework. Whether you're new to the
             framework or have previous experience, we recommend reading all of the documentation from beginning to end.
         </p>
@@ -41,7 +41,7 @@
                 Explore the documentation
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                    class="ml-1 w-5 h-5 fill-indigo-500 dark:fill-indigo-200">
+                    class="w-5 h-5 ml-1 fill-indigo-500 dark:fill-indigo-200">
                     <path fill-rule="evenodd"
                         d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
                         clip-rule="evenodd" />
@@ -62,7 +62,7 @@
             </h2>
         </div>
 
-        <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+        <p class="mt-4 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
             Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out,
             see for yourself, and massively level up your development skills in the process.
         </p>
@@ -73,7 +73,7 @@
                 Start watching Laracasts
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                    class="ml-1 w-5 h-5 fill-indigo-500 dark:fill-indigo-200">
+                    class="w-5 h-5 ml-1 fill-indigo-500 dark:fill-indigo-200">
                     <path fill-rule="evenodd"
                         d="M5 10a.75.75 0 01.75-.75h6.638L10.23 7.29a.75.75 0 111.04-1.08l3.5 3.25a.75.75 0 010 1.08l-3.5 3.25a.75.75 0 11-1.04-1.08l2.158-1.96H5.75A.75.75 0 015 10z"
                         clip-rule="evenodd" />
@@ -94,10 +94,10 @@
             </h2>
         </div>
 
-        <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
-            Laravel Jetstream is built with Tailwind, an amazing utility first CSS framework that doesn't get in your
-            way. You'll be amazed how easily you can build and maintain fresh, modern designs with this wonderful
-            framework at your fingertips.
+        <p class="mt-4 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
+            Laravel Jetstream está construido con Tailwind, un increíble framework de CSS basado en utilidades que no se
+            interpone en tu camino. Te sorprenderá lo fácil que es construir y mantener diseños frescos y modernos con
+            esta maravillosa herramienta a tu disposición.
         </p>
     </div>
 
@@ -113,7 +113,7 @@
             </h2>
         </div>
 
-        <p class="mt-4 text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+        <p class="mt-4 text-sm leading-relaxed text-gray-500 dark:text-gray-400">
             Authentication and registration views are included with Laravel Jetstream, as well as support for user email
             verification and resetting forgotten passwords. So, you're free to get started with what matters most:
             building your application.
