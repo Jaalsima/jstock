@@ -12,16 +12,17 @@
             </div>
             <div class="flex justify-center mx-auto my-4 text-lg">
                 <!-- Navigation Links -->
-                <div
+
+                {{-- <div
                     class="hidden mx-3 border border-white lg:-my-px lg:flex lg:justify-center dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
-                    <x-nav-link class="px-3" href="{{ route('product-table') }}" :active="request()->routeIs('product-table')">
-                        {{ __('Productos') }}
+                    <x-nav-link class="px-3" href="{{ route('home') }}" :active="request()->routeIs('home')">
+                        {{ __('Inicio') }}
                     </x-nav-link>
-                </div>
+                </div> --}}
                 <div
                     class="hidden mx-3 border border-white lg:-my-px lg:flex lg:justify-center dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
-                    <x-nav-link class="px-3" href="{{ route('products.create') }}" :active="request()->routeIs('products.create')">
-                        {{ __('Crear Producto') }}
+                    <x-nav-link class="px-3" href="{{ route('services') }}" :active="request()->routeIs('services')">
+                        {{ __('Servicios') }}
                     </x-nav-link>
                 </div>
                 <div

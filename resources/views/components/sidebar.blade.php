@@ -34,12 +34,12 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{ route('users.index') }}">
                         <button type="button"
                             class="flex items-center w-full p-2 text-lg text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
                             <i
-                                class="z-10 flex-shrink-0 w-5 h-5 mr-3 text-red-800 transition duration-75 group-hover:text-blue-700 fa-solid fa-people-carry-box dark:text-gray-400 dark:group-hover:text-white"></i>
+                                class="z-10 flex-shrink-0 w-5 h-5 mr-3 text-red-800 transition duration-75 group-hover:text-blue-700 fa-solid fa-people-arrows dark:text-gray-400 dark:group-hover:text-white"></i>
                             <span
                                 class="flex items-center w-full text-lg text-gray-700 transition duration-75 rounded-lg group hover:text-blue-700 dark:text-white dark:hover:bg-gray-700">Proveedores</span>
 

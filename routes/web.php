@@ -25,8 +25,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
 
     Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');
     Route::resource('users', UserController::class);
-    Route::resource('products', ProductController::class);
-    Route::get('/product-table', ProductTable::class)->name('product-table');
+    // Route::resource('products', ProductController::class);
+    Route::get('/products', ProductTable::class)->name('product-table');
     Route::resource('suppliers', ProductController::class);
     Route::resource('purchases', ProductController::class);
     Route::resource('sales', ProductController::class);

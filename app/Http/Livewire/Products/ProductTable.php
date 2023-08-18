@@ -28,7 +28,7 @@ class ProductTable extends Component
             ->orderBy($this->sort, $this->direction)
             ->paginate(10);
 
-        return view('livewire.product-table', compact('products'));
+        return view('livewire.products.product-table', compact('products'));
     }
 
     public function order($sort)
