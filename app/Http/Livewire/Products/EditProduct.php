@@ -27,13 +27,13 @@ class EditProduct extends Component
         'product.status'            => 'required|in:Disponible,No Disponible',
         'product.expiration'        => 'nullable|date',
         'product.observations'      => 'nullable|string',
-        'product.image'             => 'required|image|max:2048',
+        // 'product.image'             => 'required|image|max:2048',
     ];
 
     public function mount(Product $product)
     {
         $this->product = $product;
-        $this->unique_input_identifier = rand();
+        $this->unique_input_identifier = 1 + rand();
         $this->brands = Brand::get(['id', 'name']);
         $this->categories = Category::get(['id', 'name']);
     }
@@ -44,7 +44,7 @@ class EditProduct extends Component
 
         $this->product->save();
         $this->reset(['open']);
-        $this->emitTo('product-table', 'render');
+        $this->emitTo('index-product', 'render');
         $this->emit('alert', '¡Producto Actualizado Exitosamente!');
     }
 

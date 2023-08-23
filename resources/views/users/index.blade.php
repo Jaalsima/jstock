@@ -2,7 +2,7 @@
     {{-- <div class="flex flex-col justify-between min-h-screen">
 
         <div class="p-6 m-4 shadow-md shadow-gray-300"> --}}
-    <livewire:users.user-table />
+    <livewire:users.index-user />
 
     {{-- <ul>
                 @foreach ($users as $key => $user)

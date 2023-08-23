@@ -42,7 +42,7 @@
                                 <img class="object-cover w-full h-full rounded-lg" src="{{ $image->temporaryUrl() }}"
                                     class="mb-4" alt="Image">
                             @else
-                                <img src="{{Storage::url($product->image)}}" alt="Imágen de Producto">
+                                <img src="{{ Storage::url($product->image) }}">
                             @endif
                         </div>
                     </label>
@@ -120,7 +120,7 @@
                 <x-input class="w-full" type="text" wire:model.lazy="product.observations" />
                 <x-input-error for="observations" />
 
-                
+
             </x-slot>
         </div>
 
@@ -130,7 +130,8 @@
                     class="mr-4 text-gray-500 border border-gray-500 shadow-lg hover:shadow-gray-400">
                     Cancelar
                 </x-secondary-button>
-                <x-secondary-button class="text-blue-500 border border-blue-500 shadow-lg hover:shadow-blue-400 disabled:opacity-25"
+                <x-secondary-button
+                    class="text-blue-500 border border-blue-500 shadow-lg hover:shadow-blue-400 disabled:opacity-25"
                     wire:click="save" wire:loading.attr="disabled">
                     Actualizar
                 </x-secondary-button>

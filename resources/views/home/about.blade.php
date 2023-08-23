@@ -6,195 +6,178 @@
     <div class="flex flex-col justify-between min-h-screen">
         <livewire:home-navbar />
 
-        <div class="bg-yellow-40 p-2 relative">
+        <div class="relative p-2 bg-yellow-40">
             {{--  --}}
-            <div class="flex flex-col m-auto text-justify p-4 w-2/3">
+            <div class="flex flex-col w-2/3 p-4 m-auto text-justify">
                 <div class="mb-10 ml-32">
-                    <h1 class="text-7xl font-bold"><span class="text-red-800">Qu</span>iénes somos</h1>
+                    <h1 class="font-bold text-7xl"><span class="text-red-800">Qu</span>iénes somos</h1>
                     <p class="text-3xl font-semibold">La solución a todos tus problemas</p>
                 </div>
-                <div class="flex text-justify w-full">
-                    <div class="relative w-2/3 mr-8 h-64 group">
+                <div class="flex w-full text-justify">
+                    <div class="relative w-2/3 h-64 mr-8 group">
                         <div
-                            class="bg-gray-400 group-hover:shadow-lg group-hover:shadow-red-800 w-full h-48 mt-8 group-hover:-rotate-3 ease-in duration-300 rounded">
+                            class="w-full h-48 mt-8 duration-300 ease-in bg-gray-400 rounded group-hover:shadow-lg group-hover:shadow-red-800 group-hover:-rotate-3">
                         </div>
                         <div style="margin: 0 5vh 0 6vh;"
-                            class="absolute p-8 top-2 w-3/4 bg-gray-200 h-60 rounded shadow-lg shadow-gray-400 group-hover:shadow-gray-600 ease-in duration-300">
+                            class="absolute w-3/4 p-8 duration-300 ease-in bg-gray-200 rounded shadow-lg top-2 h-60 shadow-gray-400 group-hover:shadow-gray-600">
                             <h1 class="text-3xl font-medium">Misión</h1>
-                            <b>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</b>
+                            <b>Nuestra misión es proporcionar un sistema de inventario JStock altamente eficiente y
+                                confiable que permita a las empresas gestionar su inventario de manera efectiva, reducir
+                                costos y aumentar la productividad.</b>
                         </div>
                     </div>
                     <div class="relative w-2/3 h-64 group">
                         <div
-                            class="bg-gray-400 group-hover:shadow-lg group-hover:shadow-red-800 w-full h-48 mt-8 group-hover:rotate-3 ease-in duration-300 rounded">
+                            class="w-full h-48 mt-8 duration-300 ease-in bg-gray-400 rounded group-hover:shadow-lg group-hover:shadow-red-800 group-hover:rotate-3">
                         </div>
                         <div style="margin: 0 5vh 0 6vh;"
-                            class="absolute p-8 top-2 w-3/4 bg-gray-200 h-60 rounded shadow-lg shadow-gray-400 group-hover:shadow-gray-600 ease-in duration-300">
+                            class="absolute w-3/4 p-8 duration-300 ease-in bg-gray-200 rounded shadow-lg top-2 h-60 shadow-gray-400 group-hover:shadow-gray-600">
                             <h1 class="text-3xl font-medium">Visión</h1>
-                            <b>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</b>
+                            <b>Nuestra visión es convertirnos en el proveedor líder de soluciones de gestión de
+                                inventario,
+                                ofreciendo un sistema JStock de vanguardia que sea reconocido a nivel global por su
+                                innovación y capacidad para impulsar el éxito empresarial.
+                                </p></b>
                         </div>
                     </div>
                 </div>
-                <div class="w-2/3 bg-gray-300 mt-16 mb-4 p-5 rounded-xl mx-auto">
-                    <p>Lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione cupiditate saepe,
-                        blanditiis magni id beatae nostrum illum corporis tenetur, consequatur impedit ut neque nesciunt
-                        eveniet odio dolorum corrupti dignissimos deserunt! ipsum dolor sit amet consectetur adipisicing
-                        elit. Mollitia assumenda nulla quo, consectetur corporis exercitationem ab consequuntur
-                        laudantium vitae voluptatibus est in quos, cumque pariatur alias dolor labore obcaecati iste.
+                <div class="w-2/3 p-5 mx-auto mt-16 mb-4 bg-gray-300 rounded-xl">
+                    <h1 class="text-3xl font-medium">Historia de JStock</h1>
+                    <p>
+                        JStock ha estado en la vanguardia de la gestión de inventario durante más de dos décadas.
+                        Fundada en el año 2000 por un grupo de expertos en logística y tecnología, nuestra empresa ha
+                        trabajado incansablemente para desarrollar y mejorar continuamente nuestro sistema de
+                        inventario.
+                    </p>
+                    <p>
+                        Durante los años, hemos colaborado con empresas de todos los tamaños, desde pequeñas empresas
+                        locales hasta corporaciones internacionales, para proporcionar soluciones de inventario que
+                        impulsen la eficiencia operativa y generen un impacto positivo en el resultado final.
+                    </p>
+                    <p>
+                        Nuestro compromiso con la innovación nos ha llevado a la creación de un sistema JStock que es
+                        altamente personalizable, escalable y fácil de usar. Nuestro equipo de desarrollo está siempre
+                        trabajando en nuevas características y mejoras para garantizar que nuestros clientes tengan
+                        acceso
+                        a la mejor tecnología de gestión de inventario disponible.
+                    </p>
+                    <p>
+                        En JStock, creemos en el poder de la gestión de inventario eficiente para transformar los
+                        negocios y mejorar la rentabilidad. Estamos emocionados de seguir siendo líderes en esta
+                        industria
+                        en constante evolución y esperamos asociarnos contigo para optimizar la gestión de tu
+                        inventario.
                     </p>
                 </div>
             </div>
 
 
-
-            {{--  --}}
-            <div class="m-auto text-justify p-4 w-1/2">
-                <div class="mb-10">
-                    <h2 class="text-3xl font-semibold text-center">Mantenimiento y reparaciones</h2>
-                </div>
-                <div class="flex">
-                    <div class="flex flex-col justify-center">
-                        <svg class="h-20 w-20 text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path
-                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h1 class="text-2xl font-mono">Fontaneria</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta.</p>
-                    </div>
-
-                    <div class="flex flex-col justify-center">
-                        <svg class="h-20 w-20 text-blue-500" width="24" height="24" viewBox="0 0 24 24"
-                            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <path d="M7 7h10v6a3 3 0 0 1 -3 3h-4a3 3 0 0 1 -3 -3v-6" />
-                            <line x1="9" y1="3" x2="9" y2="7" />
-                            <line x1="15" y1="3" x2="15" y2="7" />
-                            <path d="M12 16v2a2 2 0 0 0 2 2h3" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h1 class="text-2xl font-mono">Electricas</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta.</p>
-                    </div>
-
-                    <div class="flex flex-col justify-center">
-                        <svg class="h-20 w-20 text-blue-500" width="24" height="24" viewBox="0 0 24 24"
-                            stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" />
-                            <rect x="5" y="3" width="14" height="6" rx="2" />
-                            <path d="M19 6h1a2 2 0 0 1 2 2a5 5 0 0 1 -5 5l-5 0v2" />
-                            <rect x="10" y="15" width="4" height="6" rx="1" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h1 class="text-2xl font-mono">Pintura</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mx-auto w-2/3 grid grid-cols-2 gap-4 my-10">
+            <div class="grid w-2/3 grid-cols-2 gap-4 mx-auto my-10">
                 <div
-                    class="flex border-2 hover:border-gray-200  border-gray-400 bg-gray-200 p-3 rounded-lg my-3 hover:shadow-lg hover:shadow-gray-600">
+                    class="flex p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
                     <!-- Card Image-->
-                    <div class="flex-shrink-0 hidden md:block mt-2 border-2 border-red-800 w-56 h-36 rounded-lg">
-                        <img class="rounded-lg w-full h-full object-cover"
-                            src="{{ asset('images/inventory/inventory1.png') }}">
+                    <div class="flex-shrink-0 hidden w-56 mt-2 border-2 border-red-800 rounded-lg md:block h-36">
+                        <img class="object-cover w-full h-full rounded-lg"
+                            src="{{ asset('images/inventory/opening.png') }}">
                     </div>
                     <!-- Card Body-->
                     <div class="md:ml-6">
                         <!--Card Heading -->
                         <div>
-                            <h3 class="text-2xl text-gray-800 font-semibold">This is a heading of your well written blog
-                                post</h3>
+                            <h3 class="text-2xl font-semibold text-gray-800">Evento de Lanzamiento</h3>
                         </div>
                         <!--Card Excerpt-->
-                        <div class="text-gray-600 my-2">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit qui error ad, pariatur
-                            accusantium earum sunt commodi sapiente ea autem eligendi iure aliquam explicabo, nobis
-                            delectus minus eius perferendis quia...
+                        <div class="my-2 text-gray-600">
+                            <div class="my-2 text-gray-600">
+                                Únete a nosotros en nuestro emocionante evento de lanzamiento de JStock, donde
+                                presentaremos las últimas
+                                características y mejoras de nuestro sistema de inventario. Estaremos encantados de
+                                recibirte y discutir
+                                cómo JStock puede beneficiar a tu empresa.
+                            </div>
                         </div>
                         <!-- Read More Button-->
                     </div>
                 </div>
 
                 <div
-                    class="flex border-2 hover:border-gray-200 border-gray-400 bg-gray-200 p-3 rounded-lg my-3 hover:shadow-lg hover:shadow-gray-600">
+                    class="flex p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
                     <!-- Card Image-->
-                    <div class="flex-shrink-0 hidden md:block mt-2 border-2 border-red-800 w-56 h-36 rounded-lg">
-                        <img class="rounded-lg w-full h-full object-cover"
-                            src="{{ asset('images/inventory/inventory1.png') }}">
+                    <div class="flex-shrink-0 hidden w-56 mt-2 border-2 border-red-800 rounded-lg md:block h-36">
+                        <img class="object-cover w-full h-full rounded-lg"
+                            src="{{ asset('images/inventory/socio.jpg') }}">
                     </div>
                     <!-- Card Body-->
                     <div class="md:ml-6">
                         <!--Card Heading -->
                         <div>
-                            <h3 class="text-2xl text-gray-800 font-semibold">This is a heading of your well written blog
-                                post</h3>
+                            <h3 class="text-2xl font-semibold text-gray-800">Socio Estratégico</h3>
                         </div>
                         <!--Card Excerpt-->
-                        <div class="text-gray-600 my-2">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit qui error ad, pariatur
-                            accusantium earum sunt commodi sapiente ea autem eligendi iure aliquam explicabo, nobis
-                            delectus minus eius perferendis quia...
+                        <div class="my-2 text-gray-600">
+                            Estamos emocionados de anunciar nuestra nueva asociación estratégica con XYZ Corporation, un
+                            líder en la
+                            industria de la logística. Esta colaboración nos permitirá ofrecer soluciones de gestión de
+                            inventario aún
+                            más poderosas y personalizadas.
                         </div>
                         <!-- Read More Button-->
                     </div>
                 </div>
                 <div
-                    class="flex border-2 hover:border-gray-200 border-gray-400 bg-gray-200 p-3 rounded-lg my-3 hover:shadow-lg hover:shadow-gray-600">
+                    class="flex p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
                     <!-- Card Image-->
-                    <div class="flex-shrink-0 hidden md:block mt-2 border-2 border-red-800 w-56 h-36 rounded-lg">
-                        <img class="rounded-lg w-full h-full object-cover"
-                            src="{{ asset('images/inventory/inventory1.png') }}">
+                    <div class="flex-shrink-0 hidden w-56 mt-2 border-2 border-red-800 rounded-lg md:block h-36">
+                        <img class="object-cover w-full h-full rounded-lg"
+                            src="{{ asset('images/inventory/clients.avif') }}">
                     </div>
                     <!-- Card Body-->
                     <div class="md:ml-6">
                         <!--Card Heading -->
                         <div>
-                            <h3 class="text-2xl text-gray-800 font-semibold">This is a heading of your well written blog
-                                post</h3>
+                            <h3 class="text-2xl font-semibold text-gray-800">Reseñas de Clientes</h3>
                         </div>
                         <!--Card Excerpt-->
-                        <div class="text-gray-600 my-2">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit qui error ad, pariatur
-                            accusantium earum sunt commodi sapiente ea autem eligendi iure aliquam explicabo, nobis
-                            delectus minus eius perferendis quia...
+                        <div class="my-2 text-gray-600">
+                            Nuestros clientes adoran JStock. Aquí tienes lo que algunos de ellos dicen: "Desde que
+                            implementamos
+                            JStock, nuestra gestión de inventario se ha vuelto mucho más eficiente y nuestros costos han
+                            disminuido
+                            significativamente" - Cliente Satisfecho 1. "JStock es una herramienta esencial para
+                            cualquier empresa
+                            seria" - Cliente Satisfecho 2.
                         </div>
                         <!-- Read More Button-->
                         <button
-                            class="rounded px-2 py-1.5 border border-red-600 shadow bg-red-800 text-white mr-3 my-2 hover:bg-red-600">Read
-                            More</button>
+                            class="rounded px-2 py-1.5 border border-red-600 shadow bg-red-800 text-white mr-3 my-2 hover:bg-red-600">
+                            Leer más</button>
                     </div>
                 </div>
 
                 <div
-                    class="flex border-2 hover:border-gray-200 border-gray-400 bg-gray-200 p-3 rounded-lg my-3 hover:shadow-lg hover:shadow-gray-600">
+                    class="flex p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
                     <!-- Card Image-->
-                    <div class="flex-shrink-0 hidden md:block mt-2 w-56 h-36 rounded-lg border-2 border-red-800">
-                        <img class="rounded-lg w-full h-full object-cover"
-                            src="{{ asset('images/inventory/inventory1.png') }}">
+                    <div class="flex-shrink-0 hidden w-56 mt-2 border-2 border-red-800 rounded-lg md:block h-36">
+                        <img class="object-cover w-full h-full rounded-lg"
+                            src="{{ asset('images/inventory/promo_event.jpg') }}">
                     </div>
                     <!-- Card Body-->
                     <div class="md:ml-6">
                         <!--Card Heading -->
                         <div>
-                            <h3 class="text-2xl text-gray-800 font-semibold">This is a heading of your well written
-                                blog post</h3>
+                            <h3 class="text-2xl font-semibold text-gray-800">Campaña Promocional</h3>
                         </div>
                         <!--Card Excerpt-->
-                        <div class="text-gray-600 my-2">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit qui error ad, pariatur
-                            accusantium earum sunt commodi sapiente ea autem eligendi iure aliquam explicabo, nobis
-                            delectus minus eius perferendis quia...
+                        <div class="my-2 text-gray-600">
+                            ¡No te pierdas nuestra campaña promocional especial de verano! Obtén un 20% de descuento en
+                            la compra de nuestro sistema de gestión de inventario para PYMES "JStock" durante todo el
+                            mes de julio. Esta es tu oportunidad de mejorar la gestión de tu inventario a un precio
+                            excepcional.
                         </div>
                         <!-- Read More Button-->
                         <button
-                            class="rounded px-2 py-1.5 border border-red-600 shadow bg-red-800 text-white mr-3 my-2 hover:bg-red-600">Read
-                            More</button>
+                            class="rounded px-2 py-1.5 border border-red-600 shadow bg-red-800 text-white mr-3 my-2 hover:bg-red-600">Leer
+                            más</button>
                     </div>
                 </div>
 

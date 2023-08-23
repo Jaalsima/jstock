@@ -6,7 +6,7 @@
 
             <ul class="mt-12">
                 <li>
-                    <a href="{{ route('users.index') }}">
+                    <a href="{{ route('index-user') }} ">
                         <button type="button"
                             class="flex items-center w-full p-2 text-lg text-gray-700 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
@@ -20,7 +20,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{ route('index-user') }}">
                         <button type="button"
                             class="flex items-center w-full p-2 text-lg text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-clients" data-collapse-toggle="dropdown-clients">
@@ -34,7 +34,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('users.index') }}">
+                    <a href="{{ route('index-user') }}">
                         <button type="button"
                             class="flex items-center w-full p-2 text-lg text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
@@ -60,7 +60,7 @@
                     <ul id="dropdown-products" class="hidden py-2 space-y-2 text-gray-700">
 
                         <li class="group hover:text-blue-700">
-                            <a href="{{ route('product-table') }}"
+                            <a href="{{ route('index-product') }}"
                                 class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
                                     class="flex-shrink-0 w-5 h-5 mr-3 text-red-700 transition duration-75 group-hover:text-blue-700 fa-solid fa-cubes dark:text-gray-400 dark:group-hover:text-white"></i>Productos</a>
                         </li>

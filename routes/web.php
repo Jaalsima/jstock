@@ -1,10 +1,9 @@
 <?php
 
-use App\Http\Livewire\Products\ProductTable;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\UserController;
+use App\Http\Livewire\Products\IndexProduct;
+use App\Http\Livewire\Users\IndexUser;
 use App\Http\Controllers\Menu\MenuController;
 
 Route::get('/',         [HomeController::class, 'home'])    ->name('home');
@@ -24,10 +23,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/guest', [MenuController::class, 'guest'])->name('guest');
 
     Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');
-    Route::resource('users', UserController::class);
-    // Route::resource('products', ProductController::class);
-    Route::get('/product-table', ProductTable::class)->name('product-table');
-    Route::resource('suppliers', ProductController::class);
-    Route::resource('purchases', ProductController::class);
-    Route::resource('sales', ProductController::class);
+    Route::get('/index-user', IndexUser::class)->name('index-user');
+    Route::get('/index-product', IndexProduct::class)->name('index-product');
 });
