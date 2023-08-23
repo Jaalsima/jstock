@@ -14,7 +14,7 @@
             <!-- Este input de búsqueda puede tener otros modificadores como 'debounce.1s' o 'defer' -->
             <input type="text" wire:model.lazy="search"
                 class="w-1/4 mr-4 bg-white border-none rounded-lg focus:ring-gray-400" placeholder="Buscar...">
-            <livewire:create-product />
+            <livewire:products.create-product />
         </div>
     </div>
     <div class="relative mt-4 overflow-x-auto shadow-md sm:rounded-lg">
@@ -85,12 +85,12 @@
                         <th scope="col" class="px-6 py-3">
                             Precio de Venta
                         </th>
-                        <th scope="col" class="px-6 py-3">
+                        {{-- <th scope="col" class="px-6 py-3">
                             Creado en
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Actualizado en
-                        </th>
+                        </th> --}}
                         <th scope="col" class="px-6 py-3">
                             Estado
                         </th>
@@ -122,8 +122,8 @@
                             <td class="px-6 py-4 dark:text-lg">{{ $product->category->name }}</td>
                             <td class="px-6 py-4 ">{{ $product->purchase_price }}</td>
                             <td class="px-6 py-4 ">{{ $product->selling_price }} </td>
-                            <td class="px-6 py-4 ">{{ $product->created_at }}</td>
-                            <td class="px-6 py-4 ">{{ $product->updated_at }}</td>
+                            {{-- <td class="px-6 py-4 ">{{ $product->created_at }}</td>
+                            <td class="px-6 py-4 ">{{ $product->updated_at }}</td> --}}
                             @if ($product->status == 'Disponible')
                                 <td class="px-6 py-4 text-green-600">{{ $product->status }}</td>
                             @else
@@ -138,8 +138,13 @@
                             <td class="flex justify-around py-4 pl-2 pr-8">
                                 <div
                                     @if ($open) class="flex pointer-events-none opacity-20" @else class="flex" @endif>
-                                    @livewire('show-product', ['product' => $product], key(time() . $product->id))
-                                    @livewire('edit-product', ['product' => $product], key(time() . $product->id))
+
+                                    {{-- @livewire('products.show-product', ['product' => $product], key(time() . $product->id)) --}}
+                                    {{-- @livewire('products.edit-product', ['product' => $product], key(time() . $product->id)) --}}
+
+                                    <livewire:products.show-product :product="$product" :key="time() . $product->id" />
+                                    <livewire:products.edit-product :product="$product" :key="time() . $product->id" />
+
                                     <div class="relative inline-block text-center cursor-pointer">
                                         <a href="#" wire:click="confirmDelete({{ $product->id }})">
                                             <i

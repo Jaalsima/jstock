@@ -11,8 +11,8 @@
 
         <div class="w-1">
             <x-slot name="content">
-                {{-- <form wire:submit.prevent="add"> --}}
 
+                <!-- Imágen -->
                 <div class="relative mt-4">
                     <label
                         class="flex flex-col items-center justify-center h-48 gap-4 p-6 mx-auto bg-white border-2 border-gray-300 border-dashed rounded-lg shadow-md cursor-pointer w-72">
@@ -27,7 +27,7 @@
                         <div class="text-center">
                             <span class="font-normal text-gray-600">Agrega una imágen del producto</span>
                         </div>
-                        <input type="file" id="file" class="hidden" wire:model="image"
+                        <input type="file" class="hidden" wire:model.lazy="image"
                             id="{{ $unique_input_identifier }}">
                         <div class="absolute top-0 h-48 w-72">
                             @if ($image)
@@ -39,26 +39,29 @@
                 </div>
                 <x-input-error for="image" />
 
-
+                <!-- Nombre -->
                 <x-label value="Nombre" class="text-gray-700" />
-                <x-input class="w-full" wire:model="name" />
+                <x-input class="w-full" wire:model.lazy="name" />
                 <x-input-error for="name" />
 
+                <!-- Descripción -->
                 <x-label value="Descripción" class="text-gray-700" />
-                <x-input class="w-full" wire:model="description" />
+                <x-input class="w-full" wire:model.lazy="description" />
                 <x-input-error for="description" />
 
-                <x-label value="Cantidad" class="text-gray-700" />
-                <x-input class="w-full" type="number" min=0 wire:model="quantity" />
-                <x-input-error for="quantity" />
+                <!-- Descripción -->
+                <x-label value="Almacén" class="text-gray-700" />
+                <x-input class="w-full" type="number" min=0 wire:model.lazy="current_stock" />
+                <x-input-error for="current_stock" />
 
+                <!-- Descripción -->
                 <x-label value="Unidad de medida" class="text-gray-700" />
-                <x-input class="w-full" type="text" wire:model="measurement_unit" />
+                <x-input class="w-full" type="text" wire:model.lazy="measurement_unit" />
                 <x-input-error for="measurement_unit" />
 
                 <!-- Dropdown para Marca -->
                 <x-label value="Marca" class="text-gray-700" />
-                <select class="w-full rounded-md" wire:model="brand_id">
+                <select class="w-full rounded-md" wire:model.lazy="brand_id">
                     <option value="">Selecciona una marca</option>
                     @foreach ($brands as $brand)
                         <option value="{{ $brand->id }}">{{ $brand->name }}</option>
@@ -68,7 +71,7 @@
 
                 <!-- Dropdown para Categoría -->
                 <x-label value="Categoría" class="text-gray-700" />
-                <select class="w-full rounded-md" wire:model="category_id">
+                <select class="w-full rounded-md" wire:model.lazy="category_id">
                     <option value="">Selecciona una categoría</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -76,40 +79,35 @@
                 </select>
                 <x-input-error for="category_id" />
 
+                <!-- Precio de Compra -->
                 <x-label value="Precio de Compra" class="text-gray-700" />
-                <x-input class="w-full" type="number" min="0" wire:model="purchase_price" />
+                <x-input class="w-full" type="number" min="0" wire:model.lazy="purchase_price" />
                 <x-input-error for="purchase_price" />
 
+                <!-- Precio de Venta -->
                 <x-label value="Precio de Venta" class="text-gray-700" />
-                <x-input class="w-full" type="number" min="0" wire:model="selling_price" />
+                <x-input class="w-full" type="number" min="0" wire:model.lazy="selling_price" />
                 <x-input-error for="selling_price" />
 
                 <!-- Dropdown para Estado -->
                 <x-label value="Estado" class="text-gray-700" />
-                <select class="w-full mb-4 rounded-md" wire:model="status">
+                <select class="w-full mb-4 rounded-md" wire:model.lazy="status">
                     <option value="">Selecciona un estado</option>
                     <option value="Disponible">Disponible</option>
                     <option value="No Disponible">No Disponible</option>
                 </select>
                 <x-input-error for="status" />
 
-                {{-- <x-label value="Caducidad" class="text-gray-700" />
-                <input x-data x-ref="expirationPicker" x-init="flatpickr($refs.expirationPicker, {
-                    enableTime: false,
-                    dateFormat: 'Y-m-d'
-                });" type="text"
-                    class="w-full rounded-md flatpickr-input" wire:model="expiration" autocomplete="off" />
-                <x-input-error for="expiration" /> --}}
-
+                <!-- Caducidad -->
                 <x-label value="Caducidad" class="text-gray-700" />
-                <x-input class="w-full" type="date" wire:model="expiration" />
+                <x-input class="w-full" type="date" wire:model.lazy="expiration" />
                 <x-input-error for="expiration" />
 
+                <!-- Observaciones -->
                 <x-label value="Observaciones" class="text-gray-700" />
-                <x-input class="w-full" type="text" wire:model="observations" />
+                <x-input class="w-full" type="text" wire:model.lazy="observations" />
                 <x-input-error for="observations" />
 
-                {{-- </form> --}}
             </x-slot>
         </div>
 
