@@ -122,8 +122,7 @@
                             <td class="px-6 py-4 dark:text-lg">{{ $product->category->name }}</td>
                             <td class="px-6 py-4 ">{{ $product->purchase_price }}</td>
                             <td class="px-6 py-4 ">{{ $product->selling_price }} </td>
-                            {{-- <td class="px-6 py-4 ">{{ $product->created_at }}</td>
-                            <td class="px-6 py-4 ">{{ $product->updated_at }}</td> --}}
+                            
                             @if ($product->status == 'Disponible')
                                 <td class="px-6 py-4 text-green-600">{{ $product->status }}</td>
                             @else

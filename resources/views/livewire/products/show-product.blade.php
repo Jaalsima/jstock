@@ -19,7 +19,7 @@
         <x-slot name="content">
             <div>
                 <div class="mx-auto my-2 rounded-full w-52">
-                    <img class="object-cover rounded-full" src="{{ asset('images/jstock.png') }}" alt="product image" />
+                        <img src="{{ asset('storage/products/' . $product->image) }}" alt="{{ $product->name }}" class="w-full h-auto rounded-lg">           
                 </div>
                 <div class="px-5 pb-5">
                     <div class="mx-6">
