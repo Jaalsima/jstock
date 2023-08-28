@@ -27,17 +27,18 @@
                         <div class="text-center">
                             <span class="font-normal text-gray-600">Agrega una imágen del usuario</span>
                         </div>
-                        <input type="file" class="hidden" wire:model.lazy="image"
+                        <input type="file" class="hidden" wire:model.lazy="profile_photo_path"
                             id="{{ $unique_input_identifier }}">
                         <div class="absolute top-0 h-48 w-72">
-                            @if ($image)
-                                <img class="object-cover w-full h-full rounded-lg" src="{{ $image->temporaryUrl() }}"
-                                    class="mb-4" alt="Image">
+                            @if ($profile_photo_path)
+                                <img class="object-cover w-full h-full rounded-lg"
+                                    src="{{ $profile_photo_path->temporaryUrl() }}" class="mb-4"
+                                    alt="Foto de Usuario">
                             @endif
                         </div>
                     </label>
                 </div>
-                <x-input-error for="image" />
+                <x-input-error for="profile_photo_path" />
 
                 <!-- Documento de Identidad -->
                 <div class="mt-4">

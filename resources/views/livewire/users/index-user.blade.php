@@ -102,12 +102,10 @@
                                 </th>
                                 <td class="px-6 py-4 dark:text-lg">{{ $user->document }}</td>
                                 <td class="px-6 py-4 dark:text-lg">{{ $user->name }}</td>
-                                {{-- <td class="px-6 py-4 dark:text-lg">{{ $user->brand->name }}</td>
-                                <td class="px-6 py-4 dark:text-lg">{{ $user->category->name }}</td> --}}
                                 <td class="px-6 py-4 ">{{ $user->email }}</td>
                                 <td class="px-6 py-4 ">{{ $user->address }}</td>
                                 <td class="px-6 py-4 ">{{ $user->phone }}</td>
-                                @if ($user->status == 'Disponible')
+                                @if ($user->status == 'Activo')
                                     <td class="px-6 py-4 text-green-600">{{ $user->status }}</td>
                                 @else
                                     <td class="px-6 py-4 text-red-600">{{ $user->status }}</td>

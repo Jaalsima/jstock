@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('phone');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('slug');
             $table->string('status');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
