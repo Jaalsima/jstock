@@ -21,7 +21,8 @@ class UserSeeder extends Seeder
             'address' => 'Medellín',
             'phone' => '1584ffih',
             'password' => Hash::make('coderman'),
-            'status' => 'Disponible',
+            'status' => 'Activo',
+            'profile_photo_path' => 'users/' . fake()->image('public/storage/users', 640, 480, null, false),
         ])->assignRole('developer');
 
         User::create([
@@ -32,6 +33,7 @@ class UserSeeder extends Seeder
             'phone' => '1584ffih',
             'password' => Hash::make('password'),
             'status' => 'Disponible',
+            'profile_photo_path' => 'users/' . fake()->image('public/storage/users', 640, 480, null, false),
         ])->assignRole('admin');
 
         User::create([
@@ -41,7 +43,8 @@ class UserSeeder extends Seeder
             'address' => 'Medellín',
             'phone' => '1584ffih',
             'password' => Hash::make('password'),
-            'status' => 'Disponible',
+            'status' => 'Activo',
+            'profile_photo_path' => 'users/' . fake()->image('public/storage/users', 640, 480, null, false),
         ])->assignRole('seller');
 
         User::factory(50)->create()->each(function ($user) {

@@ -14,13 +14,13 @@
             <!-- Este input de búsqueda puede tener otros modificadores como 'debounce.1s' o 'defer' -->
             <input type="text" wire:model.lazy="search"
                 class="w-1/4 mr-4 bg-white border-none rounded-lg focus:ring-gray-400" placeholder="Buscar...">
-            <livewire:products.create-product />
+            <livewire:customers.create-customer />
         </div>
     </div>
     <div class="relative mt-4 overflow-x-auto shadow-md sm:rounded-lg">
 
-        <!-- Check if there are products before rendering the table and its header -->
-        @if ($products->count() > 0)
+        <!-- Check if there are customers before rendering the table and its header -->
+        @if ($customers->count() > 0)
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead
                     class="text-sm text-center text-gray-100 uppercase bg-gray-400 dark:bg-gray-700 dark:text-gray-400">
@@ -101,7 +101,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($products as $product)
+                    @forelse ($customers as $customer)
                         <tr
                             class="text-center bg-white border-b text-md dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
 
@@ -114,22 +114,22 @@
                             </td>
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $product->id }}
+                                {{ $customer->id }}
                             </th>
-                            <td class="px-6 py-4 dark:text-lg">{{ $product->name }}</td>
-                            <td class="px-6 py-4 dark:text-lg">{{ $product->description }}</td>
-                            <td class="px-6 py-4 dark:text-lg">{{ $product->brand->name }}</td>
-                            <td class="px-6 py-4 dark:text-lg">{{ $product->category->name }}</td>
-                            <td class="px-6 py-4 ">{{ $product->purchase_price }}</td>
-                            <td class="px-6 py-4 ">{{ $product->selling_price }} </td>
-                            
-                            @if ($product->status == 'Disponible')
-                                <td class="px-6 py-4 text-green-600">{{ $product->status }}</td>
+                            <td class="px-6 py-4 dark:text-lg">{{ $customer->name }}</td>
+                            <td class="px-6 py-4 dark:text-lg">{{ $customer->description }}</td>
+                            <td class="px-6 py-4 dark:text-lg">{{ $customer->brand->name }}</td>
+                            <td class="px-6 py-4 dark:text-lg">{{ $customer->category->name }}</td>
+                            <td class="px-6 py-4 ">{{ $customer->purchase_price }}</td>
+                            <td class="px-6 py-4 ">{{ $customer->selling_price }} </td>
+
+                            @if ($customer->status == 'Disponible')
+                                <td class="px-6 py-4 text-green-600">{{ $customer->status }}</td>
                             @else
-                                @if ($product->status == 'No Disponible')
-                                    <td class="px-6 py-4 text-red-600">{{ $product->status }}</td>
+                                @if ($customer->status == 'No Disponible')
+                                    <td class="px-6 py-4 text-red-600">{{ $customer->status }}</td>
                                 @else
-                                    <td class="px-6 py-4 text-blue-600">{{ $product->status }}</td>
+                                    <td class="px-6 py-4 text-blue-600">{{ $customer->status }}</td>
                                 @endif
                             @endif
 
@@ -138,14 +138,14 @@
                                 <div
                                     @if ($open) class="flex pointer-events-none opacity-20" @else class="flex" @endif>
 
-                                    {{-- @livewire('products.show-product', ['product' => $product], key(time() . $product->id)) --}}
-                                    {{-- @livewire('products.edit-product', ['product' => $product], key(time() . $product->id)) --}}
+                                    {{-- @livewire('customers.show-customer', ['customer' => $customer], key(time() . $customer->id)) --}}
+                                    {{-- @livewire('customers.edit-customer', ['customer' => $customer], key(time() . $customer->id)) --}}
 
-                                    <livewire:products.show-product :product="$product" :key="time() . $product->id" />
-                                    <livewire:products.edit-product :product="$product" :key="time() . $product->id" />
+                                    <livewire:customers.show-customer :customer="$customer" :key="time() . $customer->id" />
+                                    <livewire:customers.edit-customer :customer="$customer" :key="time() . $customer->id" />
 
                                     <div class="relative inline-block text-center cursor-pointer">
-                                        <a href="#" wire:click="confirmDelete({{ $product->id }})">
+                                        <a href="#" wire:click="confirmDelete({{ $customer->id }})">
                                             <i
                                                 class="p-1 text-red-400 rounded hover:text-white hover:bg-red-400 fa-solid fa-trash"></i>
                                             <div
@@ -177,7 +177,7 @@
                                     <div class="px-6 py-4 text-left modal-content">
 
                                         <p class="text-xl text-gray-500">¿Estás seguro de que deseas eliminar este
-                                            producto?
+                                            cliente?
                                         </p>
                                         <div class="mt-4 text-center">
                                             <x-secondary-button wire:click="$set('open', false)"
@@ -195,21 +195,21 @@
                         @endif
 
                     @empty
-                        <!-- No products message -->
+                        <!-- No customers message -->
                         <tr>
-                            <td colspan="12" class="text-3xl text-center dark:text-gray-200">No hay productos
+                            <td colspan="12" class="text-3xl text-center dark:text-gray-200">No hay clientes
                                 Disponibles</td>
                         </tr>
                     @endforelse
                 @else
-                    <!-- No products message -->
-                    <h1 class="text-3xl text-center dark:text-gray-200">No hay productos disponibles</h1>
+                    <!-- No customers message -->
+                    <h1 class="text-3xl text-center dark:text-gray-200">No hay clientes disponibles</h1>
         @endif
         </tbody>
         </table>
 
 
-        <div class="px-3 py-1">{{ $products->links() }}</div>
+        <div class="px-3 py-1">{{ $customers->links() }}</div>
 
     </div>
 </div>

@@ -15,7 +15,7 @@
                 <!-- Este input de búsqueda puede tener otros modificadores como 'debounce.1s' o 'defer' -->
                 <input type="text" wire:model.lazy="search"
                     class="w-1/4 mr-4 bg-white border-none rounded-lg focus:ring-gray-400" placeholder="Buscar...">
-                {{-- <livewire:create-user /> --}}
+                <livewire:users.create-user />
             </div>
         </div>
         <div class="relative mt-4 overflow-x-auto shadow-md sm:rounded-lg">

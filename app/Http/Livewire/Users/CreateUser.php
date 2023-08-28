@@ -1,42 +1,35 @@
 <?php
 
-namespace App\Http\Livewire\Products;
+namespace App\Http\Livewire\users;
 
 use Livewire\Component;
 use Illuminate\Support\Str;
-use App\Models\Product;
-use App\Models\Category;
-use App\Models\Brand;
+use App\Models\User;
 use Livewire\WithFileUploads;
 
-class CreateProduct extends Component
+class CreateUser extends Component
 {
     use WithFileUploads;
 
-    public$brands, $categories, $product, $unique_input_identifier;
-    public  $brand_id, $category_id, $name, $description, $current_stock, $measurement_unit, $purchase_price, $selling_price, $slug, $status, $expiration, $observations,  $image;
+    public $user, $unique_input_identifier;
+    public $document, $name, $email, $address, $phone, $password, $slug, $status, $profile_photo_path;
     public $open =false;
 
     protected $rules = [
-        'brand_id'          => 'required|exists:brands,id',
-        'category_id'       => 'required|exists:categories,id',
-        'name'              => 'required|max:50',
-        'description'       => 'nullable|string',
-        'current_stock'     => 'required|integer|min:0',
-        'measurement_unit'  => 'nullable|string',
-        'purchase_price'    => 'required|numeric|min:0',
-        'selling_price'     => 'required|numeric|min:0',
-        'status'            => 'required|in:Disponible,No Disponible',
-        'expiration'        => 'nullable|date',
-        'observations'      => 'nullable|string',
-        'image'             => 'required|image|max:2048',
+        'document'           => 'required|string|max:50',
+        'name'               => 'required|string|max:50',
+        'email'              => 'required|email|unique:users|max:50',
+        'address'            => 'nullable|string|max:50',
+        'phone'              => 'nullable|string|max:20',
+        'password'           => 'required|string|min:8|max:50',
+        'status'             => 'required|in:Activo,Inactivo',
+        'profile_photo_url'  => 'required|image|max:2048',
     ];
+    
 
     public function mount()
     {
-        $this->brands = Brand::get(['id', 'name']);
-        $this->categories = Category::get(['id', 'name']);
-        $this->product = Product::all();
+        $this->user = User::all();
         $this->unique_input_identifier = rand();
     }
     public function updated($propertyName){
@@ -47,33 +40,29 @@ class CreateProduct extends Component
 
         $this->validate();
 
-        $image_url = $this->image->store('products');
+        $image_url = $this->profile_photo_path->store('users');
 
-        Product::create([
-            'brand_id'           => $this->brand_id,
-            'category_id'        => $this->category_id,
+        User::create([
+            'document'           => $this->document,
             $name = 'name'       => $this->name,
-            'description'        => $this->description,
-            'current_stock'      => $this->current_stock,
-            'measurement_unit'   => $this->measurement_unit,
-            'purchase_price'     => $this->purchase_price,
-            'selling_price'      => $this->selling_price,
+            'email'              => $this->email,
+            'address'            => $this->address,
+            'phone'              => $this->phone,
+            'password'           => $this->password,
             'slug'               => Str::slug($name),
             'status'             => $this->status,
-            'expiration'         => $this->expiration,
-            'observations'       => $this->observations,
-            'image'              => $image_url,
+            'profile_photo_path' => $image_url,
         ]);
 
-        $this->reset(['open', 'brand_id', 'category_id', 'name', 'description', 'current_stock', 'measurement_unit', 'purchase_price', 'selling_price', 'slug', 'status', 'expiration', 'observations','image']);
+        $this->reset(['open', 'document', 'name', 'email', 'address', 'phone', 'password', 'slug', 'status', 'profile_photo_path']);
         $this->unique_input_identifier = rand();
-        $this->emitTo('products.index-product', 'render');
-        $this->emit('alert', '¡Producto Creado Exitosamente!');
+        $this->emitTo('users.index-user', 'render');
+        $this->emit('alert', '¡Usuario Creado Exitosamente!');
 
     }
 
     public function render()
     {
-        return view('livewire.products.create-product');
+        return view('livewire.users.create-user');
     }
 }

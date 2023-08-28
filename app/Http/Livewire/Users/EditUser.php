@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Livewire\Products;
+namespace App\Http\Livewire\Users;
 
 use Livewire\Component;
 use Illuminate\Support\Str;
-use App\Models\Product;
+use App\Models\User;
 use App\Models\Category;
 use App\Models\Brand;
 use Livewire\WithFileUploads;
 
-class EditProduct extends Component
+class EditUser extends Component
 {
     use WithFileUploads;
 
-    public $product, $brands, $categories;
-    public $name, $description, $current_stock, $measurement_unit, $purchase_price, $selling_price, $status, $expiration, $observations, $image;
+    public $user, $brands, $categories;
+    public $name, $description, $current_stock, $measurement_unit, $purchase_price, $selling_price, $status, $expiration, $observations, $profile_photo_path;
     public $open = false;
 
     protected $rules = [
@@ -27,23 +27,23 @@ class EditProduct extends Component
         'status'            => 'required|in:Disponible,No Disponible',
         'expiration'        => 'nullable|date',
         'observations'      => 'nullable|string',
-        'image'             => 'nullable|image|max:2048', // Opcional: Puedes permitir actualizar la imagen
+        'profile_photo_path'             => 'nullable|profile_photo_path|max:2048', // Opcional: Puedes permitir actualizar la imagen
     ];
 
-    public function mount(Product $product)
+    public function mount(User $user)
     {
-        $this->product = $product;
+        $this->user = $user;
         $this->brands = Brand::get(['id', 'name']);
         $this->categories = Category::get(['id', 'name']);
-        $this->name = $product->name;
-        $this->description = $product->description;
-        $this->current_stock = $product->current_stock;
-        $this->measurement_unit = $product->measurement_unit;
-        $this->purchase_price = $product->purchase_price;
-        $this->selling_price = $product->selling_price;
-        $this->status = $product->status;
-        $this->expiration = $product->expiration;
-        $this->observations = $product->observations;
+        $this->name = $user->name;
+        $this->description = $user->description;
+        $this->current_stock = $user->current_stock;
+        $this->measurement_unit = $user->measurement_unit;
+        $this->purchase_price = $user->purchase_price;
+        $this->selling_price = $user->selling_price;
+        $this->status = $user->status;
+        $this->expiration = $user->expiration;
+        $this->observations = $user->observations;
     }
 
     public function updated($propertyName)
@@ -55,8 +55,8 @@ class EditProduct extends Component
     {
         $this->validate();
 
-        // Actualizar el producto en la base de datos
-        $this->product->update([
+        // Actualizar el usero en la base de datos
+        $this->user->update([
             'name' => $this->name,
             'description' => $this->description,
             'current_stock' => $this->current_stock,
@@ -68,24 +68,24 @@ class EditProduct extends Component
             'observations' => $this->observations,
         ]);
 
-        if ($this->image) {
+        if ($this->profile_photo_path) {
             // Actualizar la imagen si se ha cargado una nueva
-            $image_url = $this->image->store('products');
-            $this->product->update(['image' => $image_url]);
+            $image_url = $this->profile_photo_path->store('users');
+            $this->user->update(['profile_photo_path' => $image_url]);
         }
 
         // Cerrar el modal después de actualizar
         $this->open = false;
 
-        // Emitir un evento para que se actualice la lista de productos en la página anterior
-        $this->emitTo('products.index-product', 'render');
+        // Emitir un evento para que se actualice la lista de useros en la página anterior
+        $this->emitTo('users.index-user', 'render');
 
         // Emitir una notificación de éxito
-        $this->emit('alert', '¡Producto Actualizado Exitosamente!');
+        $this->emit('alert', '¡usero Actualizado Exitosamente!');
     }
 
     public function render()
     {
-        return view('livewire.products.edit-product');
+        return view('livewire.users.edit-user');
     }
 }

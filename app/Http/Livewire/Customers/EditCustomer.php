@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Livewire\Products;
+namespace App\Http\Livewire\Customers;
 
 use Livewire\Component;
 use Illuminate\Support\Str;
-use App\Models\Product;
+use App\Models\Customer;
 use App\Models\Category;
 use App\Models\Brand;
 use Livewire\WithFileUploads;
 
-class EditProduct extends Component
+class EditCustomer extends Component
 {
     use WithFileUploads;
 
-    public $product, $brands, $categories;
+    public $customer, $brands, $categories;
     public $name, $description, $current_stock, $measurement_unit, $purchase_price, $selling_price, $status, $expiration, $observations, $image;
     public $open = false;
 
@@ -30,20 +30,20 @@ class EditProduct extends Component
         'image'             => 'nullable|image|max:2048', // Opcional: Puedes permitir actualizar la imagen
     ];
 
-    public function mount(Product $product)
+    public function mount(Customer $customer)
     {
-        $this->product = $product;
+        $this->customer = $customer;
         $this->brands = Brand::get(['id', 'name']);
         $this->categories = Category::get(['id', 'name']);
-        $this->name = $product->name;
-        $this->description = $product->description;
-        $this->current_stock = $product->current_stock;
-        $this->measurement_unit = $product->measurement_unit;
-        $this->purchase_price = $product->purchase_price;
-        $this->selling_price = $product->selling_price;
-        $this->status = $product->status;
-        $this->expiration = $product->expiration;
-        $this->observations = $product->observations;
+        $this->name = $customer->name;
+        $this->description = $customer->description;
+        $this->current_stock = $customer->current_stock;
+        $this->measurement_unit = $customer->measurement_unit;
+        $this->purchase_price = $customer->purchase_price;
+        $this->selling_price = $customer->selling_price;
+        $this->status = $customer->status;
+        $this->expiration = $customer->expiration;
+        $this->observations = $customer->observations;
     }
 
     public function updated($propertyName)
@@ -55,8 +55,8 @@ class EditProduct extends Component
     {
         $this->validate();
 
-        // Actualizar el producto en la base de datos
-        $this->product->update([
+        // Actualizar el customero en la base de datos
+        $this->customer->update([
             'name' => $this->name,
             'description' => $this->description,
             'current_stock' => $this->current_stock,
@@ -70,22 +70,22 @@ class EditProduct extends Component
 
         if ($this->image) {
             // Actualizar la imagen si se ha cargado una nueva
-            $image_url = $this->image->store('products');
-            $this->product->update(['image' => $image_url]);
+            $image_url = $this->image->store('customers');
+            $this->customer->update(['image' => $image_url]);
         }
 
         // Cerrar el modal después de actualizar
         $this->open = false;
 
-        // Emitir un evento para que se actualice la lista de productos en la página anterior
-        $this->emitTo('products.index-product', 'render');
+        // Emitir un evento para que se actualice la lista de customeros en la página anterior
+        $this->emitTo('customers.index-customer', 'render');
 
         // Emitir una notificación de éxito
-        $this->emit('alert', '¡Producto Actualizado Exitosamente!');
+        $this->emit('alert', '¡Cliente Actualizado Exitosamente!');
     }
 
     public function render()
     {
-        return view('livewire.products.edit-product');
+        return view('livewire.customers.edit-customer');
     }
 }

@@ -6,7 +6,7 @@
 
     <x-dialog-modal wire:model="open">
         <x-slot name="title">
-            <h2 class="mt-3 text-2xl text-center">Nuevo Producto</h2>
+            <h2 class="mt-3 text-2xl text-center">Nuevo Usuario</h2>
         </x-slot>
 
         <div class="w-1">
@@ -25,7 +25,7 @@
                             </svg>
                         </div>
                         <div class="text-center">
-                            <span class="font-normal text-gray-600">Agrega una imágen del producto</span>
+                            <span class="font-normal text-gray-600">Agrega una imágen del usuario</span>
                         </div>
                         <input type="file" class="hidden" wire:model.lazy="image"
                             id="{{ $unique_input_identifier }}">
@@ -39,74 +39,52 @@
                 </div>
                 <x-input-error for="image" />
 
+                <!-- Documento de Identidad -->
+                <div class="mt-4">
+                    <x-label for="document" value="Documento de Identidad" class="text-gray-700" />
+                    <x-input id="document" class="w-full" wire:model.lazy="document" />
+                    <x-input-error for="document" />
+                </div>
+
                 <!-- Nombre -->
-                <x-label value="Nombre" class="text-gray-700" />
-                <x-input class="w-full" wire:model.lazy="name" />
-                <x-input-error for="name" />
+                <div class="mt-4">
+                    <x-label for="name" value="Nombre" class="text-gray-700" />
+                    <x-input id="name" class="w-full" wire:model.lazy="name" />
+                    <x-input-error for="name" />
+                </div>
 
-                <!-- Descripción -->
-                <x-label value="Descripción" class="text-gray-700" />
-                <x-input class="w-full" wire:model.lazy="description" />
-                <x-input-error for="description" />
+                <!-- Correo Electrónico -->
+                <div class="mt-4">
+                    <x-label for="email" value="Correo Electrónico" class="text-gray-700" />
+                    <x-input id="email" class="w-full" wire:model.lazy="email" />
+                    <x-input-error for="email" />
+                </div>
 
-                <!-- Descripción -->
-                <x-label value="Almacén" class="text-gray-700" />
-                <x-input class="w-full" type="number" min=0 wire:model.lazy="current_stock" />
-                <x-input-error for="current_stock" />
+                <!-- Dirección -->
+                <div class="mt-4">
+                    <x-label for="address" value="Dirección" class="text-gray-700" />
+                    <x-input id="address" type="text" class="w-full" wire:model.lazy="address" />
+                    <x-input-error for="address" />
+                </div>
 
-                <!-- Descripción -->
-                <x-label value="Unidad de medida" class="text-gray-700" />
-                <x-input class="w-full" type="text" wire:model.lazy="measurement_unit" />
-                <x-input-error for="measurement_unit" />
-
-                <!-- Dropdown para Marca -->
-                <x-label value="Marca" class="text-gray-700" />
-                <select class="w-full rounded-md" wire:model.lazy="brand_id">
-                    <option value="">Selecciona una marca</option>
-                    @foreach ($brands as $brand)
-                        <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                    @endforeach
-                </select>
-                <x-input-error for="brand_id" />
-
-                <!-- Dropdown para Categoría -->
-                <x-label value="Categoría" class="text-gray-700" />
-                <select class="w-full rounded-md" wire:model.lazy="category_id">
-                    <option value="">Selecciona una categoría</option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                    @endforeach
-                </select>
-                <x-input-error for="category_id" />
-
-                <!-- Precio de Compra -->
-                <x-label value="Precio de Compra" class="text-gray-700" />
-                <x-input class="w-full" type="number" min="0" wire:model.lazy="purchase_price" />
-                <x-input-error for="purchase_price" />
-
-                <!-- Precio de Venta -->
-                <x-label value="Precio de Venta" class="text-gray-700" />
-                <x-input class="w-full" type="number" min="0" wire:model.lazy="selling_price" />
-                <x-input-error for="selling_price" />
+                <!-- Teléfono -->
+                <div class="mt-4">
+                    <x-label for="phone" value="Teléfono" class="text-gray-700" />
+                    <x-input id="phone" class="w-full" type="text" wire:model.lazy="phone" />
+                    <x-input-error for="phone" />
+                </div>
 
                 <!-- Dropdown para Estado -->
-                <x-label value="Estado" class="text-gray-700" />
-                <select class="w-full mb-4 rounded-md" wire:model.lazy="status">
-                    <option value="">Selecciona un estado</option>
-                    <option value="Disponible">Disponible</option>
-                    <option value="No Disponible">No Disponible</option>
-                </select>
-                <x-input-error for="status" />
+                <div class="mt-4">
+                    <x-label for="status" value="Estado" class="text-gray-700" />
+                    <select id="status" class="w-full mb-4 rounded-md" wire:model.lazy="status">
+                        <option value="">Selecciona un estado para este usuario</option>
+                        <option value="Activo">Activo</option>
+                        <option value="Inactivo">Inactivo</option>
+                    </select>
+                    <x-input-error for="status" />
+                </div>
 
-                <!-- Caducidad -->
-                <x-label value="Caducidad" class="text-gray-700" />
-                <x-input class="w-full" type="date" wire:model.lazy="expiration" />
-                <x-input-error for="expiration" />
-
-                <!-- Observaciones -->
-                <x-label value="Observaciones" class="text-gray-700" />
-                <x-input class="w-full" type="text" wire:model.lazy="observations" />
-                <x-input-error for="observations" />
 
             </x-slot>
         </div>

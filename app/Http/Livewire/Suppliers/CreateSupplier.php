@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Livewire\Products;
+namespace App\Http\Livewire\Suppliers;
 
 use Livewire\Component;
 use Illuminate\Support\Str;
-use App\Models\Product;
+use App\Models\Supplier;
 use App\Models\Category;
 use App\Models\Brand;
 use Livewire\WithFileUploads;
 
-class CreateProduct extends Component
+class Createsupplier extends Component
 {
     use WithFileUploads;
 
-    public$brands, $categories, $product, $unique_input_identifier;
+    public$brands, $categories, $supplier, $unique_input_identifier;
     public  $brand_id, $category_id, $name, $description, $current_stock, $measurement_unit, $purchase_price, $selling_price, $slug, $status, $expiration, $observations,  $image;
     public $open =false;
 
@@ -36,7 +36,7 @@ class CreateProduct extends Component
     {
         $this->brands = Brand::get(['id', 'name']);
         $this->categories = Category::get(['id', 'name']);
-        $this->product = Product::all();
+        $this->supplier = Supplier::all();
         $this->unique_input_identifier = rand();
     }
     public function updated($propertyName){
@@ -47,9 +47,9 @@ class CreateProduct extends Component
 
         $this->validate();
 
-        $image_url = $this->image->store('products');
+        $image_url = $this->image->store('suppliers');
 
-        Product::create([
+        Supplier::create([
             'brand_id'           => $this->brand_id,
             'category_id'        => $this->category_id,
             $name = 'name'       => $this->name,
@@ -67,13 +67,13 @@ class CreateProduct extends Component
 
         $this->reset(['open', 'brand_id', 'category_id', 'name', 'description', 'current_stock', 'measurement_unit', 'purchase_price', 'selling_price', 'slug', 'status', 'expiration', 'observations','image']);
         $this->unique_input_identifier = rand();
-        $this->emitTo('products.index-product', 'render');
-        $this->emit('alert', '¡Producto Creado Exitosamente!');
+        $this->emitTo('suppliers.index-supplier', 'render');
+        $this->emit('alert', '¡suppliero Creado Exitosamente!');
 
     }
 
     public function render()
     {
-        return view('livewire.products.create-product');
+        return view('livewire.suppliers.create-supplier');
     }
 }

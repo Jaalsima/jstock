@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Livewire\Products;
+namespace App\Http\Livewire\Suppliers;
 
 use Livewire\Component;
 use Illuminate\Support\Str;
-use App\Models\Product;
+use App\Models\Supplier;
 use App\Models\Category;
 use App\Models\Brand;
 use Livewire\WithFileUploads;
 
-class EditProduct extends Component
+class EditSupplier extends Component
 {
     use WithFileUploads;
 
-    public $product, $brands, $categories;
+    public $supplier, $brands, $categories;
     public $name, $description, $current_stock, $measurement_unit, $purchase_price, $selling_price, $status, $expiration, $observations, $image;
     public $open = false;
 
@@ -30,20 +30,20 @@ class EditProduct extends Component
         'image'             => 'nullable|image|max:2048', // Opcional: Puedes permitir actualizar la imagen
     ];
 
-    public function mount(Product $product)
+    public function mount(Supplier $supplier)
     {
-        $this->product = $product;
+        $this->supplier = $supplier;
         $this->brands = Brand::get(['id', 'name']);
         $this->categories = Category::get(['id', 'name']);
-        $this->name = $product->name;
-        $this->description = $product->description;
-        $this->current_stock = $product->current_stock;
-        $this->measurement_unit = $product->measurement_unit;
-        $this->purchase_price = $product->purchase_price;
-        $this->selling_price = $product->selling_price;
-        $this->status = $product->status;
-        $this->expiration = $product->expiration;
-        $this->observations = $product->observations;
+        $this->name = $supplier->name;
+        $this->description = $supplier->description;
+        $this->current_stock = $supplier->current_stock;
+        $this->measurement_unit = $supplier->measurement_unit;
+        $this->purchase_price = $supplier->purchase_price;
+        $this->selling_price = $supplier->selling_price;
+        $this->status = $supplier->status;
+        $this->expiration = $supplier->expiration;
+        $this->observations = $supplier->observations;
     }
 
     public function updated($propertyName)
@@ -55,8 +55,8 @@ class EditProduct extends Component
     {
         $this->validate();
 
-        // Actualizar el producto en la base de datos
-        $this->product->update([
+        // Actualizar el suppliero en la base de datos
+        $this->supplier->update([
             'name' => $this->name,
             'description' => $this->description,
             'current_stock' => $this->current_stock,
@@ -70,22 +70,22 @@ class EditProduct extends Component
 
         if ($this->image) {
             // Actualizar la imagen si se ha cargado una nueva
-            $image_url = $this->image->store('products');
-            $this->product->update(['image' => $image_url]);
+            $image_url = $this->image->store('suppliers');
+            $this->supplier->update(['image' => $image_url]);
         }
 
         // Cerrar el modal después de actualizar
         $this->open = false;
 
-        // Emitir un evento para que se actualice la lista de productos en la página anterior
-        $this->emitTo('products.index-product', 'render');
+        // Emitir un evento para que se actualice la lista de proveedores en la página anterior
+        $this->emitTo('suppliers.index-supplier', 'render');
 
         // Emitir una notificación de éxito
-        $this->emit('alert', '¡Producto Actualizado Exitosamente!');
+        $this->emit('alert', '¡Proveedor Actualizado Exitosamente!');
     }
 
     public function render()
     {
-        return view('livewire.products.edit-product');
+        return view('livewire.suppliers.edit-supplier');
     }
 }

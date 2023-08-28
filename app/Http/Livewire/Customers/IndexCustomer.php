@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Livewire\Products;
+namespace App\Http\Livewire\Customers;
 
 use Livewire\Component;
-use App\Models\Product;
+use App\Models\Customer;
 use Livewire\WithPagination;
 
-class IndexProduct extends Component
+class IndexCustomer extends Component
 {
     use WithPagination;
 
-    public $search, $product;
+    public $search, $customer;
     public $sort = "id";
     public $direction = "desc";
     public $open = false;
@@ -23,12 +23,12 @@ class IndexProduct extends Component
 
     public function render()
     {
-        $products = Product::where('name', 'like', '%' . $this->search . '%')
+        $customers = Customer::where('name', 'like', '%' . $this->search . '%')
             ->orWhere('description', 'like', '%' . $this->search . '%')
             ->orderBy($this->sort, $this->direction)
             ->paginate(10);
 
-        return view('livewire.products.index-product', compact('products'));
+        return view('livewire.customers.index-customer', compact('customers'));
     }
 
     public function order($sort)
@@ -41,18 +41,18 @@ class IndexProduct extends Component
         }
     }
 
-    public function confirmDelete($productId)
+    public function confirmDelete($customerId)
     {
-        $this->product = Product::find($productId);
+        $this->customer = Customer::find($customerId);
         $this->open = true; // Abre el modal de confirmación
     }
 
     public function deleteConfirmed()
     {
-        if ($this->product) {
-            $this->product->delete();
-            $this->emitTo('products.index-product', 'render');
-            $this->emit('alert', '¡Producto Eliminado Exitosamente!');
+        if ($this->customer) {
+            $this->customer->delete();
+            $this->emitTo('customers.index-customer', 'render');
+            $this->emit('alert', '¡customero Eliminado Exitosamente!');
         }
         $this->open = false; // Cierra el modal de confirmación
     }
