@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Livewire\Products\IndexProduct;
 use App\Http\Livewire\Users\IndexUser;
+use App\Http\Livewire\Clients\IndexClient;
+use App\Http\Livewire\Suppliers\IndexSupplier;
 use App\Http\Controllers\Menu\MenuController;
 
 Route::get('/',         [HomeController::class, 'home'])    ->name('home');
@@ -25,4 +27,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/dashboard', function () { return view('dashboard');})->name('dashboard');
     Route::get('/index-user', IndexUser::class)->name('index-user');
     Route::get('/index-product', IndexProduct::class)->name('index-product');
+    Route::get('/index-supplier', IndexSupplier::class)->name('index-supplier');
+    Route::get('/index-client', IndexClient::class)->name('index-client');
 });

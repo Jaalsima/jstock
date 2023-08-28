@@ -11,7 +11,7 @@
             <h2 class="mb-6 text-3xl font-semibold text-center text-gray-900 dark:text-white">¡Contáctanos!</h2>
 
             <!-- Formulario de Contacto -->
-            <form class="p-6 bg-white rounded-md shadow-md dark:bg-gray-800 dark:shadow-gray-400">
+            <form class="w-1/2 p-6 bg-white rounded-md shadow-md dark:bg-gray-800 dark:shadow-gray-400">
                 <div class="mb-4">
                     <label for="nombre"
                         class="block mb-2 text-lg font-medium text-gray-700 dark:text-gray-400">Nombre:</label>

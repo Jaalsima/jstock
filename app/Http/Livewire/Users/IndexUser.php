@@ -51,7 +51,7 @@ class IndexUser extends Component
     {
         if ($this->user) {
             $this->user->delete();
-            $this->emitTo('index-user', 'render');
+            $this->emitTo('users.index-user', 'render');
             $this->emit('alert', '¡Usuario Eliminado Exitosamente!');
         }
         $this->open = false; // Cierra el modal de confirmación
