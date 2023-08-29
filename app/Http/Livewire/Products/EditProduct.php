@@ -27,7 +27,7 @@ class EditProduct extends Component
         'status'            => 'required|in:Disponible,No Disponible',
         'expiration'        => 'nullable|date',
         'observations'      => 'nullable|string',
-        'image'             => 'nullable|image|max:2048', // Opcional: Puedes permitir actualizar la imagen
+        'image'             => 'nullable|image|max:2048', // Opcional: Se puede permitir actualizar la imagen
     ];
 
     public function mount(Product $product)
@@ -57,15 +57,17 @@ class EditProduct extends Component
 
         // Actualizar el producto en la base de datos
         $this->product->update([
-            'name' => $this->name,
-            'description' => $this->description,
-            'current_stock' => $this->current_stock,
+            'brand_id'         => $this->brands,
+            'category_id'      =>$this->categories,
+            'name'             => $this->name,
+            'description'      => $this->description,
+            'current_stock'    => $this->current_stock,
             'measurement_unit' => $this->measurement_unit,
-            'purchase_price' => $this->purchase_price,
-            'selling_price' => $this->selling_price,
-            'status' => $this->status,
-            'expiration' => $this->expiration,
-            'observations' => $this->observations,
+            'purchase_price'   => $this->purchase_price,
+            'selling_price'    => $this->selling_price,
+            'status'           => $this->status,
+            'expiration'       => $this->expiration,
+            'observations'     => $this->observations,
         ]);
 
         if ($this->image) {

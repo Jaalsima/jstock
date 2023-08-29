@@ -17,7 +17,7 @@ class UserSeeder extends Seeder
     {
         User::create([
             'document'             => 'kjfasgoasp',
-            $name1 = 'name'         => 'Jaime',
+            $name1 = 'name'        => 'Jaime',
             'email'                => 'coderman1980@gmail.com',
             'address'              => 'Medellín',
             'phone'                => '1584ffih',
@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
 
         User::create([
             'document'             => 'jkbdfbfbsd',
-            $name2 = 'name'         => 'John',
+            $name2 = 'name'        => 'John',
             'email'                => 'john@example.com',
             'address'              => 'Medellín',
             'phone'                => '1584ffih',

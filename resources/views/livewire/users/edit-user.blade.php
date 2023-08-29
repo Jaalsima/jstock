@@ -35,15 +35,15 @@
                                        <span class="font-normal text-gray-600">Cambiar imagen del usuario
                                            (opcional)</span>
                                    </div>
-                                   <input type="file" class="hidden" wire:model.lazy="image">
+                                   <input type="file" class="hidden" wire:model.lazy="profile_photo_path">
                                    <div class="absolute top-0 h-48 w-72">
-                                       @if ($image)
+                                       @if ($profile_photo_path)
                                            <img class="object-cover w-full h-full rounded-lg"
-                                               src="{{ $image->temporaryUrl() }}" class="mb-4" alt="Image">
+                                               src="{{ $profile_photo_path->temporaryUrl() }}" class="mb-4" alt="Foto de usuario">
                                        @else
                                            <img class="object-cover w-full h-full rounded-lg"
-                                               src="{{ asset('storage/' . $user->image) }}" class="mb-4"
-                                               alt="Image">
+                                               src="{{ asset('storage/' . $user->profile_photo_path) }}" class="mb-4"
+                                               alt="Foto de usuario">
                                        @endif
                                    </div>
                                </label>
@@ -73,7 +73,7 @@
                            <!-- Dirección -->
                            <div class="mt-4">
                                <x-label for="address" value="Dirección" class="text-gray-700" />
-                               <x-input id="address" type="number" min="0" class="w-full"
+                               <x-input id="address" type="text" class="w-full"
                                    wire:model.lazy="address" />
                                <x-input-error for="address" />
                            </div>

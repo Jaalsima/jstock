@@ -24,20 +24,22 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $name = $this->faker->firstName();
         return [
-            'document' => $this->faker->firstName(),
-            'name' => $this->faker->firstName(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'address' => $this->faker->address(),
-            'phone' => $this->faker->phoneNumber(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'status' => $this->faker->randomElement(['Activo', 'Inactivo']),
-            'two_factor_secret' => null,
+            'document'                  => $this->faker->firstName(),
+            'name'                      => $name,
+            'email'                     => $this->faker->unique()->safeEmail(),
+            'address'                   => $this->faker->address(),
+            'phone'                     => $this->faker->phoneNumber(),
+            'email_verified_at'         => now(),
+            'password'                  => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'slug'                      => Str::slug($name),
+            'status'                    => $this->faker->randomElement(['Activo', 'Inactivo']),
+            'two_factor_secret'         => null,
             'two_factor_recovery_codes' => null,
-            'remember_token' => Str::random(10),
-            'profile_photo_path' => 'users/' . fake()->image('public/storage/users', 640, 480, null, false),
-            'current_team_id' => null,
+            'remember_token'            => Str::random(10),
+            'profile_photo_path'        => 'users/' . fake()->image('public/storage/users', 640, 480, null, false),
+            'current_team_id'           => null,
         ];
     }
 

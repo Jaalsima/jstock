@@ -23,7 +23,7 @@ class CreateUser extends Component
         'phone'              => 'nullable|string|max:20',
         'password'           => 'required|string|min:8|max:50',
         'status'             => 'required|in:Activo,Inactivo',
-        'profile_photo_path'  => 'required|image|max:2048',
+        'profile_photo_path' => 'required|image|max:2048',
     ];
     
 

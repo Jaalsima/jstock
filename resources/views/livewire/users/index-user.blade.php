@@ -1,5 +1,5 @@
-    {{-- Close your eyes. Count to one. That is how long forever feels. --}}
     <div>
+        {{-- Close your eyes. Count to one. That is how long forever feels. --}}
         <div>
             <div class="w-1/4 mt-4 rounded-lg">
                 <div class="float-right mr-8">
@@ -115,8 +115,8 @@
                                 <td class="flex justify-around py-4 pl-2 pr-8">
                                     <div
                                         @if ($open) class="flex pointer-events-none opacity-20" @else class="flex" @endif>
-                                        {{-- @livewire('show-user', ['user' => $user], key(time() . $user->id))
-                                        @livewire('edit-user', ['user' => $user], key(time() . $user->id)) --}}
+                                            <livewire:users.show-user :user="$user" :key="time() . $user->id" />
+                                            <livewire:users.edit-user :user="$user" :key="time() . $user->id" />
                                         <div class="relative inline-block text-center cursor-pointer">
                                             <a href="#" wire:click="confirmDelete({{ $user->id }})">
                                                 <i

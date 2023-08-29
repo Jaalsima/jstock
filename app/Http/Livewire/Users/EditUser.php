@@ -5,45 +5,36 @@ namespace App\Http\Livewire\Users;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Models\User;
-use App\Models\Category;
-use App\Models\Brand;
 use Livewire\WithFileUploads;
 
 class EditUser extends Component
 {
     use WithFileUploads;
 
-    public $user, $brands, $categories;
-    public $name, $description, $current_stock, $measurement_unit, $purchase_price, $selling_price, $status, $expiration, $observations, $profile_photo_path;
+    public $user, $document, $name, $email, $address, $phone, $password, $status, $profile_photo_path;
     public $open = false;
 
     protected $rules = [
-        'name'              => 'required|max:50',
-        'description'       => 'nullable|string',
-        'current_stock'     => 'required|integer|min:0',
-        'measurement_unit'  => 'nullable|string',
-        'purchase_price'    => 'required|numeric|min:0',
-        'selling_price'     => 'required|numeric|min:0',
-        'status'            => 'required|in:Disponible,No Disponible',
-        'expiration'        => 'nullable|date',
-        'observations'      => 'nullable|string',
-        'profile_photo_path'             => 'nullable|profile_photo_path|max:2048', // Opcional: Puedes permitir actualizar la imagen
+        'document'           => 'required|string|max:50',
+        'name'               => 'required|string|max:50',
+        'email'              => 'required|email|unique:users|max:50',
+        'address'            => 'nullable|string|max:50',
+        'phone'              => 'nullable|string|max:20',
+        'password'           => 'required|string|min:8|max:50',
+        'status'             => 'required|in:Activo,Inactivo',
+        'profile_photo_path' => 'nullable|image|max:2048', // Opcional: Se puede permitir actualizar la imagen
     ];
 
     public function mount(User $user)
     {
-        $this->user = $user;
-        $this->brands = Brand::get(['id', 'name']);
-        $this->categories = Category::get(['id', 'name']);
-        $this->name = $user->name;
-        $this->description = $user->description;
-        $this->current_stock = $user->current_stock;
-        $this->measurement_unit = $user->measurement_unit;
-        $this->purchase_price = $user->purchase_price;
-        $this->selling_price = $user->selling_price;
-        $this->status = $user->status;
-        $this->expiration = $user->expiration;
-        $this->observations = $user->observations;
+        $this->user       = $user;
+        $this->document   = $user->document;
+        $this->name       = $user->name;
+        $this->email      = $user->email;
+        $this->address    = $user->address;
+        $this->phone      = $user->phone;
+        $this->password   = $user->password;
+        $this->status     = $user->status;
     }
 
     public function updated($propertyName)
@@ -55,17 +46,15 @@ class EditUser extends Component
     {
         $this->validate();
 
-        // Actualizar el usero en la base de datos
+        // Actualizar el usuario en la base de datos
         $this->user->update([
+            'document' => $this->document,
             'name' => $this->name,
-            'description' => $this->description,
-            'current_stock' => $this->current_stock,
-            'measurement_unit' => $this->measurement_unit,
-            'purchase_price' => $this->purchase_price,
-            'selling_price' => $this->selling_price,
+            'email' => $this->email,
+            'address' => $this->address,
+            'phone' => $this->phone,
+            'password' => $this->password,
             'status' => $this->status,
-            'expiration' => $this->expiration,
-            'observations' => $this->observations,
         ]);
 
         if ($this->profile_photo_path) {
@@ -81,7 +70,7 @@ class EditUser extends Component
         $this->emitTo('users.index-user', 'render');
 
         // Emitir una notificación de éxito
-        $this->emit('alert', '¡usero Actualizado Exitosamente!');
+        $this->emit('alert', '¡Usuario Actualizado Exitosamente!');
     }
 
     public function render()
