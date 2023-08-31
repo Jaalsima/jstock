@@ -1,7 +1,7 @@
 <!-- component -->
 
 <div class="flex flex-no-wrap">
-    <div class="flex-col justify-between hidden w-64 bg-white shadow sm:relative md:h-full sm:flex">
+    <div class="flex-col justify-between hidden w-64 bg-gray-300 dark:bg-gray-800 shadow sm:relative md:h-full sm:flex">
         <div class="px-8">
 
             <ul class="mt-12">

@@ -1,5 +1,7 @@
 <?php
 
+// app/Http/Livewire/Users/IndexUser.php
+
 namespace App\Http\Livewire\Users;
 
 use Livewire\Component;
@@ -24,7 +26,7 @@ class IndexUser extends Component
     public function render()
     {
         $users = User::where('name', 'like', '%' . $this->search . '%')
-            ->orWhere('document', 'like', '%' . $this->search . '%')
+            ->orWhere('email', 'like', '%' . $this->search . '%')
             ->orderBy($this->sort, $this->direction)
             ->paginate(10);
 

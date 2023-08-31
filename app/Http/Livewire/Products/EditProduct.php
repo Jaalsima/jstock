@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Livewire\Products;
 
@@ -57,8 +57,8 @@ class EditProduct extends Component
 
         // Actualizar el producto en la base de datos
         $this->product->update([
-            'brand_id'         => $this->brands,
-            'category_id'      =>$this->categories,
+            'brand_id'         => $this->product->brand_id,
+            'category_id'      => $this->product->category_id,
             'name'             => $this->name,
             'description'      => $this->description,
             'current_stock'    => $this->current_stock,
