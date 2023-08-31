@@ -18,6 +18,14 @@ class Purchase extends Model
     }
 
     /**
+     * Get the details associated with the purchase.
+     */
+    public function purchaseDetails()
+    {
+        return $this->hasMany(PurchaseDetail::class);
+    }
+
+    /**
      * Get the supplier who made the purchase to.
      */
     public function supplier()

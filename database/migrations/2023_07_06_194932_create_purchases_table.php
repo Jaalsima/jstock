@@ -13,15 +13,13 @@ return new class extends Migration
     {
         Schema::create('purchases', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('supplier_id');
             $table->unsignedBigInteger('user_id');
             $table->date('purchase_date');
-            $table->integer('quantity');
-            $table->decimal('purchase_price', 8, 2);
+            $table->string('invoice_number')->unique(); // Número de factura de la compra
+            $table->decimal('total_amount'); // Monto total de la compra
             $table->timestamps();
 
-            $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('supplier_id')->references('id')->on('suppliers');
             $table->foreign('user_id')->references('id')->on('users');
         });

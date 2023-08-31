@@ -10,6 +10,14 @@ class Sale extends Model
     use HasFactory;
 
     /**
+     * Get the details associated with the sale.
+     */
+    public function saleDetails()
+    {
+        return $this->hasMany(SaleDetail::class);
+    }
+
+    /**
      * Get the customer who made the sale to.
      */
     public function customer()
