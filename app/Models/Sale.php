@@ -9,14 +9,14 @@ class Sale extends Model
 {
     use HasFactory;
 
-    /**
-     * Get the details associated with the sale.
-     */
-    public function saleDetails()
-    {
-        return $this->hasMany(SaleDetail::class);
-    }
-
+    protected $fillable = [
+        'user_id',
+        'customer_id',
+        'sale_date',
+        'invoice_number',
+        'total_amount',
+    ];
+    
     /**
      * Get the customer who made the sale to.
      */
@@ -26,11 +26,11 @@ class Sale extends Model
     }
 
     /**
-     * Get the product associated with the sale.
+     * Get the details associated with the sale.
      */
-    public function product()
+    public function saleDetails()
     {
-        return $this->belongsTo(Product::class);
+        return $this->hasMany(SaleDetail::class);
     }
 
     /**

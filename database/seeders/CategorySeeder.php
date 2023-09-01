@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Category;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class CategorySeeder extends Seeder
 {
@@ -14,33 +15,39 @@ class CategorySeeder extends Seeder
     public function run(): void
     {
         Category::create([
-            'name' => 'Deportes',
+            'name'        => 'Deportes',
             'description' => 'Descripción Deportes',
-            'status' => 'Estado 1',
+            'slug'        => Str::slug('Deportes'),
+            'status'      => fake()->randomElement(['Activo', 'Inactivo']),
         ]);
 
         Category::create([
-            'name' => 'Hogar',
+            'name'        => 'Hogar',
             'description' => 'Descripción Hogar',
-            'status' => 'Estado 2',
+            'slug'        => Str::slug('Hogar'),
+            'status'      => fake()->randomElement(['Activo', 'Inactivo']),
         ]);
 
         Category::create([
-            'name' => 'Tecnología',
+            'name'        => 'Tecnología',
             'description' => 'Descripción Tecnología',
-            'status' => 'Estado 3',
+            'slug'        => Str::slug('Tecnología'),
+            'status'      => fake()->randomElement(['Activo', 'Inactivo']),
         ]);
 
         Category::create([
-            'name' => 'Joyería',
+            'name'        => 'Joyería',
             'description' => 'Descripción Joyería',
-            'status' => 'Estado 3',
+            'slug'        => Str::slug('Joyería'),
+            'status'      => fake()->randomElement(['Activo', 'Inactivo']),
         ]);
 
         Category::create([
             'name' => 'Otros',
             'description' => 'Descripción Otros',
-            'status' => 'Estado 3',
+            'slug' =>     Str::slug('Otros'),
+            'status' => fake()->randomElement(['Activo', 'Inactivo']),
         ]);
+
     }
 }

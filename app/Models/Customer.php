@@ -14,21 +14,11 @@ class Customer extends Model
         'email',
         'address',
         'phone',
+        'slug',
         'status',
     ];
 
-    public function orders()
-    {
-        return $this->hasMany(Order::class);
-    }
-
-    public function products()
-    {
-        return $this->belongsToMany(Product::class);
-    }
-
-    public function purchases()
-    {
-        return $this->hasMany(Purchase::class);
+    public function sales() {
+        return $this->hasMany(Sale::class);
     }
 }

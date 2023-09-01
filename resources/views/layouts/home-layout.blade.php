@@ -20,7 +20,7 @@ https://cdn.jsdelivr.net/npm/sweetalert2@11.7.22/dist/sweetalert2.min.css
 </head>
 
 <body>
-    <div class="font-sans antialiased text-gray-700 bg-gray-100 dark:text-gray-100 dark:bg-gray-700">
+    <div class="font-serif antialiased text-gray-700 bg-gray-100 dark:text-gray-100 dark:bg-gray-700">
         {{ $slot }}
     </div>
     <script src="

@@ -14,12 +14,11 @@ class Supplier extends Model
         'email',
         'address',
         'phone',
+        'slug',
         'status',
     ];
 
-
-    public function products()
-    {
-        return $this->belongsToMany(Product::class);
+    public function purchases() {
+        return $this->hasMany(Purchase::class);
     }
 }

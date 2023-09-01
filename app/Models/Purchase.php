@@ -9,13 +9,13 @@ class Purchase extends Model
 {
     use HasFactory;
 
-    /**
-     * Get the product associated with the purchase.
-     */
-    public function product()
-    {
-        return $this->belongsTo(Product::class);
-    }
+    protected $fillable = [
+        'user_id',
+        'supplier_id',
+        'purchase_date',
+        'invoice_number',
+        'total_amount',
+    ];
 
     /**
      * Get the details associated with the purchase.

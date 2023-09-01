@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Factories;
+use Illuminate\Support\Str;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -16,8 +17,14 @@ class CustomerFactory extends Factory
      */
     public function definition(): array
     {
+        $name = fake('es_ES')->name();
         return [
-            //
+            'name'    => $name,
+            'email'   => fake('es_ES')->unique()->safeEmail(),
+            'address' => fake('es_ES')->address(),
+            'phone'   => fake('es_ES')->phoneNumber(),
+            'slug'    => Str::slug($name),
+            'status'  => fake('es_ES')->randomElement(['Activo', 'Inactivo']),
         ];
     }
 }

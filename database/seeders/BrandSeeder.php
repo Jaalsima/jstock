@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Brand;
+use Illuminate\Support\Str;
 
 class BrandSeeder extends Seeder
 {
@@ -16,31 +17,36 @@ class BrandSeeder extends Seeder
         Brand::create([
             'name' => 'Genius',
             'description' => 'Descripción Genius',
-            'status' => 'Estado 1',
+            'slug' =>     Str::slug('Genius'),
+            'status' => fake()->randomElement(['Activo', 'Inactivo']),
         ]);
 
         Brand::create([
             'name' => 'Huntress',
             'description' => 'Descripción Huntress',
-            'status' => 'Estado 2',
+            'slug' =>     Str::slug('Huntress'),
+            'status' => fake()->randomElement(['Activo', 'Inactivo']),
         ]);
 
         Brand::create([
             'name' => 'Best',
             'description' => 'Descripción Best',
-            'status' => 'Estado 3',
+            'slug' =>     Str::slug('Best'),
+            'status' => fake()->randomElement(['Activo', 'Inactivo']),
         ]);
 
         Brand::create([
             'name' => 'Kingston',
             'description' => 'Descripción Kingston',
-            'status' => 'Estado 3',
+            'slug' =>     Str::slug('Kingston'),
+            'status' => fake()->randomElement(['Activo', 'Inactivo']),
         ]);
 
         Brand::create([
             'name' => 'Fastest',
             'description' => 'Descripción Fastest',
-            'status' => 'Estado 3',
+            'slug' =>     Str::slug('Fastest'),
+            'status' => fake()->randomElement(['Activo', 'Inactivo']),
         ]);
     }
 }

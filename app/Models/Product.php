@@ -35,34 +35,19 @@ class Product extends Model
         return $this->belongsTo(Brand::class);
     }
 
-    public function suppliers()
+    /**
+     * Get the purchase details of the product.
+     */
+    public function purchaseDetails()
     {
-        return $this->belongsToMany(Supplier::class);
-    }
-
-    public function customers()
-    {
-        return $this->belongsToMany(Customer::class);
-    }
-
-    public function stocks()
-    {
-        return $this->hasMany(Stock::class);
+        return $this->hasMany(PurchaseDetail::class);
     }
 
     /**
-     * Get the purchases of the product.
+     * Get the sale details of the product.
      */
-    public function purchases()
+    public function saleDetails()
     {
-        return $this->hasMany(Purchase::class);
-    }
-
-    /**
-     * Get the sales of the product.
-     */
-    public function sales()
-    {
-        return $this->hasMany(Sale::class);
+        return $this->hasMany(SaleDetail::class);
     }
 }
