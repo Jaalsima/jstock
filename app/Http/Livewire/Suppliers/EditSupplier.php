@@ -5,45 +5,34 @@ namespace App\Http\Livewire\Suppliers;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Models\Supplier;
-use App\Models\Category;
-use App\Models\Brand;
 use Livewire\WithFileUploads;
 
 class EditSupplier extends Component
 {
     use WithFileUploads;
 
-    public $supplier, $brands, $categories;
-    public $name, $description, $current_stock, $measurement_unit, $purchase_price, $selling_price, $status, $expiration, $observations, $image;
+    public $supplier;
+    public $name, $email, $address, $phone, $slug, $status;
     public $open = false;
 
     protected $rules = [
-        'name'              => 'required|max:50',
-        'description'       => 'nullable|string',
-        'current_stock'     => 'required|integer|min:0',
-        'measurement_unit'  => 'nullable|string',
-        'purchase_price'    => 'required|numeric|min:0',
-        'selling_price'     => 'required|numeric|min:0',
-        'status'            => 'required|in:Disponible,No Disponible',
-        'expiration'        => 'nullable|date',
-        'observations'      => 'nullable|string',
-        'image'             => 'nullable|image|max:2048', // Opcional: Puedes permitir actualizar la imagen
+        'name'    => 'required|max:50',
+        'email'   => 'nullable|email',
+        'address' => 'nullable|string',
+        'phone'   => 'nullable|string',
+        'slug'    => 'required',
+        'status'  => 'required|in:Activo,Inactivo',
     ];
 
     public function mount(Supplier $supplier)
     {
         $this->supplier = $supplier;
-        $this->brands = Brand::get(['id', 'name']);
-        $this->categories = Category::get(['id', 'name']);
         $this->name = $supplier->name;
-        $this->description = $supplier->description;
-        $this->current_stock = $supplier->current_stock;
-        $this->measurement_unit = $supplier->measurement_unit;
-        $this->purchase_price = $supplier->purchase_price;
-        $this->selling_price = $supplier->selling_price;
+        $this->email = $supplier->email;
+        $this->address = $supplier->address;
+        $this->phone = $supplier->phone;
+        $this->slug = $supplier->slug;
         $this->status = $supplier->status;
-        $this->expiration = $supplier->expiration;
-        $this->observations = $supplier->observations;
     }
 
     public function updated($propertyName)
@@ -55,24 +44,15 @@ class EditSupplier extends Component
     {
         $this->validate();
 
-        // Actualizar el suppliero en la base de datos
+        // Actualizar el proveedor en la base de datos
         $this->supplier->update([
-            'name' => $this->name,
-            'description' => $this->description,
-            'current_stock' => $this->current_stock,
-            'measurement_unit' => $this->measurement_unit,
-            'purchase_price' => $this->purchase_price,
-            'selling_price' => $this->selling_price,
-            'status' => $this->status,
-            'expiration' => $this->expiration,
-            'observations' => $this->observations,
+            'name'    => $this->name,
+            'email'   => $this->email,
+            'address' => $this->address,
+            'phone'   => $this->phone,
+            'slug'    => $this->slug,
+            'status'  => $this->status,
         ]);
-
-        if ($this->image) {
-            // Actualizar la imagen si se ha cargado una nueva
-            $image_url = $this->image->store('suppliers');
-            $this->supplier->update(['image' => $image_url]);
-        }
 
         // Cerrar el modal después de actualizar
         $this->open = false;

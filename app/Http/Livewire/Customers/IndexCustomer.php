@@ -24,7 +24,7 @@ class IndexCustomer extends Component
     public function render()
     {
         $customers = Customer::where('name', 'like', '%' . $this->search . '%')
-            ->orWhere('description', 'like', '%' . $this->search . '%')
+            ->orWhere('email', 'like', '%' . $this->search . '%')
             ->orderBy($this->sort, $this->direction)
             ->paginate(10);
 
@@ -52,7 +52,7 @@ class IndexCustomer extends Component
         if ($this->customer) {
             $this->customer->delete();
             $this->emitTo('customers.index-customer', 'render');
-            $this->emit('alert', '¡customero Eliminado Exitosamente!');
+            $this->emit('alert', '¡Cliente Eliminado!');
         }
         $this->open = false; // Cierra el modal de confirmación
     }

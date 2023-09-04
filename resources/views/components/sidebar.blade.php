@@ -1,7 +1,7 @@
 <!-- component -->
 
 <div class="flex flex-no-wrap">
-    <div class="flex-col justify-between hidden w-64 bg-gray-300 dark:bg-gray-800 shadow sm:relative md:h-full sm:flex">
+    <div class="flex-col justify-between hidden w-64 bg-gray-300 shadow dark:bg-gray-800 sm:relative md:h-full sm:flex">
         <div class="px-8">
 
             <ul class="mt-12">
@@ -20,7 +20,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('index-user') }}">
+                    <a href="{{ route('index-customer') }}">
                         <button type="button"
                             class="flex items-center w-full p-2 text-lg text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-clients" data-collapse-toggle="dropdown-clients">
@@ -34,7 +34,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('index-user') }}">
+                    <a href="{{ route('index-supplier') }}">
                         <button type="button"
                             class="flex items-center w-full p-2 text-lg text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
@@ -109,8 +109,8 @@
                             <a href="#"
                                 class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
                                     class="flex-shrink-0 w-5 h-5 mr-3 text-red-700 transition duration-75 group-hover:text-blue-700 fa-solid fa-cart-shopping dark:text-gray-400 dark:group-hover:text-white"></i>
-                                    @livewire('purchases.purchase-management')
-                                </a>
+                                @livewire('purchases.purchase-management')
+                            </a>
                         </li>
 
 

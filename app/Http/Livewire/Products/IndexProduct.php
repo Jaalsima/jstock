@@ -52,7 +52,7 @@ class IndexProduct extends Component
         if ($this->product) {
             $this->product->delete();
             $this->emitTo('products.index-product', 'render');
-            $this->emit('alert', '¡Producto Eliminado Exitosamente!');
+            $this->emit('alert', '¡Producto Eliminado!');
         }
         $this->open = false; // Cierra el modal de confirmación
     }

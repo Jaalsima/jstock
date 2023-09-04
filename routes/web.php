@@ -29,4 +29,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/index-product', IndexProduct::class)->name('index-product');
     Route::get('/index-supplier', IndexSupplier::class)->name('index-supplier');
     Route::get('/index-customer', IndexCustomer::class)->name('index-customer');
+
+    Route::get('/proof', function () { return view('proof');})->name('proof');
+
 });

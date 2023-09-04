@@ -1,3 +1,5 @@
+<!-- resources/views/livewire/customers/index-customer.blade.php -->
+
 <div>
     <div>
         <div class="w-1/4 mt-4 rounded-lg">
@@ -19,7 +21,7 @@
     </div>
     <div class="relative mt-4 overflow-x-auto shadow-md sm:rounded-lg">
 
-        <!-- Check if there are customers before rendering the table and its header -->
+        <!-- Comprueba si hay clientes antes de renderizar la tabla y su encabezado -->
         @if ($customers->count() > 0)
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead
@@ -42,7 +44,6 @@
                                 @endif
                             @else
                                 <i class="ml-2 fa-solid fa-sort"></i>
-
                             @endif
                         </th>
                         <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('name')">
@@ -55,56 +56,29 @@
                                 @endif
                             @else
                                 <i class="ml-2 fa-solid fa-sort"></i>
-
-                            @endif
-
-                        </th>
-
-                        <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('description')">
-                            Descripción
-                            @if ($sort == 'description')
-                                @if ($direction == 'asc')
-                                    <i class="ml-2 fa-solid fa-arrow-up-z-a"></i>
-                                @else
-                                    <i class="ml-2 fa-solid fa-arrow-down-z-a"></i>
-                                @endif
-                            @else
-                                <i class="ml-2 fa-solid fa-sort"></i>
-
                             @endif
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Marca
+                            Correo Electrónico
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Categoría
+                            Dirección
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Precio de Compra
+                            Teléfono
                         </th>
-                        <th scope="col" class="px-6 py-3">
-                            Precio de Venta
-                        </th>
-                        {{-- <th scope="col" class="px-6 py-3">
-                            Creado en
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Actualizado en
-                        </th> --}}
                         <th scope="col" class="px-6 py-3">
                             Estado
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Acciones
                         </th>
-
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($customers as $customer)
                         <tr
                             class="text-center bg-white border-b text-md dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
                             <td class="w-4 py-4 pl-8 pr-4">
                                 <div class="flex items-center">
                                     <input id="checkbox-table-search-1" type="checkbox"
@@ -117,29 +91,24 @@
                                 {{ $customer->id }}
                             </th>
                             <td class="px-6 py-4 dark:text-lg">{{ $customer->name }}</td>
-                            <td class="px-6 py-4 dark:text-lg">{{ $customer->description }}</td>
-                            <td class="px-6 py-4 dark:text-lg">{{ $customer->brand->name }}</td>
-                            <td class="px-6 py-4 dark:text-lg">{{ $customer->category->name }}</td>
-                            <td class="px-6 py-4 ">{{ $customer->purchase_price }}</td>
-                            <td class="px-6 py-4 ">{{ $customer->selling_price }} </td>
-
-                            @if ($customer->status == 'Disponible')
+                            <td class="px-6 py-4 dark:text-lg">{{ $customer->email }}</td>
+                            <td class="px-6 py-4 dark:text-lg">{{ $customer->address }}</td>
+                            <td class="px-6 py-4 dark:text-lg">{{ $customer->phone }}</td>
+                            @if ($customer->status == 'Activo')
                                 <td class="px-6 py-4 text-green-600">{{ $customer->status }}</td>
                             @else
-                                @if ($customer->status == 'No Disponible')
+                                @if ($customer->status == 'Inactivo')
                                     <td class="px-6 py-4 text-red-600">{{ $customer->status }}</td>
                                 @else
+                                    {{-- Aquí se agrega un posible tercer estado para los clientes --}}
                                     <td class="px-6 py-4 text-blue-600">{{ $customer->status }}</td>
                                 @endif
                             @endif
 
-
+                            <!-- Agrega aquí otras columnas para mostrar la información de tus clientes -->
                             <td class="flex justify-around py-4 pl-2 pr-8">
                                 <div
                                     @if ($open) class="flex pointer-events-none opacity-20" @else class="flex" @endif>
-
-                                    {{-- @livewire('customers.show-customer', ['customer' => $customer], key(time() . $customer->id)) --}}
-                                    {{-- @livewire('customers.edit-customer', ['customer' => $customer], key(time() . $customer->id)) --}}
 
                                     <livewire:customers.show-customer :customer="$customer" :key="time() . $customer->id" />
                                     <livewire:customers.edit-customer :customer="$customer" :key="time() . $customer->id" />
@@ -166,19 +135,15 @@
                             <div class="fixed inset-0 flex items-center justify-center"
                                 wire:click="$set('open', false)">
                                 <div class="absolute inset-0 z-40 bg-black opacity-10 modal-overlay"></div>
-
                                 <div
                                     class="z-50 w-11/12 mx-auto overflow-y-auto bg-white border border-red-500 rounded-xl modal-container md:max-w-md">
-                                    <!-- Content of the modal -->
+                                    <!-- Contenido del modal -->
                                     <div class="flex gap-3 py-2 bg-red-500 border border-red-500">
                                         <h3 class="w-full text-2xl text-center text-gray-100 ">Eliminar</h3>
-
                                     </div>
                                     <div class="px-6 py-4 text-left modal-content">
-
                                         <p class="text-xl text-gray-500">¿Estás seguro de que deseas eliminar este
-                                            cliente?
-                                        </p>
+                                            cliente?</p>
                                         <div class="mt-4 text-center">
                                             <x-secondary-button wire:click="$set('open', false)"
                                                 class="mr-4 text-gray-500 border border-gray-500 shadow-lg hover:shadow-gray-400">
@@ -193,23 +158,20 @@
                                 </div>
                             </div>
                         @endif
-
                     @empty
-                        <!-- No customers message -->
+                        <!-- Mensaje de no hay clientes -->
                         <tr>
-                            <td colspan="12" class="text-3xl text-center dark:text-gray-200">No hay clientes
-                                Disponibles</td>
+                            <td colspan="4" class="text-3xl text-center dark:text-gray-200">No hay clientes
+                                disponibles</td>
                         </tr>
                     @endforelse
                 @else
-                    <!-- No customers message -->
+                    <!-- Mensaje de no hay clientes -->
                     <h1 class="text-3xl text-center dark:text-gray-200">No hay clientes disponibles</h1>
         @endif
         </tbody>
         </table>
-
-
         <div class="px-3 py-1">{{ $customers->links() }}</div>
-
     </div>
+</div>
 </div>

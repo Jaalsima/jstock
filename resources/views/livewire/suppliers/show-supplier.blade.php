@@ -13,22 +13,23 @@
 
     <x-dialog-modal wire:model="open">
         <x-slot name="title">
-            <h2 class="mt-3 text-2xl text-center">{{ $product->name }}</h2>
+            <h2 class="mt-3 text-2xl text-center">{{ $supplier->name }}</h2>
         </x-slot>
         <x-slot name="content">
             <div class="mx-auto my-2 rounded-full w-52">
-                <img src="{{ asset('storage/' . $product->image) }}" alt="Imagen de {{ $product->name }}"
+                <img src="{{ asset('storage/' . $supplier->image) }}" alt="Imagen de {{ $supplier->name }}"
                     class="w-full h-auto rounded-lg">
             </div>
             <div class="px-5 pb-5">
                 <div class="mx-6">
                     <h5 class="mb-4 text-3xl font-semibold tracking-tight text-center text-gray-900 dark:text-white">
-                        {{ $product->name }}</h5>
+                        {{ $supplier->name }}</h5>
                     <div class="text-lg text-start">
-                        <p><strong>Categoría:</strong> {{ $product->category->name }}</p>
-                        <p><strong>Marca:</strong> {{ $product->brand->name }}</p>
-                        <p><strong>Precio:</strong> {{ $product->selling_price }}</p>
-                        <p><strong>Estado:</strong> {{ $product->status }}</p>
+                        <p><strong>Email:</strong> {{ $supplier->email }}</p>
+                        <p><strong>Dirección:</strong> {{ $supplier->address }}</p>
+                        <p><strong>Teléfono:</strong> {{ $supplier->phone }}</p>
+                        <p><strong>Slug:</strong> {{ $supplier->slug }}</p>
+                        <p><strong>Estado:</strong> {{ $supplier->status }}</p>
                     </div>
                 </div>
             </div>

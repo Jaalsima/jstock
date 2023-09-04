@@ -36,7 +36,7 @@ class CreateProduct extends Component
     {
         $this->brands = Brand::get(['id', 'name']);
         $this->categories = Category::get(['id', 'name']);
-        $this->product = Product::all();
+        $this->product = Product::get();
         $this->unique_input_identifier = rand();
     }
     public function updated($propertyName){

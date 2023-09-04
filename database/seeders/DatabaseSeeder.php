@@ -21,9 +21,16 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        Storage::deleteDirectory('customers');
+        Storage::makeDirectory('customers');
+        
         Storage::deleteDirectory('products');
         Storage::makeDirectory('products');
-
+        
+        Storage::deleteDirectory('suppliers');
+        Storage::makeDirectory('suppliers');
+        
         Storage::deleteDirectory('users');
         Storage::makeDirectory('users');
 

@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Suppliers;
 
 use Livewire\Component;
-use App\Models\Supplier;
+use App\Models\Supplier; // Cambia el modelo a Supplier
 use Livewire\WithPagination;
 
 class IndexSupplier extends Component
@@ -24,7 +24,7 @@ class IndexSupplier extends Component
     public function render()
     {
         $suppliers = Supplier::where('name', 'like', '%' . $this->search . '%')
-            ->orWhere('description', 'like', '%' . $this->search . '%')
+            ->orWhere('email', 'like', '%' . $this->search . '%')
             ->orderBy($this->sort, $this->direction)
             ->paginate(10);
 
@@ -52,7 +52,7 @@ class IndexSupplier extends Component
         if ($this->supplier) {
             $this->supplier->delete();
             $this->emitTo('suppliers.index-supplier', 'render');
-            $this->emit('alert', '¡Proveedor Eliminado Exitosamente!');
+            $this->emit('alert', '¡Proveedor Eliminado!');
         }
         $this->open = false; // Cierra el modal de confirmación
     }

@@ -5,45 +5,34 @@ namespace App\Http\Livewire\Customers;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Models\Customer;
-use App\Models\Category;
-use App\Models\Brand;
 use Livewire\WithFileUploads;
 
 class EditCustomer extends Component
 {
     use WithFileUploads;
 
-    public $customer, $brands, $categories;
-    public $name, $description, $current_stock, $measurement_unit, $purchase_price, $selling_price, $status, $expiration, $observations, $image;
+    public $customer;
+    public $name, $email, $address, $phone, $slug, $status;
     public $open = false;
 
     protected $rules = [
-        'name'              => 'required|max:50',
-        'description'       => 'nullable|string',
-        'current_stock'     => 'required|integer|min:0',
-        'measurement_unit'  => 'nullable|string',
-        'purchase_price'    => 'required|numeric|min:0',
-        'selling_price'     => 'required|numeric|min:0',
-        'status'            => 'required|in:Disponible,No Disponible',
-        'expiration'        => 'nullable|date',
-        'observations'      => 'nullable|string',
-        'image'             => 'nullable|image|max:2048', // Opcional: Puedes permitir actualizar la imagen
+        'name'    => 'required|max:50',
+        'email'   => 'nullable|email',
+        'address' => 'nullable|string',
+        'phone'   => 'nullable|string',
+        'slug'    => 'required',
+        'status'  => 'required|in:Activo,Inactivo',
     ];
 
     public function mount(Customer $customer)
     {
         $this->customer = $customer;
-        $this->brands = Brand::get(['id', 'name']);
-        $this->categories = Category::get(['id', 'name']);
         $this->name = $customer->name;
-        $this->description = $customer->description;
-        $this->current_stock = $customer->current_stock;
-        $this->measurement_unit = $customer->measurement_unit;
-        $this->purchase_price = $customer->purchase_price;
-        $this->selling_price = $customer->selling_price;
+        $this->email = $customer->email;
+        $this->address = $customer->address;
+        $this->phone = $customer->phone;
+        $this->slug = $customer->slug;
         $this->status = $customer->status;
-        $this->expiration = $customer->expiration;
-        $this->observations = $customer->observations;
     }
 
     public function updated($propertyName)
@@ -55,29 +44,20 @@ class EditCustomer extends Component
     {
         $this->validate();
 
-        // Actualizar el customero en la base de datos
+        // Actualizar el cliente en la base de datos
         $this->customer->update([
-            'name' => $this->name,
-            'description' => $this->description,
-            'current_stock' => $this->current_stock,
-            'measurement_unit' => $this->measurement_unit,
-            'purchase_price' => $this->purchase_price,
-            'selling_price' => $this->selling_price,
-            'status' => $this->status,
-            'expiration' => $this->expiration,
-            'observations' => $this->observations,
+            'name'    => $this->name,
+            'email'   => $this->email,
+            'address' => $this->address,
+            'phone'   => $this->phone,
+            'slug'    => $this->slug,
+            'status'  => $this->status,
         ]);
-
-        if ($this->image) {
-            // Actualizar la imagen si se ha cargado una nueva
-            $image_url = $this->image->store('customers');
-            $this->customer->update(['image' => $image_url]);
-        }
 
         // Cerrar el modal después de actualizar
         $this->open = false;
 
-        // Emitir un evento para que se actualice la lista de customeros en la página anterior
+        // Emitir un evento para que se actualice la lista de clientes en la página anterior
         $this->emitTo('customers.index-customer', 'render');
 
         // Emitir una notificación de éxito
