@@ -16,6 +16,7 @@ class Customer extends Model
         'phone',
         'slug',
         'status',
+        'image',
     ];
 
     public function sales() {

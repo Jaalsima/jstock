@@ -16,9 +16,11 @@ class Supplier extends Model
         'phone',
         'slug',
         'status',
+        'image',
     ];
 
     public function purchases() {
         return $this->hasMany(Purchase::class);
     }
 }
+ 

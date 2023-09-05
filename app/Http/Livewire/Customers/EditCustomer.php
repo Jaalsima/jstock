@@ -12,7 +12,7 @@ class EditCustomer extends Component
     use WithFileUploads;
 
     public $customer;
-    public $name, $email, $address, $phone, $slug, $status;
+    public $name, $email, $address, $phone, $slug, $status, $image;
     public $open = false;
 
     protected $rules = [
@@ -22,6 +22,7 @@ class EditCustomer extends Component
         'phone'   => 'nullable|string',
         'slug'    => 'required',
         'status'  => 'required|in:Activo,Inactivo',
+        'image'   => 'required|image|max:2048',
     ];
 
     public function mount(Customer $customer)
@@ -58,7 +59,7 @@ class EditCustomer extends Component
         $this->open = false;
 
         // Emitir un evento para que se actualice la lista de clientes en la página anterior
-        $this->emitTo('customers.index-customer', 'render');
+        $this->emitUp('customers.index-customer', 'render');
 
         // Emitir una notificación de éxito
         $this->emit('alert', '¡Cliente Actualizado Exitosamente!');

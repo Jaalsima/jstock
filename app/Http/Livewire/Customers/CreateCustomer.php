@@ -19,6 +19,7 @@ class CreateCustomer extends Component
         'email' => 'nullable|email',
         'address' => 'nullable|string',
         'phone' => 'nullable|string',
+        'slug' => 'required',
         'status' => 'required|in:Activo,Inactivo',
         'image' => 'nullable|image|max:2048',
     ];
