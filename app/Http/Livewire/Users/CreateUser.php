@@ -57,7 +57,7 @@ class CreateUser extends Component
 
         $this->reset(['open', 'document', 'name', 'email', 'address', 'phone', 'password', 'slug', 'status', 'profile_photo_path']);
         $this->unique_input_identifier = rand();
-        $this->emitTo('users.index-user', 'render');
+        $this->emitTo('users.list-user', 'render');
         $this->emit('alert', '¡Usuario Creado Exitosamente!');
     }
 

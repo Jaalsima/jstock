@@ -1,4 +1,4 @@
-<!-- resources/views/livewire/users/index-user.blade.php -->
+<!-- resources/views/livewire/users/list-user.blade.php -->
 
 <div>
     <div>
@@ -14,9 +14,9 @@
 
         <div class="flex">
             <!-- Este input de búsqueda puede tener otros modificadores como 'debounce.1s' o 'defer' -->
-            <input type="text" wire:model.lazy="search"
+            <input type="text" wire:model.lazy="searchu"
                 class="w-1/4 mr-4 bg-white border-none rounded-lg focus:ring-gray-400" placeholder="Buscar...">
-            <livewire:users.create-user />
+            {{-- <livewire:users.create-user /> --}}
         </div>
     </div>
     <div class="relative mt-4 overflow-x-auto shadow-md sm:rounded-lg">
@@ -98,7 +98,8 @@
                                 <div class="flex items-center">
                                     <input id="checkbox-table-search-{{ $user->id }}" type="checkbox"
                                         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    <label for="checkbox-table-search-{{ $user->id }}" class="sr-only">checkbox</label>
+                                    <label for="checkbox-table-search-{{ $user->id }}"
+                                        class="sr-only">checkbox</label>
                                 </div>
                             </td>
                             <th scope="row"
@@ -109,14 +110,14 @@
                             <td class="px-6 py-4 dark:text-lg">{{ $user->email }}</td>
                             <td class="px-6 py-4 dark:text-lg">{{ $user->address }}</td>
                             <td class="px-6 py-4 dark:text-lg">{{ $user->phone }}</td>
-                            
+
                             @if ($user->status == 'Activo')
                                 <td class="px-6 py-4 text-green-600">{{ $user->status }}</td>
                             @else
                                 @if ($user->status == 'Inactivo')
                                     <td class="px-6 py-4 text-red-600">{{ $user->status }}</td>
                                 @else
-                                {{-- Aquí se agrega un posible tercer estado para los usuarios --}}
+                                    {{-- Aquí se agrega un posible tercer estado para los usuarios --}}
                                     <td class="px-6 py-4 text-blue-600">{{ $user->status }}</td>
                                 @endif
                             @endif

@@ -67,7 +67,7 @@ class EditUser extends Component
         $this->open = false;
 
         // Emitir un evento para que se actualice la lista de useros en la página anterior
-        $this->emitTo('users.index-user', 'render');
+        $this->emitTo('users.list-user', 'render');
 
         // Emitir una notificación de éxito
         $this->emit('alert', '¡Usuario Actualizado Exitosamente!');

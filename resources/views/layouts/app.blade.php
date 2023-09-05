@@ -58,4 +58,33 @@
             );
         });
     </script>
+    <script src="https://unpkg.com/flowbite@1.3.4/dist/flowbite.js"></script>
+    <script>
+        const button = document.querySelector('[data-collapse-toggle="dropdown-products"]');
+        const angleDownIcon = document.getElementById('angleDownIcon');
+        const angleUpIcon = document.getElementById('angleUpIcon');
+
+        button.addEventListener('click', () => {
+            angleDownIcon.classList.toggle('hidden');
+            angleUpIcon.classList.toggle('hidden');
+        });
+
+
+        var sideBar = document.getElementById("mobile-nav");
+        var openSidebar = document.getElementById("openSideBar");
+        var closeSidebar = document.getElementById("closeSideBar");
+        sideBar.style.transform = "translateX(-260px)";
+
+        function sidebarHandler(flag) {
+            if (flag) {
+                sideBar.style.transform = "translateX(0px)";
+                openSidebar.classList.add("hidden");
+                closeSidebar.classList.remove("hidden");
+            } else {
+                sideBar.style.transform = "translateX(-260px)";
+                closeSidebar.classList.add("hidden");
+                openSidebar.classList.remove("hidden");
+            }
+        }
+    </script>
 </body>

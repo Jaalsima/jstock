@@ -17,24 +17,24 @@ class UserSeeder extends Seeder
     {
         User::create([
             'document'             => 'kjfasgoasp',
-            $name1 = 'name'        => 'Jaime',
+            'name'                 => 'Jaime',
             'email'                => 'coderman1980@gmail.com',
             'address'              => 'Medellín',
             'phone'                => '1584ffih',
             'password'             => Hash::make('coderman'),
-            'slug'                 => Str::slug($name1),
+            'slug'                 => Str::slug('Jaime'),
             'status'               => 'Activo',
             'profile_photo_path'   => 'users/' . fake()->image('public/storage/users', 640, 480, null, false),
         ])->assignRole('developer');
 
         User::create([
             'document'             => 'jkbdfbfbsd',
-            $name2 = 'name'        => 'John',
+            'name'                 => 'John',
             'email'                => 'john@example.com',
             'address'              => 'Medellín',
             'phone'                => '1584ffih',
             'password'             => Hash::make('password'),
-            'slug'                 => Str::slug($name2),
+            'slug'                 => Str::slug('John'),
             'status'               => 'Activo',
             'profile_photo_path'   => 'users/' . fake()->image('public/storage/users', 640, 480, null, false),
         ])->assignRole('admin');
