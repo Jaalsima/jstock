@@ -8,12 +8,13 @@
         <livewire:home-navbar />
 
         <!-- Título principal -->
-        <div class="w-1/2 p-4 m-4 mx-auto text-5xl font-semibold text-center bg-gray-200 rounded-lg">
-            <span class="text-red-800">JStock</span> Servicios
+        <div
+            class="w-1/2 p-4 m-4 mx-auto text-5xl font-semibold text-center bg-gray-200 rounded-lg shadow-lg shadow-gray-400 dark:bg-gray-800">
+            <span class="text-red-800">JS</span>tock Servicios
         </div>
 
         <!-- Sección de Introducción -->
-        <div class="w-1/2 px-20 py-6 m-4 mx-auto bg-gray-200 rounded-lg">
+        <div class="w-1/2 px-20 py-6 m-4 mx-auto bg-gray-200 rounded-lg shadow-lg shadow-gray-400 dark:bg-gray-800">
             <h2 class="text-3xl font-semibold text-center">Optimiza tu inventario con JStock</h2>
             <p class="mt-4 text-lg text-justify text-gray-700 dark:text-gray-400">
                 En JStock, entendemos que la gestión de inventario es un pilar fundamental para el éxito de tu negocio.

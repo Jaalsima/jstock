@@ -8,20 +8,21 @@
         <livewire:home-navbar />
 
         <div
-            class="w-1/2 p-4 mx-auto mt-16 text-6xl text-center text-gray-600 bg-white rounded-lg shadow-lg dark:bg-gray-800 dark:text-gray-100 shadow-gray-400 text-bold">
-            <h1>Blog JStock</h1>
+            class="w-1/2 p-4 m-4 mx-auto text-5xl font-semibold text-center bg-gray-200 rounded-lg shadow-lg shadow-gray-400 dark:bg-gray-800">
+            <span class="text-red-800">JS</span>tock Blog
         </div>
 
         <div class="flex w-4/5 mx-auto my-6">
             <div class="">
                 <div class="py-4 pl-4 pr-12">
                     <a href="#" class="flex w-full h-auto mt-10 cursor-default" id="blog1">
-                        <div class="relative w-1/3 p-1 bg-red-500 rounded-md shadow-md h-60 shadow-red-300">
+                        <div
+                            class="relative w-1/3 p-1 bg-red-500 rounded-md shadow-md dark:bg-gray-600 h-60 shadow-red-400">
                             <img class="object-cover w-full h-full rounded-lg bg-slate-700 "
                                 src="{{ asset('images/inventory/inv_5.avif') }}" alt="Imagen de Inventario 1">
                         </div>
                         <div
-                            class="w-2/3 h-auto p-4 ml-12 leading-normal text-justify bg-white rounded-md shadow-md dark:bg-gray-800 shadow-gray-400">
+                            class="w-2/3 h-auto p-4 ml-12 leading-normal text-justify bg-gray-200 rounded-md shadow-md dark:bg-gray-800 shadow-gray-400">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                                 Cómo Optimizar tu Gestión de Inventario con JStock</h5>
                             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">La gestión eficiente del
@@ -80,13 +81,14 @@
 
                     </a>
                     <a href="#"
-                        class="flex flex-col items-center w-full h-auto mt-10 bg-white border border-gray-200 rounded-lg shadow-lg cursor-default shadow-gray-500 md:flex-row dark:border-gray-700 dark:bg-gray-800">
+                        class="flex flex-col items-center w-full h-auto mt-10 bg-gray-200 border border-gray-200 rounded-lg shadow-lg cursor-default shadow-gray-500 md:flex-row dark:border-gray-700 dark:bg-gray-800">
                         <div class="flex flex-col justify-between p-4 leading-normal">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">Gestión de
                                 Inventario en Tiempos
                                 de Cambio: Un Vistazo a JStock</h5>
                             <div>
-                                <div class="relative float-right w-2/5 p-1 mx-4 mb-2 bg-red-500 rounded-md h-70">
+                                <div
+                                    class="relative float-right w-2/5 p-1 mx-4 mb-2 bg-red-500 rounded-md shadow-md h-70 dark:bg-gray-600 shadow-red-400">
                                     <img class="object-cover w-full h-full rounded-lg"
                                         src="{{ asset('images/inventory/inv_6.jfif') }}" alt="Imagen de Inventario 2">
                                 </div>
@@ -152,12 +154,13 @@
                         </div>
                     </a>
                     <a href="#" class="flex w-full h-auto mt-10 cursor-default">
-                        <div class="sticky w-1/3 p-1 bg-red-500 rounded-md shadow-md h-60 shadow-red-300 top-3">
+                        <div
+                            class="sticky w-1/3 p-1 bg-red-500 rounded-md shadow-md h-60 top-3 dark:bg-gray-600 shadow-red-400">
                             <img class="object-cover w-full h-full rounded-lg bg-slate-700 "
                                 src="{{ asset('images/inventory/inv_7.webp') }}" alt="Imagen de Inventario 3">
                         </div>
                         <div
-                            class="w-2/3 h-auto p-4 ml-12 leading-normal text-justify bg-white rounded-md shadow-md dark:bg-gray-800 shadow-gray-400">
+                            class="w-2/3 h-auto p-4 ml-12 leading-normal text-justify bg-gray-200 rounded-md shadow-md dark:bg-gray-800 shadow-gray-400">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                                 Automatización de Procesos con JStock</h5>
                             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">La gestión de inventario en una
@@ -227,13 +230,14 @@
                     </a>
 
                     <a href="#"
-                        class="flex flex-col items-center w-full h-auto mt-10 bg-white border border-gray-200 rounded-lg shadow-lg cursor-default shadow-gray-500 md:flex-row dark:border-gray-700 dark:bg-gray-800">
+                        class="flex flex-col items-center w-full h-auto mt-10 bg-gray-200 border border-gray-200 rounded-lg shadow-lg cursor-default shadow-gray-500 md:flex-row dark:border-gray-700 dark:bg-gray-800">
                         <div class="flex flex-col justify-between p-4 leading-normal">
                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">El Futuro
                                 de la Gestión de
                                 Inventario: JStock a la Vanguardia</h5>
                             <div>
-                                <div class="relative float-right w-2/5 p-1 mx-4 mb-2 bg-red-500 rounded-md h-70">
+                                <div
+                                    class="relative float-right w-2/5 p-1 mx-4 mb-2 bg-red-500 rounded-md shadow-md h-70 dark:bg-gray-600 shadow-red-400">
                                     <img class="object-cover w-full h-full rounded-lg"
                                         src="{{ asset('images/inventory/inv_8.jpg') }}" alt="Imagen de Inventario 4">
                                 </div>
@@ -292,7 +296,7 @@
             </div>
             <div class="pt-4 mt-10">
                 <aside
-                    class="sticky w-48 p-4 text-xl text-white bg-gray-500 rounded-md shadow-lg top-10 shadow-red-300 dark:bg-gray-800">
+                    class="sticky w-48 p-4 text-xl text-white bg-gray-500 rounded-md shadow-md top-10 shadow-red-400 dark:bg-gray-800">
                     <h1 class="font-semibold">Noticias</h1>
                     <nav class="flex flex-col">
                         <div class="flex m-1">

@@ -5,18 +5,22 @@
 
     <div class="flex flex-col justify-between min-h-screen">
         <livewire:home-navbar />
-
+        <div
+            class="w-1/3 p-4 m-4 mx-auto text-5xl font-semibold text-center bg-gray-200 rounded-lg shadow-lg shadow-gray-400 dark:bg-gray-800">
+            <span class="text-red-800">JS</span>tock Contacto
+        </div>
         <!-- Contenido de Contacto -->
         <div class="w-2/3 mx-auto mt-8">
-            <h2 class="mb-6 text-3xl font-semibold text-center text-gray-900 dark:text-white">¡Contáctanos!</h2>
+
 
             <!-- Formulario de Contacto -->
-            <form class="w-1/2 p-6 bg-white rounded-md shadow-md dark:bg-gray-800 dark:shadow-gray-400">
+            <form
+                class="w-2/3 p-6 mx-auto bg-gray-200 rounded-md shadow-lg shadow-gray-400 dark:bg-gray-800 dark:shadow-gray-400">
                 <div class="mb-4">
                     <label for="nombre"
                         class="block mb-2 text-lg font-medium text-gray-700 dark:text-gray-400">Nombre:</label>
                     <input type="text" id="nombre" name="nombre"
-                        class="w-full p-2 border-gray-300 rounded-md dark:border-gray-600 focus:outline-none focus:border-red-800"
+                        class="w-full p-2 bg-gray-100 border-2 border-gray-300 rounded-md dark:bg-gray-600 dark:border-gray-400 focus:ring-0 focus:border-red-800"
                         required>
                 </div>
 
@@ -24,7 +28,7 @@
                     <label for="correo" class="block mb-2 text-lg font-medium text-gray-700 dark:text-gray-400">Correo
                         Electrónico:</label>
                     <input type="email" id="correo" name="correo"
-                        class="w-full p-2 border-gray-300 rounded-md dark:border-gray-600 focus:outline-none focus:border-red-800"
+                        class="w-full p-2 bg-gray-100 border-2 border-gray-300 rounded-md dark:bg-gray-600 dark:border-gray-400 focus:ring-0 focus:border-red-800"
                         required>
                 </div>
 
@@ -32,12 +36,13 @@
                     <label for="mensaje"
                         class="block mb-2 text-lg font-medium text-gray-700 dark:text-gray-400">Mensaje:</label>
                     <textarea id="mensaje" name="mensaje" rows="4"
-                        class="w-full p-2 border-gray-300 rounded-md dark:border-gray-600 focus:outline-none focus:border-red-800" required></textarea>
+                        class="w-full p-2 bg-gray-100 border-2 border-gray-300 rounded-md dark:bg-gray-600 dark:border-gray-400 focus:ring-0 focus:border-red-800"
+                        required></textarea>
                 </div>
 
                 <div class="text-center">
                     <button type="submit"
-                        class="px-6 py-2 text-white bg-red-800 rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-600">Enviar
+                        class="px-6 py-2 text-white bg-red-800 rounded-md hover:bg-red-600 focus:bg-red-600">Enviar
                         Mensaje</button>
                 </div>
             </form>

@@ -16,10 +16,10 @@
                 <div class="flex w-full text-justify">
                     <div class="relative w-2/3 h-64 mr-8 group">
                         <div
-                            class="w-full h-48 mt-8 duration-300 ease-in bg-gray-400 rounded group-hover:shadow-lg group-hover:shadow-red-800 group-hover:-rotate-3">
+                            class="w-full h-48 mt-8 duration-300 ease-in bg-gray-400 rounded group-hover:shadow-lg dark:group-hover:shadow-red-400 group-hover:shadow-red-800 group-hover:-rotate-3">
                         </div>
                         <div style="margin: 0 5vh 0 6vh;"
-                            class="absolute w-3/4 p-8 duration-300 ease-in bg-gray-200 rounded shadow-lg top-2 h-60 shadow-gray-400 group-hover:shadow-gray-600">
+                            class="absolute w-3/4 p-8 duration-300 ease-in bg-gray-200 rounded shadow-lg dark:text-gray-300 dark:bg-gray-800 top-2 h-60 shadow-gray-400 group-hover:shadow-gray-600">
                             <h1 class="text-3xl font-medium">Misión</h1>
                             <b>Nuestra misión es proporcionar un sistema de inventario JStock altamente eficiente y
                                 confiable que permita a las empresas gestionar su inventario de manera efectiva, reducir
@@ -28,10 +28,10 @@
                     </div>
                     <div class="relative w-2/3 h-64 group">
                         <div
-                            class="w-full h-48 mt-8 duration-300 ease-in bg-gray-400 rounded group-hover:shadow-lg group-hover:shadow-red-800 group-hover:rotate-3">
+                            class="w-full h-48 mt-8 duration-300 ease-in bg-gray-400 rounded group-hover:shadow-lg dark:group-hover:shadow-red-400 group-hover:shadow-red-800 group-hover:rotate-3">
                         </div>
                         <div style="margin: 0 5vh 0 6vh;"
-                            class="absolute w-3/4 p-8 duration-300 ease-in bg-gray-200 rounded shadow-lg top-2 h-60 shadow-gray-400 group-hover:shadow-gray-600">
+                            class="absolute w-3/4 p-8 duration-300 ease-in bg-gray-200 rounded shadow-lg dark:text-gray-300 dark:bg-gray-800 top-2 h-60 shadow-gray-400 group-hover:shadow-gray-600">
                             <h1 class="text-3xl font-medium">Visión</h1>
                             <b>Nuestra visión es convertirnos en el proveedor líder de soluciones de gestión de
                                 inventario,
@@ -41,7 +41,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="w-2/3 p-5 mx-auto mt-16 mb-4 bg-gray-300 rounded-xl">
+                <div class="w-2/3 p-5 mx-auto mt-16 mb-4 bg-gray-300 dark:text-gray-300 dark:bg-gray-800 rounded-xl">
                     <h1 class="text-3xl font-medium">Historia de JStock</h1>
                     <p>
                         JStock ha estado en la vanguardia de la gestión de inventario durante más de dos décadas.
@@ -74,7 +74,7 @@
 
             <div class="grid w-2/3 grid-cols-2 gap-4 mx-auto my-10">
                 <div
-                    class="flex p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
+                    class="flex p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg dark:bg-gray-800 hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
                     <!-- Card Image-->
                     <div class="flex-shrink-0 hidden w-56 mt-2 border-2 border-red-800 rounded-lg md:block h-36">
                         <img class="object-cover w-full h-full rounded-lg"
@@ -84,11 +84,12 @@
                     <div class="md:ml-6">
                         <!--Card Heading -->
                         <div>
-                            <h3 class="text-2xl font-semibold text-gray-800">Evento de Lanzamiento</h3>
+                            <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-300">Evento de Lanzamiento
+                            </h3>
                         </div>
                         <!--Card Excerpt-->
                         <div class="my-2 text-gray-600">
-                            <div class="my-2 text-gray-600">
+                            <div class="my-2 text-gray-600 dark:text-gray-300">
                                 Únete a nosotros en nuestro emocionante evento de lanzamiento de JStock, donde
                                 presentaremos las últimas
                                 características y mejoras de nuestro sistema de inventario. Estaremos encantados de
@@ -101,7 +102,7 @@
                 </div>
 
                 <div
-                    class="flex p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
+                    class="flex p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg dark:bg-gray-800 hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
                     <!-- Card Image-->
                     <div class="flex-shrink-0 hidden w-56 mt-2 border-2 border-red-800 rounded-lg md:block h-36">
                         <img class="object-cover w-full h-full rounded-lg"
@@ -111,10 +112,10 @@
                     <div class="md:ml-6">
                         <!--Card Heading -->
                         <div>
-                            <h3 class="text-2xl font-semibold text-gray-800">Socio Estratégico</h3>
+                            <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-300">Socio Estratégico</h3>
                         </div>
                         <!--Card Excerpt-->
-                        <div class="my-2 text-gray-600">
+                        <div class="my-2 text-gray-600 dark:text-gray-300">
                             Estamos emocionados de anunciar nuestra nueva asociación estratégica con XYZ Corporation, un
                             líder en la
                             industria de la logística. Esta colaboración nos permitirá ofrecer soluciones de gestión de
@@ -125,7 +126,7 @@
                     </div>
                 </div>
                 <div
-                    class="flex p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
+                    class="flex p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg dark:bg-gray-800 hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
                     <!-- Card Image-->
                     <div class="flex-shrink-0 hidden w-56 mt-2 border-2 border-red-800 rounded-lg md:block h-36">
                         <img class="object-cover w-full h-full rounded-lg"
@@ -135,10 +136,10 @@
                     <div class="md:ml-6">
                         <!--Card Heading -->
                         <div>
-                            <h3 class="text-2xl font-semibold text-gray-800">Reseñas de Clientes</h3>
+                            <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-300">Reseñas de Clientes</h3>
                         </div>
                         <!--Card Excerpt-->
-                        <div class="my-2 text-gray-600">
+                        <div class="my-2 text-gray-600 dark:text-gray-300">
                             Nuestros clientes adoran JStock. Aquí tienes lo que algunos de ellos dicen: "Desde que
                             implementamos
                             JStock, nuestra gestión de inventario se ha vuelto mucho más eficiente y nuestros costos han
@@ -155,7 +156,7 @@
                 </div>
 
                 <div
-                    class="flex p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
+                    class="flex p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg dark:bg-gray-800 hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
                     <!-- Card Image-->
                     <div class="flex-shrink-0 hidden w-56 mt-2 border-2 border-red-800 rounded-lg md:block h-36">
                         <img class="object-cover w-full h-full rounded-lg"
@@ -165,10 +166,10 @@
                     <div class="md:ml-6">
                         <!--Card Heading -->
                         <div>
-                            <h3 class="text-2xl font-semibold text-gray-800">Campaña Promocional</h3>
+                            <h3 class="text-2xl font-semibold text-gray-800 dark:text-gray-300">Campaña Promocional</h3>
                         </div>
                         <!--Card Excerpt-->
-                        <div class="my-2 text-gray-600">
+                        <div class="my-2 text-gray-600 dark:text-gray-300">
                             ¡No te pierdas nuestra campaña promocional especial de verano! Obtén un 20% de descuento en
                             la compra de nuestro sistema de gestión de inventario para PYMES "JStock" durante todo el
                             mes de julio. Esta es tu oportunidad de mejorar la gestión de tu inventario a un precio

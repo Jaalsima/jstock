@@ -39,7 +39,7 @@ class UserSeeder extends Seeder
             'profile_photo_path'   => 'users/' . fake()->image('public/storage/users', 640, 480, null, false),
         ])->assignRole('admin');
 
-        User::factory(50)->create()->each(function ($user) {
+        User::factory(10)->create()->each(function ($user) {
             return $user->assignRole('guest');
         });
     }

@@ -1,9 +1,9 @@
-<div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100 dark:bg-gray-700">
+<div class="flex flex-col items-center min-h-screen pt-6 bg-gray-200 sm:justify-center sm:pt-0 dark:bg-gray-700">
     <div>
         {{ $logo }}
     </div>
 
-    <div>
+    <div class="w-full">
         {{ $slot }}
     </div>
 </div>
