@@ -8,40 +8,42 @@
 
         <div class="relative p-2 bg-yellow-40">
             {{--  --}}
-            <div class="flex flex-col w-2/3 p-4 m-auto text-justify">
-                <div class="mb-10 ml-32">
-                    <h1 class="font-bold text-7xl"><span class="text-red-800">Qu</span>iénes somos</h1>
-                    <p class="text-3xl font-semibold">La solución a todos tus problemas</p>
+            <div class="flex flex-col w-full m-auto text-justify lg:w-3/4 2xl:w-2/3 lg:p-4">
+                <div class="w-5/6 mx-auto mb-10 lg:ml-32">
+                    <h1 class="text-4xl font-bold md:text-6xl lg:text-7xl"><span class="text-red-800">Qu</span>iénes somos
+                    </h1>
+                    <p class="pr-16 text-2xl font-semibold md:text-3xl">La solución a todos tus problemas</p>
                 </div>
-                <div class="flex w-full text-justify">
-                    <div class="relative w-2/3 h-64 mr-8 group">
+                <div class="w-full text-justify lg:flex">
+                    <div class="relative mx-auto md:w-3/4 lg:w-2/3 h-80 md:h-60 lg:mr-8 group">
                         <div
-                            class="w-full h-48 mt-8 duration-300 ease-in bg-gray-400 rounded group-hover:shadow-lg dark:group-hover:shadow-red-400 group-hover:shadow-red-800 group-hover:-rotate-3">
+                            class="w-full h-64 mt-12 duration-300 ease-in bg-gray-400 rounded md:h-40 lg:h-48 lg:mt-8 group-hover:shadow-lg dark:group-hover:shadow-red-400 group-hover:shadow-red-800 group-hover:-rotate-3">
                         </div>
                         <div style="margin: 0 5vh 0 6vh;"
-                            class="absolute w-3/4 p-8 duration-300 ease-in bg-gray-200 rounded shadow-lg dark:text-gray-300 dark:bg-gray-800 top-2 h-60 shadow-gray-400 group-hover:shadow-gray-600">
-                            <h1 class="text-3xl font-medium">Misión</h1>
-                            <b>Nuestra misión es proporcionar un sistema de inventario JStock altamente eficiente y
+                            class="absolute w-3/4 h-auto p-8 duration-300 ease-in bg-gray-200 rounded shadow-lg dark:text-gray-300 dark:bg-gray-800 -top-9 lg:top-2 lg:h-64 2xl:h-60 shadow-gray-400 group-hover:shadow-gray-600">
+                            <h1 class="mb-2 text-3xl font-medium">Misión</h1>
+                            <p>Nuestra misión es proporcionar un sistema de inventario JStock altamente eficiente y
                                 confiable que permita a las empresas gestionar su inventario de manera efectiva, reducir
-                                costos y aumentar la productividad.</b>
+                                costos y aumentar la productividad.</p>
                         </div>
                     </div>
-                    <div class="relative w-2/3 h-64 group">
+                    <div class="relative mx-auto md:w-3/4 lg:w-2/3 h-80 md:h-52 lg:mr-8 group">
                         <div
-                            class="w-full h-48 mt-8 duration-300 ease-in bg-gray-400 rounded group-hover:shadow-lg dark:group-hover:shadow-red-400 group-hover:shadow-red-800 group-hover:rotate-3">
+                            class="w-full h-64 mt-12 duration-300 ease-in bg-gray-400 rounded md:h-40 lg:h-48 lg:mt-8 group-hover:shadow-lg dark:group-hover:shadow-red-400 group-hover:shadow-red-800 group-hover:-rotate-3">
                         </div>
                         <div style="margin: 0 5vh 0 6vh;"
-                            class="absolute w-3/4 p-8 duration-300 ease-in bg-gray-200 rounded shadow-lg dark:text-gray-300 dark:bg-gray-800 top-2 h-60 shadow-gray-400 group-hover:shadow-gray-600">
-                            <h1 class="text-3xl font-medium">Visión</h1>
-                            <b>Nuestra visión es convertirnos en el proveedor líder de soluciones de gestión de
+                            class="absolute w-3/4 h-auto p-8 duration-300 ease-in bg-gray-200 rounded shadow-lg dark:text-gray-300 dark:bg-gray-800 -top-9 lg:top-2 lg:h-64 2xl:h-60 shadow-gray-400 group-hover:shadow-gray-600">
+                            <h1 class="mb-2 text-3xl font-medium">Visión</h1>
+                            <p>Nuestra visión es convertirnos en el proveedor líder de soluciones de gestión de
                                 inventario,
                                 ofreciendo un sistema JStock de vanguardia que sea reconocido a nivel global por su
                                 innovación y capacidad para impulsar el éxito empresarial.
-                                </p></b>
+                            </p>
                         </div>
                     </div>
                 </div>
-                <div class="w-2/3 p-5 mx-auto mt-16 mb-4 bg-gray-300 dark:text-gray-300 dark:bg-gray-800 rounded-xl">
+                <div
+                    class="w-5/6 p-5 mx-auto mt-16 mb-4 bg-gray-300 lg:w-2/3 dark:text-gray-300 dark:bg-gray-800 rounded-xl">
                     <h1 class="text-3xl font-medium">Historia de JStock</h1>
                     <p>
                         JStock ha estado en la vanguardia de la gestión de inventario durante más de dos décadas.
@@ -72,11 +74,11 @@
             </div>
 
 
-            <div class="grid w-2/3 grid-cols-2 gap-4 mx-auto my-10">
+            <div class="grid w-5/6 gap-4 mx-auto my-10 lg:w-3/4 2xl:w-2/3 lg:grid-cols-2">
                 <div
-                    class="flex p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg dark:bg-gray-800 hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
+                    class="p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg md:flex dark:bg-gray-800 hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
                     <!-- Card Image-->
-                    <div class="flex-shrink-0 hidden w-56 mt-2 border-2 border-red-800 rounded-lg md:block h-36">
+                    <div class="flex-shrink-0 block mt-2 border-2 border-red-800 rounded-lg md:w-56 h-36">
                         <img class="object-cover w-full h-full rounded-lg"
                             src="{{ asset('images/inventory/opening.png') }}">
                     </div>
@@ -102,9 +104,9 @@
                 </div>
 
                 <div
-                    class="flex p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg dark:bg-gray-800 hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
+                    class="p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg md:flex dark:bg-gray-800 hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
                     <!-- Card Image-->
-                    <div class="flex-shrink-0 hidden w-56 mt-2 border-2 border-red-800 rounded-lg md:block h-36">
+                    <div class="flex-shrink-0 block mt-2 border-2 border-red-800 rounded-lg md:w-56 h-36">
                         <img class="object-cover w-full h-full rounded-lg"
                             src="{{ asset('images/inventory/socio.jpg') }}">
                     </div>
@@ -126,9 +128,9 @@
                     </div>
                 </div>
                 <div
-                    class="flex p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg dark:bg-gray-800 hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
+                    class="p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg md:flex dark:bg-gray-800 hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
                     <!-- Card Image-->
-                    <div class="flex-shrink-0 hidden w-56 mt-2 border-2 border-red-800 rounded-lg md:block h-36">
+                    <div class="flex-shrink-0 block mt-2 border-2 border-red-800 rounded-lg md:w-56 h-36">
                         <img class="object-cover w-full h-full rounded-lg"
                             src="{{ asset('images/inventory/clients.avif') }}">
                     </div>
@@ -156,9 +158,9 @@
                 </div>
 
                 <div
-                    class="flex p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg dark:bg-gray-800 hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
+                    class="p-3 my-3 bg-gray-200 border-2 border-gray-400 rounded-lg md:flex dark:bg-gray-800 hover:border-gray-200 hover:shadow-lg hover:shadow-gray-600">
                     <!-- Card Image-->
-                    <div class="flex-shrink-0 hidden w-56 mt-2 border-2 border-red-800 rounded-lg md:block h-36">
+                    <div class="flex-shrink-0 block mt-2 border-2 border-red-800 rounded-lg md:w-56 h-36">
                         <img class="object-cover w-full h-full rounded-lg"
                             src="{{ asset('images/inventory/promo_event.jpg') }}">
                     </div>

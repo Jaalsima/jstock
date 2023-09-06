@@ -9,12 +9,13 @@
 
         <!-- Título principal -->
         <div
-            class="w-1/2 p-4 m-4 mx-auto text-5xl font-semibold text-center bg-gray-200 rounded-lg shadow-lg shadow-gray-400 dark:bg-gray-800">
+            class="w-5/6 p-4 m-4 mx-auto text-3xl font-semibold text-center bg-gray-200 rounded-lg shadow-lg lg:w-1/2 md:text-5xl shadow-gray-400 dark:bg-gray-800">
             <span class="text-red-800">JS</span>tock Servicios
         </div>
 
         <!-- Sección de Introducción -->
-        <div class="w-1/2 px-20 py-6 m-4 mx-auto bg-gray-200 rounded-lg shadow-lg shadow-gray-400 dark:bg-gray-800">
+        <div
+            class="w-5/6 py-6 m-4 mx-auto bg-gray-200 rounded-lg shadow-lg px-7 lg:w-1/2 md:px-20 shadow-gray-400 dark:bg-gray-800">
             <h2 class="text-3xl font-semibold text-center">Optimiza tu inventario con JStock</h2>
             <p class="mt-4 text-lg text-justify text-gray-700 dark:text-gray-400">
                 En JStock, entendemos que la gestión de inventario es un pilar fundamental para el éxito de tu negocio.
@@ -57,16 +58,19 @@
 
 
         <!-- Sección de Servicios -->
-        <div class="grid content-center w-auto grid-cols-3 gap-6 mx-auto mt-12">
+        <div class="grid content-center w-auto gap-6 mx-auto mt-12 md:w-5/6 lg:grid-cols-3">
             <!-- Servicio 1: Gestión de Inventario en Tiempo Real -->
-            <div class="relative h-auto mb-10 text-center rounded-lg w-96 group">
-                <div class="w-full h-52"><img class="object-cover w-full h-full border-4 border-red-800 rounded-lg"
-                        src="{{ asset('images/inventory/inventory1.png') }}" alt=""></div>
+            <div class="relative h-auto mx-auto mb-10 text-center rounded-lg w-80 md:w-full lg:w-96 group">
+                <div class="w-full md:h-60 h-52">
+                    <img class="object-cover w-full h-full border-4 border-red-800 rounded-t-lg lg:rounded-lg"
+                        src="{{ asset('images/inventory/inventory1.png') }}" alt="">
+                </div>
                 <div
-                    class="absolute top-0 z-10 h-auto p-10 text-white duration-300 ease-in rounded-b-lg group group-hover:translate-y-36 group-hover:bg-gray-600 group-hover:w-full">
-                    <h1 class="font-mono text-2xl opacity-0 group-hover:opacity-100">Gestión de Inventario en Tiempo
+                    class="top-0 z-10 h-auto p-6 text-white duration-300 ease-in bg-gray-600 rounded-b-lg lg:bg-transparent lg:absolute lg:p-10 group lg:group-hover:translate-y-36 lg:group-hover:bg-gray-600 lg:group-hover:w-full">
+                    <h1 class="font-mono text-2xl md:mb-4 lg:opacity-0 group-hover:opacity-100">Gestión de Inventario en
+                        Tiempo
                         Real</h1>
-                    <p class="opacity-0 group-hover:opacity-100">
+                    <p class="text-justify lg:opacity-0 group-hover:opacity-100">
                         Mantén un control total sobre tu inventario en tiempo real. Con JStock, puedes rastrear la
                         disponibilidad
                         de productos, verificar el nivel de existencias y recibir alertas automáticas cuando sea
@@ -77,13 +81,16 @@
             </div>
 
             <!-- Servicio 2: Análisis de Datos Avanzados -->
-            <div class="relative h-auto mb-10 text-center rounded-lg w-96 group">
-                <div class="w-full h-52"><img class="object-cover w-full h-full border-4 border-red-800 rounded-lg"
-                        src="{{ asset('images/inventory/inventory2.png') }}" alt=""></div>
+            <div class="relative h-auto mx-auto mb-10 text-center rounded-lg w-80 md:w-full lg:w-96 group">
+                <div class="w-full md:h-60 h-52">
+                    <img class="object-cover w-full h-full border-4 border-red-800 rounded-t-lg lg:rounded-lg"
+                        src="{{ asset('images/inventory/inventory2.png') }}" alt="">
+                </div>
                 <div
-                    class="absolute top-0 z-10 h-auto p-10 text-white duration-300 ease-in rounded-b-lg group group-hover:translate-y-36 group-hover:bg-gray-600 group-hover:w-full">
-                    <h1 class="font-mono text-2xl opacity-0 group-hover:opacity-100">Análisis de Datos Avanzados</h1>
-                    <p class="opacity-0 group-hover:opacity-100">
+                    class="top-0 z-10 h-auto p-6 text-white duration-300 ease-in bg-gray-600 rounded-b-lg lg:bg-transparent lg:absolute lg:p-10 group lg:group-hover:translate-y-36 lg:group-hover:bg-gray-600 lg:group-hover:w-full">
+                    <h1 class="font-mono text-2xl md:mb-4 lg:opacity-0 group-hover:opacity-100">Análisis de Datos
+                        Avanzados</h1>
+                    <p class="text-justify lg:opacity-0 group-hover:opacity-100">
                         Utiliza datos precisos para tomar decisiones informadas. Nuestra plataforma te proporciona
                         análisis de
                         inventario en profundidad. Identifica tendencias de ventas, productos estacionales y patrones de
@@ -94,13 +101,16 @@
             </div>
 
             <!-- Servicio 3: Automatización de Procesos -->
-            <div class="relative h-auto mb-10 text-center rounded-lg w-96 group">
-                <div class="w-full h-52"><img class="object-cover w-full h-full border-4 border-red-800 rounded-lg"
-                        src="{{ asset('images/inventory/inv_7.webp') }}" alt=""></div>
+            <div class="relative h-auto mx-auto mb-10 text-center rounded-lg w-80 md:w-full lg:w-96 group">
+                <div class="w-full md:h-60 h-52">
+                    <img class="object-cover w-full h-full border-4 border-red-800 rounded-t-lg lg:rounded-lg"
+                        src="{{ asset('images/inventory/inv_7.webp') }}" alt="">
+                </div>
                 <div
-                    class="absolute top-0 z-10 h-auto p-10 text-white duration-300 ease-in rounded-b-lg group group-hover:translate-y-36 group-hover:bg-gray-600 group-hover:w-full">
-                    <h1 class="font-mono text-2xl opacity-0 group-hover:opacity-100">Automatización de Procesos</h1>
-                    <p class="opacity-0 group-hover:opacity-100">
+                    class="top-0 z-10 h-auto p-6 text-white duration-300 ease-in bg-gray-600 rounded-b-lg lg:bg-transparent lg:absolute lg:p-10 group lg:group-hover:translate-y-36 lg:group-hover:bg-gray-600 lg:group-hover:w-full">
+                    <h1 class="font-mono text-2xl md:mb-4 lg:opacity-0 group-hover:opacity-100">Automatización de
+                        Procesos</h1>
+                    <p class="text-justify lg:opacity-0 group-hover:opacity-100">
                         Simplifica la gestión de inventario a través de la automatización. Con JStock, puedes configurar
                         reglas
                         personalizadas para reordenar automáticamente productos, generar informes de inventario y

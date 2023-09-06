@@ -1,4 +1,4 @@
-       <div>
+       <div class="relative inline-block text-center cursor-pointer group">
            <a href="#" wire:click="$set('open', true)">
                <i class="p-1 text-blue-400 rounded hover:text-white hover:bg-blue-500 fa-solid fa-pen-to-square"></i>
                <div
@@ -39,7 +39,8 @@
                                    <div class="absolute top-0 h-48 w-72">
                                        @if ($profile_photo_path)
                                            <img class="object-cover w-full h-full rounded-lg"
-                                               src="{{ $profile_photo_path->temporaryUrl() }}" class="mb-4" alt="Foto de usuario">
+                                               src="{{ $profile_photo_path->temporaryUrl() }}" class="mb-4"
+                                               alt="Foto de usuario">
                                        @else
                                            <img class="object-cover w-full h-full rounded-lg"
                                                src="{{ asset('storage/' . $user->profile_photo_path) }}" class="mb-4"
@@ -73,8 +74,7 @@
                            <!-- Dirección -->
                            <div class="mt-4">
                                <x-label for="address" value="Dirección" class="text-gray-700" />
-                               <x-input id="address" type="text" class="w-full"
-                                   wire:model.lazy="address" />
+                               <x-input id="address" type="text" class="w-full" wire:model.lazy="address" />
                                <x-input-error for="address" />
                            </div>
 

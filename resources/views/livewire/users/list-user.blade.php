@@ -27,13 +27,6 @@
                 <thead
                     class="text-sm text-center text-gray-100 uppercase bg-gray-400 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        {{-- <th scope="col" class="py-4 pl-8 pr-4">
-                            <div class="flex items-center">
-                                <input id="checkbox-all-search" type="checkbox"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="checkbox-all-search" class="sr-only">checkbox</label>
-                            </div>
-                        </th> --}}
                         <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('id')">
                             ID
                             @if ($sort == 'id')
@@ -93,15 +86,6 @@
                     @forelse ($users as $user)
                         <tr
                             class="text-center bg-white border-b text-md dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
-                            {{-- <td class="w-4 py-4 pl-8 pr-4">
-                                <div class="flex items-center">
-                                    <input id="checkbox-table-search-{{ $user->id }}" type="checkbox"
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    <label for="checkbox-table-search-{{ $user->id }}"
-                                        class="sr-only">checkbox</label>
-                                </div>
-                            </td> --}}
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $user->id }}
@@ -126,13 +110,10 @@
                                 <div
                                     @if ($open) class="flex pointer-events-none opacity-20" @else class="flex" @endif>
 
-                                    {{-- @livewire('users.show-user', ['user' => $user], key(time() . $user->id)) --}}
-                                    {{-- @livewire('users.edit-user', ['user' => $user], key(time() . $user->id)) --}}
-
                                     <livewire:users.show-user :user="$user" :key="time() . $user->id" />
                                     <livewire:users.edit-user :user="$user" :key="time() . $user->id" />
 
-                                    <div class="relative inline-block text-center cursor-pointer">
+                                    <div class="relative inline-block text-center cursor-pointer group">
                                         <a href="#" wire:click="confirmDelete({{ $user->id }})">
                                             <i
                                                 class="p-1 text-red-400 rounded hover:text-white hover:bg-red-400 fa-solid fa-trash"></i>

@@ -10,7 +10,7 @@ class ListUser extends Component
 {
     use WithPagination;
 
-    public $search, $user;
+    public $user_search, $user;
     public $sort = "id";
     public $direction = "desc";
     public $open = false;

@@ -6,16 +6,15 @@
     <div class="flex flex-col justify-between min-h-screen">
         <livewire:home-navbar />
         <div
-            class="w-1/3 p-4 m-4 mx-auto text-5xl font-semibold text-center bg-gray-200 rounded-lg shadow-lg shadow-gray-400 dark:bg-gray-800">
+            class="w-5/6 p-4 m-4 mx-auto text-2xl font-semibold text-center bg-gray-200 rounded-lg shadow-lg md:w-4/6 lg:w-1/3 lg:text-5xl shadow-gray-400 dark:bg-gray-800">
             <span class="text-red-800">JS</span>tock Contacto
         </div>
         <!-- Contenido de Contacto -->
-        <div class="w-2/3 mx-auto mt-8">
-
+        <div class="w-5/6 mx-auto mt-8 lg:w-2/3 md:mt-1 lg:mt-8">
 
             <!-- Formulario de Contacto -->
             <form
-                class="w-2/3 p-6 mx-auto bg-gray-200 rounded-md shadow-lg shadow-gray-400 dark:bg-gray-800 dark:shadow-gray-400">
+                class="w-full p-6 mx-auto bg-gray-200 rounded-md shadow-lg md:w-5/6 lg:w-2/3 shadow-gray-400 dark:bg-gray-800 dark:shadow-gray-400">
                 <div class="mb-4">
                     <label for="nombre"
                         class="block mb-2 text-lg font-medium text-gray-700 dark:text-gray-400">Nombre:</label>

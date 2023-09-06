@@ -2,7 +2,12 @@
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
-            <x-authentication-card-logo />
+            <div class="flex">
+                <x-authentication-card-logo />
+                <p class="mt-4 ml-4 text-5xl font-bold text-center text-gray-700 dark:text-gray-300"><span
+                        class="text-red-700">JS</span>tock
+                </p>
+            </div>
         </x-slot>
 
         <x-validation-errors class="mb-4" />
@@ -12,10 +17,6 @@
                 {{ session('status') }}
             </div>
         @endif
-        <div class="mb-10">
-
-            <x-title />
-        </div>
 
         <div class="relative w-5/6 py-3 mx-auto md:w-3/5 lg:w-1/3 2xl:w-1/4">
             <div

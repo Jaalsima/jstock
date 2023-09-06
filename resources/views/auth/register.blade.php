@@ -4,7 +4,8 @@
         <x-slot name="logo">
             <div class="flex">
                 <x-authentication-card-logo />
-                <p class="mt-4 ml-4 text-5xl font-bold text-center text-gray-700"><span class="text-red-700">JS</span>tock
+                <p class="mt-4 ml-4 text-5xl font-bold text-center text-gray-700 dark:text-gray-300"><span
+                        class="text-red-700">JS</span>tock
                 </p>
             </div>
         </x-slot>
@@ -90,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <div class="mt-8 text-center text-gray-700 dark:text-gray-300 md:mt-14">
+        <div class="mt-8 text-center text-gray-700 md:mt-14">
             <p class="text-md">Al acceder, aceptas los <a href="#" class="underline">términos y condiciones</a> de
                 nuestro sitio.</p>
 
