@@ -90,7 +90,7 @@
                 </div>
             </div>
         </div>
-        <div class="mt-8 text-center text-gray-700 md:mt-14">
+        <div class="mt-8 text-center text-gray-700 dark:text-gray-300 md:mt-14">
             <p class="text-md">Al acceder, aceptas los <a href="#" class="underline">términos y condiciones</a> de
                 nuestro sitio.</p>
 

@@ -10,7 +10,7 @@ class ListUser extends Component
 {
     use WithPagination;
 
-    public $searchu, $user;
+    public $search, $user;
     public $sort = "id";
     public $direction = "desc";
     public $open = false;
@@ -23,8 +23,8 @@ class ListUser extends Component
 
     public function render()
     {
-        $users = User::where('name', 'like', '%' . $this->searchu . '%')
-            ->orWhere('email', 'like', '%' . $this->searchu . '%')
+        $users = User::where('name', 'like', '%' . $this->search . '%')
+            ->orWhere('email', 'like', '%' . $this->search . '%')
             ->orderBy($this->sort, $this->direction)
             ->paginate(10);
 
