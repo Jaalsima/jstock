@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Customers;
 
 use Livewire\Component;
-use Illuminate\Support\Str;
 use App\Models\Customer;
 use Livewire\WithFileUploads;
 
@@ -11,34 +10,26 @@ class EditCustomer extends Component
 {
     use WithFileUploads;
 
-    public $customer;
-    public $name, $email, $address, $phone, $slug, $status, $image;
-    public $open = false;
+    public $customer, $name, $email, $address, $phone, $slug, $status, $image;
+    public $open_edit = false;
 
     protected $rules = [
-        'name'    => 'required|max:50',
-        'email'   => 'nullable|email',
-        'address' => 'nullable|string',
-        'phone'   => 'nullable|string',
-        'slug'    => 'required',
-        'status'  => 'required|in:Activo,Inactivo',
-        'image'   => 'required|image|max:2048',
+        'name'                => 'nullable|max:50',
+        'email'               => 'nullable|email',
+        'address'             => 'nullable',
+        'phone'               => 'nullable',
+        'status'              => 'nullable',
+        'image'               => 'nullable|image|max:2048',
     ];
 
     public function mount(Customer $customer)
     {
         $this->customer = $customer;
-        $this->name = $customer->name;
-        $this->email = $customer->email;
-        $this->address = $customer->address;
-        $this->phone = $customer->phone;
-        $this->slug = $customer->slug;
-        $this->status = $customer->status;
-    }
-
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
+        $this->name     = $customer->name;
+        $this->email    = $customer->email;
+        $this->address  = $customer->address;
+        $this->phone    = $customer->phone;
+        $this->status   = $customer->status;
     }
 
     public function update()
@@ -47,24 +38,23 @@ class EditCustomer extends Component
 
         // Actualizar el cliente en la base de datos
         $this->customer->update([
-            'name'    => $this->name,
-            'email'   => $this->email,
+            'name' => $this->name,
+            'email' => $this->email,
             'address' => $this->address,
-            'phone'   => $this->phone,
-            'slug'    => $this->slug,
-            'status'  => $this->status,
+            'phone' => $this->phone,
+            'status' => $this->status,
         ]);
 
-        // Cerrar el modal después de actualizar
-        $this->open = false;
+        if ($this->image) {
+            // Actualizar la imagen si se ha cargado una nueva
+            $image_url = $this->image->store('customers');
+            $this->customer->update(['image' => $image_url]);
+        }
 
-        // Emitir un evento para que se actualice la lista de clientes en la página anterior
-        $this->emitUp('customers.index-customer', 'render');
-
-        // Emitir una notificación de éxito
+        $this->open_edit = false;
+        $this->emitTo('customers.index-customer', 'render');
         $this->emit('alert', '¡Cliente Actualizado Exitosamente!');
     }
-
     public function render()
     {
         return view('livewire.customers.edit-customer');

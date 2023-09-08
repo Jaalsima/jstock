@@ -6,7 +6,7 @@
 
             <ul class="mt-12">
                 <li>
-                    <a href="{{ route('list-user') }} ">
+                    <a href="{{ route('index-user') }} ">
                         <button type="button"
                             class="flex items-center w-full p-2 text-lg text-gray-700 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">

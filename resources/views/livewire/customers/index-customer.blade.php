@@ -1,6 +1,5 @@
-<!-- resources/views/livewire/customers/index-customer.blade.php -->
-
 <div>
+    {{-- Stop trying to control. --}}
     <div>
         <div class="w-1/4 mt-4 rounded-lg">
             <div class="float-right mr-8">
@@ -15,25 +14,20 @@
         <div class="flex">
             <!-- Este input de búsqueda puede tener otros modificadores como 'debounce.1s' o 'defer' -->
             <input type="text" wire:model.lazy="search"
-                class="w-1/4 mr-4 bg-white border-none rounded-lg focus:ring-gray-400" placeholder="Buscar...">
+                class="w-1/4 mr-4 bg-white border-none rounded-lg focus:ring-gray-400" id="customer_search"
+                placeholder="Buscar...">
             <livewire:customers.create-customer />
         </div>
     </div>
     <div class="relative mt-4 overflow-x-auto shadow-md sm:rounded-lg">
 
-        <!-- Comprueba si hay clientes antes de renderizar la tabla y su encabezado -->
+        <!-- Check if there are customers before rendering the table and its header -->
         @if ($customers->count() > 0)
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead
                     class="text-sm text-center text-gray-100 uppercase bg-gray-400 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="py-4 pl-8 pr-4">
-                            <div class="flex items-center">
-                                <input id="checkbox-all-search" type="checkbox"
-                                    class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="checkbox-all-search" class="sr-only">checkbox</label>
-                            </div>
-                        </th>
+
                         <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('id')">
                             ID
                             @if ($sort == 'id')
@@ -44,8 +38,10 @@
                                 @endif
                             @else
                                 <i class="ml-2 fa-solid fa-sort"></i>
+
                             @endif
                         </th>
+
                         <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('name')">
                             Nombre
                             @if ($sort == 'name')
@@ -56,63 +52,74 @@
                                 @endif
                             @else
                                 <i class="ml-2 fa-solid fa-sort"></i>
+
                             @endif
+
                         </th>
-                        <th scope="col" class="px-6 py-3">
+
+                        <th scope="col" class="px-6 py-3 cursor-pointer" wire:click="order('email')">
                             Correo Electrónico
+                            @if ($sort == 'email')
+                                @if ($direction == 'asc')
+                                    <i class="ml-2 fa-solid fa-arrow-up-z-a"></i>
+                                @else
+                                    <i class="ml-2 fa-solid fa-arrow-down-z-a"></i>
+                                @endif
+                            @else
+                                <i class="ml-2 fa-solid fa-sort"></i>
+
+                            @endif
+
                         </th>
+
                         <th scope="col" class="px-6 py-3">
                             Dirección
                         </th>
+
                         <th scope="col" class="px-6 py-3">
                             Teléfono
                         </th>
+
                         <th scope="col" class="px-6 py-3">
                             Estado
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Acciones
                         </th>
+
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($customers as $customer)
                         <tr
                             class="text-center bg-white border-b text-md dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="w-4 py-4 pl-8 pr-4">
-                                <div class="flex items-center">
-                                    <input id="checkbox-table-search-1" type="checkbox"
-                                        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                    <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                                </div>
-                            </td>
+
+
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $customer->id }}
                             </th>
                             <td class="px-6 py-4 dark:text-lg">{{ $customer->name }}</td>
-                            <td class="px-6 py-4 dark:text-lg">{{ $customer->email }}</td>
-                            <td class="px-6 py-4 dark:text-lg">{{ $customer->address }}</td>
-                            <td class="px-6 py-4 dark:text-lg">{{ $customer->phone }}</td>
+                            <td class="px-6 py-4 ">{{ $customer->email }}</td>
+                            <td class="px-6 py-4 ">{{ $customer->address }}</td>
+                            <td class="px-6 py-4 ">{{ $customer->phone }}</td>
                             @if ($customer->status == 'Activo')
                                 <td class="px-6 py-4 text-green-600">{{ $customer->status }}</td>
                             @else
-                                @if ($customer->status == 'Inactivo')
-                                    <td class="px-6 py-4 text-red-600">{{ $customer->status }}</td>
-                                @else
-                                    {{-- Aquí se agrega un posible tercer estado para los clientes --}}
-                                    <td class="px-6 py-4 text-blue-600">{{ $customer->status }}</td>
-                                @endif
+                                <td class="px-6 py-4 text-red-600">{{ $customer->status }}</td>
                             @endif
 
-                            <!-- Agrega aquí otras columnas para mostrar la información de tus clientes -->
+
                             <td class="flex justify-around py-4 pl-2 pr-8">
                                 <div
                                     @if ($open) class="flex pointer-events-none opacity-20" @else class="flex" @endif>
 
+
                                     <livewire:customers.show-customer :customer="$customer" :key="time() . $customer->id" />
                                     <livewire:customers.edit-customer :customer="$customer" :key="time() . $customer->id" />
 
+                                    {{-- @livewire('show-customer', ['customer' => $customer], key(time() . $customer->id))
+                                          @livewire('edit-customer', ['customer' => $customer], key(time() . $customer->id)) --}}
                                     <div class="relative inline-block text-center cursor-pointer">
                                         <a href="#" wire:click="confirmDelete({{ $customer->id }})">
                                             <i
@@ -132,18 +139,22 @@
                             </td>
                         </tr>
                         @if ($open)
-                            <div class="fixed inset-0 flex items-center justify-center"
+                            <div class="fixed inset-0 z-50 flex items-center justify-center"
                                 wire:click="$set('open', false)">
                                 <div class="absolute inset-0 z-40 bg-black opacity-10 modal-overlay"></div>
+
                                 <div
                                     class="z-50 w-11/12 mx-auto overflow-y-auto bg-white border border-red-500 rounded-xl modal-container md:max-w-md">
-                                    <!-- Contenido del modal -->
+                                    <!-- Content of the modal -->
                                     <div class="flex gap-3 py-2 bg-red-500 border border-red-500">
                                         <h3 class="w-full text-2xl text-center text-gray-100 ">Eliminar</h3>
+
                                     </div>
                                     <div class="px-6 py-4 text-left modal-content">
+
                                         <p class="text-xl text-gray-500">¿Estás seguro de que deseas eliminar este
-                                            cliente?</p>
+                                            usuario?
+                                        </p>
                                         <div class="mt-4 text-center">
                                             <x-secondary-button wire:click="$set('open', false)"
                                                 class="mr-4 text-gray-500 border border-gray-500 shadow-lg hover:shadow-gray-400">
@@ -158,20 +169,23 @@
                                 </div>
                             </div>
                         @endif
+
                     @empty
-                        <!-- Mensaje de no hay clientes -->
+                        <!-- No customers message -->
                         <tr>
-                            <td colspan="4" class="text-3xl text-center dark:text-gray-200">No hay clientes
-                                disponibles</td>
+                            <td colspan="12" class="text-3xl text-center dark:text-gray-200">No hay clientes
+                                Disponibles</td>
                         </tr>
                     @endforelse
                 @else
-                    <!-- Mensaje de no hay clientes -->
+                    <!-- No customers message -->
                     <h1 class="text-3xl text-center dark:text-gray-200">No hay clientes disponibles</h1>
         @endif
         </tbody>
         </table>
+
+
         <div class="px-3 py-1">{{ $customers->links() }}</div>
+
     </div>
-</div>
 </div>

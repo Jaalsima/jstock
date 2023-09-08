@@ -6,7 +6,7 @@ use Livewire\Component;
 use App\Models\User;
 use Livewire\WithPagination;
 
-class ListUser extends Component
+class IndexUser extends Component
 {
     use WithPagination;
 
@@ -24,11 +24,11 @@ class ListUser extends Component
     public function render()
     {
         $users = User::where('name', 'like', '%' . $this->search . '%')
-            ->orWhere('email', 'like', '%' . $this->search . '%')
+            ->orWhere('document', 'like', '%' . $this->search . '%')
             ->orderBy($this->sort, $this->direction)
             ->paginate(10);
 
-        return view('livewire.users.list-user', compact('users'));
+        return view('livewire.users.index-user', compact('users'));
     }
 
     public function order($sort)
@@ -51,8 +51,8 @@ class ListUser extends Component
     {
         if ($this->user) {
             $this->user->delete();
-            $this->emitTo('users.list-user', 'render');
-            $this->emit('alert', '¡Usuario Eliminado Exitosamente!');
+            $this->emitTo('index-user', 'render');
+            $this->emit('alert', '¡Usuario Eliminado!');
         }
         $this->open = false; // Cierra el modal de confirmación
     }

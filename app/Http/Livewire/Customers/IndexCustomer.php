@@ -20,7 +20,6 @@ class IndexCustomer extends Component
     {
         $this->resetPage();
     }
-
     public function render()
     {
         $customers = Customer::where('name', 'like', '%' . $this->search . '%')
@@ -51,9 +50,10 @@ class IndexCustomer extends Component
     {
         if ($this->customer) {
             $this->customer->delete();
-            $this->emitTo('customers.index-customer', 'render');
+            $this->emitTo('index-customer', 'render');
             $this->emit('alert', '¡Cliente Eliminado!');
         }
         $this->open = false; // Cierra el modal de confirmación
     }
+
 }

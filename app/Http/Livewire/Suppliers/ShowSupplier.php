@@ -8,7 +8,7 @@ use App\Models\Supplier;
 class ShowSupplier extends Component
 {
     public $supplier;
-    public $open = false;
+    public $open_show = false;
 
     public function mount(Supplier $supplier)
     {

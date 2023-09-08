@@ -3,12 +3,13 @@
 namespace App\Http\Livewire\Customers;
 
 use Livewire\Component;
+
 use App\Models\Customer;
 
 class ShowCustomer extends Component
 {
     public $customer;
-    public $open = false;
+    public $open_show =false;
 
     public function mount(Customer $customer)
     {

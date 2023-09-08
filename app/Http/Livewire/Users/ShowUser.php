@@ -8,7 +8,7 @@ use App\Models\User;
 class ShowUser extends Component
 {
     public $user;
-    public $open =false;
+    public $open_show =false;
 
     public function mount(User $user)
     {

@@ -3,7 +3,7 @@
 namespace App\Http\Livewire\Suppliers;
 
 use Livewire\Component;
-use App\Models\Supplier; // Cambia el modelo a Supplier
+use App\Models\Supplier;
 use Livewire\WithPagination;
 
 class IndexSupplier extends Component
