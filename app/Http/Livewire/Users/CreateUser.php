@@ -16,14 +16,14 @@ class CreateUser extends Component
     public $open = false;
 
     protected $rules = [
-        'document'           => 'required|string|max:50',
-        'name'               => 'required|string|max:50',
-        'email'              => 'required|email|unique:users|max:50',
+        'document'           => 'nullable|string|max:50',
+        'name'               => 'nullable|string|max:50',
+        'email'              => 'nullable|email|unique:users|max:50',
         'address'            => 'nullable|string|max:50',
         'phone'              => 'nullable|string|max:20',
-        'password'           => 'required|string|min:8|max:50',
-        'status'             => 'required|in:Activo,Inactivo',
-        'profile_photo_path' => 'required|image|max:2048',
+        'password'           => 'nullable|string|min:8|max:50',
+        'status'             => 'nullable|in:Activo,Inactivo',
+        'profile_photo_path' => 'nullable|image|max:2048',
     ];
 
     public function mount()

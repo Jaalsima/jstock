@@ -10,7 +10,7 @@ class ListUser extends Component
 {
     use WithPagination;
 
-    public $user_search, $user;
+    public $search, $user;
     public $sort = "id";
     public $direction = "desc";
     public $open = false;
@@ -51,7 +51,7 @@ class ListUser extends Component
     {
         if ($this->user) {
             $this->user->delete();
-            $this->emitUp('users.list-user', 'render');
+            $this->emitTo('users.list-user', 'render');
             $this->emit('alert', '¡Usuario Eliminado Exitosamente!');
         }
         $this->open = false; // Cierra el modal de confirmación
