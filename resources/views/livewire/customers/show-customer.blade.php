@@ -6,7 +6,6 @@
             Ver
             <svg class="absolute left-0 w-full h-2 text-black top-full" x="0px" y="0px" viewBox="0 0 255 255"
                 xml:space="preserve">
-                <polygon class="fill-current" points="0,0 127.5,127.5 255,0" />
             </svg>
         </div>
     </a>
@@ -16,7 +15,7 @@
         </x-slot>
         <x-slot name="content">
             <div>
-                <div class="mx-auto my-2 rounded-full w-52">
+                <div class="mx-auto my-2 rounded-lg w-72">
                     <img src="{{ asset('storage/' . $customer->image) }}" alt="{{ $customer->name }}"
                         class="w-full h-auto rounded-lg">
                 </div>
@@ -26,10 +25,27 @@
                             class="mb-4 text-3xl font-semibold tracking-tight text-center text-gray-900 dark:text-white">
                             {{ $customer->name }}</h5>
                         <div class="text-lg text-start">
-                            <p><strong>Correo Electrónico:</strong> {{ $customer->email }}</p>
-                            <p><strong>Dirección:</strong> {{ $customer->address }}</p>
-                            <p><strong>Teléfono:</strong> {{ $customer->phone }}</p>
-                            <p><strong>Estado:</strong> {{ $customer->status }}</p>
+                            <div class="mb-3">
+                                <h1 class="ml-2 text-sm">Correo Electrónico:</h1>
+                                <p class="p-2 bg-gray-200 rounded-md">{{ $customer->email }}</p>
+                            </div>
+                            <div class="mb-3">
+                                <h1 class="ml-2 text-sm">Dirección:</h1>
+                                <p class="p-2 bg-gray-200 rounded-md">{{ $customer->address }}</p>
+                            </div>
+                            <div class="mb-3">
+                                <h1 class="ml-2 text-sm">Teléfono:</h1>
+                                <p class="p-2 bg-gray-200 rounded-md">{{ $customer->phone }}</p>
+                            </div>
+                            <div>
+                                @if ($customer->status == 'Activo')
+                                    <h1 class="ml-2 text-sm">Estado:</h1>
+                                    <p class="p-2 text-gray-100 bg-green-500 rounded-md">{{ $customer->status }}</p>
+                                @else
+                                    <h1 class="ml-2 text-sm">Estado:</h1>
+                                    <p class="p-2 text-gray-100 bg-red-400 rounded-md">{{ $customer->status }}</p>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -38,7 +54,7 @@
         <x-slot name="footer">
             <div class="mx-auto">
                 <x-secondary-button wire:click="$set('open_show', false)"
-                    class="mr-4 text-gray-500 border border-gray-500 shadow-lg hover:shadow-gray-400">
+                    class="text-gray-500 bg-gray-200 border border-gray-500 shadow-lg hover:shadow-gray-400 hover:bg-gray-400 hover:text-white">
                     Salir
                 </x-secondary-button>
             </div>

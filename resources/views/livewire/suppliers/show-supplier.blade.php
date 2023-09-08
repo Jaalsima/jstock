@@ -6,30 +6,47 @@
             Ver
             <svg class="absolute left-0 w-full h-2 text-black top-full" x="0px" y="0px" viewBox="0 0 255 255"
                 xml:space="preserve">
-                <polygon class="fill-current" points="0,0 127.5,127.5 255,0" />
             </svg>
         </div>
     </a>
 
     <x-dialog-modal wire:model="open_show">
         <x-slot name="title">
-            <h2 class="mt-3 text-2xl text-center">{{ $supplier->name }}</h2>
         </x-slot>
         <x-slot name="content">
-            <div class="mx-auto my-2 rounded-full w-52">
-                <img src="{{ asset('storage/' . $supplier->image) }}" alt="Imagen de {{ $supplier->name }}"
-                    class="w-full h-auto rounded-lg">
-            </div>
-            <div class="px-5 pb-5">
-                <div class="mx-6">
-                    <h5 class="mb-4 text-3xl font-semibold tracking-tight text-center text-gray-900 dark:text-white">
-                        {{ $supplier->name }}</h5>
-                    <div class="text-lg text-start">
-                        <p><strong>Email:</strong> {{ $supplier->email }}</p>
-                        <p><strong>Dirección:</strong> {{ $supplier->address }}</p>
-                        <p><strong>Teléfono:</strong> {{ $supplier->phone }}</p>
-                        <p><strong>Slug:</strong> {{ $supplier->slug }}</p>
-                        <p><strong>Estado:</strong> {{ $supplier->status }}</p>
+            <div>
+                <div class="mx-auto my-2 rounded-lg w-72">
+                    <img src="{{ asset('storage/' . $supplier->image) }}" alt="{{ $supplier->name }}"
+                        class="w-full h-auto rounded-lg">
+                </div>
+                <div class="px-5 pb-5">
+                    <div class="mx-6">
+                        <h5
+                            class="mb-4 text-3xl font-semibold tracking-tight text-center text-gray-900 dark:text-white">
+                            {{ $supplier->name }}</h5>
+                        <div class="text-lg text-start">
+                            <div class="mb-3">
+                                <h1 class="ml-2 text-sm">Correo Electrónico:</h1>
+                                <p class="p-2 bg-gray-200 rounded-md">{{ $supplier->email }}</p>
+                            </div>
+                            <div class="mb-3">
+                                <h1 class="ml-2 text-sm">Dirección:</h1>
+                                <p class="p-2 bg-gray-200 rounded-md">{{ $supplier->address }}</p>
+                            </div>
+                            <div class="mb-3">
+                                <h1 class="ml-2 text-sm">Teléfono:</h1>
+                                <p class="p-2 bg-gray-200 rounded-md">{{ $supplier->phone }}</p>
+                            </div>
+                            <div>
+                                @if ($supplier->status == 'Activo')
+                                    <h1 class="ml-2 text-sm">Estado:</h1>
+                                    <p class="p-2 text-gray-100 bg-green-500 rounded-md">{{ $supplier->status }}</p>
+                                @else
+                                    <h1 class="ml-2 text-sm">Estado:</h1>
+                                    <p class="p-2 text-gray-100 bg-red-400 rounded-md">{{ $supplier->status }}</p>
+                                @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -37,7 +54,7 @@
         <x-slot name="footer">
             <div class="mx-auto">
                 <x-secondary-button wire:click="$set('open_show', false)"
-                    class="mr-4 text-gray-500 border border-gray-500 shadow-lg hover:shadow-gray-400">
+                    class="text-gray-500 bg-gray-200 border border-gray-500 shadow-lg hover:shadow-gray-400 hover:bg-gray-400 hover:text-white">
                     Salir
                 </x-secondary-button>
             </div>

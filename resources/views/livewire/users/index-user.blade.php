@@ -125,7 +125,7 @@
 
                                         {{-- @livewire('show-user', ['user' => $user], key(time() . $user->id))
                                           @livewire('edit-user', ['user' => $user], key(time() . $user->id)) --}}
-                                        <div class="relative inline-block text-center cursor-pointer">
+                                        <div class="relative inline-block text-center cursor-pointer group">
                                             <a href="#" wire:click="confirmDelete({{ $user->id }})">
                                                 <i
                                                     class="p-1 text-red-400 rounded hover:text-white hover:bg-red-400 fa-solid fa-trash"></i>
@@ -135,7 +135,6 @@
                                                     <svg class="absolute left-0 w-full h-2 text-black top-full"
                                                         x="0px" y="0px" viewBox="0 0 255 255"
                                                         xml:space="preserve">
-                                                        <polygon class="fill-current" points="0,0 127.5,127.5 255,0" />
                                                     </svg>
                                                 </div>
                                             </a>
@@ -162,11 +161,11 @@
                                             </p>
                                             <div class="mt-4 text-center">
                                                 <x-secondary-button wire:click="$set('open', false)"
-                                                    class="mr-4 text-gray-500 border border-gray-500 shadow-lg hover:shadow-gray-400">
+                                                    class="mr-4 text-gray-500 border border-gray-500 shadow-lg hover:shadow-gray-400 hover:bg-gray-400">
                                                     Cancelar
                                                 </x-secondary-button>
                                                 <x-secondary-button wire:click="deleteConfirmed"
-                                                    class="mr-4 text-red-500 border border-red-500 shadow-lg hover:shadow-red-400">
+                                                    class="mr-4 text-red-500 border border-red-500 shadow-lg hover:shadow-red-400 hover:bg-red-400">
                                                     Eliminar
                                                 </x-secondary-button>
                                             </div>

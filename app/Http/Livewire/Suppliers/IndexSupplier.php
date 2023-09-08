@@ -20,7 +20,6 @@ class IndexSupplier extends Component
     {
         $this->resetPage();
     }
-
     public function render()
     {
         $suppliers = Supplier::where('name', 'like', '%' . $this->search . '%')
@@ -51,9 +50,10 @@ class IndexSupplier extends Component
     {
         if ($this->supplier) {
             $this->supplier->delete();
-            $this->emitTo('suppliers.index-supplier', 'render');
+            $this->emitTo('index-supplier', 'render');
             $this->emit('alert', '¡Proveedor Eliminado!');
         }
         $this->open = false; // Cierra el modal de confirmación
     }
+
 }

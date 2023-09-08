@@ -1,6 +1,6 @@
 <div class="my-auto">
     <x-secondary-button wire:click="$set('open_create', true)"
-        class="text-blue-500 bg-blue-100 border border-blue-500 shadow-lg hover:shadow-blue-400 hover:bg-blue-300 hover:text-white">
+        class="text-blue-500 bg-blue-100 border border-blue-500 shadow-md hover:shadow-blue-400 hover:bg-blue-300 hover:text-white">
         <i class="fa fa-solid fa-user-plus"> Nuevo</i>
     </x-secondary-button>
 
@@ -13,9 +13,8 @@
             <x-slot name="content">
 
                 <form>
-
                     <!-- Imágen -->
-                    <div class="relative mt-4">
+                    <div class="relative my-4">
                         <label
                             class="flex flex-col items-center justify-center h-48 gap-4 p-6 mx-auto bg-white border-2 border-gray-300 border-dashed rounded-lg shadow-md cursor-pointer w-72">
                             <div class="flex items-center justify-center">
@@ -41,27 +40,27 @@
                     <x-input-error for="image" />
 
                     <!-- Nombre -->
-                    <x-label for="create_customer_name" value="Nombre" class="text-gray-700" />
+                    <x-label for="create_customer_name" value="Nombre" class="ml-3 text-gray-700" />
                     <x-input class="w-full" wire:model.lazy="name" id="create_customer_name" />
                     <x-input-error for="create_customer_name" />
 
                     <!-- Correo Electrónico -->
-                    <x-label for="create_customer_email" value="Correo Electrónico" class="text-gray-700" />
+                    <x-label for="create_customer_email" value="Correo Electrónico" class="ml-3 text-gray-700" />
                     <x-input class="w-full" wire:model.lazy="email" type="email" id="create_customer_email" />
                     <x-input-error for="create_customer_email" />
 
                     <!-- Dirección -->
-                    <x-label for="create_customer_address" value="Dirección" class="text-gray-700" />
+                    <x-label for="create_customer_address" value="Dirección" class="ml-3 text-gray-700" />
                     <x-input class="w-full" wire:model.lazy="address" id="create_customer_address" />
                     <x-input-error for="create_customer_address" />
 
                     <!-- Teléfono -->
-                    <x-label for="create_customer_phone" value="Teléfono" class="text-gray-700" />
+                    <x-label for="create_customer_phone" value="Teléfono" class="ml-3 text-gray-700" />
                     <x-input class="w-full" wire:model.lazy="phone" id="create_customer_phone" />
                     <x-input-error for="create_customer_phone" />
 
                     <!-- Dropdown para Estado -->
-                    <x-label for="create_customer_status" value="Estado" class="text-gray-700" />
+                    <x-label for="create_customer_status" value="Estado" class="ml-3 text-gray-700" />
                     <select class="w-full mb-4 rounded-md" wire:model.lazy="status" id="create_customer_status">
                         <option value="">Selecciona un estado</option>
                         <option value="Activo">Activo</option>
@@ -75,11 +74,11 @@
             <x-slot name="footer">
                 <div class="mx-auto">
                     <x-secondary-button wire:click="$set('open_create', false)"
-                        class="mr-4 text-gray-500 border border-gray-500 shadow-lg hover:shadow-gray-400">
+                        class="mr-4 text-gray-500 border border-gray-500 shadow-lg hover:bg-gray-400 hover:shadow-gray-400">
                         Cancelar
                     </x-secondary-button>
                     <x-secondary-button
-                        class="text-blue-500 border border-blue-500 shadow-lg hover:shadow-blue-400 disabled:opacity-50 disabled:bg-blue-600 disabled:text-white"
+                        class="text-blue-500 border border-blue-500 shadow-lg hover:bg-blue-400 hover:shadow-blue-400 disabled:opacity-50 disabled:bg-blue-600 disabled:text-white"
                         wire:click="create_customer" wire:loading.attr="disabled" wire:target="create_customer, image">
                         Agregar
                     </x-secondary-button>

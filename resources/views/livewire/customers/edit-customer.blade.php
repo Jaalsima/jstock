@@ -20,7 +20,7 @@
 
                 <form wire:submit.prevent="update" enctype="multipart/form-data">
                     <!-- Imagen -->
-                    <div class="relative mt-4">
+                    <div class="relative my-4">
                         <label
                             class="flex flex-col items-center justify-center h-48 gap-4 p-6 mx-auto bg-white border-2 border-gray-300 border-dashed rounded-lg shadow-md cursor-pointer w-72">
                             <div class="flex items-center justify-center">
@@ -49,44 +49,41 @@
                         </label>
                     </div>
 
-                    <!-- Nombre -->
-                    <div class="mt-4">
-                        <x-label value="Nombre" class="text-gray-700" />
-                        <x-input class="w-full" wire:model.lazy="name" />
-                        <x-input-error for="name" />
-                    </div>
-
-                    <!-- Correo Electrónico -->
-                    <div class="mt-4">
-                        <x-label value="Correo Electrónico" class="text-gray-700" />
-                        <x-input class="w-full" wire:model.lazy="email" type="email" />
-                        <x-input-error for="email" />
-
-                    </div>
-
-                    <!-- Dirección -->
-                    <div class="mt-4">
-                        <x-label value="Dirección" class="text-gray-700" />
-                        <x-input class="w-full" wire:model.lazy="address" />
-                        <x-input-error for="address" />
-                    </div>
-
-                    <!-- Teléfono -->
-                    <div class="mt-4">
-                        <x-label value="Teléfono" class="text-gray-700" />
-                        <x-input class="w-full" wire:model.lazy="phone" />
-                        <x-input-error for="phone" />
-                    </div>
-
-                    <!-- Dropdown para Estado -->
-                    <div class="mt-4">
-                        <x-label value="Estado" class="text-gray-700" />
-                        <select class="w-full mb-4 rounded-md" wire:model.lazy="status" />
-                        <option value="">Selecciona un estado</option>
-                        <option value="Activo">Activo</option>
-                        <option value="Inactivo">Inactivo</option>
-                        </select>
-                        <x-input-error for="status" />
+                    <div class="text-left">
+                        <!-- Nombre -->
+                        <div class="my-4">
+                            <x-label value="Nombre" class="ml-3 text-left text-gray-700" />
+                            <x-input class="w-full" wire:model.lazy="name" />
+                            <x-input-error for="name" />
+                        </div>
+                        <!-- Correo Electrónico -->
+                        <div class="mt-4">
+                            <x-label value="Correo Electrónico" class="ml-3 text-gray-700" />
+                            <x-input class="w-full" wire:model.lazy="email" type="email" />
+                            <x-input-error for="email" />
+                        </div>
+                        <!-- Dirección -->
+                        <div class="mt-4">
+                            <x-label value="Dirección" class="ml-3 text-gray-700" />
+                            <x-input class="w-full" wire:model.lazy="address" />
+                            <x-input-error for="address" />
+                        </div>
+                        <!-- Teléfono -->
+                        <div class="mt-4">
+                            <x-label value="Teléfono" class="ml-3 text-gray-700" />
+                            <x-input class="w-full" wire:model.lazy="phone" />
+                            <x-input-error for="phone" />
+                        </div>
+                        <!-- Dropdown para Estado -->
+                        <div class="mt-4">
+                            <x-label value="Estado" class="ml-3 text-gray-700" />
+                            <select class="w-full mb-4 rounded-md" wire:model.lazy="status" />
+                            <option value="">Selecciona un estado</option>
+                            <option value="Activo">Activo</option>
+                            <option value="Inactivo">Inactivo</option>
+                            </select>
+                            <x-input-error for="status" />
+                        </div>
                     </div>
                 </form>
             </x-slot>
@@ -95,11 +92,11 @@
         <x-slot name="footer">
             <div class="mx-auto">
                 <x-secondary-button wire:click="$set('open_edit', false)"
-                    class="mr-4 text-gray-500 border border-gray-500 shadow-lg hover:shadow-gray-400">
+                    class="mr-4 text-gray-500 border border-gray-500 shadow-lg hover:bg-gray-400 hover:shadow-gray-400">
                     Cancelar
                 </x-secondary-button>
                 <x-secondary-button
-                    class="text-blue-500 border border-blue-500 shadow-lg hover:shadow-blue-400 disabled:opacity-25"
+                    class="text-blue-500 border border-blue-500 shadow-lg hover:bg-blue-400 hover:shadow-blue-400 disabled:opacity-25"
                     wire:click="update" wire:loading.attr="disabled">
                     Actualizar
                 </x-secondary-button>

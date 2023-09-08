@@ -3,12 +3,13 @@
 namespace App\Http\Livewire\Suppliers;
 
 use Livewire\Component;
+
 use App\Models\Supplier;
 
 class ShowSupplier extends Component
 {
     public $supplier;
-    public $open_show = false;
+    public $open_show =false;
 
     public function mount(Supplier $supplier)
     {

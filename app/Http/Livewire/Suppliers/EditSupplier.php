@@ -3,7 +3,6 @@
 namespace App\Http\Livewire\Suppliers;
 
 use Livewire\Component;
-use Illuminate\Support\Str;
 use App\Models\Supplier;
 use Livewire\WithFileUploads;
 
@@ -11,59 +10,51 @@ class EditSupplier extends Component
 {
     use WithFileUploads;
 
-    public $supplier;
-    public $name, $email, $address, $phone, $slug, $status;
-    public $open = false;
+    public $supplier, $name, $email, $address, $phone, $slug, $status, $image;
+    public $open_edit = false;
 
     protected $rules = [
-        'name'    => 'required|max:50',
-        'email'   => 'nullable|email',
-        'address' => 'nullable|string',
-        'phone'   => 'nullable|string',
-        'slug'    => 'required',
-        'status'  => 'required|in:Activo,Inactivo',
+        'name'                => 'nullable|max:50',
+        'email'               => 'nullable|email',
+        'address'             => 'nullable',
+        'phone'               => 'nullable',
+        'status'              => 'nullable',
+        'image'               => 'nullable|image|max:2048',
     ];
 
     public function mount(Supplier $supplier)
     {
         $this->supplier = $supplier;
-        $this->name = $supplier->name;
-        $this->email = $supplier->email;
-        $this->address = $supplier->address;
-        $this->phone = $supplier->phone;
-        $this->slug = $supplier->slug;
-        $this->status = $supplier->status;
-    }
-
-    public function updated($propertyName)
-    {
-        $this->validateOnly($propertyName);
+        $this->name     = $supplier->name;
+        $this->email    = $supplier->email;
+        $this->address  = $supplier->address;
+        $this->phone    = $supplier->phone;
+        $this->status   = $supplier->status;
     }
 
     public function update()
     {
         $this->validate();
 
-        // Actualizar el proveedor en la base de datos
+        // Actualizar el cliente en la base de datos
         $this->supplier->update([
-            'name'    => $this->name,
-            'email'   => $this->email,
+            'name' => $this->name,
+            'email' => $this->email,
             'address' => $this->address,
-            'phone'   => $this->phone,
-            'slug'    => $this->slug,
-            'status'  => $this->status,
+            'phone' => $this->phone,
+            'status' => $this->status,
         ]);
 
-        // Cerrar el modal después de actualizar
-        $this->open = false;
+        if ($this->image) {
+            // Actualizar la imagen si se ha cargado una nueva
+            $image_url = $this->image->store('suppliers');
+            $this->supplier->update(['image' => $image_url]);
+        }
 
-        // Emitir un evento para que se actualice la lista de proveedores en la página anterior
+        $this->open_edit = false;
         $this->emitTo('suppliers.index-supplier', 'render');
-
-        // Emitir una notificación de éxito
         $this->emit('alert', '¡Proveedor Actualizado Exitosamente!');
     }
-
     public function render()
     {
         return view('livewire.suppliers.edit-supplier');
