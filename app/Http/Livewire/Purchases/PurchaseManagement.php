@@ -10,7 +10,6 @@ use App\Models\PurchaseDetail;
 
 class PurchaseManagement extends Component
 {
-    public $isOpen = false;
     public $supplier_id;
     public $purchase_date;
     public $invoice_number;
@@ -18,7 +17,7 @@ class PurchaseManagement extends Component
     public $product_id;
     public $quantity;
     public $unit_price;
-    public $availableProducts = []; // Nueva variable para almacenar los productos del proveedor seleccionado
+    public $availableProducts = []; 
 
     public function render()
     {
@@ -30,21 +29,8 @@ class PurchaseManagement extends Component
 
     public function updatedSupplierId()
     {
-        // Cargar los productos asociados al proveedor seleccionado
         $supplier = Supplier::find($this->supplier_id);
         $this->availableProducts = $supplier ? $supplier->products : [];
-    }
-
-    public function openPurchaseModal()
-    {
-        $this->isOpen = true;
-    }
-
-    public function closePurchaseModal()
-    {
-        $this->isOpen = false;
-        $this->resetForm();
-        $this->emit('closePurchaseModal'); // Agrega esta línea para emitir el evento
     }
 
     public function savePurchase()
@@ -59,16 +45,14 @@ class PurchaseManagement extends Component
             'unit_price' => 'required|numeric|min:0.01',
         ]);
 
-        // Crear la compra
         $purchase = Purchase::create([
             'supplier_id' => $this->supplier_id,
-            'user_id' => auth()->user()->id, // Supongamos que el usuario autenticado realiza la compra
+            'user_id' => auth()->user()->id,
             'purchase_date' => $this->purchase_date,
             'invoice_number' => $this->invoice_number,
             'total_amount' => $this->total_amount,
         ]);
 
-        // Crear el detalle de compra
         PurchaseDetail::create([
             'purchase_id' => $purchase->id,
             'product_id' => $this->product_id,
@@ -77,13 +61,8 @@ class PurchaseManagement extends Component
             'subtotal' => $this->quantity * $this->unit_price,
         ]);
 
-        // Restablecer los campos del formulario
         $this->resetForm();
 
-        // Emitir un evento para cerrar el modal de compra
-        $this->emit('closePurchaseModal');
-
-        // Emitir un mensaje de éxito
         session()->flash('message', 'Compra registrada exitosamente.');
     }
 

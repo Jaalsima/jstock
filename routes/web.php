@@ -8,6 +8,7 @@ use App\Http\Livewire\Suppliers\IndexSupplier;
 use App\Http\Livewire\Users\IndexUser;
 use App\Http\Controllers\Menu\MenuController;
 use App\Http\Livewire\Purchases\PurchaseManagement;
+use App\Http\Livewire\Sales\SaleManagement;
 
 Route::get('/',         [HomeController::class, 'home'])    ->name('home');
 Route::get('/about',    [HomeController::class, 'about'])   ->name('about');
@@ -31,5 +32,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/index-supplier', IndexSupplier::class)->name('index-supplier');
     Route::get('/index-customer', IndexCustomer::class)->name('index-customer');
     Route::get('/purchases', PurchaseManagement::class)->name('purchases');
+    Route::get('/sales', SaleManagement::class)->name('sales');
+
 
 });
