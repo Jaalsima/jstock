@@ -2,11 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Livewire\Products\IndexProduct;
-use App\Http\Livewire\Users\IndexUser;
 use App\Http\Livewire\Customers\IndexCustomer;
+use App\Http\Livewire\Products\IndexProduct;
 use App\Http\Livewire\Suppliers\IndexSupplier;
+use App\Http\Livewire\Users\IndexUser;
 use App\Http\Controllers\Menu\MenuController;
+use App\Http\Livewire\Purchases\PurchaseManagement;
 
 Route::get('/',         [HomeController::class, 'home'])    ->name('home');
 Route::get('/about',    [HomeController::class, 'about'])   ->name('about');
@@ -29,5 +30,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/index-product', IndexProduct::class)->name('index-product');
     Route::get('/index-supplier', IndexSupplier::class)->name('index-supplier');
     Route::get('/index-customer', IndexCustomer::class)->name('index-customer');
+    Route::get('/purchases', PurchaseManagement::class)->name('purchases');
 
 });

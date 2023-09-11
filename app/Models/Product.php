@@ -12,6 +12,7 @@ class Product extends Model
     protected $fillable = [
         'brand_id',
         'category_id',
+        'supplier_id',
         'name',
         'description',
         'current_stock',
@@ -33,6 +34,11 @@ class Product extends Model
     public function brand()
     {
         return $this->belongsTo(Brand::class);
+    }
+
+    public function supplier()
+    {
+        return $this->belongsTo(Supplier::class);
     }
 
     /**

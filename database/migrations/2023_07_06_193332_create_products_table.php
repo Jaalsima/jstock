@@ -16,6 +16,7 @@ return new class extends Migration
 
             $table->unsignedBigInteger('brand_id');
             $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('supplier_id');
 
             $table->string('name', 50);
             $table->text('description')->nullable();
@@ -32,6 +33,7 @@ return new class extends Migration
 
             $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('brand_id')->references('id')->on('brands');
+            $table->foreign('supplier_id')->references('id')->on('suppliers');
         });
     }
 

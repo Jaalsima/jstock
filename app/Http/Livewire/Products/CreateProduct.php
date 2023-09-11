@@ -5,21 +5,23 @@ namespace App\Http\Livewire\Products;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Models\Product;
-use App\Models\Category;
 use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Supplier;
 use Livewire\WithFileUploads;
 
 class CreateProduct extends Component
 {
     use WithFileUploads;
 
-    public$brands, $categories, $product, $unique_input_identifier;
-    public  $brand_id, $category_id, $name, $description, $current_stock, $measurement_unit, $purchase_price, $selling_price, $slug, $status, $expiration, $observations,  $image;
+    public$brands, $categories, $suppliers, $product, $unique_input_identifier;
+    public  $brand_id, $category_id, $supplier_id, $name, $description, $current_stock, $measurement_unit, $purchase_price, $selling_price, $slug, $status, $expiration, $observations,  $image;
     public $open =false;
 
     protected $rules = [
         'brand_id'          => 'required|exists:brands,id',
         'category_id'       => 'required|exists:categories,id',
+        'supplier_id'       => 'required|exists:suppliers,id',
         'name'              => 'required|max:50',
         'description'       => 'nullable|string',
         'current_stock'     => 'required|integer|min:0',
@@ -36,6 +38,7 @@ class CreateProduct extends Component
     {
         $this->brands = Brand::get(['id', 'name']);
         $this->categories = Category::get(['id', 'name']);
+        $this->suppliers = Supplier::get(['id', 'name']);
         $this->product = Product::get();
         $this->unique_input_identifier = rand();
     }
@@ -52,6 +55,7 @@ class CreateProduct extends Component
         Product::create([
             'brand_id'           => $this->brand_id,
             'category_id'        => $this->category_id,
+            'supplier_id'        => $this->supplier_id,
             $name = 'name'       => $this->name,
             'description'        => $this->description,
             'current_stock'      => $this->current_stock,
@@ -65,7 +69,7 @@ class CreateProduct extends Component
             'image'              => $image_url,
         ]);
 
-        $this->reset(['open', 'brand_id', 'category_id', 'name', 'description', 'current_stock', 'measurement_unit', 'purchase_price', 'selling_price', 'slug', 'status', 'expiration', 'observations','image']);
+        $this->reset(['open', 'brand_id', 'category_id', 'supplier_id', 'name', 'description', 'current_stock', 'measurement_unit', 'purchase_price', 'selling_price', 'slug', 'status', 'expiration', 'observations','image']);
         $this->unique_input_identifier = rand();
         $this->emitTo('products.index-product', 'render');
         $this->emit('alert', '¡Producto Creado Exitosamente!');

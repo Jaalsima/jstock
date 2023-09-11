@@ -10,7 +10,7 @@ use App\Models\PurchaseDetail;
 
 class PurchaseManagement extends Component
 {
-    public $isOpen = false; // Variable para controlar la visibilidad del modal
+    public $isOpen = false;
     public $supplier_id;
     public $purchase_date;
     public $invoice_number;
@@ -18,6 +18,7 @@ class PurchaseManagement extends Component
     public $product_id;
     public $quantity;
     public $unit_price;
+    public $availableProducts = []; // Nueva variable para almacenar los productos del proveedor seleccionado
 
     public function render()
     {
@@ -27,17 +28,24 @@ class PurchaseManagement extends Component
         return view('livewire.purchases.purchase-management', compact('suppliers', 'products'));
     }
 
+    public function updatedSupplierId()
+    {
+        // Cargar los productos asociados al proveedor seleccionado
+        $supplier = Supplier::find($this->supplier_id);
+        $this->availableProducts = $supplier ? $supplier->products : [];
+    }
+
     public function openPurchaseModal()
     {
         $this->isOpen = true;
     }
 
     public function closePurchaseModal()
-{
-    $this->isOpen = false;
-    $this->resetForm();
-    $this->emit('closePurchaseModal'); // Agrega esta línea para emitir el evento
-}
+    {
+        $this->isOpen = false;
+        $this->resetForm();
+        $this->emit('closePurchaseModal'); // Agrega esta línea para emitir el evento
+    }
 
     public function savePurchase()
     {
@@ -88,5 +96,6 @@ class PurchaseManagement extends Component
         $this->product_id = null;
         $this->quantity = null;
         $this->unit_price = null;
+        $this->availableProducts = [];
     }
 }

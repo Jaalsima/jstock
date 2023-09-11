@@ -6,10 +6,11 @@ use Livewire\Component;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Category;
+use App\Models\Supplier;
 
 class ShowProduct extends Component
 {
-    public $product, $brands, $categories;
+    public $product, $brands, $categories, $suppliers;
     public $open =false;
 
     public function mount(Product $product)
@@ -17,6 +18,7 @@ class ShowProduct extends Component
         $this->product = $product;
         $this->brands = Brand::get(['id', 'name']);
         $this->categories = Category::get(['id', 'name']);
+        $this->suppliers = Supplier::get(['id', 'name']);
     }
 
 

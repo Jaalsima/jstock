@@ -25,6 +25,7 @@ class CustomerFactory extends Factory
             'phone'   => fake('es_ES')->phoneNumber(),
             'slug'    => Str::slug($name),
             'status'  => fake('es_ES')->randomElement(['Activo', 'Inactivo']),
+            'image'        => 'customers/' . fake()->image('public/storage/customers', 640, 480, null, false),
         ];
     }
 }

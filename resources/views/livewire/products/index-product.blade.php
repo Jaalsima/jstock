@@ -80,6 +80,9 @@
                             Categoría
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Proveedor
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Precio de Compra
                         </th>
                         <th scope="col" class="px-6 py-3">
@@ -120,6 +123,7 @@
                             <td class="px-6 py-4 dark:text-lg">{{ $product->description }}</td>
                             <td class="px-6 py-4 dark:text-lg">{{ $product->brand->name }}</td>
                             <td class="px-6 py-4 dark:text-lg">{{ $product->category->name }}</td>
+                            <td class="px-6 py-4 dark:text-lg">{{ $product->supplier->name }}</td>
                             <td class="px-6 py-4 ">{{ $product->purchase_price }}</td>
                             <td class="px-6 py-4 ">{{ $product->selling_price }} </td>
 

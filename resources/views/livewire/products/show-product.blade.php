@@ -25,8 +25,9 @@
                     <h5 class="mb-4 text-3xl font-semibold tracking-tight text-center text-gray-900 dark:text-white">
                         {{ $product->name }}</h5>
                     <div class="text-lg text-start">
-                        <p><strong>Categoría:</strong> {{ $product->category->name }}</p>
                         <p><strong>Marca:</strong> {{ $product->brand->name }}</p>
+                        <p><strong>Categoría:</strong> {{ $product->category->name }}</p>
+                        <p><strong>proveedor:</strong> {{ $product->supplier->name }}</p>
                         <p><strong>Precio:</strong> {{ $product->selling_price }}</p>
                         <p><strong>Estado:</strong> {{ $product->status }}</p>
                     </div>

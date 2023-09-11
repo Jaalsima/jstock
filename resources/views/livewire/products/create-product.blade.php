@@ -49,12 +49,12 @@
                 <x-input class="w-full" wire:model.lazy="description" />
                 <x-input-error for="description" />
 
-                <!-- Descripción -->
+                <!-- Almacén -->
                 <x-label value="Almacén" class="text-gray-700" />
                 <x-input class="w-full" type="number" min=0 wire:model.lazy="current_stock" />
                 <x-input-error for="current_stock" />
 
-                <!-- Descripción -->
+                <!-- Unidad de Medida -->
                 <x-label value="Unidad de medida" class="text-gray-700" />
                 <x-input class="w-full" type="text" wire:model.lazy="measurement_unit" />
                 <x-input-error for="measurement_unit" />
@@ -78,6 +78,16 @@
                     @endforeach
                 </select>
                 <x-input-error for="category_id" />
+
+                <!-- Dropdown para Proveedor -->
+                <x-label value="Proveedor" class="text-gray-700" />
+                <select class="w-full rounded-md" wire:model.lazy="supplier_id">
+                    <option value="">Selecciona un proveedor</option>
+                    @foreach ($suppliers as $supplier)
+                        <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+                    @endforeach
+                </select>
+                <x-input-error for="supplier_id" />
 
                 <!-- Precio de Compra -->
                 <x-label value="Precio de Compra" class="text-gray-700" />

@@ -5,15 +5,16 @@ namespace App\Http\Livewire\Products;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use App\Models\Product;
-use App\Models\Category;
 use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Supplier;
 use Livewire\WithFileUploads;
 
 class EditProduct extends Component
 {
     use WithFileUploads;
 
-    public $product, $brands, $categories;
+    public $product, $brands, $categories, $suppliers;
     public $name, $description, $current_stock, $measurement_unit, $purchase_price, $selling_price, $status, $expiration, $observations, $image;
     public $open = false;
 
@@ -27,7 +28,10 @@ class EditProduct extends Component
         'status'            => 'required|in:Disponible,No Disponible',
         'expiration'        => 'nullable|date',
         'observations'      => 'nullable|string',
-        'image'             => 'nullable|image|max:2048', // Opcional: Se puede permitir actualizar la imagen
+        'image'             => 'nullable|image|max:2048',
+        'product.brand_id'  => 'required', 
+        'product.category_id' => 'required',
+        'product.supplier_id' => 'required',
     ];
 
     public function mount(Product $product)
@@ -35,6 +39,7 @@ class EditProduct extends Component
         $this->product = $product;
         $this->brands = Brand::get(['id', 'name']);
         $this->categories = Category::get(['id', 'name']);
+        $this->suppliers = Supplier::get(['id', 'name']);
         $this->name = $product->name;
         $this->description = $product->description;
         $this->current_stock = $product->current_stock;
@@ -55,10 +60,10 @@ class EditProduct extends Component
     {
         $this->validate();
 
-        // Actualizar el producto en la base de datos
-        $this->product->update([
+        $data = [
             'brand_id'         => $this->product->brand_id,
             'category_id'      => $this->product->category_id,
+            'supplier_id'      => $this->product->supplier_id,
             'name'             => $this->name,
             'description'      => $this->description,
             'current_stock'    => $this->current_stock,
@@ -68,21 +73,18 @@ class EditProduct extends Component
             'status'           => $this->status,
             'expiration'       => $this->expiration,
             'observations'     => $this->observations,
-        ]);
+        ];
 
         if ($this->image) {
-            // Actualizar la imagen si se ha cargado una nueva
-            $image_url = $this->image->store('products');
-            $this->product->update(['image' => $image_url]);
+            $data['image'] = $this->image->store('products');
         }
 
-        // Cerrar el modal después de actualizar
+        $this->product->update($data);
+
         $this->open = false;
 
-        // Emitir un evento para que se actualice la lista de productos en la página anterior
         $this->emitTo('products.index-product', 'render');
 
-        // Emitir una notificación de éxito
         $this->emit('alert', '¡Producto Actualizado Exitosamente!');
     }
 
