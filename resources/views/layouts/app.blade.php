@@ -19,6 +19,27 @@
 
     <!-- Styles -->
     @livewireStyles
+    <style>
+        #contentEval {
+            overflow-y: scroll;
+            scroll-margin: 20px;
+        }
+
+        #contentEval::-webkit-scrollbar {
+            background: none;
+            width: 10px;
+            right: 10px;
+        }
+
+        #contentEval::-webkit-scrollbar-thumb {
+            background: #c32323;
+            border-radius: 10px;
+        }
+
+        #contentEval::-webkit-scrollbar-track-piece {
+            margin: 20px 0;
+        }
+    </style>
 </head>
 
 <body class="font-serif antialiased">

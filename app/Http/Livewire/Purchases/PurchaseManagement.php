@@ -2,79 +2,85 @@
 
 namespace App\Http\Livewire\Purchases;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use App\Models\Purchase;
 use App\Models\Supplier;
 use App\Models\Product;
-use App\Models\Purchase;
-use App\Models\PurchaseDetail;
 
 class PurchaseManagement extends Component
 {
-    public $supplier_id;
-    public $purchase_date;
-    public $invoice_number;
-    public $total_amount;
-    public $product_id;
-    public $quantity;
-    public $unit_price;
-    public $availableProducts = []; 
+    public $supplierId;
+    public $invoiceNumber;
+    public $totalAmount;
+    public $products = [];
+    public $availableProducts = [];
 
     public function render()
     {
+        $purchases = Purchase::orderBy('created_at', 'desc')->get();
         $suppliers = Supplier::all();
-        $products = Product::all();
+        $allProducts = Product::all();
 
-        return view('livewire.purchases.purchase-management', compact('suppliers', 'products'));
+        if ($this->supplierId) {
+            // Productos asociados al proveedor seleccionado
+            $selectedSupplier = Supplier::find($this->supplierId);
+            $this->availableProducts = $selectedSupplier->products;
+        }
+
+        return view('livewire.purchases.purchase-management', [
+            'purchases' => $purchases,
+            'suppliers' => $suppliers,
+            'allProducts' => $allProducts,
+        ]);
     }
 
-    public function updatedSupplierId()
-    {
-        $supplier = Supplier::find($this->supplier_id);
-        $this->availableProducts = $supplier ? $supplier->products : [];
-    }
-
-    public function savePurchase()
+    public function submitPurchase()
     {
         $this->validate([
-            'supplier_id' => 'required',
-            'purchase_date' => 'required|date',
-            'invoice_number' => 'required|unique:purchases',
-            'total_amount' => 'required|numeric',
-            'product_id' => 'required',
-            'quantity' => 'required|integer|min:1',
-            'unit_price' => 'required|numeric|min:0.01',
+            'supplierId' => 'required|exists:suppliers,id',
+            'invoiceNumber' => 'required|unique:purchases,invoice_number',
+            'totalAmount' => 'required|numeric',
         ]);
 
         $purchase = Purchase::create([
-            'supplier_id' => $this->supplier_id,
-            'user_id' => auth()->user()->id,
-            'purchase_date' => $this->purchase_date,
-            'invoice_number' => $this->invoice_number,
-            'total_amount' => $this->total_amount,
+            'user_id' => Auth::id(),
+            'supplier_id' => $this->supplierId,
+            'invoice_number' => $this->invoiceNumber,
+            'total_amount' => $this->totalAmount,
+            'purchase_date' => now(),
         ]);
 
-        PurchaseDetail::create([
-            'purchase_id' => $purchase->id,
-            'product_id' => $this->product_id,
-            'quantity' => $this->quantity,
-            'unit_price' => $this->unit_price,
-            'subtotal' => $this->quantity * $this->unit_price,
-        ]);
+        // Asignación de productos a la compra y cálculo del subtotal.
+        foreach ($this->products as $product) {
+            $subtotal = $product['quantity'] * $product['unit_price'];
+            $purchaseDetail = [
+                'product_id' => $product['id'],
+                'quantity' => $product['quantity'],
+                'unit_price' => $product['unit_price'],
+                'subtotal' => $subtotal,
+            ];
 
-        $this->resetForm();
+            $purchase->purchaseDetails()->create($purchaseDetail);
+        }
 
-        session()->flash('message', 'Compra registrada exitosamente.');
+        // Clear form fields or perform any other necessary actions
+
+        // Redirect or update the Livewire component as needed
     }
 
-    private function resetForm()
+    public function addProduct()
     {
-        $this->supplier_id = null;
-        $this->purchase_date = null;
-        $this->invoice_number = null;
-        $this->total_amount = null;
-        $this->product_id = null;
-        $this->quantity = null;
-        $this->unit_price = null;
-        $this->availableProducts = [];
+        $this->products[] = [
+            'id' => '',
+            'quantity' => 1,
+            'unit_price' => 0,
+        ];
+    }
+
+    public function removeProduct($index)
+    {
+        unset($this->products[$index]);
+        $this->products = array_values($this->products);
     }
 }
