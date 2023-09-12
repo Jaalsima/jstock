@@ -2,76 +2,87 @@
 
 namespace App\Http\Livewire\Sales;
 
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use App\Models\Sale;
-use App\Models\SaleDetail;
-use App\Models\User;
 use App\Models\Customer;
 use App\Models\Product;
 
 class SaleManagement extends Component
 {
-    public $customer_id;
-    public $sale_date;
-    public $total_amount;
-    public $product_id;
-    public $quantity;
-    public $unit_price;
-    public $availableProducts = [];
+    public $customerId;
+    public $invoiceNumber;
+    public $totalAmount;
+    public $products = [];
 
     public function render()
     {
+        $sales = Sale::orderBy('created_at', 'desc')->get();
         $customers = Customer::all();
-        $products = Product::all();
+        $allProducts = Product::all();
 
-        return view('livewire.sales.sale-management', compact('customers', 'products'));
+
+        return view('livewire.sales.sale-management', [
+            'sales' => $sales,
+            'customers' => $customers,
+            'allProducts' => $allProducts,
+        ]);
     }
 
-    public function updatedProductId()
-    {
-        $product = Product::find($this->product_id);
-        $this->unit_price = $product ? $product->price : null;
-    }
-
-    public function saveSale()
+    public function submitSale()
     {
         $this->validate([
-            'customer_id' => 'required',
-            'sale_date' => 'required|date',
-            'total_amount' => 'required|numeric',
-            'product_id' => 'required',
-            'quantity' => 'required|integer|min:1',
-            'unit_price' => 'required|numeric|min:0.01',
+            'customerId' => 'required|exists:customers,id',
+            'invoiceNumber' => 'required|unique:sales,invoice_number',
+            'totalAmount' => 'required|numeric',
         ]);
 
         $sale = Sale::create([
-            'customer_id' => $this->customer_id,
-            'user_id' => auth()->user()->id,
-            'sale_date' => $this->sale_date,
-            'total_amount' => $this->total_amount,
+            'user_id' => Auth::id(),
+            'customer_id' => $this->customerId,
+            'invoice_number' => $this->invoiceNumber,
+            'total_amount' => $this->totalAmount,
+            'sale_date' => now(),
         ]);
 
-        SaleDetail::create([
-            'sale_id' => $sale->id,
-            'product_id' => $this->product_id,
-            'quantity' => $this->quantity,
-            'unit_price' => $this->unit_price,
-            'subtotal' => $this->quantity * $this->unit_price,
-        ]);
+        // Asignación de productos a la venta y cálculo del subtotal.
+            $totalSale = 0.0;
+            foreach ($this->products as $product) {
+            $subtotal = $product['quantity'] * $product['unit_price'];
+            $totalSale += $subtotal;
+            $saleDetail = [
+                'product_id' => $product['id'],
+                'quantity' => $product['quantity'],
+                'unit_price' => $product['unit_price'],
+                'subtotal' => $subtotal,
+            ];
 
-        $this->resetForm();
+            $sale->saleDetails()->create($saleDetail);
+        }
 
-        session()->flash('message', 'Venta registrada exitosamente.');
+        // Clear form fields or perform any other necessary actions
+
+        // Redirect or update the Livewire component as needed
     }
 
-    private function resetForm()
+    
+
+    public function totalAmount(){
+        
+    }
+
+    public function addProduct()
     {
-        $this->customer_id = null;
-        $this->sale_date = null;
-        $this->total_amount = null;
-        $this->product_id = null;
-        $this->quantity = null;
-        $this->unit_price = null;
-        $this->availableProducts = [];
+        $this->products[] = [
+            'id' => '',
+            'quantity' => 1,
+            'unit_price' => 0,
+        ];
+    }
+
+    public function removeProduct($index)
+    {
+        unset($this->products[$index]);
+        $this->products = array_values($this->products);
     }
 }

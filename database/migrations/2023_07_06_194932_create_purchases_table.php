@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id'); // Usuario Administrador
             $table->date('purchase_date');
             $table->string('invoice_number')->unique(); // Número de factura de la compra
-            $table->decimal('total_amount'); // Monto total de la compra
+            $table->decimal('total_amount', 14, 2); // Monto total de la compra
             $table->timestamps();
 
             $table->foreign('supplier_id')->references('id')->on('suppliers');

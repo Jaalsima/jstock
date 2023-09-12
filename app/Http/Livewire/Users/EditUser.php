@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Users;
 use Livewire\Component;
 use App\Models\User;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Hash;
 
 class EditUser extends Component
 {
@@ -48,7 +49,7 @@ class EditUser extends Component
             'email' => $this->email,
             'address' => $this->address,
             'phone' => $this->phone,
-            'password' => $this->password,
+            'password' => Hash::make($this->password),
             'status' => $this->status,
         ]);
 

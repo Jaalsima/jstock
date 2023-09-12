@@ -16,8 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('sale_id');
             $table->unsignedBigInteger('product_id');
             $table->integer('quantity');
-            $table->decimal('unit_price', 10, 2);
-            $table->decimal('subtotal', 10, 2); //cantidad x precio unitario
+            $table->decimal('unit_price', 14, 2);
+            $table->decimal('subtotal', 14, 2); //cantidad x precio unitario
             $table->timestamps();
 
             $table->foreign('sale_id')->references('id')->on('sales');

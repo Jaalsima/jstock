@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\User;
 use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Hash;
 
 class CreateUser extends Component
 {
@@ -37,7 +38,7 @@ class CreateUser extends Component
         'email'    => $this->email,
         'address'  => $this->address,
         'phone'    => $this->phone,
-        'password' => $this->password,
+        'password' => Hash::make($this->password),
         'slug'     => Str::slug($this->name),
         'status'   => $this->status,
         'profile_photo_path'    => $image_url,
