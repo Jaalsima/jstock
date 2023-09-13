@@ -15,10 +15,22 @@ class PurchaseManagement extends Component
     public $invoiceNumber;
     public $products = [];
     public $availableProducts = [];
+    public $sortBy = 'created_at';
+    public $sortDirection = 'desc';
+
+    public function sortBy($field)
+    {
+        if ($this->sortBy === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortBy = $field;
+            $this->sortDirection = 'asc';
+        }
+    }
 
     public function render()
     {
-        $purchases = Purchase::orderBy('created_at', 'desc')->get();
+        $purchases = Purchase::orderBy($this->sortBy, $this->sortDirection)->paginate(10);
         $suppliers = Supplier::all();
         $allProducts = Product::all();
 
