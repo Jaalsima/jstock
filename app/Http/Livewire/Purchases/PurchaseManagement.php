@@ -17,8 +17,12 @@ class PurchaseManagement extends Component
     public $availableProducts = [];
     public $sortBy = 'created_at';
     public $sortDirection = 'desc';
+    public $open = false;
+    public $open_delete = false;
+    public $selectedPurchase = null;
+    public $confirmingDelete = null;
 
-    public function sortBy($field)
+    public function sortField($field)
     {
         if ($this->sortBy === $field) {
             $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
@@ -26,6 +30,18 @@ class PurchaseManagement extends Component
             $this->sortBy = $field;
             $this->sortDirection = 'asc';
         }
+    }
+
+    public function showPurchaseDetails($purchaseId)
+    {
+        $this->selectedPurchase = Purchase::find($purchaseId);
+        $this->open = true;
+    }
+
+    public function closePurchaseDetailsModal()
+    {
+        $this->selectedPurchase = null;
+        $this->open = false;
     }
 
     public function render()
@@ -45,6 +61,7 @@ class PurchaseManagement extends Component
             'allProducts' => $allProducts,
         ]);
     }
+
 
     public function submitPurchase()
     {
@@ -121,6 +138,43 @@ class PurchaseManagement extends Component
             $this->totalAmount += $subtotal;
         }
     }
+
+    public function editPurchase($purchaseId)
+{
+    // Lógica para editar la compra
+    // Por ejemplo, redirigir a una ruta de edición o cargar un formulario de edición en el modal.
+}
+
+public function confirmDeletePurchase($purchaseId)
+{
+    // Establecer el ID de la compra a confirmar para eliminar
+    $this->confirmingDelete = $purchaseId;
+    $this->open_delete = true;
+}
+
+public function deletePurchase()
+{
+    // Verificar si se ha confirmado la eliminación
+    if ($this->confirmingDelete) {
+        // Encontrar y eliminar la compra
+        $purchase = Purchase::find($this->confirmingDelete);
+
+        if ($purchase) {
+            $purchase->delete();
+        }
+
+        // Cerrar el modal de confirmación
+        $this->confirmingDelete = null;
+
+        // Cierra el modal de confirmación
+        $this->open_delete = false;
+
+        // Recargar los datos para actualizar la lista
+        $this->render();
+    }
+}
+
+
 
     private function resetForm()
     {

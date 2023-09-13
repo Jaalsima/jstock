@@ -19,7 +19,7 @@
 
     <!-- Styles -->
     @livewireStyles
-    <style>
+    {{-- <style>
         #contentEval {
             overflow-y: scroll;
             scroll-margin: 20px;
@@ -39,7 +39,7 @@
         #contentEval::-webkit-scrollbar-track-piece {
             margin: 20px 0;
         }
-    </style>
+    </style> --}}
 </head>
 
 <body class="font-serif antialiased">
