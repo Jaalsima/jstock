@@ -39,7 +39,7 @@
                             <label for="totalAmount" class="block font-semibold">Monto Total</label>
                             <input
                                 class="w-full bg-gray-300 border-2 border-gray-400 rounded-lg focus:border-red-700 focus:ring-0 focus:bg-gray-100"
-                                type="text" wire:model.defer="totalAmount" id="totalAmount">
+                                type="text" wire:model="totalAmount" id="totalAmount" disabled>
                             @error('totalAmount')
                                 <span class="text-red-600">{{ $message }}</span>
                             @enderror
@@ -67,8 +67,7 @@
                         @foreach ($products as $index => $product)
                             <div class="px-2 py-4 mb-3 bg-gray-400 rounded-lg">
                                 <div class="w-full">
-                                    <label for="products.{{ $index }}.id"
-                                        class="block font-semibold">Producto</label>
+                                    <label for="products.{{ $index }}.id" class="block font-semibold">Producto</label>
                                     <select wire:model="products.{{ $index }}.id"
                                         id="products.{{ $index }}.id"
                                         class="w-full bg-gray-300 border-2 border-gray-600 rounded-lg focus:border-red-700 focus:ring-0 focus:bg-gray-100">
@@ -78,23 +77,27 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                <div class="grid grid-cols-2 gap-4 mb-2">
+                                <div class="grid grid-cols-3 gap-4 mb-2">
                                     <div>
-                                        <label for="products.{{ $index }}.quantity"
-                                            class="block font-semibold">Cantidad</label>
+                                        <label for="products.{{ $index }}.quantity" class="block font-semibold">Cantidad</label>
                                         <input
                                             class="w-full bg-gray-300 border-2 border-gray-600 rounded-lg focus:border-red-700 focus:ring-0 focus:bg-gray-100"
                                             type="number" wire:model="products.{{ $index }}.quantity"
                                             id="products.{{ $index }}.quantity" placeholder="Cantidad">
                                     </div>
                                     <div>
-                                        <label for="products.{{ $index }}.unit_price"
-                                            class="block font-semibold">Precio
-                                            Unitario</label>
+                                        <label for="products.{{ $index }}.unit_price" class="block font-semibold">Precio Unitario</label>
                                         <input
                                             class="w-full bg-gray-300 border-2 border-gray-600 rounded-lg focus:border-red-700 focus:ring-0 focus:bg-gray-100"
                                             type="number" wire:model="products.{{ $index }}.unit_price"
-                                            id="products.{{ $index }}.unit_price" placeholder="Precio Unitario">
+                                            id="products.{{ $index }}.unit_price" placeholder="Precio Unitario" readonly>
+                                    </div>
+                                    <div>
+                                        <label for="products.{{ $index }}.subtotal" class="block font-semibold">Subtotal</label>
+                                        <input
+                                            class="w-full bg-gray-300 border-2 border-gray-600 rounded-lg focus:border-red-700 focus:ring-0 focus:bg-gray-100"
+                                            type="number" wire:model="products.{{ $index }}.subtotal"
+                                            id="products.{{ $index }}.subtotal" placeholder="Subtotal" readonly>
                                     </div>
                                 </div>
                                 <div
@@ -105,10 +108,10 @@
                             </div>
                         @endforeach
                     </div>
+
                 </div>
 
                 <div class="fixed w-[60vh] bottom-12">
-
                     <!-- Botón para registrar la compra -->
                     <button
                         class="w-5/6 px-4 py-1 ml-[5vh] text-center text-green-700 bg-gray-300 border-2 border-green-700 rounded-lg shadow-lg hover:bg-green-600 hover:bg-opacity-40 hover:text-green-900 font-semibold hover:shadow-green-400"

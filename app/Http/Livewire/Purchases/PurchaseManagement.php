@@ -11,8 +11,8 @@ use App\Models\Product;
 class PurchaseManagement extends Component
 {
     public $supplierId;
+    public $totalAmount = 0;
     public $invoiceNumber;
-    public $totalAmount;
     public $products = [];
     public $availableProducts = [];
 
@@ -23,7 +23,6 @@ class PurchaseManagement extends Component
         $allProducts = Product::all();
 
         if ($this->supplierId) {
-            // Productos asociados al proveedor seleccionado
             $selectedSupplier = Supplier::find($this->supplierId);
             $this->availableProducts = $selectedSupplier->products;
         }
@@ -40,8 +39,25 @@ class PurchaseManagement extends Component
         $this->validate([
             'supplierId' => 'required|exists:suppliers,id',
             'invoiceNumber' => 'required|unique:purchases,invoice_number',
-            'totalAmount' => 'required|numeric',
         ]);
+
+        $this->totalAmount = 0;
+        $purchaseDetails = [];
+
+        foreach ($this->products as $product) {
+            $productInfo = Product::find($product['id']);
+            $unitPrice = $productInfo->purchase_price;
+            $subtotal = $product['quantity'] * $unitPrice;
+
+            $purchaseDetails[] = [
+                'product_id' => $product['id'],
+                'quantity' => $product['quantity'],
+                'unit_price' => $unitPrice,
+                'subtotal' => $subtotal,
+            ];
+
+            $this->totalAmount += $subtotal;
+        }
 
         $purchase = Purchase::create([
             'user_id' => Auth::id(),
@@ -51,22 +67,9 @@ class PurchaseManagement extends Component
             'purchase_date' => now(),
         ]);
 
-        // Asignación de productos a la compra y cálculo del subtotal.
-        foreach ($this->products as $product) {
-            $subtotal = $product['quantity'] * $product['unit_price'];
-            $purchaseDetail = [
-                'product_id' => $product['id'],
-                'quantity' => $product['quantity'],
-                'unit_price' => $product['unit_price'],
-                'subtotal' => $subtotal,
-            ];
+        $purchase->purchaseDetails()->createMany($purchaseDetails);
 
-            $purchase->purchaseDetails()->create($purchaseDetail);
-        }
-
-        // Clear form fields or perform any other necessary actions
-
-        // Redirect or update the Livewire component as needed
+        $this->resetForm();
     }
 
     public function addProduct()
@@ -75,6 +78,7 @@ class PurchaseManagement extends Component
             'id' => '',
             'quantity' => 1,
             'unit_price' => 0,
+            'subtotal' => 0,
         ];
     }
 
@@ -82,5 +86,36 @@ class PurchaseManagement extends Component
     {
         unset($this->products[$index]);
         $this->products = array_values($this->products);
+        $this->calculateTotalAmount();
+    }
+
+    public function updatedProducts()
+    {
+        $this->calculateTotalAmount();
+    }
+
+    private function calculateTotalAmount()
+    {
+        $this->totalAmount = 0;
+
+        foreach ($this->products as $index => $product) {
+            $productInfo = Product::find($product['id']);
+            $unitPrice = $productInfo->purchase_price;
+            $subtotal = $product['quantity'] * $unitPrice;
+
+            $this->products[$index]['unit_price'] = $unitPrice;
+            $this->products[$index]['subtotal'] = $subtotal;
+
+            $this->totalAmount += $subtotal;
+        }
+    }
+
+    private function resetForm()
+    {
+        $this->supplierId = null;
+        $this->invoiceNumber = null;
+        $this->products = [];
+        $this->availableProducts = [];
+        $this->totalAmount = 0;
     }
 }
