@@ -80,25 +80,61 @@
             </x-slot>
 
             <x-slot name="content">
-                <p>Fecha de Compra: {{ $selectedPurchase->purchase_date }}</p>
-                <p>Proveedor: {{ $selectedPurchase->supplier->name }}</p>
-                <p>Número de Factura: {{ $selectedPurchase->invoice_number }}</p>
-                <p>Total: ${{ number_format($selectedPurchase->total_amount, 2) }}</p>
+                <div class="p-4">
+                    <div class="mb-4">
+                        <p class="text-lg font-semibold">Fecha de Compra:</p>
+                        <p>{{ $selectedPurchase->purchase_date }}</p>
+                    </div>
 
+                    <div class="mb-4">
+                        <p class="text-lg font-semibold">Proveedor:</p>
+                        <p>{{ $selectedPurchase->supplier->name }}</p>
+                    </div>
+
+                    <div class="mb-4">
+                        <p class="text-lg font-semibold">Número de Factura:</p>
+                        <p>{{ $selectedPurchase->invoice_number }}</p>
+                    </div>
+
+                    <div class="mb-4">
+                        <p class="text-lg font-semibold">Total:</p>
+                        <p>${{ number_format($selectedPurchase->total_amount, 2) }}</p>
+                    </div>
+
+                    <!-- Lista de Productos -->
+                    <div>
+                        <h3 class="text-lg font-semibold">Productos:</h3>
+                        <ul class="mt-2 list-disc list-inside">
+                            @foreach ($selectedPurchase->purchaseDetails as $purchaseDetail)
+                                <li>
+                                    {{ $purchaseDetail->product->name }} (Cantidad: {{ $purchaseDetail->quantity }})
+                                    <ul class="ml-4">
+                                        <li>Precio Unitario: ${{ number_format($purchaseDetail->unit_price, 2) }}</li>
+                                        <li>Subtotal: ${{ number_format($purchaseDetail->subtotal, 2) }}</li>
+                                    </ul>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
                 <!-- Botones de editar y eliminar -->
-                <div class="mt-4">
+                <div class="flex justify-end p-4 border-t border-gray-300">
                     <button wire:click="editPurchase({{ $selectedPurchase->id }})"
-                        class="btn btn-primary">Editar</button>
+                        class="px-4 py-2 mr-2 text-white bg-blue-500 rounded hover:bg-blue-600">Editar</button>
                     <button wire:click="confirmDeletePurchase({{ $selectedPurchase->id }})"
-                        class="btn btn-danger">Eliminar</button>
+                        class="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-600">Eliminar</button>
                 </div>
             </x-slot>
 
             <x-slot name="footer">
-                <x-secondary-button wire:click="closePurchaseDetailsModal()">Salir</x-secondary-button>
+                <div class="flex justify-end">
+                    <x-secondary-button wire:click="closePurchaseDetailsModal()">Cerrar</x-secondary-button>
+                </div>
             </x-slot>
         </x-dialog-modal>
     @endif
+
+
 
     <div class="flex items-center justify-between mb-4">
         <div>
@@ -139,19 +175,26 @@
         @if ($confirmingDelete)
             <x-dialog-modal wire:model="open_delete">
                 <x-slot name="title">
-                    <h2 class="text-xl font-bold">Confirmar Eliminación</h2>
+                    <h2 class="text-xl font-bold text-red-600">Confirmar Eliminación</h2>
                 </x-slot>
 
                 <x-slot name="content">
-                    <p>¿Estás seguro de que deseas eliminar esta compra?</p>
+                    <div class="py-4">
+                        <p class="text-lg">¿Estás seguro de que deseas eliminar esta compra?</p>
+                    </div>
                 </x-slot>
 
                 <x-slot name="footer">
-                    <button wire:click="deletePurchase" class="bg-red-400">Eliminar</button>
-                    <button wire:click="$set('confirmingDelete', null)" class="bg-red-400">Cancelar</button>
+                    <div class="flex justify-end pt-4">
+                        <button wire:click="deletePurchase"
+                            class="px-4 py-2 text-white bg-red-600 rounded hover:bg-red-700">Eliminar</button>
+                        <button wire:click="$set('confirmingDelete', null)"
+                            class="px-4 py-2 ml-2 text-white bg-gray-400 rounded hover:bg-gray-500">Cancelar</button>
+                    </div>
                 </x-slot>
             </x-dialog-modal>
         @endif
+
 
     </div>
 </div>

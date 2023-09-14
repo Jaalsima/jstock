@@ -8,10 +8,21 @@ use App\Models\Purchase;
 class PurchaseDetail extends Component
 {
     public $purchase;
+    public $open = false;
 
-    public function mount($id)
+    public function mount(Purchase $purchase)
     {
-        $this->purchase = Purchase::findOrFail($id);
+        $this->purchase = $purchase;
+    }
+
+    public function show()
+    {
+        $this->open = true;
+    }
+
+    public function close()
+    {
+        $this->open = false;
     }
 
     public function render()
