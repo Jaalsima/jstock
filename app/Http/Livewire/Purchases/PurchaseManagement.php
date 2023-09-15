@@ -18,9 +18,9 @@ class PurchaseManagement extends Component
     public $sortBy = 'created_at';
     public $sortDirection = 'desc';
     public $open = false;
-    public $open_delete = false;
+
+    public $openConfirmingPurchase = false;
     public $selectedPurchase = null;
-    public $confirmingDelete = null;
 
     public function sortField($field)
     {
@@ -130,7 +130,7 @@ class PurchaseManagement extends Component
         foreach ($this->products as $index => $product) {
             $productInfo = Product::find($product['id']);
             $unitPrice = $productInfo->purchase_price;
-            $subtotal = $product['quantity'] * $unitPrice;
+            $subtotal = ""? $product['quantity'] * $unitPrice: $subtotal = 0;
 
             $this->products[$index]['unit_price'] = $unitPrice;
             $this->products[$index]['subtotal'] = $subtotal;
@@ -139,42 +139,10 @@ class PurchaseManagement extends Component
         }
     }
 
-    public function editPurchase($purchaseId)
-{
-    // Lógica para editar la compra
-    // Por ejemplo, redirigir a una ruta de edición o cargar un formulario de edición en el modal.
-}
-
-public function confirmDeletePurchase($purchaseId)
-{
-    // Establecer el ID de la compra a confirmar para eliminar
-    $this->confirmingDelete = $purchaseId;
-    $this->open_delete = true;
-}
-
-public function deletePurchase()
-{
-    // Verificar si se ha confirmado la eliminación
-    if ($this->confirmingDelete) {
-        // Encontrar y eliminar la compra
-        $purchase = Purchase::find($this->confirmingDelete);
-
-        if ($purchase) {
-            $purchase->delete();
-        }
-
-        // Cerrar el modal de confirmación
-        $this->confirmingDelete = null;
-
-        // Cierra el modal de confirmación
-        $this->open_delete = false;
-
-        // Recargar los datos para actualizar la lista
-        $this->render();
+    public function confirmPurchase()
+    {
+        $this->openConfirmingPurchase = true;
     }
-}
-
-
 
     private function resetForm()
     {
