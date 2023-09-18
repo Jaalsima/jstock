@@ -99,6 +99,7 @@ class PurchaseManagement extends Component
         $purchase->purchaseDetails()->createMany($purchaseDetails);
 
         $this->resetForm();
+        $this->openConfirmingPurchase = false;
     }
 
     public function addProduct()
@@ -130,7 +131,7 @@ class PurchaseManagement extends Component
         foreach ($this->products as $index => $product) {
             $productInfo = Product::find($product['id']);
             $unitPrice = $productInfo->purchase_price;
-            $subtotal = ""? $product['quantity'] * $unitPrice: $subtotal = 0;
+            $subtotal = $product['quantity'] * $unitPrice;
 
             $this->products[$index]['unit_price'] = $unitPrice;
             $this->products[$index]['subtotal'] = $subtotal;

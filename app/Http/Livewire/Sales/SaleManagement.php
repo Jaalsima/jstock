@@ -1,26 +1,52 @@
-<?php
-
+<?php 
 namespace App\Http\Livewire\Sales;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use App\Models\Sale;
 use App\Models\Customer;
+use App\Models\Sale;
 use App\Models\Product;
 
 class SaleManagement extends Component
 {
     public $customerId;
+    public $totalAmount = 0;
     public $invoiceNumber;
-    public $totalAmount;
     public $products = [];
+    public $sortBy = 'created_at';
+    public $sortDirection = 'desc';
+    public $open = false;
+
+    public $openConfirmingSale = false;
+    public $selectedSale = null;
+
+    public function sortField($field)
+    {
+        if ($this->sortBy === $field) {
+            $this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            $this->sortBy = $field;
+            $this->sortDirection = 'asc';
+        }
+    }
+
+    public function showSaleDetails($saleId)
+    {
+        $this->selectedSale = Sale::find($saleId);
+        $this->open = true;
+    }
+
+    public function closeSaleDetailsModal()
+    {
+        $this->selectedSale = null;
+        $this->open = false;
+    }
 
     public function render()
     {
-        $sales = Sale::orderBy('created_at', 'desc')->get();
+        $sales = Sale::orderBy($this->sortBy, $this->sortDirection)->paginate(10);
         $customers = Customer::all();
         $allProducts = Product::all();
-
 
         return view('livewire.sales.sale-management', [
             'sales' => $sales,
@@ -34,8 +60,25 @@ class SaleManagement extends Component
         $this->validate([
             'customerId' => 'required|exists:customers,id',
             'invoiceNumber' => 'required|unique:sales,invoice_number',
-            'totalAmount' => 'required|numeric',
         ]);
+
+        $this->totalAmount = 0;
+        $saleDetails = [];
+
+        foreach ($this->products as $product) {
+            $productInfo = Product::find($product['id']);
+            $unitPrice = $productInfo->selling_price;
+            $subtotal = $product['quantity'] * $unitPrice;
+
+            $saleDetails[] = [
+                'product_id' => $product['id'],
+                'quantity' => $product['quantity'],
+                'unit_price' => $unitPrice,
+                'subtotal' => $subtotal,
+            ];
+
+            $this->totalAmount += $subtotal;
+        }
 
         $sale = Sale::create([
             'user_id' => Auth::id(),
@@ -45,30 +88,10 @@ class SaleManagement extends Component
             'sale_date' => now(),
         ]);
 
-        // Asignación de productos a la venta y cálculo del subtotal.
-            $totalSale = 0.0;
-            foreach ($this->products as $product) {
-            $subtotal = $product['quantity'] * $product['unit_price'];
-            $totalSale += $subtotal;
-            $saleDetail = [
-                'product_id' => $product['id'],
-                'quantity' => $product['quantity'],
-                'unit_price' => $product['unit_price'],
-                'subtotal' => $subtotal,
-            ];
+        $sale->saleDetails()->createMany($saleDetails);
 
-            $sale->saleDetails()->create($saleDetail);
-        }
-
-        // Clear form fields or perform any other necessary actions
-
-        // Redirect or update the Livewire component as needed
-    }
-
-    
-
-    public function totalAmount(){
-        
+        $this->resetForm();
+        $this->openConfirmingSale = false;
     }
 
     public function addProduct()
@@ -77,6 +100,7 @@ class SaleManagement extends Component
             'id' => '',
             'quantity' => 1,
             'unit_price' => 0,
+            'subtotal' => 0,
         ];
     }
 
@@ -84,5 +108,40 @@ class SaleManagement extends Component
     {
         unset($this->products[$index]);
         $this->products = array_values($this->products);
+        $this->calculateTotalAmount();
+    }
+
+    public function updatedProducts()
+    {
+        $this->calculateTotalAmount();
+    }
+
+    private function calculateTotalAmount()
+    {
+        $this->totalAmount = 0;
+
+        foreach ($this->products as $index => $product) {
+            $productInfo = Product::find($product['id']);
+            $unitPrice = $productInfo->selling_price;
+            $subtotal = $product['quantity'] * $unitPrice;
+
+            $this->products[$index]['unit_price'] = $unitPrice;
+            $this->products[$index]['subtotal'] = $subtotal;
+
+            $this->totalAmount += $subtotal;
+        }
+    }
+
+    public function confirmSale()
+    {
+        $this->openConfirmingSale = true;
+    }
+
+    private function resetForm()
+    {
+        $this->customerId = null;
+        $this->invoiceNumber = null;
+        $this->products = [];
+        $this->totalAmount = 0;
     }
 }
