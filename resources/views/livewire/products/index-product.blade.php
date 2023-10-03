@@ -94,6 +94,7 @@
                         </th>
 
                     </tr>
+
                 </thead>
                 <tbody>
                     @forelse ($products as $product)
