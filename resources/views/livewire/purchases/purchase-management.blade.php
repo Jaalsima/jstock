@@ -5,7 +5,7 @@
         <div class="w-1/3 mr-4">
             <label for="supplierId" class="block mb-1 font-bold">Proveedor</label>
             <select wire:model="supplierId" id="supplierId" class="w-full p-2 border border-gray-300 rounded">
-                <option disabled>-- Selecciona un proveedor --</option>
+                <option hidden>-- Selecciona un proveedor --</option>
                 @foreach ($suppliers as $supplier)
                     <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
                 @endforeach
@@ -49,7 +49,7 @@
                         <td class="p-2">
                             <select wire:model="products.{{ $index }}.id"
                                 class="w-full p-2 border border-gray-300 rounded">
-                                <option disabled>-- Selecciona un producto --</option>
+                                <option hidden>-- Selecciona un producto --</option>
                                 @foreach ($availableProducts as $availableProduct)
                                     <option value="{{ $availableProduct->id }}">{{ $availableProduct->name }}</option>
                                 @endforeach
@@ -249,6 +249,7 @@
                                 <td class="p-2">
                                     <input type="text" wire:model="products.{{ $index }}.unit_price"
                                         class="w-full p-2 border border-gray-300 rounded" readonly>
+                                    <x-input-error for="products.{{ $index }}.unit_price" />
                                 </td>
                                 <td class="p-2">
                                     <input type="text" wire:model="products.{{ $index }}.subtotal"

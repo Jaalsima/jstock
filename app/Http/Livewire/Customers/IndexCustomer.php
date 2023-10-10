@@ -55,5 +55,4 @@ class IndexCustomer extends Component
         }
         $this->open = false; // Cierra el modal de confirmación
     }
-
 }

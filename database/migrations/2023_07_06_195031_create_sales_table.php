@@ -20,8 +20,8 @@ return new class extends Migration
             $table->decimal('total_amount', 14, 2); // Monto total de la venta
             $table->timestamps();
 
-            $table->foreign('customer_id')->references('id')->on('customers');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('customer_id')->references('id')->on('customers')->onDelete('CASCADE');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
 

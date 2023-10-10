@@ -20,8 +20,8 @@ return new class extends Migration
             $table->decimal('total_amount', 14, 2); // Monto total de la compra
             $table->timestamps();
 
-            $table->foreign('supplier_id')->references('id')->on('suppliers');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('CASCADE');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
 

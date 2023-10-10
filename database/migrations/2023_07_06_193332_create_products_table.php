@@ -21,19 +21,19 @@ return new class extends Migration
             $table->string('name', 50);
             $table->text('description')->nullable();
             $table->integer('current_stock')->default(0);
-            $table->string('measurement_unit')->default('unidad');
+            $table->string('measurement_unit')->nullable()->default('Unidad');
             $table->decimal('purchase_price', 8, 2);
             $table->decimal('selling_price', 8, 2);
             $table->string('slug');
             $table->string('status');
-            $table->date('expiration');
-            $table->text('observations');
-            $table->string('image')->nullable();
+            $table->date('expiration')->nullable()->default(null);
+            $table->text('observations')->nullable()->default('N/A');
+            $table->string('image')->nullable()->default('N/A');
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('brand_id')->references('id')->on('brands');
-            $table->foreign('supplier_id')->references('id')->on('suppliers');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('CASCADE');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('CASCADE');
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('CASCADE');
         });
     }
 

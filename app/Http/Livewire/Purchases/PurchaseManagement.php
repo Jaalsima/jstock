@@ -19,6 +19,8 @@ class PurchaseManagement extends Component
     public $sortDirection = 'desc';
     public $open = false;
 
+    public $counter = 1;
+
     public $openConfirmingPurchase = false;
     public $selectedPurchase = null;
 
@@ -104,12 +106,16 @@ class PurchaseManagement extends Component
 
     public function addProduct()
     {
-        $this->products[] = [
-            'id' => '',
-            'quantity' => 1,
-            'unit_price' => 0,
-            'subtotal' => 0,
-        ];
+        if ($this->supplierId && $this->invoiceNumber) {
+            if ($this->counter == 1) {
+                $this->products[] = [
+                    'id' => '',
+                    'quantity' => 1,
+                    'unit_price' => 0,
+                    'subtotal' => 0,
+                ];
+            }
+        }
     }
 
     public function removeProduct($index)

@@ -20,8 +20,8 @@ return new class extends Migration
             $table->decimal('subtotal', 14, 2); //cantidad x precio unitario
             $table->timestamps();
 
-            $table->foreign('sale_id')->references('id')->on('sales');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('sale_id')->references('id')->on('sales')->onDelete('CASCADE');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('CASCADE');
         });
     }
 

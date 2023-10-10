@@ -14,9 +14,9 @@ class CreateProduct extends Component
 {
     use WithFileUploads;
 
-    public$brands, $categories, $suppliers, $product, $unique_input_identifier;
+    public $brands, $categories, $suppliers, $product, $unique_input_identifier;
     public  $brand_id, $category_id, $supplier_id, $name, $description, $current_stock, $measurement_unit, $purchase_price, $selling_price, $slug, $status, $expiration, $observations,  $image;
-    public $open =false;
+    public $open = false;
 
     protected $rules = [
         'brand_id'          => 'required|exists:brands,id',
@@ -31,7 +31,7 @@ class CreateProduct extends Component
         'status'            => 'required|in:Disponible,No Disponible',
         'expiration'        => 'nullable|date',
         'observations'      => 'nullable|string',
-        'image'             => 'required|image|max:2048',
+        'image'             => 'nullable|image|max:2048',
     ];
 
     public function mount()
@@ -42,11 +42,13 @@ class CreateProduct extends Component
         $this->product = Product::get();
         $this->unique_input_identifier = rand();
     }
-    public function updated($propertyName){
+    public function updated($propertyName)
+    {
         $this->validateOnly($propertyName);
     }
 
-    public function add(){
+    public function add()
+    {
 
         $this->validate();
 
@@ -69,11 +71,10 @@ class CreateProduct extends Component
             'image'              => $image_url,
         ]);
 
-        $this->reset(['open', 'brand_id', 'category_id', 'supplier_id', 'name', 'description', 'current_stock', 'measurement_unit', 'purchase_price', 'selling_price', 'slug', 'status', 'expiration', 'observations','image']);
+        $this->reset(['open', 'brand_id', 'category_id', 'supplier_id', 'name', 'description', 'current_stock', 'measurement_unit', 'purchase_price', 'selling_price', 'slug', 'status', 'expiration', 'observations', 'image']);
         $this->unique_input_identifier = rand();
         $this->emitTo('products.index-product', 'render');
         $this->emit('alert', '¡Producto Creado Exitosamente!');
-
     }
 
     public function render()
