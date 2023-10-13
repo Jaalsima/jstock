@@ -57,14 +57,15 @@
                         </td>
                         <td class="p-2">
                             <input type="number" wire:model="products.{{ $index }}.quantity"
-                                class="w-full p-2 border border-gray-300 rounded" min="1">
+                                class="w-full p-2 border border-gray-300 rounded" min="1"
+                                @if (empty($product['id'])) disabled @endif>
                         </td>
                         <td class="p-2">
-                            <input type="nummber" wire:model="products.{{ $index }}.unit_price"
+                            <input type="number" wire:model="products.{{ $index }}.unit_price"
                                 class="w-full p-2 border border-gray-300 rounded" readonly>
                         </td>
                         <td class="p-2">
-                            <input type="nummber" wire:model="products.{{ $index }}.subtotal"
+                            <input type="number" wire:model="products.{{ $index }}.subtotal"
                                 class="w-full p-2 border border-gray-300 rounded" readonly>
                         </td>
                         <td class="p-2">
@@ -155,6 +156,9 @@
         <div>
             <h4 class="text-xl font-bold">Total: ${{ number_format($totalAmount, 2) }}</h4>
         </div>
+        @if (session('error'))
+            <p class="text-red-500">{{ session('error') }}</p>
+        @endif
         <div>
             <button wire:click="confirmPurchase"
                 class="px-6 py-3 font-semibold text-white bg-green-600 rounded shadow-lg hover:text-green-900 hover:bg-green-400 hover:shadow-green-700">Confirmar
@@ -188,35 +192,27 @@
         </table>
         {{ $purchases->links() }}
 
-
-        <x-dialog-modal maxWidth="7xl" wire:model="openConfirmingPurchase">
+        <x-dialog-modal maxWidth="4xl" wire:model="openConfirmingPurchase">
             <x-slot name="title">
                 <h1 class="my-10 text-3xl font-bold text-center">Confirmación Registro de Compra</h1>
             </x-slot>
             <x-slot name="content">
-                <h2 class="mb-10 text-xl font-semibold text-center">Por favor verifique que todos los datos sean
+                <h2 class="mb-10 text-xl font-semibold text-center">Por favor verifique que todos los datos sean <br>
                     correctos antes de registar la compra.</h2>
                 <div class="flex mb-4">
                     <div class="w-1/3 mr-4">
                         <label for="supplierId" class="block mb-1">Proveedor</label>
-                        <select wire:model="supplierId" id="supplierId"
+                        <select disabled wire:model="supplierId" id="supplierId"
                             class="w-full p-2 border border-gray-300 rounded">
-                            <option disabled>-- Selecciona un proveedor --</option>
                             @foreach ($suppliers as $supplier)
                                 <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
                             @endforeach
                         </select>
-                        @error('supplierId')
-                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-                        @enderror
                     </div>
                     <div class="w-1/3 mr-4">
                         <label for="invoiceNumber" class="block mb-1">Número de Factura</label>
-                        <input type="text" wire:model="invoiceNumber" id="invoiceNumber"
+                        <input type="text" disabled wire:model="invoiceNumber" id="invoiceNumber"
                             class="w-full p-2 border border-gray-300 rounded">
-                        @error('invoiceNumber')
-                            <p class="mt-1 text-xs text-red-500">{{ $message }}</p>
-                        @enderror
                     </div>
                 </div>
                 <table class="w-full border border-collapse border-gray-300">
@@ -233,9 +229,8 @@
                         @foreach ($products as $index => $product)
                             <tr>
                                 <td class="p-2">
-                                    <select wire:model="products.{{ $index }}.id"
+                                    <select disabled wire:model="products.{{ $index }}.id"
                                         class="w-full p-2 border border-gray-300 rounded">
-                                        <option disabled>-- Selecciona un producto --</option>
                                         @foreach ($availableProducts as $availableProduct)
                                             <option value="{{ $availableProduct->id }}">{{ $availableProduct->name }}
                                             </option>
@@ -243,27 +238,22 @@
                                     </select>
                                 </td>
                                 <td class="p-2">
-                                    <input type="number" wire:model="products.{{ $index }}.quantity"
+                                    <input disabled type="number" wire:model="products.{{ $index }}.quantity"
                                         class="w-full p-2 border border-gray-300 rounded" min="1">
                                 </td>
                                 <td class="p-2">
-                                    <input type="text" wire:model="products.{{ $index }}.unit_price"
-                                        class="w-full p-2 border border-gray-300 rounded" readonly>
-                                    <x-input-error for="products.{{ $index }}.unit_price" />
-                                </td>
-                                <td class="p-2">
-                                    <input type="text" wire:model="products.{{ $index }}.subtotal"
+                                    <input disabled type="text"
+                                        wire:model="products.{{ $index }}.unit_price"
                                         class="w-full p-2 border border-gray-300 rounded" readonly>
                                 </td>
                                 <td class="p-2">
-                                    <x-secondary-button wire:click="removeProduct({{ $index }})"
-                                        class="px-6 py-3 font-semibold text-white bg-red-600 border-red-500 rounded shadow-lg hover:text-red-900 hover:bg-red-400 hover:shadow-red-700">Eliminar</x-secondary-button>
+                                    <input disabled type="text" wire:model="products.{{ $index }}.subtotal"
+                                        class="w-full p-2 border border-gray-300 rounded" readonly>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
-
 
             </x-slot>
             <x-slot name="footer">

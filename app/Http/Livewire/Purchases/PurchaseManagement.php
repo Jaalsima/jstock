@@ -18,9 +18,6 @@ class PurchaseManagement extends Component
     public $sortBy = 'created_at';
     public $sortDirection = 'desc';
     public $open = false;
-
-    public $counter = 1;
-
     public $openConfirmingPurchase = false;
     public $selectedPurchase = null;
 
@@ -63,15 +60,48 @@ class PurchaseManagement extends Component
             'allProducts' => $allProducts,
         ]);
     }
+    public function addProduct()
+    {
+        if ($this->validateSupplierAndInvoice()) {
 
+            foreach ($this->products as $product) {
+                if (empty($product['id'])) {
+                    session()->flash('error', 'Por favor ingresa la información del producto antes de agregar uno nuevo.');
+                    return;
+                }
+            }
+
+            $this->products[] = [
+                'id' => '',
+                'quantity' => 0,
+                'unit_price' => 0,
+                'subtotal' => 0,
+            ];
+        }
+    }
+    private function validateSupplierAndInvoice()
+    {
+        if (!$this->supplierId || !$this->invoiceNumber) {
+            session()->flash('error', 'Por favor ingresa la información del proveedor y la factura antes de continuar.');
+            return false;
+        }
+
+        // Verifica si el número de factura contiene solo dígitos y no está vacío
+        if (!preg_match('/^[0-9]+$/', $this->invoiceNumber)) {
+            session()->flash('error', 'El número de factura solo debe contener dígitos (0-9).');
+            return false;
+        }
+        $existingInvoice = Purchase::where('invoice_number', $this->invoiceNumber)->exists();
+        if ($existingInvoice) {
+            session()->flash('error', 'El número de factura ya existe. Por favor ingresa otro número.');
+            return false;
+        }
+
+        return true;
+    }
 
     public function submitPurchase()
     {
-        $this->validate([
-            'supplierId' => 'required|exists:suppliers,id',
-            'invoiceNumber' => 'required|unique:purchases,invoice_number',
-        ]);
-
         $this->totalAmount = 0;
         $purchaseDetails = [];
 
@@ -103,21 +133,6 @@ class PurchaseManagement extends Component
         $this->resetForm();
         $this->openConfirmingPurchase = false;
     }
-
-    public function addProduct()
-    {
-        if ($this->supplierId && $this->invoiceNumber) {
-            if ($this->counter == 1) {
-                $this->products[] = [
-                    'id' => '',
-                    'quantity' => 1,
-                    'unit_price' => 0,
-                    'subtotal' => 0,
-                ];
-            }
-        }
-    }
-
     public function removeProduct($index)
     {
         unset($this->products[$index]);
@@ -146,10 +161,44 @@ class PurchaseManagement extends Component
         }
     }
 
+    private function validateOpenConfirmingPurchase()
+    {
+        if ($this->products == null) {
+            session()->flash('error', 'Por favor ingresa un producto antes de realizar el registro de la compra.');
+        } else {
+            foreach ($this->products as $product) {
+                if (empty($product['id'])) {
+                    session()->flash('error', 'Por favor ingresa un producto antes de realizar el registro de la compra.');
+                    $this->openConfirmingPurchase = false;
+                    return;
+                } elseif ($product['quantity'] == 0) {
+                    session()->flash('error', 'Por favor ingresa la cantidad del producto antes de realizar el registro de la compra.');
+                    $this->openConfirmingPurchase = false;
+                } else {
+                    $this->openConfirmingPurchase = true;
+                }
+            }
+        }
+    }
+
     public function confirmPurchase()
     {
-        $this->openConfirmingPurchase = true;
+        if ($this->validateSupplierAndInvoice() && $this->validateOpenConfirmingPurchase()) {
+            return true;
+        }
     }
+    private function validateProducts()
+    {
+        foreach ($this->products as $product) {
+            if (empty($product['id']) || $product['quantity'] <= 0) {
+                session()->flash('error', 'Por favor ingresa la información del producto antes de agregar uno nuevo.');
+                return false;
+            }
+        }
+        return true;
+    }
+
+
 
     private function resetForm()
     {
