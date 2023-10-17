@@ -1,6 +1,6 @@
 <div class="my-auto">
     <x-secondary-button wire:click="$set('open', true)"
-        class="text-blue-500 border border-blue-500 shadow-lg hover:shadow-blue-400 float-right">
+        class="float-right text-blue-500 border border-blue-500 shadow-lg hover:shadow-blue-400">
         Nuevo<br>
         Producto
     </x-secondary-button>
@@ -30,13 +30,43 @@
                     <input type="file" class="hidden" wire:model.lazy="image" id="{{ $unique_input_identifier }}">
                     <div class="absolute top-0 h-48 w-72">
                         @if ($image)
-                        <img class="object-cover w-full h-full rounded-lg" src="{{ $image->temporaryUrl() }}"
-                            class="mb-4" alt="Image">
+                            <img class="object-cover w-full h-full rounded-lg" src="{{ $image->temporaryUrl() }}"
+                                class="mb-4" alt="Image">
                         @endif
                     </div>
                 </label>
             </div>
             <x-input-error for="image" />
+
+            <!-- Dropdown para Proveedor -->
+            <x-label value="Proveedor" class="text-gray-700" />
+            <select class="w-full rounded-md" wire:model.lazy="supplier_id">
+                <option value="">Selecciona un proveedor</option>
+                @foreach ($suppliers as $supplier)
+                    <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+                @endforeach
+            </select>
+            <x-input-error for="supplier_id" />
+
+            <!-- Dropdown para Marca -->
+            <x-label value="Marca" class="text-gray-700" />
+            <select class="w-full rounded-md" wire:model.lazy="brand_id">
+                <option value="">Selecciona una marca</option>
+                @foreach ($brands as $brand)
+                    <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                @endforeach
+            </select>
+            <x-input-error for="brand_id" />
+
+            <!-- Dropdown para Categoría -->
+            <x-label value="Categoría" class="text-gray-700" />
+            <select class="w-full rounded-md" wire:model.lazy="category_id">
+                <option value="">Selecciona una categoría</option>
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+            <x-input-error for="category_id" />
 
             <!-- Nombre -->
             <x-label value="Nombre" class="text-gray-700" />
@@ -48,45 +78,25 @@
             <x-input class="w-full" wire:model.lazy="description" />
             <x-input-error for="description" />
 
-            <!-- Almacén -->
-            <x-label value="Almacén" class="text-gray-700" />
-            <x-input class="w-full" type="number" min=0 wire:model.lazy="current_stock" />
+            <!-- Cantidad -->
+            <x-label value="Cantidad" class="text-gray-700" />
+            <x-input class="w-full" type="number" min="0" wire:model.lazy="current_stock" />
             <x-input-error for="current_stock" />
+
+            <!-- Stock Mínimo -->
+            <x-label value="Stock Mínimo" class="text-gray-700" />
+            <x-input class="w-full" type="number" min="0" wire:model.lazy="min_stock" />
+            <x-input-error for="min_stock" />
+
+            <!-- Stock Máximo -->
+            <x-label value="Stock Máximo" class="text-gray-700" />
+            <x-input class="w-full" type="number" min="0" wire:model.lazy="max_stock" />
+            <x-input-error for="max_stock" />
 
             <!-- Unidad de Medida -->
             <x-label value="Unidad de medida" class="text-gray-700" />
             <x-input class="w-full" type="text" wire:model.lazy="measurement_unit" />
             <x-input-error for="measurement_unit" />
-
-            <!-- Dropdown para Marca -->
-            <x-label value="Marca" class="text-gray-700" />
-            <select class="w-full rounded-md" wire:model.lazy="brand_id">
-                <option value="">Selecciona una marca</option>
-                @foreach ($brands as $brand)
-                <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                @endforeach
-            </select>
-            <x-input-error for="brand_id" />
-
-            <!-- Dropdown para Categoría -->
-            <x-label value="Categoría" class="text-gray-700" />
-            <select class="w-full rounded-md" wire:model.lazy="category_id">
-                <option value="">Selecciona una categoría</option>
-                @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                @endforeach
-            </select>
-            <x-input-error for="category_id" />
-
-            <!-- Dropdown para Proveedor -->
-            <x-label value="Proveedor" class="text-gray-700" />
-            <select class="w-full rounded-md" wire:model.lazy="supplier_id">
-                <option value="">Selecciona un proveedor</option>
-                @foreach ($suppliers as $supplier)
-                <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
-                @endforeach
-            </select>
-            <x-input-error for="supplier_id" />
 
             <!-- Precio de Compra -->
             <x-label value="Precio de Compra" class="text-gray-700" />
@@ -103,7 +113,7 @@
             <select class="w-full mb-4 rounded-md" wire:model.lazy="status">
                 <option value="">Selecciona un estado</option>
                 <option value="Disponible">Disponible</option>
-                <option value="No Disponible">No Disponible</option>
+                <option value="Agotado">Agotado</option>
             </select>
             <x-input-error for="status" />
 

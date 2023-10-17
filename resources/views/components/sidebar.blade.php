@@ -79,7 +79,7 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{ route('inventory') }}">
                         <button type="button"
                             class="flex items-center w-full p-2 text-lg text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
@@ -106,7 +106,7 @@
                     </button>
                     <ul id="dropdown-movements" class="hidden py-2 space-y-2 text-gray-700">
                         <li class="group hover:text-blue-700">
-                            <a href="{{route('purchases')}}"
+                            <a href="{{ route('purchases') }}"
                                 class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
                                     class="flex-shrink-0 w-5 h-5 mr-3 text-red-700 transition duration-75 group-hover:text-blue-700 fa-solid fa-cart-shopping dark:text-gray-400 dark:group-hover:text-white"></i>Compras
                             </a>
@@ -114,7 +114,7 @@
 
 
                         <li class="group hover:text-blue-700">
-                            <a href="{{route('sales')}}"
+                            <a href="{{ route('sales') }}"
                                 class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
                                     class="flex-shrink-0 w-5 h-5 mr-3 text-red-700 transition duration-75 group-hover:text-blue-700 fa-solid fa-credit-card dark:text-gray-400 dark:group-hover:text-white"></i>Ventas</a>
                         </li>

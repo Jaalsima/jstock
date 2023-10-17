@@ -1,17 +1,14 @@
 <?php
 
-namespace App\Http\Livewire\Products;
+namespace App\Http\Livewire\Inventory;
 
-use Livewire\Component;
 use App\Models\Brand;
 use App\Models\Category;
+use Livewire\Component;
 use App\Models\Product;
-use Livewire\WithPagination;
 
-class IndexProduct extends Component
+class InventoryManagement extends Component
 {
-    use WithPagination;
-
     public $search;
     public $categories;
     public $brands;
@@ -39,8 +36,6 @@ class IndexProduct extends Component
         $this->resetPage();
     }
 
-
-    // Restablecer propiedades de filtro de búsqueda.
     public function resetFilters()
     {
         $this->search = '';
@@ -48,10 +43,10 @@ class IndexProduct extends Component
         $this->brandFilter = '';
     }
 
-    public function mount(Category $categoryModel, Brand $brandModel)
+    public function mount()
     {
-        $this->categories = $categoryModel->all();
-        $this->brands = $brandModel->all();
+        $this->categories = Category::all();
+        $this->brands = Brand::all();
     }
 
     public function render()
@@ -79,7 +74,7 @@ class IndexProduct extends Component
         $products = $query->orderBy($this->sort, $this->direction)
             ->paginate($this->perPage);
 
-        return view('livewire.products.index-product', compact('products'));
+        return view('livewire.inventory.inventory-management', compact('products'));
     }
 
     public function order($sort)

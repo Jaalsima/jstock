@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('name', 50);
             $table->text('description')->nullable();
             $table->integer('current_stock')->default(0);
+            $table->integer('min_stock')->default(1)->nullable();
+            $table->integer('max_stock')->default(2)->nullable();
             $table->string('measurement_unit')->nullable()->default('Unidad');
             $table->decimal('purchase_price', 8, 2);
             $table->decimal('selling_price', 8, 2);

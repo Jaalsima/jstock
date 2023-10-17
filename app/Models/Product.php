@@ -16,6 +16,8 @@ class Product extends Model
         'name',
         'description',
         'current_stock',
+        'min_stock',
+        'max_stock',
         'measurement_unit',
         'purchase_price',
         'selling_price',
