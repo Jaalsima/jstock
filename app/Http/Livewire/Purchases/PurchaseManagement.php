@@ -129,7 +129,14 @@ class PurchaseManagement extends Component
         ]);
 
         $purchase->purchaseDetails()->createMany($purchaseDetails);
+        foreach ($purchaseDetails as $detail) {
+            $product = Product::find($detail['product_id']);
+            $newQuantity = $product->current_stock + $detail['quantity'];
 
+            $product->update([
+                'current_stock' => $newQuantity,
+            ]);
+        }
         $this->resetForm();
         $this->openConfirmingPurchase = false;
     }

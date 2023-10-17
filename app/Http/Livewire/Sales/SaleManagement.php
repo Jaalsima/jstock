@@ -115,6 +115,14 @@ class SaleManagement extends Component
             'sale_date' => now(),
         ]);
         $sale->saleDetails()->createMany($saleDetails);
+        foreach ($saleDetails as $detail) {
+            $product = Product::find($detail['product_id']);
+            $newQuantity = $product->current_stock - $detail['quantity'];
+
+            $product->update([
+                'current_stock' => $newQuantity,
+            ]);
+        }
         $this->resetForm();
         $this->openConfirmingSale = false;
     }

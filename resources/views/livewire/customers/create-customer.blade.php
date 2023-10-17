@@ -40,33 +40,33 @@
                     <x-input-error for="image" />
 
                     <!-- Nombre -->
-                    <x-label for="create_customer_name" value="Nombre" class="ml-3 text-gray-700" />
-                    <x-input class="w-full" wire:model.lazy="name" id="create_customer_name" />
-                    <x-input-error for="create_customer_name" />
+                    <x-label for="name" value="Nombre" class="ml-3 text-gray-700" />
+                    <x-input class="w-full" wire:model.lazy="name" id="name" />
+                    <x-input-error for="name" />
 
                     <!-- Correo Electrónico -->
-                    <x-label for="create_customer_email" value="Correo Electrónico" class="ml-3 text-gray-700" />
-                    <x-input class="w-full" wire:model.lazy="email" type="email" id="create_customer_email" />
-                    <x-input-error for="create_customer_email" />
+                    <x-label for="email" value="Correo Electrónico" class="ml-3 text-gray-700" />
+                    <x-input class="w-full" wire:model.lazy="email" type="email" id="email" />
+                    <x-input-error for="email" />
 
                     <!-- Dirección -->
-                    <x-label for="create_customer_address" value="Dirección" class="ml-3 text-gray-700" />
-                    <x-input class="w-full" wire:model.lazy="address" id="create_customer_address" />
-                    <x-input-error for="create_customer_address" />
+                    <x-label for="address" value="Dirección" class="ml-3 text-gray-700" />
+                    <x-input class="w-full" wire:model.lazy="address" id="address" />
+                    <x-input-error for="address" />
 
                     <!-- Teléfono -->
-                    <x-label for="create_customer_phone" value="Teléfono" class="ml-3 text-gray-700" />
-                    <x-input class="w-full" wire:model.lazy="phone" id="create_customer_phone" />
-                    <x-input-error for="create_customer_phone" />
+                    <x-label for="phone" value="Teléfono" class="ml-3 text-gray-700" />
+                    <x-input class="w-full" wire:model.lazy="phone" id="phone" />
+                    <x-input-error for="phone" />
 
                     <!-- Dropdown para Estado -->
-                    <x-label for="create_customer_status" value="Estado" class="ml-3 text-gray-700" />
-                    <select class="w-full mb-4 rounded-md" wire:model.lazy="status" id="create_customer_status">
+                    <x-label for="status" value="Estado" class="ml-3 text-gray-700" />
+                    <select class="w-full mb-4 rounded-md" wire:model.lazy="status" id="status">
                         <option value="">Selecciona un estado</option>
                         <option value="Activo">Activo</option>
                         <option value="Inactivo">Inactivo</option>
                     </select>
-                    <x-input-error for="create_customer_status" />
+                    <x-input-error for="status" />
                 </form>
 
             </x-slot>

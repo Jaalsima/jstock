@@ -19,7 +19,7 @@
                 <livewire:users.create-user />
             </div>
         </div>
-        <div class="relative mt-4 overflow-x-auto shadow-md sm:rounded-lg">
+        <div class="relative mt-4 overflow-x-hidden shadow-md sm:rounded-lg">
 
             <!-- Check if there are users before rendering the table and its header -->
             @if ($users->count() > 0)
@@ -132,9 +132,8 @@
                                                 <div
                                                     class="absolute z-10 px-3 py-2 mb-2 text-center text-white bg-gray-700 rounded-lg opacity-0 pointer-events-none text-md group-hover:opacity-80 bottom-full -left-3">
                                                     Eliminar
-                                                    <svg class="absolute left-0 w-full h-2 text-black top-full"
-                                                        x="0px" y="0px" viewBox="0 0 255 255"
-                                                        xml:space="preserve">
+                                                    <svg class="absolute left-0 w-full h-2 text-black top-full" x="0px"
+                                                        y="0px" viewBox="0 0 255 255" xml:space="preserve">
                                                     </svg>
                                                 </div>
                                             </a>

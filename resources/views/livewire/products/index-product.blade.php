@@ -51,7 +51,7 @@
                 <thead
                     class="text-xs text-center text-gray-100 uppercase bg-gray-400 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="px-6 py-3 cursor-pointer" wire:click.prevent="order('id')">
+                        <th scope="col" class="px-1 py-4 cursor-pointer" wire:click.prevent="order('id')">
                             ID
                             @if ($sort == 'id')
                                 @if ($direction == 'asc')
