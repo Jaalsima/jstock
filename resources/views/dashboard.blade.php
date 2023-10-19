@@ -1,8 +1,8 @@
 <x-app-layout>
-    <div class="py-12">
-        <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-            <div class="overflow-hidden bg-white shadow-xl dark:bg-gray-800 sm:rounded-lg">
-                <x-welcome />
+    <div class="pt-6 pb-2 overflow-hidden">
+        <div class="w-full mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white shadow-lg dark:bg-gray-800 sm:rounded-lg">
+                <livewire:inventory.inventory-graphics />
             </div>
         </div>
     </div>
