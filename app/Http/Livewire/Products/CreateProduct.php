@@ -78,6 +78,7 @@ class CreateProduct extends Component
         $this->reset(['open', 'brand_id', 'category_id', 'supplier_id', 'name', 'description', 'current_stock', 'min_stock', 'max_stock', 'measurement_unit', 'purchase_price', 'selling_price', 'slug', 'status', 'expiration', 'observations', 'image']);
         $this->unique_input_identifier = rand();
         $this->emitTo('products.index-product', 'render');
+        $this->emitTo('inventory.inventory-management', 'render');
         $this->emit('alert', '¡Producto Creado Exitosamente!');
     }
 

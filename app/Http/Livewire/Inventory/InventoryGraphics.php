@@ -6,13 +6,27 @@ use Livewire\Component;
 
 class InventoryGraphics extends Component
 {
-    public $value;
-    public function graphic($value)
+    public $graphic = 0;
+    public $productsBelowMinStock;
+    protected $listeners = [
+        'productsBelowMinStock'
+    ];
+
+    public function productsBelowMinStock($data)
     {
-        $this->value = $value;
+        $this->productsBelowMinStock = $data;
     }
+
+    public function graphicNumber($value)
+    {
+        $this->graphic = max(0, $value);
+        return $this->graphic;
+    }
+
     public function render()
     {
-        return view('livewire.inventory.inventory-graphics');
+        return view('livewire.inventory.inventory-graphics', [
+            'graphic' => $this->graphic,
+        ]);
     }
 }

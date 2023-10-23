@@ -4,10 +4,10 @@ namespace App\Http\Livewire\Inventory;
 
 use Livewire\Component;
 
-class InventoryPurchasesChart extends Component
+class InventoryExpired extends Component
 {
     public function render()
     {
-        return view('livewire.inventory.inventory-purchases-chart');
+        return view('livewire.inventory.inventory-expired');
     }
 }
