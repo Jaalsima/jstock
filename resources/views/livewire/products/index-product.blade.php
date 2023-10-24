@@ -131,13 +131,31 @@
                             <td class="px-6 py-4 ">{{ $product->purchase_price }}</td>
                             <td class="px-6 py-4 ">{{ $product->selling_price }} </td>
                             <td class="px-6 py-4 ">{{ $product->measurement_unit }} </td>
-                            @if ($product->status == 'Disponible')
-                                <td class="px-6 py-4 text-green-600">{{ $product->status }}</td>
-                            @elseif ($product->status == 'Agotado')
-                                <td class="px-6 py-4 text-red-600">{{ $product->status }}</td>
-                            @else
-                                <td class="px-6 py-4 text-blue-600">{{ $product->status }}</td>
-                            @endif
+
+                            <div class="hidden">
+                                @switch ($product->status)
+                                    @case ('Disponible')
+                                        {{ $colorStatus = 'text-green-600' }}
+                                    @break;
+                                    @case ('No Disponible')
+                                        {{ $colorStatus = 'text-gray-500' }}
+                                    @break;
+                                    @case ('Agotado')
+                                        {{ $colorStatus = 'text-orange-600' }}
+                                    @break;
+                                    @case ('Expirable')
+                                        {{ $colorStatus = 'text-yellow-600' }}
+                                    @break;
+                                    @case ('Vencido')
+                                        {{ $colorStatus = 'text-red-600' }}
+                                    @break;
+
+                                    @default
+                                @endswitch
+                            </div>
+
+                            <td class="px-6 py-4 {{ $colorStatus }}">{{ $product->status }}
+                            </td>
                             <td class="flex justify-around py-4 pl-2 pr-8">
                                 <div
                                     @if ($open) class="flex pointer-events-none opacity-20" @else class="flex" @endif>
@@ -147,28 +165,28 @@
                                 </div>
                             </td>
                         </tr>
-                    @empty
-                        <!-- Mensaje de no hay productos -->
-                        <tr>
-                            <td colspan="12" class="mt-64 text-5xl text-center dark:text-gray-200">Aún no se han
-                                agregado
-                                productos.</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
+                        @empty
+                            <!-- Mensaje de no hay productos -->
+                            <tr>
+                                <td colspan="12" class="mt-64 text-5xl text-center dark:text-gray-200">Aún no se han
+                                    agregado
+                                    productos.</td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
 
-            <div class="px-3 py-1">
-                <!-- Número de Registros a mostrar en la paginación -->
-                Registros por página
-                <input type="number" name="perPage" wire:model="perPage"
-                    class="w-[70px] mr-4 bg-white border-none rounded-lg focus:ring-gray-400">{{ $products->links() }}
+                <div class="px-3 py-1">
+                    <!-- Número de Registros a mostrar en la paginación -->
+                    Registros por página
+                    <input type="number" name="perPage" wire:model="perPage"
+                        class="w-[70px] mr-4 bg-white border-none rounded-lg focus:ring-gray-400">{{ $products->links() }}
+                </div>
             </div>
-        </div>
-    @else
-        <!-- Mensaje de no hay productos -->
-        <h1 class="mt-64 text-5xl text-center dark:text-gray-200">
-            <div>¡Ups!</div><br> <span class="mt-4"> No se encontraron coincidencias en la búsqueda. </span>
-        </h1>
-    @endif
-</div>
+        @else
+            <!-- Mensaje de no hay productos -->
+            <h1 class="mt-64 text-5xl text-center dark:text-gray-200">
+                <div>¡Ups!</div><br> <span class="mt-4"> No se encontraron coincidencias en la búsqueda. </span>
+            </h1>
+        @endif
+    </div>

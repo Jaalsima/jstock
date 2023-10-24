@@ -27,7 +27,7 @@ return new class extends Migration
             $table->decimal('purchase_price', 8, 2);
             $table->decimal('selling_price', 8, 2);
             $table->string('slug');
-            $table->string('status');
+            $table->string('status')->default('Disponible');
             $table->date('expiration')->nullable()->default(null);
             $table->text('observations')->nullable()->default('N/A');
             $table->string('image')->nullable()->default('N/A');

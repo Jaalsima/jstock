@@ -30,8 +30,8 @@ class CreateProduct extends Component
         'measurement_unit'  => 'nullable|string',
         'purchase_price'    => 'required|numeric|min:0',
         'selling_price'     => 'required|numeric|min:0',
-        'status'            => 'required|in:Disponible,Agotado',
-        'expiration'        => 'nullable|date',
+        'status'            => 'required|in:Disponible,No Disponible,Agotado,Expirable,Vencido',
+        'expiration'        => 'nullable|date|after_or_equal:today',
         'observations'      => 'nullable|string',
         'image'             => 'nullable|image|max:2048',
     ];
@@ -55,6 +55,7 @@ class CreateProduct extends Component
         $this->validate();
 
         $image_url = $this->image->store('products');
+
 
         Product::create([
             'brand_id'           => $this->brand_id,

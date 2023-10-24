@@ -133,6 +133,9 @@
                         <option value="">Selecciona un estado</option>
                         <option value="Disponible">Disponible</option>
                         <option value="No Disponible">No Disponible</option>
+                        <option value="Agotado">Agotado</option>
+                        <option value="Expirable">Expirable</option>
+                        <option value="Vencido">Vencido</option>
                     </select>
                     <x-input-error for="status" />
                 </div>

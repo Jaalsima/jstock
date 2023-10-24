@@ -24,6 +24,15 @@
             @enderror
         </div>
 
+        <div class="w-1/3 mr-4">
+            <label for="purchaseDate" class="block mb-1">Fecha Factura</label>
+            <input type="date" wire:model="purchaseDate" id="purchaseDate"
+                class="w-full p-2 border border-gray-300 rounded">
+            @error('purchaseDate')
+                <p class="mt-1 text-red-500 text-md">{{ $message }}</p>
+            @enderror
+        </div>
+
         <div class="w-1/3">
             <button wire:click="addProduct"
                 class="px-4 py-2 mt-8 font-semibold text-white bg-blue-600 rounded shadow-lg hover:text-blue-900 hover:bg-blue-400 hover:shadow-blue-700">Agregar
@@ -181,7 +190,8 @@
 
             <tbody>
                 @foreach ($purchases as $purchase)
-                    <tr class="cursor-pointer hover:bg-blue-400" wire:click="showPurchaseDetails({{ $purchase->id }})">
+                    <tr class="cursor-pointer hover:bg-blue-400"
+                        wire:click="showPurchaseDetails({{ $purchase->id }})">
                         <td class="p-2">{{ $purchase->purchase_date }}</td>
                         <td class="p-2">{{ $purchase->supplier->name }}</td>
                         <td class="p-2">{{ $purchase->invoice_number }}</td>

@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::create([
-            'document'             => 'kjfasgoasp',
+            'document'             => '71318371',
             'name'                 => 'Jaime',
             'email'                => 'coderman1980@gmail.com',
             'address'              => 'Medellín',
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
         ])->assignRole('developer');
 
         User::create([
-            'document'             => 'jkbdfbfbsd',
+            'document'             => '1012452587',
             'name'                 => 'John',
             'email'                => 'john@example.com',
             'address'              => 'Medellín',

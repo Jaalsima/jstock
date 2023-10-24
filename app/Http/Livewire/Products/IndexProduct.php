@@ -21,8 +21,14 @@ class IndexProduct extends Component
     public $sort = "id";
     public $direction = "desc";
     public $open = false;
+    public $colorStatus;
 
     protected $listeners = ['render'];
+    public function mount(Category $categoryModel, Brand $brandModel)
+    {
+        $this->categories = $categoryModel->all();
+        $this->brands = $brandModel->all();
+    }
 
     public function updatingSearch()
     {
@@ -48,11 +54,7 @@ class IndexProduct extends Component
         $this->brandFilter = '';
     }
 
-    public function mount(Category $categoryModel, Brand $brandModel)
-    {
-        $this->categories = $categoryModel->all();
-        $this->brands = $brandModel->all();
-    }
+
 
     public function render()
     {

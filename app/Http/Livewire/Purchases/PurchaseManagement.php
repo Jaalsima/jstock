@@ -13,6 +13,7 @@ class PurchaseManagement extends Component
     public $supplierId;
     public $totalAmount = 0;
     public $invoiceNumber;
+    public $purchaseDate;
     public $products = [];
     public $availableProducts = [];
     public $sortBy = 'created_at';
@@ -20,6 +21,10 @@ class PurchaseManagement extends Component
     public $open = false;
     public $openConfirmingPurchase = false;
     public $selectedPurchase = null;
+
+    protected $rules = [
+        'purchaseDate' => 'nullable|date|before_or_equal:today',
+    ];
 
     public function sortField($field)
     {
@@ -96,7 +101,7 @@ class PurchaseManagement extends Component
             session()->flash('error', 'El número de factura ya existe. Por favor ingresa otro número.');
             return false;
         }
-
+        $this->validate();
         return true;
     }
 
@@ -119,13 +124,12 @@ class PurchaseManagement extends Component
 
             $this->totalAmount += $subtotal;
         }
-
         $purchase = Purchase::create([
             'user_id' => Auth::id(),
             'supplier_id' => $this->supplierId,
             'invoice_number' => $this->invoiceNumber,
             'total_amount' => $this->totalAmount,
-            'purchase_date' => now(),
+            'purchase_date' => $this->purchasDate,
         ]);
 
         $purchase->purchaseDetails()->createMany($purchaseDetails);
