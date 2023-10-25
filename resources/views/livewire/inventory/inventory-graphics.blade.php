@@ -4,7 +4,7 @@
         <div class="absolute text-2xl font-semibold text-red-700 opacity-60 top-3 right-4">
             JS<span class="text-black">tock</span>
         </div>
-        <div class="grid grid-cols-4 gap-6 mt-6 border-2">
+        <div class="grid grid-cols-4 gap-6 mt-6">
             <div wire:click="earningsByMonth"
                 class="flex flex-col px-3 py-8 border-2 border-green-500 rounded-lg cursor-pointer gap-y-6 hover:bg-green-100 h-44">
                 <div class="flex justify-center text-green-700">

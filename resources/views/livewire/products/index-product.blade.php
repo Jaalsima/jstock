@@ -131,7 +131,6 @@
                             <td class="px-6 py-4 ">{{ $product->purchase_price }}</td>
                             <td class="px-6 py-4 ">{{ $product->selling_price }} </td>
                             <td class="px-6 py-4 ">{{ $product->measurement_unit }} </td>
-
                             <div class="hidden">
                                 @switch ($product->status)
                                     @case ('Disponible')
@@ -149,14 +148,9 @@
                                     @case ('Vencido')
                                         {{ $colorStatus = 'text-red-600' }}
                                     @break;
-
-                                    @default
-                                    @break
                                 @endswitch
                             </div>
-
-                            <td class="px-6 py-4 {{ $colorStatus }}">{{ $product->status }}
-                            </td>
+                            <td class="px-6 py-4 dark:text-lg {{ $colorStatus }}">{{ $product->status }}</td>
                             <td class="flex justify-around py-4 pl-2 pr-8">
                                 <div
                                     @if ($open) class="flex pointer-events-none opacity-20" @else class="flex" @endif>

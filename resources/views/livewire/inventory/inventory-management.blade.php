@@ -1,22 +1,28 @@
-<div class="overflow-y-auto">
+<div class="py-1 overflow-y-auto">
     <div class="my-4 text-xl font-bold text-center text-blue-400 uppercase bg-gray-100">
         <h1>Inventario</h1>
     </div>
     @if ($products->count() > 0)
-        <div>
+        <div class="pl-4">
             <div class="flex w-full mt-2">
                 <div class="w-3/4">
+
                     <input type="text" name="search" wire:model="search"
                         class="w-1/3 mr-4 bg-white border-none rounded-lg focus:ring-gray-400" placeholder="Buscar...">
                 </div>
                 <div class="float-right w-1/4 mr-4">
-                    <livewire:products.create-product />
+                    <button
+                        class="p-2 mr-4 text-blue-500 bg-white border-none rounded-lg shadow-lg hover:text-red-700 hover:shadow-gray-500 focus:ring-gray-400">
+                        Generar Reporte
+                    </button>
                 </div>
             </div>
-            <button
-                class="p-2 mr-4 text-blue-500 bg-white border-none rounded-lg shadow-lg hover:text-red-700 hover:shadow-gray-500 focus:ring-gray-400">
-                Generar Reporte
-            </button>
+            <div class="py-2 text-gray-500 ">
+                Registros por página
+                <input type="number" name="perPage" wire:model="perPage"
+                    class="w-[70px] mr-4 cursor-pointer bg-white border-none rounded-lg focus:ring-gray-400">
+            </div>
+
             <div class="relative mt-4 overflow-x-hidden shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead
@@ -117,13 +123,26 @@
                                 <td class="px-6 py-4 dark:text-lg">{{ $product->max_stock }}</td>
                                 <td class="px-6 py-4 ">{{ $product->purchase_price }}</td>
                                 <td class="px-6 py-4 ">{{ $product->selling_price }} </td>
-                                @if ($product->status == 'Disponible')
-                                    <td class="px-6 py-4 text-green-600">{{ $product->status }}</td>
-                                @elseif ($product->status == 'Agotado')
-                                    <td class="px-6 py-4 text-red-600">{{ $product->status }}</td>
-                                @else
-                                    <td class="px-6 py-4 text-blue-600">{{ $product->status }}</td>
-                                @endif
+                                <div class="hidden">
+                                    @switch ($product->status)
+                                        @case ('Disponible')
+                                            {{ $colorStatus = 'text-green-600' }}
+                                        @break;
+                                        @case ('No Disponible')
+                                            {{ $colorStatus = 'text-gray-500' }}
+                                        @break;
+                                        @case ('Agotado')
+                                            {{ $colorStatus = 'text-orange-600' }}
+                                        @break;
+                                        @case ('Expirable')
+                                            {{ $colorStatus = 'text-yellow-600' }}
+                                        @break;
+                                        @case ('Vencido')
+                                            {{ $colorStatus = 'text-red-600' }}
+                                        @break;
+                                    @endswitch
+                                </div>
+                                <td class="px-6 py-4 dark:text-lg {{ $colorStatus }}">{{ $product->status }}</td>
                                 <td class="px-6 py-4 dark:text-lg">{{ $product->created_at }}</td>
                                 <td class="px-6 py-4 dark:text-lg">{{ $product->expiration }}</td>
                                 <td class="flex justify-around py-4 pl-2 pr-8">
@@ -135,23 +154,21 @@
                                     </div>
                                 </td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="12" class="mt-64 text-5xl text-center dark:text-gray-200">No se
-                                    encontraron productos.</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-                <div class="px-3 py-1">
-                    Registros por página
-                    <input type="number" name="perPage" wire:model="perPage"
-                        class="w-[70px] mr-4 bg-white border-none rounded-lg focus:ring-gray-400">
-                    {{ $products->links() }}
+                            @empty
+                                <tr>
+                                    <td colspan="12" class="mt-64 text-5xl text-center dark:text-gray-200">No se
+                                        encontraron productos.</td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                    <div class="px-3 py-1">
+
+                        {{ $products->links() }}
+                    </div>
                 </div>
             </div>
-        </div>
-    @else
-        <h1>No se encontraron productos.</h1>
-    @endif
-</div>
+        @else
+            <h1>No se encontraron productos.</h1>
+        @endif
+    </div>

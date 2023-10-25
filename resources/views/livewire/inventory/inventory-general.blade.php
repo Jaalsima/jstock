@@ -71,7 +71,28 @@
                             <td class="px-6 py-4 whitespace-nowrap">{{ $product->selling_price }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{ $product->current_stock }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{ $product->expiration }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap">{{ $product->status }}</td>
+
+                            <div class="hidden">
+                                @switch ($product->status)
+                                    @case ('Disponible')
+                                        {{ $colorStatus = 'text-green-600' }}
+                                    @break;
+                                    @case ('No Disponible')
+                                        {{ $colorStatus = 'text-gray-500' }}
+                                    @break;
+                                    @case ('Agotado')
+                                        {{ $colorStatus = 'text-orange-600' }}
+                                    @break;
+                                    @case ('Expirable')
+                                        {{ $colorStatus = 'text-yellow-600' }}
+                                    @break;
+                                    @case ('Vencido')
+                                        {{ $colorStatus = 'text-red-600' }}
+                                    @break;
+                                @endswitch
+                            </div>
+                            <td class="px-6 py-4 whitespace-nowrap dark:text-lg {{ $colorStatus }}">
+                                {{ $product->status }}</td>
                         </tr>
                     @endforeach
                 </tbody>

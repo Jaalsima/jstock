@@ -6,7 +6,16 @@
 
             <ul class="mt-12">
                 <li>
-                    <a href="{{ route('index-user') }} ">
+
+                    <a href="{{ route('index-user') }}"
+                        class="flex items-center p-2 rounded-lg group {{ request()->routeIs('index-user') ? 'text-blue-700 bg-gray-200' : 'text-gray-700 bg-opacity-50 hover:bg-gray-200' }}">
+                        <i class="text-blue-700 fa-solid fa-arrow-right-to-bracket group-hover:text-blue-700"></i>
+                        <span class="ml-3 group-hover:text-blue-700">Registrar</span>
+                    </a>
+
+                    {{-- <a href="{{ route('index-user') }}"
+                        class="flex items-center p-2 rounded-lg group {{ request()->routeIs('index-user') ? 'text-blue-700 bg-gray-500 bg-opacity-50' : '' }}">
+
                         <button type="button"
                             class="flex items-center w-full p-2 text-lg text-gray-700 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
@@ -16,11 +25,12 @@
                                 class="flex items-center w-full text-lg text-gray-700 transition duration-75 rounded-lg group hover:text-blue-700 dark:text-white dark:hover:bg-gray-700">Usuarios</span>
 
                         </button>
-                    </a>
+                    </a> --}}
                 </li>
 
                 <li>
-                    <a href="{{ route('index-customer') }}">
+                    <a href="{{ route('index-customer') }}"
+                        class="flex items-center p-2 rounded-lg group {{ request()->routeIs('index-customer') ? 'text-white bg-black bg-opacity-50 hover:bg-black hover:bg-opacity-50' : 'bg-opacity-50 hover:bg-black hover:bg-opacity-40' }}">
                         <button type="button"
                             class="flex items-center w-full p-2 text-lg text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-clients" data-collapse-toggle="dropdown-clients">
@@ -34,7 +44,9 @@
                 </li>
 
                 <li>
-                    <a href="{{ route('index-supplier') }}">
+                    <a href="{{ route('index-supplier') }}"
+                        class="flex items-center p-2 rounded-lg group {{ request()->routeIs('index-supplier') ? 'text-white bg-black bg-opacity-50 hover:bg-black hover:bg-opacity-50' : 'bg-opacity-50 hover:bg-black hover:bg-opacity-40' }}">
+
                         <button type="button"
                             class="flex items-center w-full p-2 text-lg text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
                             aria-controls="dropdown-users" data-collapse-toggle="dropdown-users">
@@ -61,7 +73,8 @@
 
                         <li class="group hover:text-blue-700">
                             <a href="{{ route('index-product') }}"
-                                class="flex items-center w-full p-2 transition duration-75 rounded-lg pl-11 hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"><i
+                                class="flex items-center p-2 rounded-lg group {{ request()->routeIs('index-product') ? 'text-white bg-black bg-opacity-50' : 'bg-opacity-50 hover:bg-gray-700 hover:bg-opacity-40' }}">
+                                <i
                                     class="flex-shrink-0 w-5 h-5 mr-3 text-red-700 transition duration-75 group-hover:text-blue-700 fa-solid fa-cubes dark:text-gray-400 dark:group-hover:text-white"></i>Productos</a>
                         </li>
 
