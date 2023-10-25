@@ -7,7 +7,6 @@ use App\Models\Product;
 
 class InventoryMinStock extends Component
 {
-    public $productsBelowMinStock;
     public $labels, $data;
 
     public function render()

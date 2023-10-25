@@ -17,6 +17,7 @@ class InventoryGraphics extends Component
     public $labels;
     public $data;
     public $expirableProducts;
+    public $numExpirableProducts;
     public $expiredProducts;
     public $monthlyEarnings;
     public $totalEarningsByMonth;
@@ -31,6 +32,49 @@ class InventoryGraphics extends Component
         $this->calculateExpired();
     }
 
+     //Método para Mostrar la gráfica de las ganancias por mes por cada producto.
+     public function earningsByMonth()
+     {
+         $this->earningsByMonth = true;
+         $this->minStock = $this->aboutToExpire = $this->expired = false;
+     }
+     
+     public function calculateEarningsByMonth()
+     {
+         $currentMonth = now()->format('m');
+         $products = Product::all();
+         $monthlyEarnings = [];
+ 
+         foreach ($products as $product) {
+             $purchaseDetails = PurchaseDetail::whereHas('purchase', function ($query) use ($currentMonth) {
+                 $query->whereMonth('purchase_date', $currentMonth);
+             })->where('product_id', $product->id)->get();
+ 
+             $saleDetails = SaleDetail::whereHas('sale', function ($query) use ($currentMonth) {
+                 $query->whereMonth('sale_date', $currentMonth);
+             })->where('product_id', $product->id)->get();
+ 
+             $totalPurchaseAmount = $purchaseDetails->sum('subtotal');
+             $totalSaleAmount = $saleDetails->sum('subtotal');
+ 
+             $monthlyEarnings[] = [
+                 'product' => $product->name,
+                 'earnings' => $totalSaleAmount - $totalPurchaseAmount,
+             ];
+             $sumEarnings = 0;
+             foreach ($monthlyEarnings as $earningByProduct) {
+                 $sumEarnings += $earningByProduct['earnings'];
+             }
+         }
+ 
+         $this->monthlyEarnings = $monthlyEarnings;
+         $this->totalEarningsByMonth = $sumEarnings;
+ 
+         if ($this->totalEarningsByMonth < 0) {
+             $this->colorStatus = 'red-700';
+         }
+     }
+
     //Método para Mostrar la gráfica de los productos que han alcanzado su stock mínimo.
     public function minStock()
     {
@@ -42,53 +86,9 @@ class InventoryGraphics extends Component
 
     public function calculateMinStock()
     {
-        $this->products = Product::whereColumn('current_stock', '<=', 'min_stock')->get();
+        $this->products = Product::where('current_stock', '<=', 'min_stock')->get();
         $this->productsWithMinStock = count($this->products);
     }
-
-
-    //Método para Mostrar la gráfica de las ganancias por mes por cada producto.
-    public function earningsByMonth()
-    {
-        $this->earningsByMonth = true;
-        $this->minStock = $this->aboutToExpire = $this->expired = false;
-    }
-    public function calculateEarningsByMonth()
-    {
-        $currentMonth = now()->format('m');
-        $products = Product::all();
-        $monthlyEarnings = [];
-
-        foreach ($products as $product) {
-            $purchaseDetails = PurchaseDetail::whereHas('purchase', function ($query) use ($currentMonth) {
-                $query->whereMonth('purchase_date', $currentMonth);
-            })->where('product_id', $product->id)->get();
-
-            $saleDetails = SaleDetail::whereHas('sale', function ($query) use ($currentMonth) {
-                $query->whereMonth('sale_date', $currentMonth);
-            })->where('product_id', $product->id)->get();
-
-            $totalPurchaseAmount = $purchaseDetails->sum('subtotal');
-            $totalSaleAmount = $saleDetails->sum('subtotal');
-
-            $monthlyEarnings[] = [
-                'product' => $product->name,
-                'earnings' => $totalSaleAmount - $totalPurchaseAmount,
-            ];
-            $sumEarnings = 0;
-            foreach ($monthlyEarnings as $earningByProduct) {
-                $sumEarnings += $earningByProduct['earnings'];
-            }
-        }
-
-        $this->monthlyEarnings = $monthlyEarnings;
-        $this->totalEarningsByMonth = $sumEarnings;
-
-        if ($this->totalEarningsByMonth < 0) {
-            $this->colorStatus = 'red-700';
-        }
-    }
-
 
     public function aboutToExpire()
     {
@@ -98,7 +98,8 @@ class InventoryGraphics extends Component
     public function calculateAboutToExpire()
     {
         $expirableProducts = Product::where('status', 'Expirable')->get();
-        $this->expirableProducts = count($expirableProducts);
+        $this->numExpirableProducts = count($expirableProducts);
+        $this->expirableProducts = $expirableProducts;
     }
 
     public function expired()
@@ -118,3 +119,4 @@ class InventoryGraphics extends Component
         return view('livewire.inventory.inventory-graphics');
     }
 }
+

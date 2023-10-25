@@ -28,14 +28,14 @@
                 </div>
             </div>
 
-            <div wire:click="aboutToExpired"
+            <div wire:click="aboutToExpire"
                 class="flex flex-col px-3 py-8 border-2 border-yellow-500 rounded-lg cursor-pointer gap-y-6 hover:bg-yellow-100 h-44">
                 <div class="flex justify-center text-yellow-700">
                     <i class="mr-4 text-2xl fa-solid fa-hourglass-half"></i>
                     <p class="text-2xl font-normal text-center">Próximos a vencer</p>
                 </div>
                 <div class="text-4xl font-semibold text-center text-yellow-700">
-                    {{ $expirableProducts }}
+                    {{ $numExpirableProducts }}
                 </div>
             </div>
 
@@ -62,15 +62,15 @@
         <div class="w-full col-span-5">
             <div class="p-6 bg-gray-200 bg-opacity-25 dark:bg-gray-800 lg:p-8">
                 @if ($earningsByMonth)
-                    <livewire:inventory.inventory-earnings-by-month :monthlyEarnings="$monthlyEarnings" />
+                <livewire:inventory.inventory-earnings-by-month :monthlyEarnings="$monthlyEarnings" />
                 @elseif($minStock)
-                    <livewire:inventory.inventory-min-stock :labels=$labels :data=$data />
+                <livewire:inventory.inventory-min-stock :labels="$labels" :data="$data" />
                 @elseif($aboutToExpire)
-                    <livewire:inventory.inventory-about-to-expire :expirableProducts="$expirableProducts" />
+                <livewire:inventory.inventory-about-to-expire :expirableProducts="$expirableProducts" />
                 @elseif($expired)
-                    <livewire:inventory.inventory-expired />
+                <livewire:inventory.inventory-expired />
                 @else
-                    <livewire:inventory.inventory-general />
+                <livewire:inventory.inventory-general />
                 @endif
             </div>
         </div>
