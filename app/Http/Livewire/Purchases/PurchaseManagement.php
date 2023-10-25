@@ -129,7 +129,7 @@ class PurchaseManagement extends Component
             'supplier_id' => $this->supplierId,
             'invoice_number' => $this->invoiceNumber,
             'total_amount' => $this->totalAmount,
-            'purchase_date' => $this->purchasDate,
+            'purchase_date' => $this->purchaseDate,
         ]);
 
         $purchase->purchaseDetails()->createMany($purchaseDetails);
@@ -215,6 +215,7 @@ class PurchaseManagement extends Component
     {
         $this->supplierId = null;
         $this->invoiceNumber = null;
+        $this->purchaseDate = null;
         $this->products = [];
         $this->availableProducts = [];
         $this->totalAmount = 0;

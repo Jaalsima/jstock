@@ -6,9 +6,12 @@ use App\Models\Brand;
 use App\Models\Category;
 use Livewire\Component;
 use App\Models\Product;
+use Livewire\WithPagination;
+
 
 class InventoryManagement extends Component
 {
+    use WithPagination;
     public $search;
     public $categories;
     public $brands;
@@ -36,6 +39,7 @@ class InventoryManagement extends Component
         $this->resetPage();
     }
 
+
     public function resetFilters()
     {
         $this->search = '';
@@ -45,8 +49,8 @@ class InventoryManagement extends Component
 
     public function mount()
     {
-        $this->categories = Category::all();
-        $this->brands = Brand::all();
+        $this->categories = Category::pluck('name', 'name');
+        $this->brands = Brand::pluck('name', 'name');
     }
 
     public function render()
@@ -54,9 +58,11 @@ class InventoryManagement extends Component
         $query = Product::query();
 
         if ($this->search) {
-            $query->where('id', 'like', '%' . $this->search . '%')
-                ->orWhere('name', 'like', '%' . $this->search . '%')
-                ->orWhere('description', 'like', '%' . $this->search . '%');
+            $query->where(function ($q) {
+                $q->where('id', 'like', '%' . $this->search . '%')
+                    ->orWhere('name', 'like', '%' . $this->search . '%')
+                    ->orWhere('description', 'like', '%' . $this->search . '%');
+            });
         }
 
         if ($this->categoryFilter) {

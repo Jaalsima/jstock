@@ -32,7 +32,7 @@ class ProductFactory extends Factory
             'selling_price' => fake()->randomFloat(2, 12, 120000),
             'slug' => Str::slug($name),
             'status' => fake()->randomElement(['Disponible', 'Agotado', 'No Disponible', 'Vencido', 'Expirable']),
-            'expiration' => fake()->date('Y_m_d'),
+            'expiration' => fake()->dateTimeBetween('2023-10-01', '2027-12-31'),
             'observations' => fake('es_ES')->text(),
             'image' => 'products/' . fake()->image('public/storage/products', 640, 480, null, false),
         ];

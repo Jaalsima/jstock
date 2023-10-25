@@ -151,6 +151,7 @@
                                     @break;
 
                                     @default
+                                    @break
                                 @endswitch
                             </div>
 

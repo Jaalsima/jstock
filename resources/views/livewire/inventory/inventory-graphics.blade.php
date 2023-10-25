@@ -4,8 +4,7 @@
         <div class="absolute text-2xl font-semibold text-red-700 opacity-60 top-3 right-4">
             JS<span class="text-black">tock</span>
         </div>
-
-        <div class="grid grid-cols-4 gap-6 mt-6">
+        <div class="grid grid-cols-4 gap-6 mt-6 border-2">
             <div wire:click="earningsByMonth"
                 class="flex flex-col px-3 py-8 border-2 border-green-500 rounded-lg cursor-pointer gap-y-6 hover:bg-green-100 h-44">
                 <div class="flex justify-center text-green-700">
@@ -46,7 +45,7 @@
                     <p class="text-2xl font-normal text-center">Productos Vencidos</p>
                 </div>
                 <div class="text-4xl font-semibold text-center text-red-700">
-                    {{ $expiredProducts }}
+                    {{ $numExpiredProducts }}
                 </div>
             </div>
         </div>
@@ -55,24 +54,23 @@
 
     <div class="grid w-full grid-cols-12 gap-4">
         <div class="w-full col-span-7">
-            <livewire:inventory.inventory-management />
+            <livewire:inventory.inventory-general />
         </div>
 
 
-        <div class="w-full col-span-5">
-            <div class="p-6 bg-gray-200 bg-opacity-25 dark:bg-gray-800 lg:p-8">
-                @if ($earningsByMonth)
+        <div class="w-full col-span-5 p-4 m-4 mr-16 border-2 rounded-lg">
+            {{-- <div class="p-6 bg-gray-200 bg-opacity-25 dark:bg-gray-800 lg:p-8"> --}}
+            @if ($earningsByMonth)
                 <livewire:inventory.inventory-earnings-by-month :monthlyEarnings="$monthlyEarnings" />
-                @elseif($minStock)
+            @elseif($minStock)
                 <livewire:inventory.inventory-min-stock :labels="$labels" :data="$data" />
-                @elseif($aboutToExpire)
+            @elseif($aboutToExpire)
                 <livewire:inventory.inventory-about-to-expire :expirableProducts="$expirableProducts" />
-                @elseif($expired)
-                <livewire:inventory.inventory-expired />
-                @else
-                <livewire:inventory.inventory-general />
-                @endif
-            </div>
+            @elseif($expired)
+                <livewire:inventory.inventory-expired :expiredProducts="$expiredProducts" />
+            @endif
+
+            {{-- </div> --}}
         </div>
     </div>
 </div>

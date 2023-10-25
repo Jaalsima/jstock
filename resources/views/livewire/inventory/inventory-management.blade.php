@@ -2,12 +2,11 @@
     <div class="my-4 text-xl font-bold text-center text-blue-400 uppercase bg-gray-100">
         <h1>Inventario</h1>
     </div>
-
     @if ($products->count() > 0)
         <div>
             <div class="flex w-full mt-2">
                 <div class="w-3/4">
-                    <input type="text" name="search" wire:model.lazy="search"
+                    <input type="text" name="search" wire:model="search"
                         class="w-1/3 mr-4 bg-white border-none rounded-lg focus:ring-gray-400" placeholder="Buscar...">
                 </div>
                 <div class="float-right w-1/4 mr-4">
@@ -47,7 +46,6 @@
                                     <i class="ml-2 fa-solid fa-sort"></i>
                                 @endif
                             </th>
-
                             <th scope="col" class="px-6 py-3 cursor-pointer"
                                 wire:click.prevent="order('current_stock')">
                                 Cantidad

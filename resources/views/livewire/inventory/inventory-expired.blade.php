@@ -1,18 +1,19 @@
 <div>
     <div>
 
-        <canvas id="earningsChart" width="400" height="400"></canvas>
+        <canvas id="expired" width="400" height="400"></canvas>
     </div>
 
     <script>
-        const ctx = document.getElementById('earningsChart').getContext('2d');
+        const ctx = document.getElementById('expired').getContext('2d');
+        const expiredProducts = @json($expiredProducts);
         new Chart(ctx, {
-            type: 'line',
+            type: 'bar',
             data: {
-                labels: @json(array_column($monthlyEarnings, 'product')),
+                labels: expiredProducts.map(product => product.name),
                 datasets: [{
-                    label: 'Ganancias por Mes',
-                    data: @json(array_column($monthlyEarnings, 'earnings')),
+                    label: 'Productos próximos a vencer',
+                    data: expiredProducts.map(product => product.current_stock),
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',
                         'rgba(255, 159, 64, 0.2)',
