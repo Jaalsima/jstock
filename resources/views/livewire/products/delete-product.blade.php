@@ -10,20 +10,49 @@
         </div>
     </a>
 
+    {{-- Modal de Confirmación de Eliminación de usuarios. --}}
+    @if ($open)
+        <div wire:model="open">
+            <div class="fixed inset-0 z-50 flex items-center justify-center" wire:click="$set('open', false)">
+                <div class="absolute inset-0 z-40 bg-black opacity-70 modal-overlay"></div>
+                <div
+                    class="z-50 w-11/12 mx-auto overflow-y-auto bg-white border border-red-500 rounded-xl modal-container md:max-w-md">
 
-    <x-dialog-modal wire:model="open">
+                    <!-- Contenido del modal -->
+                    <div class="flex gap-3 py-2 bg-red-500 border border-red-500">
+                        <h3 class="w-full text-2xl text-center text-gray-100 ">Eliminar</h3>
+                    </div>
+                    <div class="px-6 py-4 text-left modal-content">
+                        <p class="text-xl text-gray-500">
+                            ¿Estás seguro de que deseas eliminar este usuario?
+                        </p>
+                        <div class="mt-4 text-center">
+                            <x-secondary-button wire:click="$set('open', false)"
+                                class="mr-4 text-gray-500 border border-gray-500 shadow-lg hover:text-gray-50 hover:shadow-gray-400 hover:bg-gray-400">
+                                Cancelar
+                            </x-secondary-button>
+                            <x-secondary-button wire:click="deleteConfirmed"
+                                class="mr-4 text-red-500 border border-red-500 shadow-lg hover:text-gray-50 hover:shadow-red-400 hover:bg-red-400">
+                                Eliminar
+                            </x-secondary-button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    {{-- <x-dialog-modal wire:model="open">
         <x-slot name="title">
             <h3 class="w-full py-2 text-2xl text-center text-gray-100 bg-red-400 border-2 border-red-500 rounded-lg ">
                 Eliminar</h3>
         </x-slot>
-
         <x-slot name="content">
             <p class="text-xl text-gray-500">¿Estás seguro de que deseas
                 eliminar este
                 producto?
             </p>
         </x-slot>
-
         <x-slot name="footer">
             <div class="mt-4 text-center">
                 <x-secondary-button wire:click="$set('open', false)"
@@ -36,5 +65,6 @@
                 </x-secondary-button>
             </div>
         </x-slot>
-    </x-dialog-modal>
+    </x-dialog-modal> --}}
+
 </div>

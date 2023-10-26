@@ -26,7 +26,7 @@ class UserFactory extends Factory
     {
         $name = $this->faker->firstName();
         return [
-            'document'                  => $this->faker->firstName(),
+            'document'                  => Str::random(10),
             'name'                      => $name,
             'email'                     => $this->faker->unique()->safeEmail(),
             'address'                   => $this->faker->address(),

@@ -104,10 +104,17 @@ class InventoryGraphics extends Component
     {
         $expirableProducts = Product::where('status', 'Expirable')->get();
         $this->numExpirableProducts = count($expirableProducts);
-        foreach ($expirableProducts as $expirable) {
+        if ($this->numExpirableProducts > 0) {
+            foreach ($expirableProducts as $expirable) {
+                $this->expirableProducts[] = [
+                    'name' => $expirable->name . ' ' . $expirable->expiration,
+                    'current_stock' => $expirable->current_stock,
+                ];
+            }
+        } else {
             $this->expirableProducts[] = [
-                'name' => $expirable->name . ' ' . $expirable->expiration,
-                'current_stock' => $expirable->current_stock,
+                'name' => 'No hay productos próximos a vencer',
+                'current_stock' => 0,
             ];
         }
     }
@@ -121,10 +128,17 @@ class InventoryGraphics extends Component
     {
         $expiredProducts = Product::where('status', 'Vencido')->get();
         $this->numExpiredProducts = count($expiredProducts);
-        foreach ($expiredProducts as $expired) {
+        if ($this->numExpiredProducts > 0) {
+            foreach ($expiredProducts as $expired) {
+                $this->expiredProducts[] = [
+                    'name' => $expired->name . ' ' . $expired->expiration,
+                    'current_stock' => $expired->current_stock,
+                ];
+            }
+        } else {
             $this->expiredProducts[] = [
-                'name' => $expired->name . ' ' . $expired->expiration,
-                'current_stock' => $expired->current_stock,
+                'name' => 'No hay productos próximos a vencer',
+                'current_stock' => 0,
             ];
         }
     }

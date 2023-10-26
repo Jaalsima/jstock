@@ -58,7 +58,7 @@
                 </header>
             @endif
 
-            <main class="overflow-y-scroll lg:w-full">
+            <main class="p-4 overflow-auto lg:w-full">
                 {{ $slot }}
             </main>
 

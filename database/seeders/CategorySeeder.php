@@ -25,29 +25,28 @@ class CategorySeeder extends Seeder
             'name'        => 'Hogar',
             'description' => 'Descripción Hogar',
             'slug'        => Str::slug('Hogar'),
-            'status'      => fake()->randomElement(['Activo', 'Inactivo']),
+            'status'      => fake()->randomElement(['Activa', 'Inactiva']),
         ]);
 
         Category::create([
             'name'        => 'Tecnología',
             'description' => 'Descripción Tecnología',
             'slug'        => Str::slug('Tecnología'),
-            'status'      => fake()->randomElement(['Activo', 'Inactivo']),
+            'status'      => fake()->randomElement(['Activa', 'Inactiva']),
         ]);
 
         Category::create([
             'name'        => 'Joyería',
             'description' => 'Descripción Joyería',
             'slug'        => Str::slug('Joyería'),
-            'status'      => fake()->randomElement(['Activo', 'Inactivo']),
+            'status'      => fake()->randomElement(['Activa', 'Inactiva']),
         ]);
 
         Category::create([
             'name' => 'Otros',
             'description' => 'Descripción Otros',
             'slug' =>     Str::slug('Otros'),
-            'status' => fake()->randomElement(['Activo', 'Inactivo']),
+            'status' => fake()->randomElement(['Activa', 'Inactiva']),
         ]);
-
     }
 }

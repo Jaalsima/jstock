@@ -1,6 +1,7 @@
 <?php
 
 namespace Database\Factories;
+
 use Illuminate\Support\Str;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -19,6 +20,7 @@ class SupplierFactory extends Factory
     {
         $name = fake('es_ES')->name();
         return [
+            'document' => Str::random(10),
             'name'    => $name,
             'email'   => fake('es_ES')->unique()->safeEmail(),
             'address' => fake('es_ES')->address(),

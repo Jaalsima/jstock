@@ -12,7 +12,7 @@
             data: {
                 labels: expiredProducts.map(product => product.name),
                 datasets: [{
-                    label: 'Productos próximos a vencer',
+                    label: 'Productos vencidos',
                     data: expiredProducts.map(product => product.current_stock),
                     backgroundColor: [
                         'rgba(255, 99, 132, 0.2)',

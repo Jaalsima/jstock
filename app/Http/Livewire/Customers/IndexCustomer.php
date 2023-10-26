@@ -13,6 +13,7 @@ class IndexCustomer extends Component
     public $search, $customer;
     public $sort = "id";
     public $direction = "desc";
+    public $perPage = 10;
     public $open = false;
     protected $listeners = ['render'];
 
@@ -22,10 +23,15 @@ class IndexCustomer extends Component
     }
     public function render()
     {
-        $customers = Customer::where('name', 'like', '%' . $this->search . '%')
-            ->orWhere('email', 'like', '%' . $this->search . '%')
-            ->orderBy($this->sort, $this->direction)
-            ->paginate(10);
+        $query = Customer::query();
+
+        if ($this->search) {
+            $query->where('id', 'like', '%' . $this->search . '%')
+                ->orWhere('name', 'like', '%' . $this->search . '%')
+                ->orWhere('document', 'like', '%' . $this->search . '%');
+        }
+        $customers = $query->orderBy($this->sort, $this->direction)
+            ->paginate($this->perPage);
 
         return view('livewire.customers.index-customer', compact('customers'));
     }

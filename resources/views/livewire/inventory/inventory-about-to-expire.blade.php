@@ -1,6 +1,5 @@
 <div>
     <div>
-
         <canvas id="abouToExpire" width="400" height="400"></canvas>
     </div>
 

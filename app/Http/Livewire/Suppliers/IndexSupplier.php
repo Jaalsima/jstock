@@ -13,6 +13,7 @@ class IndexSupplier extends Component
     public $search, $supplier;
     public $sort = "id";
     public $direction = "desc";
+    public $perPage = 10;
     public $open = false;
     protected $listeners = ['render'];
 
@@ -22,10 +23,15 @@ class IndexSupplier extends Component
     }
     public function render()
     {
-        $suppliers = Supplier::where('name', 'like', '%' . $this->search . '%')
-            ->orWhere('email', 'like', '%' . $this->search . '%')
-            ->orderBy($this->sort, $this->direction)
-            ->paginate(10);
+        $query = Supplier::query();
+
+        if ($this->search) {
+            $query->where('id', 'like', '%' . $this->search . '%')
+                ->orWhere('name', 'like', '%' . $this->search . '%')
+                ->orWhere('document', 'like', '%' . $this->search . '%');
+        }
+        $suppliers = $query->orderBy($this->sort, $this->direction)
+            ->paginate($this->perPage);
 
         return view('livewire.suppliers.index-supplier', compact('suppliers'));
     }
@@ -55,5 +61,4 @@ class IndexSupplier extends Component
         }
         $this->open = false; // Cierra el modal de confirmación
     }
-
 }

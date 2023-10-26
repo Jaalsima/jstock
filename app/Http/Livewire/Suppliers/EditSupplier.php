@@ -10,10 +10,12 @@ class EditSupplier extends Component
 {
     use WithFileUploads;
 
-    public $supplier, $name, $email, $address, $phone, $slug, $status, $image;
+    public $supplier;
+    public  $document, $name, $email, $address, $phone, $slug, $status, $image;
     public $open_edit = false;
 
     protected $rules = [
+        'document'           => 'required',
         'name'                => 'nullable|max:50',
         'email'               => 'nullable|email',
         'address'             => 'nullable',
@@ -25,6 +27,7 @@ class EditSupplier extends Component
     public function mount(Supplier $supplier)
     {
         $this->supplier = $supplier;
+        $this->document = $supplier->document;
         $this->name     = $supplier->name;
         $this->email    = $supplier->email;
         $this->address  = $supplier->address;
@@ -38,6 +41,7 @@ class EditSupplier extends Component
 
         // Actualizar el cliente en la base de datos
         $this->supplier->update([
+            'document' => $this->document,
             'name' => $this->name,
             'email' => $this->email,
             'address' => $this->address,

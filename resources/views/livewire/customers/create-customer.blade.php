@@ -1,6 +1,6 @@
 <div class="my-auto">
     <x-secondary-button wire:click="$set('open_create', true)"
-        class="text-blue-500 bg-blue-100 border border-blue-500 shadow-md hover:shadow-blue-400 hover:bg-blue-300 hover:text-white">
+        class="float-right text-blue-500 bg-blue-100 border border-blue-500 shadow-md hover:shadow-blue-400 hover:bg-blue-400 hover:text-white">
         <i class="fa fa-solid fa-user-plus"> Nuevo</i>
     </x-secondary-button>
 
@@ -38,6 +38,11 @@
                         </label>
                     </div>
                     <x-input-error for="image" />
+
+                    <!-- Documento de Identidad -->
+                    <x-label value="Documento de identidad" class="text-gray-700" />
+                    <x-input class="w-full" wire:model.lazy="document" />
+                    <x-input-error for="document" />
 
                     <!-- Nombre -->
                     <x-label for="name" value="Nombre" class="ml-3 text-gray-700" />

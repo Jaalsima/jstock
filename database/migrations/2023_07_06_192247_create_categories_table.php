@@ -1,116 +1,31 @@
 <?php
 
-namespace App\Http\Livewire;
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-use Livewire\Component;
-use App\Models\Category;
-use Livewire\WithPagination;
-
-class CategoryManager extends Component
+return new class extends Migration
 {
-    use WithPagination;
-
-    public $name;
-    public $description;
-    public $slug;
-    public $status = 'Activa';
-    public $showForm = false;
-    public $editMode = false;
-    public $categoryId;
-
-    protected $listeners = ['confirmedDelete'];
-
-    public function render()
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
     {
-        $categories = Category::query()
-            ->when($this->name, function($query, $name) {
-                return $query->where('name', 'like', '%' . $name . '%');
-            })
-            ->when($this->status, function($query, $status) {
-                return $query->where('status', $status);
-            })
-            ->orderBy('name')
-            ->paginate(10);
-
-        return view('livewire.category-manager', compact('categories'));
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name', 50);
+            $table->text('description');
+            $table->string('slug');
+            $table->string('status')->default('Activa');
+            $table->timestamps();
+        });
     }
 
-    public function showForm($show)
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
-        $this->showForm = $show;
-        $this->editMode = false;
-        $this->resetFields();
+        Schema::dropIfExists('categories');
     }
-
-    public function resetFields()
-    {
-        $this->name = '';
-        $this->description = '';
-        $this->slug = '';
-        $this->status = 'Activa';
-    }
-
-    public function saveCategory()
-    {
-        $this->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'slug' => 'required',
-        ]);
-
-        if ($this->editMode) {
-            $category = Category::find($this->categoryId);
-            $category->update([
-                'name' => $this->name,
-                'description' => $this->description,
-                'slug' => $this->slug,
-                'status' => $this->status,
-            ]);
-        } else {
-            Category::create([
-                'name' => $this->name,
-                'description' => $this->description,
-                'slug' => $this->slug,
-                'status' => $this->status,
-            ]);
-        }
-
-        $this->resetFields();
-        $this->showForm(false);
-        session()->flash('message', $this->editMode ? 'Categoría actualizada con éxito.' : 'Categoría creada con éxito.');
-    }
-
-    public function editCategory($id)
-    {
-        $category = Category::find($id);
-        $this->categoryId = $category->id;
-        $this->name = $category->name;
-        $this->description = $category->description;
-        $this->slug = $category->slug;
-        $this->status = $category->status;
-        $this->editMode = true;
-        $this->showForm(true);
-    }
-
-    public function deleteCategory($id)
-    {
-        $this->confirm('¿Estás seguro de que quieres eliminar esta categoría?', [
-            'onConfirmed' => 'confirmedDelete',
-            'onCancelled' => 'cancelledDelete',
-        ]);
-
-        $this->categoryId = $id;
-    }
-
-    public function confirmedDelete()
-    {
-        $category = Category::find($this->categoryId);
-        $category->delete();
-        session()->flash('message', 'Categoría eliminada con éxito.');
-    }
-
-    public function cancelledDelete()
-    {
-        // Si se cancela la eliminación, no hacemos nada
-    }
-}
+};

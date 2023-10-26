@@ -1,29 +1,31 @@
-<div class="py-1 overflow-y-auto">
-    <div class="my-4 text-xl font-bold text-center text-blue-400 uppercase bg-gray-100">
-        <h1>Inventario</h1>
-    </div>
+<div>
+    <!-- Check if there are products before rendering the table and its header -->
     @if ($products->count() > 0)
-        <div class="pl-4">
-            <div class="flex w-full mt-2">
-                <div class="w-3/4">
-
+        <div>
+            <div class="grid items-center w-full grid-cols-12 mt-2">
+                <div class="col-span-4">
                     <input type="text" name="search" wire:model="search"
-                        class="w-1/3 mr-4 bg-white border-none rounded-lg focus:ring-gray-400" placeholder="Buscar...">
+                        class="w-full bg-white border-none rounded-lg focus:ring-gray-400" placeholder="Buscar...">
                 </div>
-                <div class="float-right w-1/4 mr-4">
+                <div class="col-span-4">
+                    <div class="text-xl font-bold text-center text-blue-400 uppercase">
+                        <h1>Inventario</h1>
+                    </div>
+                </div>
+                <div class="col-span-4">
                     <button
-                        class="p-2 mr-4 text-blue-500 bg-white border-none rounded-lg shadow-lg hover:text-red-700 hover:shadow-gray-500 focus:ring-gray-400">
+                        class="float-right p-2 text-blue-500 bg-white border-none rounded-lg shadow-lg hover:text-red-700 hover:shadow-gray-500 focus:ring-gray-400">
                         Generar Reporte
                     </button>
                 </div>
             </div>
-            <div class="py-2 text-gray-500 ">
+            <div class="py-4 ml-4 text-gray-500 ">
                 Registros por página
                 <input type="number" name="perPage" wire:model="perPage"
-                    class="w-[70px] mr-4 cursor-pointer bg-white border-none rounded-lg focus:ring-gray-400">
+                    class="w-[70px] pr-2 py-1 cursor-pointer bg-white border-none rounded-lg focus:ring-gray-400">
             </div>
 
-            <div class="relative mt-4 overflow-x-hidden shadow-md sm:rounded-lg">
+            <div class="relative overflow-x-hidden shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                     <thead
                         class="text-xs text-center text-gray-100 uppercase bg-gray-400 dark:bg-gray-700 dark:text-gray-400">
@@ -109,8 +111,22 @@
                             </th>
                         </tr>
                     </thead>
+
                     <tbody>
                         @forelse ($products as $product)
+                            <div class="hidden">
+                                @if ($product->status === 'Disponible')
+                                    {{ $colorStatus = 'text-green-600' }}
+                                @elseif ($product->status === 'No Disponible')
+                                    {{ $colorStatus = 'text-gray-500' }}
+                                @elseif ($product->status === 'Agotado')
+                                    {{ $colorStatus = 'text-orange-600' }}
+                                @elseif ($product->status === 'Expirable')
+                                    {{ $colorStatus = 'text-yellow-600' }}
+                                @elseif ($product->status === 'Vencido')
+                                    {{ $colorStatus = 'text-red-600' }}
+                                @endif
+                            </div>
                             <tr
                                 class="text-center bg-white border-b text-md dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                                 <th scope="row"
@@ -123,25 +139,6 @@
                                 <td class="px-6 py-4 dark:text-lg">{{ $product->max_stock }}</td>
                                 <td class="px-6 py-4 ">{{ $product->purchase_price }}</td>
                                 <td class="px-6 py-4 ">{{ $product->selling_price }} </td>
-                                <div class="hidden">
-                                    @switch ($product->status)
-                                        @case ('Disponible')
-                                            {{ $colorStatus = 'text-green-600' }}
-                                        @break;
-                                        @case ('No Disponible')
-                                            {{ $colorStatus = 'text-gray-500' }}
-                                        @break;
-                                        @case ('Agotado')
-                                            {{ $colorStatus = 'text-orange-600' }}
-                                        @break;
-                                        @case ('Expirable')
-                                            {{ $colorStatus = 'text-yellow-600' }}
-                                        @break;
-                                        @case ('Vencido')
-                                            {{ $colorStatus = 'text-red-600' }}
-                                        @break;
-                                    @endswitch
-                                </div>
                                 <td class="px-6 py-4 dark:text-lg {{ $colorStatus }}">{{ $product->status }}</td>
                                 <td class="px-6 py-4 dark:text-lg">{{ $product->created_at }}</td>
                                 <td class="px-6 py-4 dark:text-lg">{{ $product->expiration }}</td>
@@ -154,21 +151,25 @@
                                     </div>
                                 </td>
                             </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="12" class="mt-64 text-5xl text-center dark:text-gray-200">No se
-                                        encontraron productos.</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
-                    <div class="px-3 py-1">
-
-                        {{ $products->links() }}
-                    </div>
+                        @empty
+                            <!-- Mensaje de no hay productos -->
+                            <tr>
+                                <td colspan="12" class="mt-64 text-5xl text-center dark:text-gray-200">
+                                    Aún no se han agregado productos.
+                                </td>
+                            </tr>
+                        @endforelse
+                    </tbody>
+                </table>
+                <div class="px-3 py-1">
+                    {{ $products->links() }}
                 </div>
             </div>
-        @else
-            <h1>No se encontraron productos.</h1>
-        @endif
-    </div>
+        </div>
+    @else
+        <!-- Mensaje de no hay productos -->
+        <h1 class="mt-64 text-5xl text-center dark:text-gray-200">
+            <div>¡Ups!</div><br> <span class="mt-4"> No se encontraron coincidencias en la búsqueda. </span>
+        </h1>
+    @endif
+</div>

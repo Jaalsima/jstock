@@ -29,6 +29,7 @@
                                 @endif
                             @endif
                         </th>
+
                         <th wire:click="sortBy('current_stock')"
                             class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-100 cursor-pointer dark:bg-gray-800 dark:text-gray-400">
                             Cantidad
@@ -69,7 +70,17 @@
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap">{{ $product->name }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{ $product->selling_price }}</td>
-                            <td class="px-6 py-4 whitespace-nowrap">{{ $product->current_stock }}</td>
+                            <div class="hidden">
+                                @if ($product->current_stock > 0 && $product->current_stock < 20)
+                                    {{ $currentStockQuantity = 'text-red-600' }}
+                                @elseif($product->current_stock >= 20 && $product->current_stock < 50)
+                                    {{ $currentStockQuantity = 'text-yellow-500' }}
+                                @else
+                                    {{ $currentStockQuantity = 'text-green-600' }}
+                                @endif
+                            </div>
+                            <td class="px-6 py-4 whitespace-nowrap {{ $currentStockQuantity }}">
+                                {{ $product->current_stock }}</td>
                             <td class="px-6 py-4 whitespace-nowrap">{{ $product->expiration }}</td>
 
                             <div class="hidden">

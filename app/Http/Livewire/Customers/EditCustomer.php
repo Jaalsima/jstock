@@ -10,10 +10,12 @@ class EditCustomer extends Component
 {
     use WithFileUploads;
 
-    public $customer, $name, $email, $address, $phone, $slug, $status, $image;
+    public $customer;
+    public $document, $name, $email, $address, $phone, $slug, $status, $image;
     public $open_edit = false;
 
     protected $rules = [
+        'document'           => 'required',
         'name'                => 'nullable|max:50',
         'email'               => 'nullable|email',
         'address'             => 'nullable',
@@ -25,6 +27,7 @@ class EditCustomer extends Component
     public function mount(Customer $customer)
     {
         $this->customer = $customer;
+        $this->document = $customer->document;
         $this->name     = $customer->name;
         $this->email    = $customer->email;
         $this->address  = $customer->address;
@@ -38,6 +41,7 @@ class EditCustomer extends Component
 
         // Actualizar el cliente en la base de datos
         $this->customer->update([
+            'document' => $this->document,
             'name' => $this->name,
             'email' => $this->email,
             'address' => $this->address,

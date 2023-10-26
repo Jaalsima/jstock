@@ -56,10 +56,7 @@
         <div class="w-full col-span-7">
             <livewire:inventory.inventory-general />
         </div>
-
-
-        <div class="w-full col-span-5 p-4 m-4 mr-16 border-2 rounded-lg">
-            {{-- <div class="p-6 bg-gray-200 bg-opacity-25 dark:bg-gray-800 lg:p-8"> --}}
+        <div class="w-full col-span-5 p-4 m-4 mr-4 border-2 rounded-lg">
             @if ($earningsByMonth)
                 <livewire:inventory.inventory-earnings-by-month :monthlyEarnings="$monthlyEarnings" />
             @elseif($minStock)
@@ -69,8 +66,6 @@
             @elseif($expired)
                 <livewire:inventory.inventory-expired :expiredProducts="$expiredProducts" />
             @endif
-
-            {{-- </div> --}}
         </div>
     </div>
 </div>
