@@ -7,9 +7,11 @@ use App\Http\Livewire\Products\IndexProduct;
 use App\Http\Livewire\Suppliers\IndexSupplier;
 use App\Http\Livewire\Users\IndexUser;
 use App\Http\Controllers\Menu\MenuController;
+use App\Http\Livewire\Products\BrandManagement;
+use App\Http\Livewire\Products\CategoryManagement;
+use App\Http\Livewire\Inventory\InventoryManagement;
 use App\Http\Livewire\Purchases\PurchaseManagement;
 use App\Http\Livewire\Sales\SaleManagement;
-use App\Http\Livewire\Inventory\InventoryManagement;
 
 
 Route::get('/',         [HomeController::class, 'home'])->name('home');
@@ -38,4 +40,6 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/purchases', PurchaseManagement::class)->name('purchases');
     Route::get('/sales', SaleManagement::class)->name('sales');
     Route::get('/inventory', InventoryManagement::class)->name('inventory');
+    Route::get('/Categories', CategoryManagement::class)->name('categories');
+    Route::get('/Brands', BrandManagement::class)->name('brands');
 });
