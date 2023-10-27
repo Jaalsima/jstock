@@ -4,17 +4,18 @@ namespace App\Http\Livewire\Purchases;
 
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use App\Models\Purchase;
 use App\Models\Supplier;
 use App\Models\Product;
+use App\Models\Purchase;
 
 class PurchaseManagement extends Component
 {
     public $supplierId;
     public $totalAmount = 0;
     public $invoiceNumber;
-    public $purchaseDate;
     public $products = [];
+    public $invoiceDate;
+    public $purchaseDate;
     public $availableProducts = [];
     public $sortBy = 'created_at';
     public $sortDirection = 'desc';
@@ -48,34 +49,15 @@ class PurchaseManagement extends Component
         $this->open = false;
     }
 
-    public function render()
-    {
-        $purchases = Purchase::orderBy($this->sortBy, $this->sortDirection)->paginate(10);
-        $suppliers = Supplier::all();
-        $allProducts = Product::all();
-
-        if ($this->supplierId) {
-            $selectedSupplier = Supplier::find($this->supplierId);
-            $this->availableProducts = $selectedSupplier->products;
-        }
-
-        return view('livewire.purchases.purchase-management', [
-            'purchases' => $purchases,
-            'suppliers' => $suppliers,
-            'allProducts' => $allProducts,
-        ]);
-    }
     public function addProduct()
     {
-        if ($this->validateSupplierAndInvoice()) {
-
+        if ($this->validateSupplierAndInvoiceInfo()) {
             foreach ($this->products as $product) {
-                if (empty($product['id'])) {
-                    session()->flash('error', 'Por favor ingresa la información del producto antes de agregar uno nuevo.');
+                if (empty($product['id']) || $product['quantity'] <= 0 || $product['unit_price'] <= 0 || $product['subtotal'] <= 0) {
+                    session()->flash('error', 'Por favor completa toda la información del producto antes de agregar uno nuevo.');
                     return;
                 }
             }
-
             $this->products[] = [
                 'id' => '',
                 'quantity' => 0,
@@ -84,24 +66,33 @@ class PurchaseManagement extends Component
             ];
         }
     }
-    private function validateSupplierAndInvoice()
+    private function validateSupplierAndInvoiceInfo()
     {
-        if (!$this->supplierId || !$this->invoiceNumber) {
-            session()->flash('error', 'Por favor ingresa la información del proveedor y la factura antes de continuar.');
+        if (!$this->supplierId || !$this->invoiceNumber || !$this->purchaseDate) {
+            session()->flash('error', 'Por favor ingresa la información del proveedor, la factura y la fecha antes de continuar.');
             return false;
         }
 
-        // Verifica si el número de factura contiene solo dígitos y no está vacío
-        if (!preg_match('/^[0-9]+$/', $this->invoiceNumber)) {
-            session()->flash('error', 'El número de factura solo debe contener dígitos (0-9).');
+        // Verificar si el número de factura contiene solo alfanuméricos y no está vacío
+        if (!preg_match('/^[a-zA-Z0-9]+$/', $this->invoiceNumber)) {
+            session()->flash('error', 'El número de factura solo debe contener caracteres alfanuméricos.');
             return false;
         }
+
+        // Verificar si la fecha de compra es una fecha válida
+        if (!strtotime($this->purchaseDate)) {
+            session()->flash('error', 'La fecha de compra no es válida.');
+            return false;
+        }
+
         $existingInvoice = Purchase::where('invoice_number', $this->invoiceNumber)->exists();
         if ($existingInvoice) {
             session()->flash('error', 'El número de factura ya existe. Por favor ingresa otro número.');
             return false;
         }
+
         $this->validate();
+
         return true;
     }
 
@@ -144,6 +135,7 @@ class PurchaseManagement extends Component
         $this->resetForm();
         $this->openConfirmingPurchase = false;
     }
+
     public function removeProduct($index)
     {
         unset($this->products[$index]);
@@ -161,32 +153,23 @@ class PurchaseManagement extends Component
         $this->totalAmount = 0;
 
         foreach ($this->products as $index => $product) {
-            $productInfo = Product::find($product['id']);
-            $unitPrice = $productInfo->purchase_price;
-            $subtotal = $product['quantity'] * $unitPrice;
+            if (isset($product['id']) && !empty($product['id'])) {
+                $productInfo = Product::find($product['id']);
 
-            $this->products[$index]['unit_price'] = $unitPrice;
-            $this->products[$index]['subtotal'] = $subtotal;
+                if ($productInfo) {
+                    $unitPrice = $productInfo->purchase_price;
+                    $quantity = $product['quantity'];
 
-            $this->totalAmount += $subtotal;
-        }
-    }
+                    // Validar si la cantidad es un número entero válido
+                    if (filter_var($quantity, FILTER_VALIDATE_INT) !== false && $quantity > 0) {
+                        $subtotal = $quantity * $unitPrice;
+                    } else {
+                        $subtotal = 0;
+                    }
 
-    private function validateOpenConfirmingPurchase()
-    {
-        if ($this->products == null) {
-            session()->flash('error', 'Por favor ingresa un producto antes de realizar el registro de la compra.');
-        } else {
-            foreach ($this->products as $product) {
-                if (empty($product['id'])) {
-                    session()->flash('error', 'Por favor ingresa un producto antes de realizar el registro de la compra.');
-                    $this->openConfirmingPurchase = false;
-                    return;
-                } elseif ($product['quantity'] == 0) {
-                    session()->flash('error', 'Por favor ingresa la cantidad del producto antes de realizar el registro de la compra.');
-                    $this->openConfirmingPurchase = false;
-                } else {
-                    $this->openConfirmingPurchase = true;
+                    $this->products[$index]['unit_price'] = $unitPrice;
+                    $this->products[$index]['subtotal'] = $subtotal;
+                    $this->totalAmount += $subtotal;
                 }
             }
         }
@@ -194,10 +177,36 @@ class PurchaseManagement extends Component
 
     public function confirmPurchase()
     {
-        if ($this->validateSupplierAndInvoice() && $this->validateOpenConfirmingPurchase()) {
+        if ($this->validateSupplierAndInvoiceInfo() && $this->validateOpenConfirmingPurchase()) {
             return true;
         }
     }
+
+    private function validateOpenConfirmingPurchase()
+    {
+        if ($this->products == null) {
+            session()->flash('error', 'Por favor ingresa un producto antes de realizar el registro de la compra.');
+            return false;
+        }
+
+        foreach ($this->products as $product) {
+            if (empty($product['id'])) {
+                session()->flash('error', 'Por favor ingresa un producto antes de realizar el registro de la compra.');
+                $this->openConfirmingPurchase = false;
+                return false;
+            } elseif ($product['quantity'] <= 0 || intval($product['quantity']) != $product['quantity']) {
+                session()->flash('error', 'Por favor ingresa una cantidad válida del producto antes de realizar el registro de la compra.');
+                $this->openConfirmingPurchase = false;
+                return false;
+            } else {
+                $this->openConfirmingPurchase = true;
+            }
+        }
+
+        return true;
+    }
+
+
     private function validateProducts()
     {
         foreach ($this->products as $product) {
@@ -209,8 +218,6 @@ class PurchaseManagement extends Component
         return true;
     }
 
-
-
     private function resetForm()
     {
         $this->supplierId = null;
@@ -219,5 +226,23 @@ class PurchaseManagement extends Component
         $this->products = [];
         $this->availableProducts = [];
         $this->totalAmount = 0;
+    }
+
+    public function render()
+    {
+        $purchases = Purchase::orderBy($this->sortBy, $this->sortDirection)->paginate(10);
+        $suppliers = Supplier::all();
+        $allProducts = Product::all();
+
+        if ($this->supplierId) {
+            $selectedSupplier = Supplier::find($this->supplierId);
+            $this->availableProducts = $selectedSupplier->products;
+        }
+
+        return view('livewire.purchases.purchase-management', [
+            'purchases' => $purchases,
+            'suppliers' => $suppliers,
+            'allProducts' => $allProducts,
+        ]);
     }
 }

@@ -42,25 +42,12 @@ class SaleManagement extends Component
         $this->open = false;
     }
 
-    public function render()
-    {
-        $sales = Sale::orderBy($this->sortBy, $this->sortDirection)->paginate(10);
-        $customers = Customer::all();
-        $allProducts = Product::all();
-        return view('livewire.sales.sale-management', [
-            'sales' => $sales,
-            'customers' => $customers,
-            'allProducts' => $allProducts,
-        ]);
-    }
-
     public function addProduct()
     {
         if ($this->validateCustomerAndInvoice()) {
-
             foreach ($this->products as $product) {
-                if (empty($product['id'])) {
-                    session()->flash('error', 'Por favor ingresa la información del producto antes de agregar uno nuevo.');
+                if (empty($product['id']) || $product['quantity'] <= 0 || $product['unit_price'] <= 0 || $product['subtotal'] <= 0) {
+                    session()->flash('error', 'Por favor completa toda la información del producto antes de agregar uno nuevo.');
                     return;
                 }
             }
@@ -79,8 +66,8 @@ class SaleManagement extends Component
             session()->flash('error', 'Por favor ingresa la información del cliente y la factura antes de continuar.');
             return false;
         }
-        // Verifica si el número de factura contiene solo dígitos y no está vacío
-        if (!preg_match('/^[0-9]+$/', $this->invoiceNumber)) {
+        // Verifica si el número de factura contiene solo caracteres alfanuméricos y no está vacío
+        if (!preg_match('/^[a-zA-Z0-9]+$/', $this->invoiceNumber)) {
             session()->flash('error', 'El número de factura solo debe contener dígitos (0-9).');
             return false;
         }
@@ -91,20 +78,24 @@ class SaleManagement extends Component
         }
         return true;
     }
+
     public function submitSale()
     {
         $this->totalAmount = 0;
         $saleDetails = [];
+
         foreach ($this->products as $product) {
             $productInfo = Product::find($product['id']);
             $unitPrice = $productInfo->selling_price;
             $subtotal = $product['quantity'] * $unitPrice;
+
             $saleDetails[] = [
                 'product_id' => $product['id'],
                 'quantity' => $product['quantity'],
                 'unit_price' => $unitPrice,
                 'subtotal' => $subtotal,
             ];
+
             $this->totalAmount += $subtotal;
         }
         $sale = Sale::create([
@@ -142,13 +133,27 @@ class SaleManagement extends Component
     private function calculateTotalAmount()
     {
         $this->totalAmount = 0;
+
         foreach ($this->products as $index => $product) {
-            $productInfo = Product::find($product['id']);
-            $unitPrice = $productInfo->selling_price;
-            $subtotal = $product['quantity'] * $unitPrice;
-            $this->products[$index]['unit_price'] = $unitPrice;
-            $this->products[$index]['subtotal'] = $subtotal;
-            $this->totalAmount += $subtotal;
+            if (isset($product['id']) && !empty($product['id'])) {
+                $productInfo = Product::find($product['id']);
+
+                if ($productInfo) {
+                    $unitPrice = $productInfo->selling_price;
+                    $quantity = $product['quantity'];
+
+                    // Validar si la cantidad es un número entero válido
+                    if (filter_var($quantity, FILTER_VALIDATE_INT) !== false && $quantity > 0) {
+                        $subtotal = $quantity * $unitPrice;
+                    } else {
+                        $subtotal = 0;
+                    }
+
+                    $this->products[$index]['unit_price'] = $unitPrice;
+                    $this->products[$index]['subtotal'] = $subtotal;
+                    $this->totalAmount += $subtotal;
+                }
+            }
         }
     }
 
@@ -163,21 +168,24 @@ class SaleManagement extends Component
     {
         if ($this->products == null) {
             session()->flash('error', 'Por favor ingresa un producto antes de realizar el registro de la venta.');
-        } else {
-            foreach ($this->products as $product) {
-                if (empty($product['id'])) {
-                    session()->flash('error', 'Por favor ingresa un producto antes de realizar el registro de la venta.');
-                    $this->openConfirmingSale = false;
-                    return;
-                } elseif ($product['quantity'] == 0) {
-                    session()->flash('error', 'Por favor ingresa la cantidad del producto antes de realizar el registro de la venta.');
-                    $this->openConfirmingSale = false;
-                    return;
-                } else {
-                    $this->openConfirmingSale = true;
-                }
+            return false;
+        }
+
+        foreach ($this->products as $product) {
+            if (empty($product['id'])) {
+                session()->flash('error', 'Por favor ingresa un producto antes de realizar el registro de la venta.');
+                $this->openConfirmingSale = false;
+                return false;
+            } elseif ($product['quantity'] <= 0 || intval($product['quantity']) != $product['quantity']) {
+                session()->flash('error', 'Por favor ingresa una cantidad válida del producto antes de realizar el registro de la venta.');
+                $this->openConfirmingSale = false;
+                return false;
+            } else {
+                $this->openConfirmingSale = true;
             }
         }
+
+        return true;
     }
     private function validateProducts()
     {
@@ -200,5 +208,17 @@ class SaleManagement extends Component
         $this->invoiceNumber = null;
         $this->products = [];
         $this->totalAmount = 0;
+    }
+
+    public function render()
+    {
+        $sales = Sale::orderBy($this->sortBy, $this->sortDirection)->paginate(10);
+        $customers = Customer::all();
+        $allProducts = Product::all();
+        return view('livewire.sales.sale-management', [
+            'sales' => $sales,
+            'customers' => $customers,
+            'allProducts' => $allProducts,
+        ]);
     }
 }

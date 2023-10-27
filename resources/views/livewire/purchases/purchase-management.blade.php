@@ -80,6 +80,7 @@
                         <td class="p-2">
                             <x-secondary-button wire:click="removeProduct({{ $index }})"
                                 class="px-6 py-3 font-semibold text-white bg-red-600 border-red-500 rounded shadow-lg hover:text-red-900 hover:bg-red-400 hover:shadow-red-700">Eliminar</x-secondary-button>
+
                         </td>
                     </tr>
                 @endforeach
