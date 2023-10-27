@@ -15,7 +15,6 @@ class PurchaseManagement extends Component
     public $invoiceNumber;
     public $products = [];
     public $invoiceDate;
-    public $purchaseDate;
     public $availableProducts = [];
     public $sortBy = 'created_at';
     public $sortDirection = 'desc';
@@ -24,7 +23,7 @@ class PurchaseManagement extends Component
     public $selectedPurchase = null;
 
     protected $rules = [
-        'purchaseDate' => 'nullable|date|before_or_equal:today',
+        'invoiceDate' => 'nullable|date|before_or_equal:today',
     ];
 
     public function sortField($field)
@@ -68,7 +67,7 @@ class PurchaseManagement extends Component
     }
     private function validateSupplierAndInvoiceInfo()
     {
-        if (!$this->supplierId || !$this->invoiceNumber || !$this->purchaseDate) {
+        if (!$this->supplierId || !$this->invoiceNumber || !$this->invoiceDate) {
             session()->flash('error', 'Por favor ingresa la información del proveedor, la factura y la fecha antes de continuar.');
             return false;
         }
@@ -80,7 +79,7 @@ class PurchaseManagement extends Component
         }
 
         // Verificar si la fecha de compra es una fecha válida
-        if (!strtotime($this->purchaseDate)) {
+        if (!strtotime($this->invoiceDate)) {
             session()->flash('error', 'La fecha de compra no es válida.');
             return false;
         }
@@ -120,7 +119,7 @@ class PurchaseManagement extends Component
             'supplier_id' => $this->supplierId,
             'invoice_number' => $this->invoiceNumber,
             'total_amount' => $this->totalAmount,
-            'purchase_date' => $this->purchaseDate,
+            'purchase_date' => $this->invoiceDate,
         ]);
 
         $purchase->purchaseDetails()->createMany($purchaseDetails);
@@ -222,7 +221,7 @@ class PurchaseManagement extends Component
     {
         $this->supplierId = null;
         $this->invoiceNumber = null;
-        $this->purchaseDate = null;
+        $this->invoiceDate = null;
         $this->products = [];
         $this->availableProducts = [];
         $this->totalAmount = 0;

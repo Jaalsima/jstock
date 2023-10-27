@@ -25,10 +25,10 @@
         </div>
 
         <div class="w-1/3 mr-4">
-            <label for="purchaseDate" class="block mb-1">Fecha Factura</label>
-            <input type="date" wire:model="purchaseDate" id="purchaseDate"
+            <label for="invoiceDate" class="block mb-1">Fecha Factura</label>
+            <input type="date" wire:model="invoiceDate" id="invoiceDate"
                 class="w-full p-2 border border-gray-300 rounded">
-            @error('purchaseDate')
+            @error('invoiceDate')
                 <p class="mt-1 text-red-500 text-md">{{ $message }}</p>
             @enderror
         </div>

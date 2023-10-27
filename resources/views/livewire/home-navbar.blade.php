@@ -16,10 +16,16 @@
             <div class="flex justify-center mx-auto my-4 text-lg">
                 <!-- Navigation Links -->
                 <div
-                    class="hidden mx-3 border border-white lg:-my-px lg:flex lg:justify-center dark:border-gray-800 hover:shadow-lg hover:shadow-red-300 hover:rounded">
-                    <x-nav-link class="px-3" href="{{ route('home') }}" :active="request()->routeIs('home')">
-                        {{ __('Inicio') }}
-                    </x-nav-link>
+                    class="hidden mx-3 border border-white lg:-my-px lg:flex lg:justify-center dark:border-gray-800 hover:border-red-400 hover:shadow-lg hover:shadow-red-300 hover:rounded">
+                    @auth
+                        <x-nav-link class="px-3" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                            {{ __('Inicio') }}
+                        </x-nav-link>
+                    @else
+                        <x-nav-link class="px-3" href="{{ route('home') }}" :active="request()->routeIs('home')">
+                            {{ __('Inicio') }}
+                        </x-nav-link>
+                    @endauth
                 </div>
                 <div
                     class="hidden mx-3 border border-white lg:-my-px lg:flex lg:justify-center dark:border-gray-800 hover:shadow-lg hover:shadow-red-300 hover:rounded">
@@ -73,9 +79,15 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden lg:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link class="text-gray-500" href="{{ route('home') }}" :active="request()->routeIs('home')">
-                {{ __('Inicio') }}
-            </x-responsive-nav-link>
+            @auth
+                <x-responsive-nav-link class="text-gray-500" href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    {{ __('Inicio') }}
+                </x-responsive-nav-link>
+            @else
+                <x-responsive-nav-link class="text-gray-500" href="{{ route('home') }}" :active="request()->routeIs('home')">
+                    {{ __('Inicio') }}
+                </x-responsive-nav-link>
+            @endauth
         </div>
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link class="text-gray-500" href="{{ route('services') }}" :active="request()->routeIs('services')">

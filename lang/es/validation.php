@@ -189,6 +189,7 @@ return [
         'postal_code'              => 'código postal',
         'price'                    => 'precio',
         'province'                 => 'provincia',
+        'invoiceDate'             => 'fecha de factura',
         'recaptcha_response_field' => 'respuesta del recaptcha',
         'remember'                 => 'recordar',
         'restored_at'              => 'restaurado el',
@@ -213,5 +214,6 @@ return [
         'updated_at'               => 'actualizado el',
         'username'                 => 'usuario',
         'year'                     => 'año',
+        'today'                    => 'hoy',
     ],
 ];
