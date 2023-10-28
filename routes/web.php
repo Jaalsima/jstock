@@ -10,6 +10,7 @@ use App\Http\Controllers\Menu\MenuController;
 use App\Http\Livewire\Products\BrandManagement;
 use App\Http\Livewire\Products\CategoryManagement;
 use App\Http\Livewire\Inventory\InventoryManagement;
+use App\Http\Controllers\Pdf\InventoryReport;
 use App\Http\Livewire\Purchases\PurchaseManagement;
 use App\Http\Livewire\Sales\SaleManagement;
 
@@ -33,6 +34,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/pdf-example', [InventoryReport::class, 'pdfInventoryReportGeneration'])->name('pdf-example'); // Ruta para PDFs
+
     Route::get('/index-user', IndexUser::class)->name('index-user');
     Route::get('/index-product', IndexProduct::class)->name('index-product');
     Route::get('/index-supplier', IndexSupplier::class)->name('index-supplier');

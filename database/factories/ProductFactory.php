@@ -33,7 +33,7 @@ class ProductFactory extends Factory
             'slug' => Str::slug($name),
             'status' => fake()->randomElement(['Disponible', 'Agotado', 'No Disponible', 'Vencido', 'Expirable']),
             'expiration' => fake()->dateTimeBetween('2023-05-01', '2027-12-31'),
-            'observations' => fake('es_ES')->text(),
+            'observations' => fake('es_ES')->word(),
             'image' => 'products/' . fake()->image('public/storage/products', 640, 480, null, false),
         ];
     }
