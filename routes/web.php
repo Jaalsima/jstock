@@ -13,7 +13,12 @@ use App\Http\Livewire\Inventory\InventoryManagement;
 use App\Http\Controllers\Pdf\InventoryReport;
 use App\Http\Livewire\Purchases\PurchaseManagement;
 use App\Http\Livewire\Sales\SaleManagement;
+use App\Http\Controllers\AuthController;
 
+
+
+Route::get('/auth/{driver}/redirect', [AuthController::class, 'redirect'])->name('auth.redirect');
+Route::get('/auth/{driver}/callback', [AuthController::class, 'callback'])->name('auth.callback');
 
 Route::get('/',         [HomeController::class, 'home'])->name('home');
 Route::get('/about',    [HomeController::class, 'about'])->name('about');
@@ -35,7 +40,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/pdf-example', [InventoryReport::class, 'pdfInventoryReportGeneration'])->name('pdf-example'); // Ruta para PDFs
+    Route::get('/inventory-report', [InventoryReport::class, 'pdfInventoryReportGeneration'])->name('inventory-report'); // Ruta para PDFs
 
     Route::get('/index-user', IndexUser::class)->name('index-user');
     Route::get('/index-product', IndexProduct::class)->name('index-product');

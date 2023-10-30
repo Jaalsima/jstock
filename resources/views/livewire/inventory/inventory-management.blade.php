@@ -15,7 +15,7 @@
             <div class="col-span-4">
                 <button
                     class="float-right p-2 text-blue-500 bg-white border-none rounded-lg shadow-lg hover:text-red-700 hover:shadow-gray-500 focus:ring-gray-400">
-                    <a href="{{route('pdf-example')}}">Generar Reporte PDF</a>
+                    <a href="{{route('inventory-report')}}">Generar Reporte PDF</a>
                 </button>
             </div>
         </div>
