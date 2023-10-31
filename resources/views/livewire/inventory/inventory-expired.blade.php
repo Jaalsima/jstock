@@ -1,7 +1,6 @@
-<div>
+<div class="border-4 border-red-500 p-4 rounded-lg">
     <div>
-
-        <canvas id="expired" width="400" height="400"></canvas>
+        <canvas id="expired" width="400" height="100"></canvas>
     </div>
 
     <script>

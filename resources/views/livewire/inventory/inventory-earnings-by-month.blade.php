@@ -1,7 +1,6 @@
-<div>
+<div class="border-4 border-green-500 p-4 rounded-lg">
     <div>
-
-        <canvas id="earningsChart" width="400" height="400"></canvas>
+        <canvas id="earningsChart" width="400" height="100"></canvas>
     </div>
 
     <script>

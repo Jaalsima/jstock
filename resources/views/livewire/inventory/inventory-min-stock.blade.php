@@ -1,7 +1,7 @@
-<div>
+<div class="border-4 border-sky-500 p-4 rounded-lg md:w-2/5 mx-auto">
     <div>
         <h2>Stock Mínimo de Productos</h2>
-        <canvas id="inventoryMinStock" width="400" height="400"></canvas>
+        <canvas id="inventoryMinStock" width="400" height="200"></canvas>
     </div>
 
     <script>

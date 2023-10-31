@@ -4,14 +4,14 @@
         <div class="absolute text-2xl font-semibold text-red-700 opacity-60 top-3 right-4">
             JS<span class="text-black">tock</span>
         </div>
-        <div class="grid grid-cols-4 gap-6 mt-6">
+        <div class="grid md:grid-cols-4 gap-6 mt-6">
             <div wire:click="earningsByMonth"
                 class="flex flex-col px-3 py-8 border-2 border-green-500 rounded-lg cursor-pointer gap-y-6 hover:bg-green-100 h-44">
                 <div class="flex justify-center text-green-700">
-                    <i class="mr-4 text-2xl fa-solid fa-money-bill-wave"></i>
-                    <p class="text-2xl font-normal text-center">Ganancias por mes</p>
+                    <i class="mr-4 lg:mr-2 2xl:mr-4 2xl:text-2xl text-2xl lg:text-xl fa-solid fa-money-bill-wave"></i>
+                    <p class="text-2xl lg:text-xl font-normal text-center">Ganancias por mes</p>
                 </div>
-                <div class="text-4xl font-semibold text-center text-{{ $colorStatus }}">
+                <div class="text-2xl lg:text-xl 2xl:text-4xl font-semibold text-center text-{{ $colorStatus }}">
                     {{ $totalEarningsByMonth }}
                 </div>
             </div>
@@ -19,8 +19,9 @@
             <div wire:click="minStock"
                 class="flex flex-col px-3 py-8 border-2 rounded-lg cursor-pointer border-sky-500 gap-y-6 hover:bg-sky-100 h-44">
                 <div class="flex justify-center text-sky-700">
-                    <i class="mr-4 text-2xl fa-solid fa-exclamation-circle"></i>
-                    <p class="text-2xl font-normal text-center">Stock Mínimo</p>
+                    <i
+                        class="mr-4 lg:mr-2 2xl:mr-4 2xl:text-2xl text-2xl lg:text-xl fa-solid fa-exclamation-circle"></i>
+                    <p class="text-2xl lg:text-xl font-normal text-center">Stock Mínimo</p>
                 </div>
                 <div class="text-4xl font-semibold text-center text-sky-700">
                     {{ $productsWithMinStock }}
@@ -30,8 +31,8 @@
             <div wire:click="aboutToExpire"
                 class="flex flex-col px-3 py-8 border-2 border-yellow-500 rounded-lg cursor-pointer gap-y-6 hover:bg-yellow-100 h-44">
                 <div class="flex justify-center text-yellow-700">
-                    <i class="mr-4 text-2xl fa-solid fa-hourglass-half"></i>
-                    <p class="text-2xl font-normal text-center">Próximos a vencer</p>
+                    <i class="mr-4 lg:mr-2 2xl:mr-4 2xl:text-2xl text-2xl lg:text-xl fa-solid fa-hourglass-half"></i>
+                    <p class="text-2xl lg:text-xl font-normal text-center">Próximos a vencer</p>
                 </div>
                 <div class="text-4xl font-semibold text-center text-yellow-700">
                     {{ $numExpirableProducts }}
@@ -41,8 +42,8 @@
             <div wire:click="expired"
                 class="flex flex-col px-3 py-8 border-2 border-red-500 rounded-lg cursor-pointer gap-y-6 hover:bg-red-100 h-44">
                 <div class="flex justify-center text-red-700">
-                    <i class="mr-4 text-2xl fa-solid fa-houglass-end"></i>
-                    <p class="text-2xl font-normal text-center">Productos Vencidos</p>
+                    <i class="mr-4 lg:mr-2 2xl:mr-4 2xl:text-2xl text-2xl lg:text-xl fa-solid fa-hourglass-end"></i>
+                    <p class="text-2xl lg:text-xl font-normal text-center">Productos Vencidos</p>
                 </div>
                 <div class="text-4xl font-semibold text-center text-red-700">
                     {{ $numExpiredProducts }}
@@ -52,11 +53,8 @@
 
     </div>
 
-    <div class="grid w-full grid-cols-12 gap-4">
-        <div class="w-full col-span-7">
-            <livewire:inventory.inventory-general />
-        </div>
-        <div class="w-full col-span-5 p-4 m-4 mr-4 border-2 rounded-lg">
+    <div class="w-full">
+        <div class="w-full mx-auto my-4 p-6 rounded-lg">
             @if ($earningsByMonth)
                 <livewire:inventory.inventory-earnings-by-month :monthlyEarnings="$monthlyEarnings" />
             @elseif($minStock)
@@ -67,5 +65,9 @@
                 <livewire:inventory.inventory-expired :expiredProducts="$expiredProducts" />
             @endif
         </div>
+        <div class="hidden md:block w-full md:col-span-6">
+            <livewire:inventory.inventory-general />
+        </div>
+
     </div>
 </div>

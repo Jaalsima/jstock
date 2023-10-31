@@ -1,6 +1,6 @@
-<div>
+<div class="border-4 border-yellow-500 p-4 rounded-lg md:w-2/5 mx-auto">
     <div>
-        <canvas id="abouToExpire" width="400" height="400"></canvas>
+        <canvas id="abouToExpire" width="400" height="100"></canvas>
     </div>
 
     <script>
