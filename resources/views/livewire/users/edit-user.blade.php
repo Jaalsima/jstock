@@ -32,8 +32,7 @@
                                 </svg>
                             </div>
                             <div class="text-center">
-                                <span class="font-normal text-gray-600">Cambiar la foto de perfil
-                                    (opcional)</span>
+                                <span class="font-normal text-gray-600">Cambiar la foto de perfil</span>
                             </div>
 
                             <input type="file" class="hidden" wire:model.lazy="profile_photo_path">
@@ -86,12 +85,12 @@
                         <x-input-error for="phone" />
                     </div>
 
-                    <!-- Contraseña -->
+                    {{-- <!-- Contraseña -->
                     <div class="mt-4">
                         <x-label value="Contraseña" class="text-gray-700" />
                         <x-input class="w-full" wire:model.lazy="password" type="password" />
                         <x-input-error for="password" />
-                    </div>
+                    </div> --}}
 
                     <!-- Dropdown para Estado -->
                     <div class="mt-4">

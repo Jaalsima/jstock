@@ -16,12 +16,11 @@ class EditUser extends Component
     public $open_edit = false;
 
     protected $rules = [
-        'document'           => 'required',
+        'document'           => 'nullable',
         'name'               => 'required|max:50',
         'email'              => 'required|email',
-        'address'            => 'required',
-        'phone'              => 'required',
-        'password'           => 'required',
+        'address'            => 'nullable',
+        'phone'              => 'nullable',
         'status'             => 'required',
         'profile_photo_path' => 'nullable|image|max:2048',
     ];
@@ -34,7 +33,6 @@ class EditUser extends Component
         $this->email = $user->email;
         $this->address = $user->address;
         $this->phone = $user->phone;
-        $this->password = $user->password;
         $this->status = $user->status;
     }
 
@@ -49,7 +47,6 @@ class EditUser extends Component
             'email' => $this->email,
             'address' => $this->address,
             'phone' => $this->phone,
-            'password' => Hash::make($this->password),
             'status' => $this->status,
         ]);
 

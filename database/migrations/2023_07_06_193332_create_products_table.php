@@ -33,9 +33,9 @@ return new class extends Migration
             $table->string('image')->nullable()->default('N/A');
             $table->timestamps();
 
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('CASCADE');
-            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('CASCADE');
-            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('CASCADE');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
+            $table->foreign('supplier_id')->references('id')->on('suppliers')->onDelete('cascade');
         });
     }
 

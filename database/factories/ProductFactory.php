@@ -21,7 +21,7 @@ class ProductFactory extends Factory
         return [
             'brand_id' => fake()->numberBetween(1, 5),
             'category_id' => fake()->numberBetween(1, 5),
-            'supplier_id' => fake()->numberBetween(1, 10),
+            'supplier_id' => fake()->numberBetween(1, 5),
             'name' => $name,
             'description' => fake('es_ES')->word(),
             'current_stock' => fake()->randomNumber(3, false),

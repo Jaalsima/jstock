@@ -26,8 +26,6 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'google_id',
-        'facebook_id',
         'document',
         'name',
         'email',
@@ -77,6 +75,11 @@ class User extends Authenticatable
     public function sales()
     {
         return $this->hasMany(Sale::class);
+    }
+
+    public function socialProfiles()
+    {
+        return $this->hasMany(SocialProfile::class);
     }
 
 }
