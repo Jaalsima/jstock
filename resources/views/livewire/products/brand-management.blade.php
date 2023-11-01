@@ -1,14 +1,14 @@
 <div>
-    <div class="flex justify-between mb-4">
+    <div class="md:flex md:justify-between mb-4">
         <div>
             <input wire:model.debounce.300ms="search" type="text" placeholder="Buscar marca..."
-                class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                class="w-full border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300">
         </div>
-        <div class="mb-4">
+        <div class="my-4 md:mb-4 md:mt-0">
             <button wire:click="create"
                 class="px-4 py-2 rounded bg-blue-500 text-white hover:bg-blue-700 focus:outline-none">Nueva Marca</button>
         </div>
-        <div>
+        <div class="grid grid-cols-2 gap-4 mt-4 md:block md:mt-0">
             <select wire:model="orderBy"
                 class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-300">
                 <option value="id">ID</option>
@@ -28,7 +28,7 @@
             </select>
         </div>
     </div>
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto hidden md:block">
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
                 <tr>
@@ -55,6 +55,38 @@
                     <td class="px-6 py-4 whitespace-nowrap">{{ $brand->name }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $brand->description }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">{{ $brand->status }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <button wire:click="show({{ $brand->id }})"
+                            class="text-blue-600 hover:text-blue-900">Ver</button>
+                        <button wire:click="edit({{ $brand->id }})"
+                            class="text-blue-600 hover:text-blue-900">Editar</button>
+                        <button wire:click="delete({{ $brand->id }})"
+                            class="text-red-600 hover:text-red-900">Eliminar</button>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+    <div class="overflow-x-auto block md:hidden">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                    <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre
+                    </th>
+                    <th scope="col"
+                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                @foreach ($brands as $brand)
+                <tr>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $brand->id }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap">{{ $brand->name }}</td>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <button wire:click="show({{ $brand->id }})"
                             class="text-blue-600 hover:text-blue-900">Ver</button>
