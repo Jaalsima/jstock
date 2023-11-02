@@ -19,8 +19,8 @@
                     <img src="{{ asset('storage/' . $customer->image) }}" alt="{{ $customer->name }}"
                         class="w-full h-auto rounded-lg">
                 </div>
-                <div class="px-5 pb-5">
-                    <div class="mx-6">
+                <div class="md:px-5 pb-5">
+                    <div class="md:mx-6">
                         <h5
                             class="mb-4 text-3xl font-semibold tracking-tight text-center text-gray-900 dark:text-white">
                             {{ $customer->name }}</h5>
