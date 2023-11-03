@@ -4,21 +4,21 @@
             <div class="grid items-center w-full md:grid-cols-12 mt-2">
                 <div class="col-span-4">
                     <input type="text" name="search" wire:model="search"
-                        class="w-full bg-white border-none rounded-lg focus:ring-gray-400" placeholder="Buscar...">
+                        class="w-full bg-white dark:text-gray-100 dark:bg-gray-800 border-none rounded-lg focus:ring-gray-400" placeholder="Buscar...">
                 </div>
                 <div class="inline mt-4 pl-4 pr-24 md:pl-0 md:pr-0 md:mt-0 md:block md:col-span-4">
                     <div class="text-xl font-bold text-center text-blue-400 uppercase">
-                        <h1>Usuarios</h1>
+                        <h1 class="text-red-800 dark:text-red-700">Us<span class="text-gray-800 dark:text-gray-400">uarios</span></h1>
                     </div>
                 </div>
                 <div class="inline mt-4 md:mt-0 md:block md:col-span-4">
                     <livewire:users.create-user />
                 </div>
             </div>
-            <div class="py-2 md:py-4 ml-4 text-gray-500 ">
+            <div class="py-2 md:py-4 ml-4 text-gray-500 dark:text-gray-100">
                 Registros por página
                 <input type="number" name="perPage" wire:model="perPage"
-                    class="w-[70px] pr-2 py-1 cursor-pointer bg-white border-none rounded-lg focus:ring-gray-400">
+                    class="w-[70px] dark:bg-gray-800 pr-2 py-1 cursor-pointer bg-white border-none rounded-lg focus:ring-gray-400">
             </div>
 
             <div class="relative hidden md:block mt-2 md:mt-4 overflow-x-hidden shadow-md sm:rounded-lg">

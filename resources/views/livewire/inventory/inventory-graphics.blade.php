@@ -1,8 +1,8 @@
 <div class="h-[88vh] overflow-y-scroll pr-3">
     <div
-        class="relative p-6 bg-white border-b border-gray-200 lg:p-8 dark:bg-gray-800 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent dark:border-gray-700">
-        <div class="absolute text-2xl font-semibold text-red-700 opacity-60 top-3 right-4">
-            JS<span class="text-black">tock</span>
+        class="relative p-6 bg-white border-b border-gray-200 lg:p-8 dark:bg-gray-700 dark:bg-gradient-to-bl dark:from-gray-700/50 dark:via-transparent dark:border-gray-700">
+        <div class="absolute text-2xl font-semibold text-red-700 dark:text-red-600 opacity-60 top-3 right-4">
+            JS<span class="text-black dark:text-gray-200">tock</span>
         </div>
         <div class="grid md:grid-cols-4 gap-6 mt-6">
             <div wire:click="earningsByMonth"

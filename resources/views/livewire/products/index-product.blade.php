@@ -5,27 +5,27 @@
             <div class="grid items-center w-full md:grid-cols-12 mt-2">
                 <div class="col-span-4">
                     <input type="text" name="search" wire:model="search"
-                        class="w-full bg-white border-none rounded-lg focus:ring-gray-400" placeholder="Buscar...">
+                        class="w-full bg-white dark:bg-gray-800 dark:text-gray-100 border-none rounded-lg focus:ring-gray-400" placeholder="Buscar...">
                 </div>
                 <div class="inline mt-4 pl-4 pr-16 md:pl-0 md:pr-0 md:mt-0 md:block md:col-span-4">
                     <div class="text-xl font-bold text-center text-blue-400 uppercase">
-                        <h1>Productos</h1>
+                        <h1 class="text-red-800 dark:text-red-700">Pr<span class="text-gray-800 dark:text-gray-400">oductos</span></h1>
                     </div>
                 </div>
                 <div class="inline mt-4 md:mt-0 md:block md:col-span-4">
                     <livewire:products.create-product />
                 </div>
             </div>
-            <div class="py-4 ml-4 text-gray-500 ">
+            <div class="py-4 ml-4 text-gray-500 dark:text-gray-100">
                 Registros por página
                 <input type="number" name="perPage" wire:model="perPage"
-                    class="w-[70px] pr-2 py-1 cursor-pointer bg-white border-none rounded-lg focus:ring-gray-400">
+                    class="w-[70px] dark:bg-gray-800 pr-2 py-1 cursor-pointer bg-white border-none rounded-lg focus:ring-gray-400">
             </div>
         </div>
         <div class="grid grid-cols-2 gap-4 md:block">
             <!-- Filtrar por la marca de producto -->
             <select wire:model="brandFilter"
-                class="md:w-32 p-2 mr-4 text-blue-500 bg-white border-none rounded-lg shadow-lg cursor-pointer hover:text-red-700 hover:shadow-gray-500 focus:ring-gray-400">
+                class="md:w-32 p-2 mr-4 dark:bg-gray-800 dark:text-gray-100 text-blue-500 bg-white border-none rounded-lg shadow-lg cursor-pointer hover:text-red-700 hover:shadow-gray-500 focus:ring-gray-400">
                 <option value="">Marcas</option>
                 @foreach ($brands as $brand)
                     <option value="{{ $brand->name }}">{{ $brand->name }}</option>
@@ -33,19 +33,19 @@
             </select>
             <!-- Filtrar por la categoría de producto -->
             <select wire:model="categoryFilter"
-                class="md:w-32 p-2 mr-4 text-blue-500 bg-white border-none rounded-lg shadow-lg cursor-pointer hover:text-red-700 hover:shadow-gray-500 focus:ring-gray-400">
+                class="md:w-32 p-2 mr-4 dark:bg-gray-800 dark:text-gray-100 text-blue-500 bg-white border-none rounded-lg shadow-lg cursor-pointer hover:text-red-700 hover:shadow-gray-500 focus:ring-gray-400">
                 <option value="">Categorías</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->name }}">{{ $category->name }}</option>
                 @endforeach
             </select>
             <button wire:click="resetFilters"
-                class="p-2 mr-4 text-blue-500 bg-white border-none rounded-lg shadow-lg hover:text-red-700 hover:shadow-gray-500 focus:ring-gray-400">
+                class="p-2 mr-4 text-blue-500 dark:bg-gray-800 dark:text-gray-100 bg-white border-none rounded-lg shadow-lg hover:text-red-700 hover:shadow-gray-500 focus:ring-gray-400">
                 Restablecer
             </button>
         </div>
 
-        <div class="relative hidden md:block mt-4 overflow-x-auto shadow-md sm:rounded-lg">
+        <div class="relative hidden md:block mt-4 shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead
                     class="text-xs text-center text-gray-100 uppercase bg-gray-400 dark:bg-gray-700 dark:text-gray-400">

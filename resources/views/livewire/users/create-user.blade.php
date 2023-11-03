@@ -1,6 +1,6 @@
 <div class="my-auto">
     <x-secondary-button wire:click="$set('open_create', true)"
-        class="float-right text-blue-500 bg-blue-100 border border-blue-500 shadow-md hover:shadow-blue-400 hover:bg-blue-400 hover:text-white">
+        class="float-right dark:bg-gray-800 text-blue-500 bg-blue-100 border border-blue-500 shadow-md hover:shadow-blue-400 hover:bg-blue-400 hover:text-white">
         <i class="fa fa-solid fa-user-plus"> Nuevo</i>
     </x-secondary-button>
 

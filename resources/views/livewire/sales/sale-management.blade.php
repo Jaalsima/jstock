@@ -127,8 +127,8 @@
             </x-slot>
 
             <x-slot name="content">
-                <div class="p-4">
-                    <div class="flex justify-between">
+                <div class="md:p-4">
+                    <div class="md:flex justify-between">
                         <div class="mb-4">
                             <p class="text-lg font-semibold">Cliente:</p>
                             <p>{{ $selectedSale->customer->name }}</p>
@@ -144,7 +144,7 @@
                     </div>
 
                     <!-- Lista de Productos -->
-                    <div>
+                    <div class="hidden md:block">
                         <h3 class="mb-2 text-lg font-semibold">Productos:</h3>
                         <table class="w-full border border-collapse border-gray-300">
                             <thead>
@@ -167,6 +167,31 @@
                             </tbody>
                         </table>
                     </div>
+                    @foreach ($selectedSale->saleDetails as $saleDetail)
+                        <div class="md:hidden grid grid-cols-3 gap-1 bg-gray-100 bg-opacity-80 p-1 mb-4">
+                            <div class="col-span-1 h-auto grid grid-cols-1">
+                                <div class="bg-white pl-1 flex items-center rounded-l mb-1">Producto</div>
+                                <div class="bg-white pl-1 flex items-center rounded-l mb-1">Cantidad</div>
+                                <div class="bg-white pl-1 flex items-center rounded-l mb-1">Precio Unitario</div>
+                                <div class="bg-white pl-1 flex items-center rounded-l">Subtotal</div>
+                            </div>
+                            <div class="col-span-2">
+                                <div class="w-full bg-white p-2 mb-1 border border-gray-300 rounded">
+                                    {{ $saleDetail->product->name }}
+                                </div>
+                                <div class="w-full bg-white p-2 mb-1 border border-gray-300 rounded">
+                                    {{ $saleDetail->quantity }}
+                                </div>
+                                <div class="w-full bg-white p-2 mb-1 border border-gray-300 rounded">
+                                    ${{ number_format($saleDetail->unit_price, 2) }}
+                                </div>
+                                <div class="w-full bg-white p-2 border border-gray-300 rounded">
+                                    ${{ number_format($saleDetail->subtotal, 2) }}
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+
 
                     <!-- Líneas divisorias -->
                     <div class="my-4 border-t"></div>
@@ -275,47 +300,84 @@
                             class="w-full p-2 border border-gray-300 rounded">
                     </div>
                 </div>
-                <table class="w-full border border-collapse border-gray-300">
-                    <thead>
-                        <tr class="bg-gray-200">
-                            <th class="p-2">Producto</th>
-                            <th class="p-2">Cantidad</th>
-                            <th class="p-2">Precio Unitario</th>
-                            <th class="p-2">Subtotal</th>
-                            <th class="p-2"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($products as $index => $product)
-                            <tr>
-                                <td class="p-2">
-                                    <select disabled wire:model="products.{{ $index }}.id"
-                                        class="w-full p-2 border border-gray-300 rounded">
-                                        @foreach ($allProducts as $myProduct)
-                                            <option value="{{ $myProduct->id }}">
-                                                {{ $myProduct->name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                <td class="p-2">
-                                    <input disabled type="number" wire:model="products.{{ $index }}.quantity"
-                                        class="w-full p-2 border border-gray-300 rounded" min="1">
-                                </td>
-                                <td class="p-2">
-                                    <input disabled type="text"
-                                        wire:model="products.{{ $index }}.unit_price"
-                                        class="w-full p-2 border border-gray-300 rounded" readonly>
-                                </td>
-                                <td class="p-2">
-                                    <input disabled type="text" wire:model="products.{{ $index }}.subtotal"
-                                        class="w-full p-2 border border-gray-300 rounded" readonly>
-                                </td>
-
+                <div class="hidden md:block">
+                    <table class="w-full border border-collapse border-gray-300">
+                        <thead>
+                            <tr class="bg-gray-200">
+                                <th class="p-2">Producto</th>
+                                <th class="p-2">Cantidad</th>
+                                <th class="p-2">Precio Unitario</th>
+                                <th class="p-2">Subtotal</th>
+                                <th class="p-2"></th>
                             </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            @foreach ($products as $index => $product)
+                                <tr>
+                                    <td class="p-2">
+                                        <select disabled wire:model="products.{{ $index }}.id"
+                                            class="w-full p-2 border border-gray-300 rounded">
+                                            @foreach ($allProducts as $myProduct)
+                                                <option value="{{ $myProduct->id }}">
+                                                    {{ $myProduct->name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td class="p-2">
+                                        <input disabled type="number"
+                                            wire:model="products.{{ $index }}.quantity"
+                                            class="w-full p-2 border border-gray-300 rounded" min="1">
+                                    </td>
+                                    <td class="p-2">
+                                        <input disabled type="text"
+                                            wire:model="products.{{ $index }}.unit_price"
+                                            class="w-full p-2 border border-gray-300 rounded" readonly>
+                                    </td>
+                                    <td class="p-2">
+                                        <input disabled type="text"
+                                            wire:model="products.{{ $index }}.subtotal"
+                                            class="w-full p-2 border border-gray-300 rounded" readonly>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                @foreach ($products as $index => $product)
+                    <div class="md:hidden grid grid-cols-3 gap-1 bg-gray-100 bg-opacity-80 p-1 mb-4">
+                        <div class="col-span-1 h-auto grid grid-cols-1">
+                            <div class="bg-white pl-1 flex items-center rounded-l mb-1">Producto</div>
+                            <div class="bg-white pl-1 flex items-center rounded-l mb-1">Cantidad</div>
+                            <div class="bg-white pl-1 flex items-center rounded-l mb-1">Precio Unitario</div>
+                            <div class="bg-white pl-1 flex items-center rounded-l">Subtotal</div>
+                        </div>
+                        <div class="col-span-2">
+                            <div>
+                                <select disabled wire:model="products.{{ $index }}.id"
+                                    class="w-full p-2 border border-gray-300 rounded">
+                                    @foreach ($allProducts as $myProduct)
+                                        <option value="{{ $myProduct->id }}">
+                                            {{ $myProduct->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div>
+                                <input disabled type="number" wire:model="products.{{ $index }}.quantity"
+                                    class="w-full p-2 border border-gray-300 rounded" min="1">
+                            </div>
+                            <div>
+                                <input disabled type="text" wire:model="products.{{ $index }}.unit_price"
+                                    class="w-full p-2 border border-gray-300 rounded" readonly>
+                            </div>
+                            <div>
+                                <input disabled type="text" wire:model="products.{{ $index }}.subtotal"
+                                    class="w-full p-2 border border-gray-300 rounded" readonly>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </x-slot>
             <x-slot name="footer">
                 <div class="flex justify-between w-full px-4">
