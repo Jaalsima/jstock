@@ -58,7 +58,7 @@
                 </header>
             @endif
 
-            <main class="p-4 overflow-auto lg:w-full">
+            <main class="p-4 overflow-auto lg:w-full dark:bg-gray-500">
                 {{ $slot }}
             </main>
 

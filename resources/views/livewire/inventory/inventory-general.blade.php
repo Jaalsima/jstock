@@ -1,12 +1,12 @@
-<div class="m-4">
+<div class="m-4 dark:text-gray-100">
     <input wire:model="search" type="text" placeholder="Buscar por nombre..."
         class="p-2 mb-4 text-gray-800 border border-gray-300 rounded dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200">
 
-    <div class="dark:bg-gray-900">
+    <div class="dark:bg-gray-300">
         <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-300">
                 <thead>
-                    <tr>
+                    <tr class="bg-red-500">
                         <th wire:click="sortBy('name')"
                             class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase bg-gray-100 cursor-pointer dark:bg-gray-800 dark:text-gray-400">
                             Nombre

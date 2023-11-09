@@ -1,6 +1,6 @@
 <div class="my-auto">
     <x-secondary-button wire:click="$set('open', true)"
-        class="float-right text-blue-500 bg-blue-100 border border-blue-500 shadow-md hover:shadow-blue-400 hover:bg-blue-400 hover:text-white">
+        class="float-right text-blue-500 dark:bg-gray-800 bg-blue-100 border border-blue-500 shadow-md hover:shadow-blue-400 hover:bg-blue-400 hover:text-white">
         Nuevo<br>
         Producto
     </x-secondary-button>

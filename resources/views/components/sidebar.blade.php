@@ -13,7 +13,7 @@
                     </a> --}}
                 <li>
                     <a href="{{ route('index-user') }}"
-                        class="flex items-center p-2 rounded-lg group {{ request()->routeIs('index-user') ? 'text-blue-700 bg-gray-400 bg-opacity-50' : '' }}">
+                        class="flex items-center p-2 rounded-lg group {{ request()->routeIs('index-user') ? 'text-blue-700 bg-gray-400 dark:bg-gray-700 bg-opacity-50' : '' }}">
 
                         <button type="button"
                             class="flex items-center w-full p-2 text-lg text-gray-700 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
@@ -31,7 +31,7 @@
 
                 <li>
                     <a href="{{ route('index-customer') }}"
-                        class="flex items-center p-2 rounded-lg group {{ request()->routeIs('index-customer') ? 'text-blue-700 bg-gray-400 bg-opacity-50' : '' }}">
+                        class="flex items-center p-2 rounded-lg group {{ request()->routeIs('index-customer') ? 'text-blue-700 bg-gray-400 dark:bg-gray-700 bg-opacity-50' : '' }}">
 
                         <button type="button"
                             class="flex items-center w-full p-2 text-lg text-gray-700 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"
@@ -47,7 +47,7 @@
 
                 <li>
                     <a href="{{ route('index-supplier') }}"
-                        class="flex items-center p-2 rounded-lg group {{ request()->routeIs('index-supplier') ? 'text-blue-700 bg-gray-400 bg-opacity-50' : '' }}">
+                        class="flex items-center p-2 rounded-lg group {{ request()->routeIs('index-supplier') ? 'text-blue-700 bg-gray-400 dark:bg-gray-700 bg-opacity-50' : '' }}">
 
                         <button type="button"
                             class="flex items-center w-full p-2 text-lg text-gray-700 transition duration-75 rounded-lg group hover:bg-gray-200 dark:text-white dark:hover:bg-gray-700"

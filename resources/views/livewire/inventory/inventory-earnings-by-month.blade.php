@@ -1,7 +1,7 @@
-<div>
-    <div>
+<div class="border-4 border-green-500 p-4 rounded-lg dark:bg-gray-300 bg-opacity-70">
 
-        <canvas id="earningsChart" width="400" height="400"></canvas>
+    <div>
+        <canvas id="earningsChart" width="400" height="100"></canvas>
     </div>
 
     <script>
@@ -31,8 +31,11 @@
                         'rgb(153, 102, 255)',
                         'rgb(201, 203, 207)'
                     ],
-                    borderWidth: 1
+
+                    borderWidth: 1,
+                    color: "#fff",
                 }]
+
             },
             options: {
                 scales: {
